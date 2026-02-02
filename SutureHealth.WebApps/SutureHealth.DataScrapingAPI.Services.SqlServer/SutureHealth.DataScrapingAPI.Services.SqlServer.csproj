@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>SutureHealth.DataScraping</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SutureHealth.Common\SutureHealth.Common.csproj" />
+    <ProjectReference Include="..\SutureHealth.DataScrapingAPI.Services\SutureHealth.DataScrapingAPI.Services.csproj" />
+    <ProjectReference Include="..\SutureHealth.Services.Common\SutureHealth.Services.Common.csproj" />
+  </ItemGroup>
+
+</Project>

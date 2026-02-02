@@ -1,0 +1,869 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <realmCode code="US" />
+  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+  <templateId root="1.2.840.114350.1.72.1.51693" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.9" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.9" extension="2015-08-01" />
+  <id assigningAuthorityName="EPC" extension="00000000-00d0-0fdc-3956-c37871551322" root="1.2.840.114350.1.13.5826.1.7.1.1" />
+  <code code="11506-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Subsequent evaluation note" />
+  <title>Encounter Summary</title>
+  <effectiveTime value="20201005092755-0500" />
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
+  <languageCode code="en-US" />
+  <recordTarget>
+    <patientRole>
+      <id extension="GTM1286827" root="1.2.840.114350.1.13.5826.1.7.3.688884.100" />
+      <addr use="HP">
+        <streetAddressLine>124 Market St</streetAddressLine>
+        <city>Green Bay</city>
+        <state>WI</state>
+        <postalCode>54304</postalCode>
+        <country>USA</country>
+      </addr>
+      <telecom use="HP" value="tel:+1-222-222-2222" />
+      <patient>
+        <name use="L">
+          <given>Roberto</given>
+          <family>Gonzalez</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGenderCode" displayName="Male" />
+        <birthTime value="20070912" />
+        <sdtc:deceasedInd value="false" xmlns:sdtc="urn:hl7-org:sdtc" />
+        <maritalStatusCode code="M" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" displayName="Married" />
+        <raceCode nullFlavor="UNK" />
+        <ethnicGroupCode nullFlavor="UNK" />
+        <languageCommunication>
+          <languageCode code="English" />
+          <preferenceInd value="true" />
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id extension="3" root="1.2.840.114350.1.13.3.1.7.2.688879"/>
+        <name>River Hills Health System</name>
+        <telecom use="WP" value="tel:+1-608-555-3326"/>
+        <addr use="WP">
+          <streetAddressLine>8110 Gatehouse Road</streetAddressLine>
+          <county>Sauk</county>
+          <city>Baraboo</city>
+          <state>WI</state>
+          <postalCode>53913</postalCode>
+          <country>USA</country>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20201005092755-0500" />
+    <assignedAuthor>
+      <id extension="9.5" root="1.2.840.114350.1.1" />
+      <addr nullFlavor="NA" />
+      <telecom nullFlavor="NA" />
+      <assignedAuthoringDevice>
+        <manufacturerModelName>Epic - Version 9.5</manufacturerModelName>
+        <softwareName>Epic - Version 9.5</softwareName>
+      </assignedAuthoringDevice>
+      <representedOrganization>
+        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+        <name>Current Final Primary</name>
+        <telecom use="WP" value="tel:+1-608-888-8828" />
+        <addr use="WP">
+          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+          <streetAddressLine>Suite 70</streetAddressLine>
+          <county>DANE</county>
+          <city>MADISON</city>
+          <state>WI</state>
+          <postalCode>53713</postalCode>
+          <country>USA</country>
+        </addr>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+        <name>Current Final Primary</name>
+        <telecom use="WP" value="tel:+1-608-888-8828" />
+        <addr use="WP">
+          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+          <streetAddressLine>Suite 70</streetAddressLine>
+          <county>DANE</county>
+          <city>MADISON</city>
+          <state>WI</state>
+          <postalCode>53713</postalCode>
+          <country>USA</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <documentationOf typeCode="DOC">
+    <serviceEvent classCode="PCPR">
+      <templateId root="2.16.840.1.113883.10.20.21.3.1" />
+      <effectiveTime>
+        <low value="20201001090500-0500" />
+        <high value="20201001105500-0500" />
+      </effectiveTime>
+      <performer typeCode="PRF">
+        <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+          <originalText>Primary Care Provider</originalText>
+        </functionCode>
+        <time>
+          <low nullFlavor="NI" />
+          <high nullFlavor="PINF" />
+        </time>
+        <assignedEntity nullFlavor="NI">
+          <id nullFlavor="UNK" />
+          <addr nullFlavor="UNK" />
+          <telecom nullFlavor="NA" />
+          <assignedPerson nullFlavor="NA">
+            <name nullFlavor="UNK" />
+          </assignedPerson>
+          <representedOrganization classCode="ORG">
+            <telecom nullFlavor="UNK" />
+            <addr nullFlavor="UNK" />
+          </representedOrganization>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <componentOf>
+    <encompassingEncounter>
+      <id extension="10000243371" root="1.2.840.114350.1.13.5826.1.7.3.698084.8" />
+      <code code="SURG" codeSystem="2.16.840.1.113883.5.4" displayName="Surgical">
+        <originalText>Surgery</originalText>
+        <translation code="0" codeSystem="1.2.840.114350.1.72.1.30.1" />
+      </code>
+      <effectiveTime>
+        <low value="20201001090500-0500" />
+        <high value="20201001105500-0500" />
+      </effectiveTime>
+      <location>
+        <healthCareFacility>
+          <id extension="62741113" root="1.2.840.114350.1.13.5826.1.7.2.686980" />
+          <code nullFlavor="UNK" />
+          <location>
+            <name>BEC INTRA-OP (CENTRAL)</name>
+            <addr nullFlavor="UNK" />
+          </location>
+          <serviceProviderOrganization>
+            <id extension="62741112" root="1.2.840.114350.1.13.5826.1.7.2.696570" />
+            <name>BEC HOSPITAL (CENTRAL)</name>
+            <addr nullFlavor="UNK" />
+            <asOrganizationPartOf>
+              <wholeOrganization>
+                <name>Current Final Primary</name>
+                <addr nullFlavor="NA" />
+              </wholeOrganization>
+            </asOrganizationPartOf>
+          </serviceProviderOrganization>
+        </healthCareFacility>
+      </location>
+    </encompassingEncounter>
+  </componentOf>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.22" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.22" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.22.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.22.1" extension="2015-08-01" />
+          <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of encounters" />
+          <title>Encounter Details</title>
+          <text>
+            <table>
+              <colgroup>
+                <col width="10%" />
+                <col width="15%" />
+                <col width="25%" span="3" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Department</th>
+                  <th>Care Team</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="encounter1" styleCode="normRow">
+                  <td>10/01/2020</td>
+                  <td ID="encounter1type">Surgery</td>
+                  <td>
+                    <paragraph>BEC INTRA-OP (CENTRAL)</paragraph>
+                  </td>
+                  <td>
+                    <paragraph styleCode="Bold">Fossil, Bob, MD</paragraph>
+                    <paragraph>1979 MILKY WAY</paragraph>
+                    <paragraph>VERONA, WI 53593</paragraph>
+                    <paragraph>608-271-9000</paragraph>
+                  </td>
+                  <td ID="encounter1desc">APPENDECTOMY OPEN</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" extension="2015-08-01" />
+              <id assigningAuthorityName="EPIC" extension="10000243371" root="1.2.840.114350.1.13.5826.1.7.3.698084.8" />
+              <code code="IMP" codeSystem="2.16.840.1.113883.5.4">
+                <originalText>
+                  <reference value="#encounter1type" />
+                </originalText>
+                <translation code="51" codeSystem="1.2.840.114350.1.13.5826.1.7.4.698084.30" codeSystemName="Epic.EncounterType" />
+                <translation code="51" codeSystem="1.2.840.114350.1.72.1.30" />
+                <translation code="0" codeSystem="1.2.840.114350.1.72.1.30.1" />
+              </code>
+              <text>
+                <reference value="#encounter1" />
+              </text>
+              <statusCode code="normal" />
+              <effectiveTime>
+                <low value="20201001090500-0500" />
+                <high value="20201001105500-0500" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <time>
+                  <low nullFlavor="UNK" />
+                  <high nullFlavor="UNK" />
+                </time>
+                <assignedEntity classCode="ASSIGNED">
+                  <id extension="1852" root="1.2.840.114350.1.13.5826.1.7.2.836982" />
+                  <code nullFlavor="UNK">
+                    <originalText>Ophthalmology</originalText>
+                  </code>
+                  <addr use="WP">
+                    <streetAddressLine>1979 MILKY WAY</streetAddressLine>
+                    <county>DANE</county>
+                    <city>VERONA</city>
+                    <state>WI</state>
+                    <postalCode>53593</postalCode>
+                  </addr>
+                  <telecom use="WP" value="tel:+1-608-271-9000" />
+                  <assignedPerson>
+                    <name>
+                      <given>Bob</given>
+                      <family>Fossil</family>
+                      <suffix qualifier="AC">MD</suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization classCode="ORG">
+                    <name>Current Final Primary</name>
+                    <addr use="WP">
+                      <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+                      <streetAddressLine>Suite 70</streetAddressLine>
+                      <county>DANE</county>
+                      <city>MADISON</city>
+                      <state>WI</state>
+                      <postalCode>53713</postalCode>
+                      <country>USA</country>
+                    </addr>
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <participant typeCode="LOC">
+                <participantRole classCode="SDLOC">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.32" />
+                  <id extension="62741113" root="1.2.840.114350.1.13.5826.1.7.2.686980" />
+                  <code nullFlavor="UNK" />
+                  <addr nullFlavor="UNK" />
+                  <playingEntity classCode="PLC">
+                    <name>BEC INTRA-OP (CENTRAL)</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="COMP">
+                <act classCode="ACT" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.64" />
+                  <code code="48767-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  <text>
+                    <reference value="#encounter1desc" />
+                  </text>
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </encounter>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="29554-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="SURGERY PROCEDURE" />
+          <title>Surgery Details</title>
+          <text>
+            <table>
+              <colgroup>
+                <col width="10%" />
+                <col width="15%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="10%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Date/Time</th>
+                  <th>Status</th>
+                  <th>Location</th>
+                  <th>OR</th>
+                  <th>Service</th>
+                  <th>Patient Class</th>
+                  <th>Case Class</th>
+                  <th>Case Type</th>
+                  <th>Trauma Case?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10/1/20  9:05 AM</td>
+                  <td>Posted</td>
+                  <td>BEC MAIN OR (CENTRAL)</td>
+                  <td>BEC MAIN OR ROOM 1</td>
+                  <td>General</td>
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <colgroup>
+                <col width="25%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="15%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Panel 1 Procedure</th>
+                  <th>LRB</th>
+                  <th>Anes</th>
+                  <th>Op Region</th>
+                  <th>Wound Class</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>APPENDECTOMY OPEN</td>
+                  <td>Bilateral</td>
+                  <td>Bier Block</td>
+                  <td>Abdomen</td>
+                  <td>Clean</td>
+                  <td>
+                    <paragraph />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <colgroup>
+                <col width="25%" />
+                <col width="25%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Surgeon</th>
+                  <th>Surgeon Role</th>
+                  <th>Service</th>
+                  <th>Panel</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Fossil, Bob, MD</td>
+                  <td>Primary</td>
+                  <td>General</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.17" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.17" extension="2015-08-01" />
+          <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Social history Narrative" />
+          <title>Social History</title>
+          <text>
+            <table>
+              <colgroup>
+                <col width="25%" span="2" />
+                <col width="13%" />
+                <col width="12%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Tobacco Use</th>
+                  <th>Types</th>
+                  <th>Packs/Day</th>
+                  <th>Years Used</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Never Assessed</td>
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <colgroup>
+                <col width="25%" />
+                <col width="75%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Sex Assigned at Birth</th>
+                  <th>Date Recorded</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="BirthSex6">
+                  <td ID="BirthSex6Value">Not on file</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <footnote ID="subTitle4" styleCode="xSectionSubTitle">documented as of this encounter</footnote>
+          </text>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.78" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09" />
+              <id extension="Z30175^^72166-2" root="1.2.840.114350.1.13.5826.1.7.1.1040.1" />
+              <code code="72166-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Tobacco smoking status NHIS" />
+              <statusCode code="completed" />
+              <effectiveTime value="20201005" />
+              <value code="266927001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Unknown if ever smoked" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.200" extension="2016-06-01" />
+              <id extension="Z30175" root="1.2.840.114350.1.13.5826.1.7.1.1040.20" />
+              <code code="76689-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Sex Assigned At Birth" />
+              <text>
+                <reference value="#BirthSex6" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime value="20070912" />
+              <value codeSystem="2.16.840.1.113883.5.1" xsi:type="CD" nullFlavor="UNK" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <originalText>
+                  <reference value="#BirthSex6Value" />
+                </originalText>
+              </value>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.5" />
+          <id root="00000000-00D0-0FDD-3956-C37871551322" />
+          <code code="8648-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HOSPITAL COURSE" />
+          <title>Discharge Summaries</title>
+          <text>
+            <list styleCode="TOC">
+              <item>
+                <caption>Everson, Susan, MD - 10/02/2020  3:19 PM CDT</caption>
+                <paragraph>This is an example of a discharge summary note</paragraph>
+                <paragraph styleCode="label">Electronically signed by Susan Everson, MD at 10/02/2020  3:19 PM CDT</paragraph>
+              </item>
+            </list>
+            <footnote ID="subTitle10" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="34117-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History &amp; Physical" />
+          <title>H&amp;P Notes</title>
+          <text>
+            <list styleCode="TOC">
+              <item>
+                <caption>Everson, Susan, MD - 10/02/2020  3:18 PM CDT</caption>
+                <paragraph>This is an example of an H&amp;P Note</paragraph>
+                <paragraph styleCode="label">Electronically signed by Susan Everson, MD at 10/02/2020  3:18 PM CDT</paragraph>
+              </item>
+            </list>
+            <footnote ID="subTitle17" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="28570-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure note" />
+          <title>Procedure Notes</title>
+          <text>
+            <list styleCode="TOC">
+              <item>
+                <caption>Wheeler, Melissa, MD - 09/30/2020  3:22 PM CDT</caption>
+                <paragraph styleCode="header">Associated Order(s): X-RAY ABDOMEN 1+ VW</paragraph>
+                <paragraph styleCode="header">Procedure(s): X-RAY ABDOMEN 1+ VW</paragraph>
+                <paragraph>This is an example of a procedures note</paragraph>
+                <paragraph styleCode="label">Electronically signed by Melissa Wheeler, MD at 10/02/2020  3:22 PM CDT</paragraph>
+              </item>
+            </list>
+            <footnote ID="subTitle18" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="11504-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical operation note" />
+          <title>OR Notes</title>
+          <text>
+            <list styleCode="TOC">
+              <item>
+                <caption>OR Surgeon - Wheeler, Melissa, MD - 10/02/2020  3:21 PM CDT</caption>
+                <paragraph>This is an example of an OR Surgeon note</paragraph>
+                <paragraph styleCode="label">Electronically signed by Melissa Wheeler, MD at 10/02/2020  3:22 PM CDT</paragraph>
+              </item>
+            </list>
+            <footnote ID="subTitle21" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="34111-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Emergency department note" />
+          <title>ED Notes</title>
+          <text>
+            <list styleCode="TOC">
+              <item>
+                <caption>Everson, Susan, MD - 10/02/2020  3:18 PM CDT</caption>
+                <paragraph>This is an example of an ED Note</paragraph>
+                <paragraph styleCode="label">Electronically signed by Susan Everson, MD at 10/02/2020  3:19 PM CDT</paragraph>
+              </item>
+            </list>
+            <footnote ID="subTitle22" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="34109-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Note" />
+          <title>Miscellaneous Notes</title>
+          <text>
+            <list styleCode="TOC">
+              <item>
+                <caption>Initial Assessments - Everson, Susan, MD - 10/02/2020  3:17 PM CDT</caption>
+                <paragraph>This is an example of an initial assessment note</paragraph>
+                <paragraph styleCode="label">Electronically signed by Susan Everson, MD at 10/02/2020  3:18 PM CDT</paragraph>
+              </item>
+            </list>
+            <footnote ID="subTitle23" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.10" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.10" extension="2014-06-09" />
+          <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Plan of care note" />
+          <title>Plan of Treatment</title>
+          <text>
+            <paragraph>Not on file</paragraph>
+            <footnote ID="subTitle24" styleCode="xSectionSubTitle">documented as of this encounter</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.7" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.7" extension="2014-06-09" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.7.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.7.1" extension="2014-06-09" />
+          <id root="00000000-00D0-0FDE-3956-C37871551322" />
+          <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures Document" />
+          <title>Procedures</title>
+          <text>
+            <table>
+              <colgroup>
+                <col width="25%" />
+                <col width="10%" />
+                <col width="15%" />
+                <col width="25%" span="2" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Procedure Name</th>
+                  <th>Priority</th>
+                  <th>Date/Time</th>
+                  <th>Associated Diagnosis</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="procedure29" styleCode="normRow">
+                  <td>
+                    <content ID="procedure29name">APPENDECTOMY OPEN</content>
+                  </td>
+                  <td />
+                  <td>10/01/2020  5:05 PM CDT</td>
+                  <td />
+                  <td />
+                </tr>
+                <tr ID="procedure28" styleCode="altRow">
+                  <td>
+                    <content ID="procedure28name">X-RAY ABDOMEN 1+ VW</content>
+                  </td>
+                  <td>Routine</td>
+                  <td>09/30/2020  3:22 PM CDT</td>
+                  <td />
+                  <td>
+                    <paragraph styleCode="header">Results for this procedure are in the <content styleCode="xLink2-Result5000130012">results section</content>.</paragraph>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <footnote ID="subTitle27" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+          <entry>
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09" />
+              <id extension="5000130012^" root="1.2.840.114350.1.13.5826.1.7.1.1988.1" />
+              <code code="74010" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4">
+                <originalText>X-RAY ABDOMEN 1+ VW<reference value="#procedure28name" /></originalText>
+              </code>
+              <text>
+                <reference value="#procedure28" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime value="20200930202223+0000" />
+              <performer typeCode="PRF">
+                <assignedEntity classCode="ASSIGNED">
+                  <id extension="20697" root="1.2.840.114350.1.13.5826.1.7.2.836982" />
+                  <code nullFlavor="UNK">
+                    <originalText>Family Practice</originalText>
+                  </code>
+                  <addr use="WP">
+                    <streetAddressLine>1979 Milky Way</streetAddressLine>
+                    <streetAddressLine>Barn-G1353(Local)</streetAddressLine>
+                    <county>DANE</county>
+                    <city>VERONA</city>
+                    <state>WI</state>
+                    <postalCode>53593</postalCode>
+                    <country>USA</country>
+                  </addr>
+                  <telecom use="WP" value="tel:+1-608-771-0280" />
+                  <assignedPerson>
+                    <name>
+                      <given>Melissa</given>
+                      <family>Wheeler</family>
+                      <suffix qualifier="AC">MD</suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization classCode="ORG">
+                    <name nullFlavor="UNK" />
+                    <telecom nullFlavor="UNK" />
+                    <addr nullFlavor="UNK" />
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+            </procedure>
+          </entry>
+          <entry>
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09" />
+              <id extension="7214^1772" root="1.2.840.114350.1.13.5826.1.7.1.1988.2" />
+              <code code="44950" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4">
+                <originalText>APPENDECTOMY OPEN<reference value="#procedure29name" /></originalText>
+                <translation code="80146002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="APPENDECTOMY" />
+              </code>
+              <text>
+                <reference value="#procedure29" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="20201001220500+0000" />
+                <high value="20201001235500+0000" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <assignedEntity classCode="ASSIGNED">
+                  <id extension="1852" root="1.2.840.114350.1.13.5826.1.7.2.836982" />
+                  <code nullFlavor="UNK">
+                    <originalText>Ophthalmology</originalText>
+                  </code>
+                  <addr use="WP">
+                    <streetAddressLine>1979 MILKY WAY</streetAddressLine>
+                    <county>DANE</county>
+                    <city>VERONA</city>
+                    <state>WI</state>
+                    <postalCode>53593</postalCode>
+                  </addr>
+                  <telecom use="WP" value="tel:+1-608-271-9000" />
+                  <assignedPerson>
+                    <name>
+                      <given>Bob</given>
+                      <family>Fossil</family>
+                      <suffix qualifier="AC">MD</suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization classCode="ORG">
+                    <name>BEC MAIN OR (CENTRAL)</name>
+                    <telecom nullFlavor="UNK" />
+                    <addr nullFlavor="UNK" />
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+            </procedure>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.3" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.3" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01" />
+          <id root="00000000-00D0-0FE0-3956-C37871551322" />
+          <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant diagnostic tests/laboratory data Narrative" />
+          <title>Results</title>
+          <text>
+            <list styleCode="TOC">
+              <item ID="Result5000130012">
+                <caption ID="Result5000130012Procedure">X-RAY ABDOMEN 1+ VW (09/30/2020  3:22 PM CDT)</caption>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Procedure Note</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td ID="Result5000130012ProcedureNote1000572163" styleCode="noIndent">
+                        <paragraph styleCode="header">Wheeler, Melissa, MD - 09/30/2020  3:22 PM CDT</paragraph>
+                        <paragraph>
+                          <content>This is an example of a procedures note</content>
+                        </paragraph>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </item>
+            </list>
+            <footnote ID="subTitle30" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01" />
+              <id extension="5000130012" root="1.2.840.114350.1.13.5826.1.7.2.798268" />
+              <code code="74010" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4">
+                <originalText>X-RAY ABDOMEN 1+ VW</originalText>
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low nullFlavor="UNK" />
+                <high nullFlavor="UNK" />
+              </effectiveTime>
+              <informant>
+                <assignedEntity>
+                  <id extension="urn:GTMQACUR:ce.gtmqacur" root="1.2.840.114350.1.13.5826.1.7.3.688879.110" />
+                  <representedOrganization>
+                    <name>Current Final Primary</name>
+                  </representedOrganization>
+                </assignedEntity>
+              </informant>
+              <participant typeCode="RESP">
+                <participantRole classCode="PROV">
+                  <id extension="20697" root="1.2.840.114350.1.13.5826.1.7.2.836982" />
+                  <code nullFlavor="UNK">
+                    <originalText>Family Practice</originalText>
+                  </code>
+                  <addr use="WP">
+                    <streetAddressLine>1979 Milky Way</streetAddressLine>
+                    <streetAddressLine>Barn-G1353(Local)</streetAddressLine>
+                    <county>DANE</county>
+                    <city>VERONA</city>
+                    <state>WI</state>
+                    <postalCode>53593</postalCode>
+                    <country>USA</country>
+                  </addr>
+                  <telecom use="WP" value="tel:+1-608-771-0280" />
+                  <playingEntity classCode="PSN">
+                    <name use="L">
+                      <given>Melissa</given>
+                      <family>Wheeler</family>
+                      <suffix qualifier="AC"> MD</suffix>
+                    </name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2014-06-09" />
+                  <templateId root="1.2.840.114350.1.72.3.1" />
+                  <id extension="1000572163" root="1.2.840.114350.1.13.5826.1.7.2.727879" />
+                  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" nullFlavor="UNK">
+                    <translation code="PXN" codeSystem="1.2.840.114350.1.72.1.5220" codeSystemName="Epic.ResultText" />
+                  </code>
+                  <text>
+                    <reference value="#Result5000130012ProcedureNote1000572163" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20200930202223+0000" />
+                  <value xsi:type="ED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <reference value="#Result5000130012ProcedureNote1000572163" />
+                  </value>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2014-06-09" />
+                  <templateId root="1.2.840.114350.1.72.3.4" />
+                  <id extension="5000130012" root="1.2.840.114350.1.13.5826.1.7.2.798268" />
+                  <code nullFlavor="UNK" />
+                  <text>
+                    <reference nullFlavor="UNK" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20200930202223+0000" />
+                  <value code="7" codeSystem="1.2.840.114350.1.72.1.5007" codeSystemName="Epic.Result.Type" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.8" />
+          <id root="00000000-00D0-0FE1-3956-C37871551322" />
+          <code code="51848-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Assessments" />
+          <title>Visit Diagnoses</title>
+          <text>
+            <content ID="nof32">Not on file</content>
+            <footnote ID="subTitle31" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+          </text>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

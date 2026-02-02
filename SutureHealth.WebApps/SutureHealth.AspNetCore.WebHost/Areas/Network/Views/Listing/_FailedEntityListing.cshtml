@@ -1,0 +1,29 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel.FailedEntityListing
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+@if (Model.DisplayMessage)
+{
+    if (Model.ShouldRetry)
+    {
+        <div class="text-center" style="display: inline-block; width: 100%;">
+            <h3>Sorry, loading results is taking longer than usual.</h3>
+            <h4>Please wait...</h4>
+        </div>
+    }
+    else
+    {
+        <div class="text-center" style="display: inline-block; width: 100%;">
+            <h3>Sorry, we are unable to load results at this time.  Please try again.</h3>
+            <h4>If the issue continues, please <a href="mailto:support@suturehealth.com">contact support</a>.</h4>
+        </div>
+    }
+}
+@if (Model.ShouldRetry)
+{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            $(document).trigger("@IndexViewModel.EVENT_QUERY_RETRY", [@Model.RetryCount]);
+        }, 0);
+    });
+    </script>
+}

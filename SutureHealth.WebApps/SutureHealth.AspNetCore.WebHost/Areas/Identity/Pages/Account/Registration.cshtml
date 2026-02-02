@@ -1,0 +1,146 @@
+﻿@page
+@using SutureHealth.Application
+@model SutureHealth.AspNetCore.Areas.Identity.Pages.Account.RegistrationConfirmationModel
+@{
+    Model.RequireValidation = true;
+}
+<style>
+    div.register-form {
+        margin: 60px auto;
+        max-width: 320px;
+    }
+</style>
+<section class="my-5">
+    <div class="container">
+        <div class="col-sm-12 col-lg-6 mx-auto">
+            <div class="shadow">
+                <div class="p-3">
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <img class="img-fluid" src="~/images/logo2_600x221.png" />
+                        </div>
+                    </div>
+                    <h2 class="text-center">Confirm Your Account</h2>
+                    <hr>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form class="my-2 gy-2" method="post">
+                        <input type="hidden" asp-for="Input.ConfirmationToken" />
+                        <input type="hidden" asp-for="Input.PublicIdentifier" />
+                        <fieldset>
+                            <legend>Name</legend>
+                            <div class="mb-3">
+                                <label asp-for="Input.FirstName" class="form-label"></label>
+                                <input asp-for="Input.FirstName" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Input.LastName" class="form-label"></label>
+                                <input asp-for="Input.LastName" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Input.UserSuffix" class="form-label"></label>
+                                <select asp-for="Input.UserSuffix" asp-items="Model.UserSuffixes" class="form-select">
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Input.Credential" class="form-label"></label>
+                                <input asp-for="Input.Credential" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Input.Credential" class="text-danger"></span>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Login Information</legend>
+                            <div class="mb-3">
+                                <label asp-for="Input.UserName" class="form-label"></label>
+                                <input asp-for="Input.UserName" class="form-control" autocomplete="off" readonly="readonly" />
+                                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Input.Email" class="form-label"></label>
+                                <input asp-for="Input.Email" class="form-control" autocomplete="off" readonly="readonly" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            @if (false && MemberTypes.Assistants.Contains(Model.Input.AssistantTypeId))
+                            {
+                                <div class="mb-3">
+                                    <label asp-for="Input.AssistantTypeId" class="form-label"></label>
+                                    <select asp-for="Input.AssistantTypeId" asp-items="Model.AssistantTypes" class="form-select">
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(m => m.Input.AssistantTypeId, new { @id = "hdnAssistantType" })
+                            }
+                        </fieldset>
+                        <fieldset>
+                            <legend>Passwords</legend>
+                            <div class="mb-3">
+                                <label asp-for="Input.Password" class="form-label"></label>
+                                <input type="password" asp-for="Input.Password" class="form-control" autocomplete="off" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                <div class="small text-secondary text-information">
+                                    Your passwords must:
+                                </div>
+                                <div class="small text-secondary text-information">
+                                    <ul>
+                                        <li id="pwd-restriction-length" data-validation="^.{8,50}$">Be between 8 and 50 characters in length</li>
+                                        <li id="pwd-restriction-upper" data-validation="[A-Z]+">Contain at least 1 uppercase character</li>
+                                        <li id="pwd-restriction-lower" data-validation="[a-z]+">Contain at least 1 lowercase character</li>
+                                        <li id="pwd-restriction-number" data-validation="[0-9]+">Contain at least 1 number (0-9)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Input.ConfirmPassword" class="form-label"></label>
+                                <input type="password" asp-for="Input.ConfirmPassword" class="form-control" id="ConfirmPassword" autocomplete="off" />
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </fieldset>
+                        <p class="term-condition text-center pt-3">By clicking below you agree to the <a href="~/pdf/SutureHealth%20Terms%20of%20Service.pdf" target="_new">Terms of Service</a></p>
+                        <button type="submit" class="w-100 btn btn-lg btn-primary">Let's Go</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+<script>
+$(function() {
+    $.validator.setDefaults({ onkeyup: false });
+
+    $("input[name='@Html.NameFor(m => m.Input.Password)']").keyup(function() {
+        var password = $(this).val();
+        var validations = $("div li[data-validation]");
+        validations.each(function() {
+            var regex = new RegExp($(this).data("validation"));
+            if (regex.test(password))
+                $(this).addClass('pwd-restriction-checked');
+            else
+                $(this).removeClass('pwd-restriction-checked');
+        });
+    });
+});
+</script>
+}
+@section Styles {
+<style>
+
+    li.pwd-restriction-checked {
+        list-style-type: none;
+    }
+
+        li.pwd-restriction-checked:before {
+            content: "\f058"; /* FontAwesome Unicode */
+            font-family: FontAwesome;
+            display: inline-block;
+            color: green;
+            margin-left: -1.3em; /* same as padding-left set on li */
+            width: 1.3em; /* same as padding-left set on li */
+        }
+</style>
+}

@@ -1,0 +1,446 @@
+﻿:root {
+    --suture-blue: #1e6be6;
+    --suture-teal: #25d2f5;
+    --suture-black: #333333;
+    --suture-spacer: 0.5em;
+}
+
+body {
+    font-family: Open Sans,Verdana,Arial !important;
+    overflow-x: hidden;
+}
+
+/* NAV */
+.navbar {
+    padding: 0 1rem !important;
+}
+
+.navbar-brand {
+    padding: 0 !important;
+}
+
+.navbar-brand img {
+    width: 200px;
+    padding-top: 0.312rem;
+    padding-bottom: 0.312rem;
+}
+
+.nav-link {
+    font-weight: 600;
+    padding: 0.8rem 1rem !important;
+    border-top: 3px solid #f8f9fa;
+    text-transform: uppercase;
+}
+
+/* .navbar-nav .nav-item {
+    border-top: 3px solid #f8f9fa;
+} 
+
+.navbar-nav .nav-item:hover {
+    border-top: 3px solid #cecece;
+    background-color: #e9ecef;
+}
+
+    .navbar-nav .active {
+    border-top: 3px solid var(--suture-blue);
+    background-color: #e9ecef;
+}
+*/
+
+.navbar-nav .nav-link:hover {
+    border-top: 3px solid #cecece;
+    background-color: #e9ecef;
+}
+.nav-active {
+    border-top: 3px solid var(--suture-blue);
+    background-color: #e9ecef;
+}
+
+
+.user {
+    background-color: #606060;
+    padding: 5px 0 1px;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    width: 47px;
+    text-align: center;
+}
+
+.circle {
+    border-radius: 50%;
+    padding: 0.2rem 0.3rem;
+    font-size: 18px;
+    background: #606060;
+    border: 3px solid #606060;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.user-info {
+    background-color: #606060;
+    color: #fff;
+    padding: 12px;
+}
+
+.user-container .dropdown-menu {
+    padding-top: 0;
+}
+
+.user-container i img {
+    max-width: 32px;
+}
+
+.user-container .dropdown-item {
+    padding: 12px;
+}
+
+#logout {
+    margin-left: 12px;
+}
+
+/*.logged-user-details .user-details-container .btn-logout-btn a {
+    text-decoration: none;
+    background: #929292;
+}
+
+.header-AppNav-serverInfo {
+    color: red;
+    font-weight: bold;
+    font-size: 8pt;
+    top: 0;
+    width: 100%;
+}
+
+.sh-btn-default:hover {
+    background-color: #7a7a7a !important;
+    color: white !important;
+}
+
+a.sh-btn {
+    padding: 5px 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.sh-btn {
+    padding: 0 12px;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border-radius: 2px;
+    white-space: normal;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: #fff;
+    text-align: center;
+    font-size: 18px !important;
+    font-family: Montserrat,Verdana,Arial !important;
+    border: 0;
+    height: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #1e6be8;
+}
+
+.page-title-container {
+    padding: 10px 0;
+    border-bottom: 1px solid #dfdfdf;
+    margin-bottom: 10px;
+}
+
+.page-title-container .page-title {
+    font-size: 18px;
+}
+
+.header {
+    padding: 5px;
+    height: 60px;
+    border-bottom: solid #d6d6d6 1px;
+    background-color: #f7f6f6;
+    margin-top: -15px;
+}
+
+.header-logo {
+    height: 55px;
+    float: left;
+    z-index: 1;
+}
+
+.header-logo-image, .logo a {
+    height: 55px;
+    width: 221px;
+    background-image: url(/images/logo2_600x221.png);
+    background-position: -2px -16px;
+    background-repeat: no-repeat;
+    background-size: 221px;
+    display: block;
+}
+
+.header-login {
+    float: right;
+}
+
+.nav:hover, .sh-nav:hover {
+    border-top: 3px #929292 solid;
+    text-decoration: none;
+    color: #333;
+}
+
+.logged-user-details {
+    outline: none !important;
+    text-decoration: none !important;
+    float: right;
+    height: 45px;
+    width: 45px;
+    margin-left: 10px;
+    z-index: 1;
+}
+
+.logged-user-details .user-details-container {
+    display: none;
+    border: 2px solid #606060;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    z-index: 10000;
+    width: 320px;
+    text-align: left;
+    background: #606060;
+}
+
+.logged-user-details .user-initial {
+    background-color: #606060;
+    padding: 10px 0;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    width: 47px;
+}
+
+.logged-user-details .open {
+    display: block;
+}
+
+.logged-user-details .user-details-container .user-details {
+    background-color: #606060;
+    color: #fff;
+    padding: 25px 10px 10px 10px;
+}
+
+.logged-user-details .user-details-container .user-name {
+    font-weight: bold;
+}
+
+.logged-user-details .user-name {
+    font-weight: 600;
+    font-size: 10pt;
+}
+
+.logged-user-details .user-nav-items {
+    background-color: #fff;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.logged-user-details .user-nav-items li {
+    cursor: pointer;
+    padding: 10px 12px;
+    min-height: 18px;
+    text-align: left;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.logged-user-details .user-nav-items li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.logged-user-details .user-nav-items li i {
+    margin-right: 10px;
+}
+
+.logged-user-details .user-nav-items li i .my-team-icon {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.LoginLoggedIn .user-nav-items li span {
+    position: relative;
+    top: -10px;
+}
+
+.logged-user-details .user-details-container .btn-logout-btn {
+    padding: 20px;
+    background: #fff;
+    cursor: default;
+    text-align: right;
+}
+
+.logged-user-details .user-details-container .btn-logout-btn a {
+    text-decoration: none;
+    background: #929292;
+}
+
+.user-tranning {
+    padding-top: 6px !important;
+    margin: 0 !important;
+    float: right;
+}
+
+.inviteSendersButton {
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font: 400 12px Open Sans;
+    font-size: 18px;
+    margin: -3px -2px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #1e86e8;
+    border: 1px solid #1e86e8;
+}
+
+.inviteSendersButton:hover {
+    text-decoration: none;
+}
+
+.envelope-icon {
+    font-size: 18px;
+}
+
+.user-details a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.pos-relative {
+    position: relative;
+}
+
+.LoginLoggedIn .user-nav-items li span {
+    position: relative;
+    top: -10px;
+}
+
+.new-indication {
+    color: red;
+    position: relative;
+    left: 1px;
+    font-size: x-small;
+    font-weight: bold;
+    top: -20px !important;
+    display: inline-block;
+}
+
+a.nav, a.sh-nav {
+    color: #333;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-active {
+    border-top: 3px #2aadfa solid;
+    font-weight: bold;
+}
+
+.nav, .sh-nav {
+    font-size: 14px;
+    padding: 2px 0px;
+    margin: -10px 5px 0 10px;
+    display: inline-block !important;
+    text-align: center;
+}
+
+.network-badge {
+    position: relative;
+    margin-left: -10px;
+    top: -13px;
+    left: -3.5px;
+    padding: 4px 8px;
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+    display: none;
+}
+
+.profile-dropdown-upgrade:hover {
+    color: white;
+}
+
+.btn-logout-btn .form-inline {
+    display: block !important;
+}
+
+@media screen and (max-width: 800px) {
+    header .logo, header .navigation {
+        width: 100%;
+        clear: both;
+        margin: 0;
+        text-align: center;
+    }
+
+    .navigation-bar {
+        position: relative;
+        top: -10px;
+    }
+
+    .nav, .sh-nav {
+        margin: 0;
+        margin-top: -10px;
+    }
+
+    .logged-user-details {
+        top: -90px;
+        right: 15px;
+        position: absolute;
+    }
+
+    .inviteSenderButtonDiv {
+        display: none !important;
+    }
+
+    .history-nav {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:1150px) {
+    .user-tranning {
+        display: none !important;
+    }
+}
+    */

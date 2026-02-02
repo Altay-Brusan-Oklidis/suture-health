@@ -1,0 +1,738 @@
+﻿@model SutureHealth.AspNetCore.Areas.Revenue.Models.IndexViewModel
+@using SutureHealth.AspNetCore.Areas.Revenue.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.RequiresLoading = true;
+    Model.RequireUI = true;
+    ViewBag.Title = "Revenue";
+}
+
+@section Styles
+{
+<!-- <link rel="stylesheet" href="~/css/Revenue.min.css" /> -->
+}
+
+
+
+<section class="mt-2 mb-5">
+    <div class="container-fluid">
+       
+                <div id="RevenueMetricsContainer">
+        </div>
+            
+    </div>
+</section>
+
+<section class="my-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                     @if (Model.HasMultipleOffices)
+                    {
+                        <div class="col-md-3">
+                            <input-form-group>
+                                <label>OFFICE</label>
+                                <select asp-items="Model.Offices.GetWithAllSelection()" class="form-select revenue-filter" id="filter-office"></select>
+                            </input-form-group>
+                        </div>
+                    }
+                    @if (Model.HasMultipleProviders)
+                    {
+                        <div class="col-md-3">
+                            <input-form-group>
+                                <label>PROVIDER</label>
+                                <select asp-items="Model.Providers.GetWithAllSelection()" class="form-select revenue-filter" id="filter-provider"></select>
+                            </input-form-group>
+                        </div>
+                    }
+                    <div class="col-md-3">
+                        <input-form-group>
+                            <label>STATEMENT</label>
+                            <select asp-items="Model.Statements.GetWithAllSelection()" class="form-select revenue-statement-filter" id="filter-statement"></select>
+                        </input-form-group>
+                    </div>
+                    <div class="col-auto align-self-center">
+                        <div class="form-check pt-4">
+                            <input type="checkbox" class="form-check-input" data-action="enable-report-view" id="flexCheckDefault"  />
+                            <label class="form-check-label" for="flexCheckDefault">
+    Show All Columns (Report View)
+  </label>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 mt-auto h-100 align-self-center text-end">
+                <div class="row">
+                    <div class="col-8 align-self-center">
+                         <div class="report-revenue text-primary">
+                            <span>
+                                <Strong style="font-size: 16px;">This Report: $<span id="currentReportRevenue"></span></Strong>
+                            </span>
+                            <span class="rvu" id="currentReportRVU"></span>
+                        </div>
+                    </div>
+                     <div class="col-4 align-self-center text-end">
+                          <input-form-group style="width:auto">
+                        <a id="btnDownloadAsExcel" class="btn btn-primary">Get Report</a>
+                        <!--<a id="btnDownloadAsPdf" class="btn sh-btn-green">Print</a>-->
+                    </input-form-group>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="sh-background-box">
+    <div class="revenue-counter-wrapper">
+        
+        
+        <div class="row">
+            <div class="col-12 div-distance">
+                <div id="revenueGrid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script type="x/kendo-template" id="page-pdf-export-template">
+    <div class="page-pdf-export-template">
+        <div class="header">
+            Revenue Report
+        </div>
+        <div class="footer">
+            <div style="float: right">Page #: pageNum # of #: totalPages #</div>
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            var initController = new RevenueController();
+
+            initController.ApiUrl = '@Url.RouteUrl("RevenueGrid")';
+            initController.SearchUrl = '@Url.RouteUrl("SearchPatient")';
+            initController.populateKendoGrid();
+
+            $("#RevenueMetricsContainer").load("@Url.RouteUrl("RevenueMetrics")?facilityId=0&signerId=0");
+            
+            $("[data-action='enable-report-view']").change(function () {
+                initController.populateKendoGrid(true);
+            });
+
+            $(".revenue-filter").change(function () {
+                var facilityId = $('#filter-office').val() || 0;
+                var signerId = $('#filter-provider').val() || 0;
+                $("#RevenueMetricsContainer").load("@Url.RouteUrl("RevenueMetrics")?facilityId=" + facilityId + "&signerId=" + signerId);
+                initController.populateKendoGrid(true);
+            });
+
+            $(".revenue-statement-filter").change(function () {
+                initController.populateKendoGrid(true);
+            });
+
+            $('#btnDownloadAsExcel').click(function () {
+                initController.downloadRecords();
+            });
+
+            $('#btnDownloadAsPdf').click(function () {
+                initController.downloadRecordsAsPDF();
+            });
+        });
+
+    function RevenueController() {
+        var gridContainer = $('#revenueGrid');
+        var operations = {
+            ApiUrl: '',
+            SearchUrl: '',
+            populateKendoGrid: populateKendoGrid,
+            isDownLoad: false,
+            downloadRecords: downloadRecords,
+            downloadRecordsAsPDF: downloadRecordsAsPDF
+        };
+
+        var gridSettings = {
+            PageNumber: 1,
+            PageSize: 10
+        };
+
+        var gridSchema = {
+            data: "revenueList",
+            total: "total",
+            model: {
+                fields: {
+                    ServiceDate: { type: "date" },
+                    EffectiveDate: { type: "date" }
+                }
+            }
+        };
+
+        var gridPager = {
+            pageSize: gridSettings.PageSize,
+            refresh: true,
+            pageSizes: [15, 30, 50]
+        };
+
+        var filter = getDefaultFilter();
+        function populateKendoGrid(isClearFilter) {
+            var isReportViewEnable = !$("[data-action='enable-report-view']").is(":checked") || operations.isDownLoad;
+
+            var grid = gridContainer.data("kendoGrid");
+            if (grid) {
+                gridContainer.html('');
+                grid.destroy();
+            }
+
+            gridContainer.kendoGrid({
+                dataSource: {
+                    transport: {
+                        read: function (e) {
+                            kendo.ui.progress(gridContainer, false);
+
+                            filter.PageNumber = e.data.page;
+                            filter.PageSize = e.data.pageSize;
+                            filter.SignerFacilityId = $('#filter-office').val();
+                            filter.Signer = $('#filter-provider').val();
+                            filter.Statement = $('#filter-statement').val();
+                            if (!e.data.filter) { // as per 1843
+                                filter.selectedPatient = null;
+                                filter.PatientId = 0;
+                            }
+                            $('[aria-label="Patient"]').val(filter != null && filter.selectedPatient != null ? filter.selectedPatient.Summary : "");
+
+                            if (e.data.sort && e.data.sort.length > 0) {
+                                filter.SortExpr = e.data.sort[0].field;
+                                filter.SortDir = e.data.sort[0].dir;
+                            }
+
+
+                            if (e.data.filter && e.data.filter.filters) {
+                                for (var i = 0; i < e.data.filter.filters.length; i++) {
+                                    if (e.data.filter.filters[i].field === 'PatientDisplayName') {
+                                        if (filter.selectedPatient && filter.selectedPatient.Summary === e.data.filter.filters[i].value) {
+                                            filter.PatientId = filter.selectedPatient.PatientId;
+                                        }
+                                    }
+                                }
+                            }
+
+                            refreshRevenueData(filter, function (response) {
+                                var data = { revenueList: response.Requests, total: response.TotalRecords };
+                                e.success(data);
+                            });
+
+                        },
+                        parameterMap: function (options, operation) {
+                            if (operation === "read") {
+                                return kendo.stringify(options);
+                            }
+                            return options;
+                        }
+                    },
+                    schema: gridSchema,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: true,
+                    pageSize: gridPager.pageSize
+                },
+                noRecords: {
+                    template: "<div class='empty-data'>No items match your search</div>"
+                },
+                filterable: {
+                    extra: false,
+                    mode: "row"
+                },
+
+                excel: {
+                    allPages: true,
+                    fileName: getExportFileName()
+                },
+                pdf: {
+                    allPages: true,
+                    avoidLinks: true,
+                    paperSize: "A4",
+                    margin: { top: "1cm", left: "1cm", right: "1cm", bottom: "1cm" },
+                    landscape: true,
+                    repeatHeaders: true,
+                    template: $("#page-pdf-export-template").html(),
+                    scale: 0.4,
+                    fileName: getExportFileName()
+                },
+                reorderable: false,
+                sortable: true,
+                pageable: gridPager,
+                editable: false,
+                groupable: false,
+                resizable: true,
+                columnMenu: true,
+                scrollable: true,
+                columns: [
+                    {
+                        field: "Practice",
+                        title: "Practice",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 230
+                    },
+                    {
+                        field: "PracticeNPI",
+                        title: "Practice NPI",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 150
+                    },
+                    {
+                        field: "ProviderDisplayName",
+                        title: "Provider",
+                        filterable: false,
+                        width: 230
+                    },
+                    {
+                        field: "ProviderNPI",
+                        title: "Provider NPI",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 150
+                    },
+                    {
+                        field: "PatientDisplayName",
+                        title: "Patient",
+                        filterable: {
+                            cell: {
+                                operator: "contains",
+                                suggestionOperator: "contains",
+                                template: getPatientAutoComplete
+                            }
+                        },
+                        width: 230
+                    },
+                    {
+                        title: "DOB",
+                        template: '#= kendo.toString(new Date(PatientDOB), "d") #',
+                        field: "PatientDOB",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 130
+                    },
+                    {
+                        field: "Last4SSN",
+                        title: "SSN",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 130
+
+                    },
+                    {
+                        field: "Payer",
+                        title: "Payer",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 170
+                    },
+                    {
+                        field: "ReferringProvider",
+                        title: "Referring Provider",
+                        filterable: false,
+                        width: 230
+                    },
+                    {
+                        field: "ReferringProviderNPI",
+                        title: "Referring Provider NPI",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 200
+                    },
+                    {
+                        field: "ReferringProviderMedicare",
+                        title: "Referring Medicare #",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 185
+                    },
+                    {
+                        field: "DocumentType",
+                        title: "Type",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 150
+                    },
+                    {
+                        field: "PlaceOfService",
+                        title: "Place of Service",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 150
+                    },
+                    {
+                        field: "ServiceDate",
+                        template: '#= kendo.toString(new Date(ServiceDate), "d") #',
+                        title: "Service Date",
+                        filterable: {
+                            cell: {
+                                template: betweenFilter
+                            }
+                        },
+                        width: 140
+                    },
+                    {
+                        field: "EffectiveDate",
+                        template: '#= kendo.toString(new Date(EffectiveDate), "d") #',
+                        title: "Effective Date",
+                        filterable: {
+                            cell: {
+                                template: betweenFilter
+                            }
+                        },
+                        width: 140
+                    },
+                    {
+                        field: "DiagnosisCode",
+                        title: "Diagnosis Code",
+                        filterable: false,
+                        width: 150
+                    },
+                    {
+                        field: "BillingCode",
+                        title: "Billing Code",
+                        filterable: false,
+                        width: 130
+                    },
+                    {
+                        field: "Revenue",
+                        title: "Revenue",
+                        filterable: false,
+                        width: 100
+                    },
+                    {
+                        field: "RVU",
+                        title: "RVU",
+                        filterable: false,
+                        width: 80
+                    },
+                    {
+                        field: "FormId",
+                        title: "DocID",
+                        filterable: false,
+                        hidden: isReportViewEnable,
+                        width: 110
+                    }
+                ],
+                excelExport: function (e) {
+                    //var sheet = e.workbook.sheets[0];
+                    //var grid = gridContainer.data("kendoGrid");
+                    //var data = grid.dataSource.data();
+                    //var gridColumns = grid.columns;
+                    //var columns = gridColumns.map(function (col) {
+                    //    return {
+                    //        value: col.title ? col.title : col.field,
+                    //        autoWidth: true,
+                    //        background: "#7a7a7a",
+                    //        color: "#fff"
+                    //    };
+                    //});
+
+                    //var rows = [{ cells: columns, type: "header" }];
+
+                    //for (var i = 0; i < data.length; i++) {
+                    //    var rowCells = [];
+                    //    for (var j = 0; j < gridColumns.length; j++) {
+                    //        var cellValue = data[i][gridColumns[j].field];
+                    //        rowCells.push({ value: cellValue });
+                    //    }
+                    //    rows.push({ cells: rowCells, type: "data" });
+                    //}
+                    //sheet.rows = rows;
+                    operations.isDownLoad = false;
+
+                }
+
+            }).off("click")
+            .on("click", "tbody td", function (e) {
+                var cell = $(e.currentTarget);
+                var cellIndex = cell[0].cellIndex;
+                var grid = $(gridContainer).data("kendoGrid");
+                var column = grid.columns[cellIndex - 1];
+                if (column && column.title !== 'Select All' && column.title !== 'Rejection Reason' && column.title !== 'DocID' && column.title !== 'History' && column.title !== '') {
+
+                    var dataItem = grid.dataItem(cell.closest("tr"));
+                    window.open(dataItem.PdfUrl);
+                }
+
+            }).off("mouseover")
+            .one("mouseover", "tbody tr", function (e) {
+                var cell = $(e.currentTarget);
+                cell.closest("tr").addClass("k-master-row");
+                cell.closest("tr").css('cursor', 'pointer');
+                var grid = $(gridContainer).data("kendoGrid");
+                var dataItem = grid.dataItem(cell.closest("tr"));
+                cell[0].title = 'Click to View / Download PDF - DocID: ' + dataItem.FormId;
+            }).data("kendoGrid");
+        }
+
+        function downloadRecords() {
+            var grid = gridContainer.data("kendoGrid");
+            var gridColumns = grid.columns;
+            gridColumns.forEach(function (col) {
+                col.hidden = false;
+            });
+
+            grid.saveAsExcel();
+        }
+
+
+        function downloadRecordsAsPDF() {
+            var grid = gridContainer.data("kendoGrid");
+            var gridColumns = grid.columns;
+            gridColumns.forEach(function (col) {
+                col.hidden = false;
+            });
+            grid.saveAsPDF();
+        }
+
+        function refreshRevenueData(filterQuery, next) {
+            $.ajax({
+                type: 'POST',
+                url: operations.ApiUrl,
+                processdata: true,
+                data: (filterQuery) ? JSON.stringify(filterQuery) : undefined,
+                contentType: "application/json; charset=utf-8"
+            }).then(function (result) {
+                    window.LoadingPanel.visible(false);
+                    $('#currentReportRevenue').html(result.CurrentReportRevenue);
+                    $('#currentReportRVU').html(result.CurrentReportRVU);
+                    next(result);
+                }, uiFunction.OnFailure);
+        }
+
+        function getDefaultFilter() {
+            return {
+                PageNumber: 1,
+                PageSize: 10,
+                SortExpr: '',
+                SortDir: '',
+                SignerFacilityId: 0,
+                Signer: 0,
+                EffectiveStartDate: '',
+                EffectiveEndDate: '',
+                ServiceStartDate: '',
+                ServiceEndDate: '',
+                Statement: '',
+                PatientId:0
+            };
+        }
+
+        function getExportFileName() {
+            var now = new Date();
+            return now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + '_SutureHealth_Revenue';
+        }
+
+        //date picker
+        // https://docs.telerik.com/kendo-ui/knowledge-base/use-two-inputs-range-date-filtering
+        function betweenFilter(args) {
+            var filterCell = args.element.parents(".k-filtercell");
+
+            filterCell.empty();
+            filterCell.field = args.element[0].getAttribute("aria-label");
+
+            filterCell.html("<span style='width:100%'>" +
+                            "<input class='start-date' placeholder='From' />" +
+                            "<input class='end-date' placeholder='To' />" +
+                            "</span>");
+
+             var startPicker = $(".start-date", filterCell).kendoDatePicker({
+                change: function (e) {
+                    var startDate = e.sender.value(),
+                        endDate = $("input.end-date", filterCell).data("kendoDatePicker").value(),
+                        dataSource = $("#revenueGrid").data("kendoGrid").dataSource;
+
+                    dataChange(startDate, endDate, filterCell.field);
+                    startPicker.wrapper.find(".k-link.k-link-clear").toggle(startDate != null);
+                    if (startDate != null)
+                        startPicker.wrapper.find(".k-select").css({ "width": "3.6em", "border": "none" });
+                    else
+                        startPicker.wrapper.find(".k-select").css({ "width": "2em", "border": "none" });
+                },
+                format: 'M/d/yyyy',
+                max: new Date(),
+                value: kendo.parseDate(getCorrectStartDates(filterCell.field)),
+                month: {
+                    empty: '<span class="k-link disabledDay k-clear-value">#=data.value#</span>'
+                }
+            }).data("kendoDatePicker");
+
+            var endPicker = $(".end-date", filterCell).kendoDatePicker({
+                change: function (e) {
+                    var startDate = $("input.start-date", filterCell).data("kendoDatePicker").value(),
+                        endDate = e.sender.value(),
+                        dataSource = $("#revenueGrid").data("kendoGrid").dataSource;
+
+                    dataChange(startDate, endDate, filterCell.field);
+                    endPicker.wrapper.find(".k-link.k-link-clear").toggle(endDate != null);
+                    if (endDate != null)
+                        endPicker.wrapper.find(".k-select").css({ "width": "3.6em", "border": "none" });
+                    else
+                        endPicker.wrapper.find(".k-select").css({ "width": "2em", "border": "none" });
+                },
+                format: 'M/d/yyyy',
+                max: new Date(),
+                value: kendo.parseDate(getCorrectEndDates(filterCell.field)),
+                month: {
+                    empty: '<span class="k-link disabledDay k-clear-value">#=data.value#</span>'
+                }
+            }).data("kendoDatePicker");
+
+            var clearButton = '<span class="k-link k-link-clear" aria-label="Clear the DateTimePicker" style="display: none; padding-right: 6px;"><span unselectable="on" class="k-icon k-i-close" aria-controls="dtp_timeview"></span></span>';
+
+            startPicker.wrapper.find(".k-select").prepend(clearButton);
+            endPicker.wrapper.find(".k-select").prepend(clearButton);
+
+            $(".k-link.k-link-clear").on("click", function(e) {
+                var dtp = $(e.target).closest(".k-datepicker").find("input[data-role='datepicker']").data("kendoDatePicker");
+                dtp.value(null);
+                dtp.trigger("change");
+                e.preventDefault();
+                return false;
+            });
+        }
+
+        function dataChange(startDate, endDate, field) {
+            if (endDate) {
+                endDate.setDate(endDate.getDate() + 1);
+            }
+            if (field === 'Service Date') {
+                filter.ServiceStartDate = startDate ? new Date(startDate) : '';
+                filter.ServiceEndDate = endDate ? new Date(endDate) : '';
+            }
+            else if (field === 'Effective Date') {
+                filter.EffectiveStartDate = startDate ? new Date(startDate) : '';
+                filter.EffectiveEndDate = endDate ? new Date(endDate) : '';
+            }
+            updateGridData();
+        }
+
+        function getCorrectStartDates(filterCellField) {
+            if (filterCellField === "Service Date")
+            {
+                return filter.ServiceStartDate;
+            }
+            else
+            {
+                return filter.EffectiveStartDate;
+            }
+        }
+
+        function getCorrectEndDates(filterCellField) {
+            if (filterCellField === "Service Date") {
+                return filter.ServiceEndDate;
+            }
+            else {
+                return filter.EffectiveEndDate;
+            }
+        }
+
+        //Upgrade grid
+        function updateGridData() {
+            var grid = gridContainer.data("kendoGrid");
+            grid.dataSource.read();
+        }
+
+        function getPatientAutoComplete(e) {
+            var inputBox = document.querySelector('[aria-label="Patient"]');
+            var patientAutoCompleteFields = createObjAutoComplete('Summary', 'PatientId', '', inputBox, 'Patient');
+            getDataAutoComplete(e, patientAutoCompleteFields);
+        }
+
+        function getDataAutoComplete(e, selectedObj) {
+            var preventClosing = true;
+            $(selectedObj.inputBox).kendoAutoComplete({
+                minLength: 2,
+                dataTextField: selectedObj.dataTextField,
+                dataValueField: selectedObj.dataValueField,
+                filter: "contains",
+                valuePrimitive: true,
+                filtering: function (e) {
+                    var gridFilter = e.filter;
+                    if (!gridFilter.value) {
+                        e.preventDefault();
+                    }
+                },
+                select: function (e) {
+                    if (selectedObj.type === 'Patient') {
+                        filter.selectedPatient = this.dataItem(e.item.index());
+                    }
+                },
+                dataSource: new kendo.data.DataSource({
+                    serverFiltering: true,
+                    transport: {
+                        read: function (e) {
+                            var search = $(selectedObj.inputBox).data("kendoAutoComplete").value();
+
+                            if (search.length === 0 || (filter.selectedPatient != null && search === filter.selectedPatient.Summary)) {
+                                e.success([]);
+                                return;
+                            }
+
+                            $.ajax({
+                                type: 'POST',
+                                url: operations.SearchUrl,
+                                processdata: true,
+                                data: JSON.stringify({
+                                    "Count": 50,
+                                    "Search": search
+                                }),
+                                contentType: "application/json; charset=utf-8"
+                            }).then(function (data) {
+                                    e.success(data.Patients);
+                                }, uiFunction.OnFailure);
+                        }
+                    }
+                }),
+                template: '#= kendo.toString(' + selectedObj.dataTextField + ') # ',
+                change: function (e) {
+                    if (selectedObj.type === 'Patient') {
+                        if ($('[aria-label="Patient"]').val() === "") {
+                            filter.selectedPatient = null;
+                        }
+                    }
+
+                    this.dataSource.read();
+                    preventClosing = false;
+                    e.sender.close();
+                    preventClosing = true;
+                },
+                close: function (e) {
+                    if (preventClosing) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
+
+        function createObjAutoComplete(dataTextField, dataValueField, api, inputBox, type) {
+            var autoCompleteFields = {
+                dataTextField: dataTextField,
+                dataValueField: dataValueField,
+                urlApi: api,
+                inputBox: inputBox,
+                type: type
+            };
+            return autoCompleteFields;
+        }
+
+        return operations;
+    }
+</script>

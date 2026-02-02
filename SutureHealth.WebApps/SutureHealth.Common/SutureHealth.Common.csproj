@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+        <RootNamespace></RootNamespace>
+        <Configurations>Debug;Release;</Configurations>
+        <VersionPrefix>$(VERSION_PREFIX)</VersionPrefix>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+        <PackageReference Include="System.Text.Json" Version="7.0.0" />
+    </ItemGroup>
+</Project>

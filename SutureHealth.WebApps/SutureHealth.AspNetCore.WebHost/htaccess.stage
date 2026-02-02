@@ -1,0 +1,3 @@
+﻿RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/(UserArea/ModifyRequest.aspx|SutureSignMvc(?!/Register))($|/) [NC]
+RewriteRule (.*) https://web.stage.suturehealth.com%{REQUEST_URI} [NC,L,R=301]

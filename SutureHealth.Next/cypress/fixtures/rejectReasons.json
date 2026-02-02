@@ -1,0 +1,27 @@
+[
+  {
+    "rejectionReasonId": 825,
+    "description": "Order has the following errors:",
+    "sequenceNumber": 0
+  },
+  {
+    "rejectionReasonId": 828,
+    "description": "This is not my patient.",
+    "sequenceNumber": 0
+  },
+  {
+    "rejectionReasonId": 829,
+    "description": "I did not place this order.",
+    "sequenceNumber": 0
+  },
+  {
+    "rejectionReasonId": 830,
+    "description": "Order previously signed.",
+    "sequenceNumber": 0
+  },
+  {
+    "rejectionReasonId": 831,
+    "description": "It has been too long since I have seen this patient.  Please schedule an appointment.",
+    "sequenceNumber": 0
+  }
+]

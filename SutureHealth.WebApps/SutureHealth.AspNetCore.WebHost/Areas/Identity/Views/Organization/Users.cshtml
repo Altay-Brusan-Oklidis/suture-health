@@ -1,0 +1,231 @@
+@model SutureHealth.AspNetCore.Areas.Identity.Models.Organization.UsersViewModel
+@{
+    ViewBag.Title = "My Team";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.RequireKendo = true;
+    Model.RequiresLoading = true;
+    Model.RequireUI = true;
+}
+@if (Model.HasNewUserAddedAlert)
+{
+    <partial name="_Alert" model="Model.NewUserAddedAlert" />
+    <script type="text/javascript">
+        (function () {
+            history.replaceState(null, "", location.href.split("?")[0]);
+        })();
+    </script>
+}
+@if (!Model.OrganizationHasAdministrator)
+{
+    <section id="alert-message">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>There is not an Administrator currently assigned to your facility.</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<section class="mt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <h4>@ViewBag.Title</h4>
+            </div>
+            <div class="col-md-6 org-select">
+                @await Component.InvokeAsync("OrganizationSelector", new { routeName = "OrganizationUsers", contentOnly=!Model.RequireClientHeader })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr class="mt-0">
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-11">
+                <div class="page-navigator">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a asp-route="OrganizationProfile" asp-route-organizationid="@Model.OrganizationId" asp-route-contentonly="@(!Model.RequireClientHeader)" class="nav-link ">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-route="OrganizationUsers" asp-route-organizationid="@Model.OrganizationId" asp-route-contentonly="@(!Model.RequireClientHeader)" class="nav-link active">Users</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="my-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-11">
+                <div class="shadow p-3">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div id="info-text-container" class="div-distance">
+                                @if (Model.IsAdministrator)
+                                {
+                                    <text>You are an administrator for this office and can manage users.  To update a user simply click on their name.</text>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-warning" role="alert">
+                                        <text><i class="far fa-lightbulb"></i> You are not an administrator for this office. A list of your administrator(s) is below. You can manage your personal information <a asp-route="MemberAccount" asp-route-returnUrl="@Context.Request.Path.Value" asp-route-memberid="@Model.CurrentUser.Id">here</a>.</text>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            @if (Model.IsAdministrator)
+                            {
+                                <div class="pull-right add-new-entity">
+                                    <a asp-route="OrganizationMembersCreate" asp-route-organizationid="@Model.OrganizationId">
+                                        <div class="add-new-text text-end">Add New <i class="fas fa-plus-circle add-new-icon"></i></div>
+
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <kendo-grid name="UsersGrid" resizable="true" on-data-bound="GridDataBound">
+                                <columns>
+                                    <column field="Active" title="Active" hidden="@(!Model.IsAdministrator)" template="#if (Active) {# <i class='fas fa-check' style='color:\\#00b3b3'></i> #} #">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column field="DisplayName" title="Name" template="@(Model.IsAdministrator ? "<a href='#= EditUserUrl #'>#= DisplayName #</a>" : "#= DisplayName #")">
+                                        <filterable enabled="true">
+                                            <cell show-operators="true" operator="contains" />
+                                        </filterable>
+                                    </column>
+                                    <column field="UserName" title="Username" hidden="@(!Model.IsAdministrator)">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column field="Email" title="Email" template="<a href='mailto:#= Email #'>#= Email #</a>">
+                                        <filterable enabled="true">
+                                            <cell show-operators="true" operator="contains" />
+                                        </filterable>
+                                    </column>
+                                    <column field="Profession" title="Profession" hidden="@(!Model.IsAdministrator)">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column field="Role" title="Role" hidden="@(!Model.IsAdministrator)">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column field="CreatedDate" title="Created" hidden="@(!Model.IsAdministrator)" template="#= CreatedDateDisplay #">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column field="LastLoginDate" title="Last Login" hidden="@(!Model.IsAdministrator)" template="#if (LastLoginDate !== null) {# #=kendo.toString(kendo.parseDate(LastLoginDate), 'g')# #}#">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column field="DateDeactivated" title="Deactivated" hidden="@(!Model.IsAdministrator)" template="#= DateDeactivatedDisplay #">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column field="Admin" title="Admin" template="#if (Admin) {# <i class='fas fa-check' style='color:\\#00b3b3'></i> #} #">
+                                        <filterable enabled="false" />
+                                    </column>
+                                    <column title="Actions" hidden="@(!Model.IsAdministrator)">
+                                        <commands>
+                                            <column-command name="Unlock" click="Unlock" visible="UnlockDisplay" template="<a title='Unlock Account' class='k-grid-Unlock p-1'><i class='fas fa-lock-alt'></i></a>" />
+                                            <column-command name="ChangePassword" click="ChangePassword" visible="ChangePasswordDisplay" template="<a title='Reset Password' class='k-grid-ChangePassword p-1'><i class='fas fa-key'></i></a>" />
+                                            <column-command name="SendRegistrationEmail" click="SendRegistrationEmail" visible="SendRegistrationEmailDisplay" template="<a title='Send Registration Email' class='k-grid-SendRegistrationEmail p-1'><i class='fas fa-address-card'></i></a>" />
+                                        </commands>
+                                    </column>
+                                </columns>
+                                <datasource type="DataSourceTagHelperType.Ajax" server-operation="true" server-sorting="false" server-paging="false" server-filtering="false" page-size="15">
+                                    <schema>
+                                        <model id="UserId">
+                                            <fields>
+                                                <field name="UserId" type="number" />
+                                                <field name="Active" type="boolean" />
+                                                <field name="Admin" type="boolean" />
+                                                <field name="Locked" type="boolean" />
+                                                <field name="Registered" type="boolean" />
+                                                <field name="DisplayName" type="string" />
+                                                <field name="UserName" type="string" />
+                                                <field name="Email" type="string" />
+                                                <field name="Profession" type="string" />
+                                                <field name="Role" type="string" />
+                                                <field name="EditUserUrl" type="string" />
+                                                <field name="ChangePasswordModalUrl" type="string" />
+                                                <field name="UnlockAccountModalUrl" type="string" />
+                                                <field name="SendRegistrationEmailModalUrl" type="string" />
+                                                <field name="CreatedDate" type="date" />
+                                                <field name="LastLoginDate" type="date" />
+                                                <field name="DateDeactivated" type="date" />
+                                                <field name="CreatedDateDisplay" type="string" />
+                                                <field name="DateDeactivatedDisplay" type="string" />
+                                            </fields>
+                                        </model>
+                                    </schema>
+                                    <sorts>
+                                        <sort field="DisplayName" direction="asc" />
+                                    </sorts>
+                                    <transport>
+                                        <read url="@Url.RouteUrl("OrganizationUsersGrid", new { organizationId = Model.OrganizationId })" type="POST" />
+                                    </transport>
+                                </datasource>
+                                <filterable mode="row" extra="false" />
+                                <pageable enabled="true" page-sizes-enabled="true" page-sizes="new int[] { 15, 30, 50 }" />
+                                <sortable enabled="true" />
+                                <column-menu enabled="true" filterable="false" />
+                            </kendo-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="UsersModalContainer">
+</div>
+<script type="text/javascript">
+    (function () {
+        window.GridDataBound = function () {
+            LoadingPanel.loader.hide();
+        };
+
+        window.ChangePassword = function (e) {
+            e.preventDefault();
+            $("#UsersModalContainer").load($("#UsersGrid").data("kendoGrid").dataItem($(e.currentTarget).closest("tr")).ChangePasswordModalUrl);
+        };
+
+        window.ChangePasswordDisplay = function (dataItem) {
+            return dataItem.Active && dataItem.Registered;
+        };
+
+        window.UnlockDisplay = function (dataItem) {
+            return dataItem.Locked;
+        };
+
+        window.Unlock = function (e) {
+            e.preventDefault();
+            $("#UsersModalContainer").load($("#UsersGrid").data("kendoGrid").dataItem($(e.currentTarget).closest("tr")).UnlockAccountModalUrl);
+        };
+
+        window.SendRegistrationEmailDisplay = function (dataItem) {
+            return dataItem.Active && !dataItem.Registered;
+        };
+
+        window.SendRegistrationEmail = function (e) {
+            e.preventDefault();
+            $("#UsersModalContainer").load($("#UsersGrid").data("kendoGrid").dataItem($(e.currentTarget).closest("tr")).SendRegistrationEmailModalUrl);
+        };
+
+        $(document).on("@SutureHealth.AspNetCore.Areas.Identity.Models.Member.UnlockAccountModel.ACCOUNT_UNLOCKED", function () {
+            $("#UsersGrid").data("kendoGrid").dataSource.fetch();
+        });
+    })();
+</script>

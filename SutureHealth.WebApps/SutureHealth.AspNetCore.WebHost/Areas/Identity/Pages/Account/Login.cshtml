@@ -1,0 +1,82 @@
+﻿@page
+@using Microsoft.AspNetCore.Antiforgery
+@model LoginModel
+@inject IAntiforgery antiforgery
+@{
+    Model.RequireKendo = true;
+    Model.RequireUI = true;
+    ViewData["Title"] = "Log in";
+    var tokenSet = antiforgery.GetAndStoreTokens(HttpContext);
+}
+@if (Model.HasStatusMessage)
+{
+    <script type="text/javascript">
+        (function () {
+            history.replaceState(null, "", "@(Url.Page("/Account/Login",
+                                                new { userName = string.IsNullOrWhiteSpace(Model.Input.Username) ? null : Model.Input.Username,
+                                                      returnUrl = string.IsNullOrWhiteSpace(Model.ReturnUrl) ? null : Model.ReturnUrl }))");
+        })();
+    </script>
+}
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-7 d-none d-lg-block ">
+                <img src="~/images/Login Image.png" alt="Login to Suture Health" class="img-fluid" />
+            </div>
+            <div class="col-12 col-lg-4 align-self-center">
+                <div class="shadow">
+                    <div class="p-3">
+                        <div class="row justify-content-center">
+                            <div class="col-10">
+                                <img src="~/images/logo2_600x221.png" alt="Suture Health logo" class="img-fluid" />
+                            </div>
+                        </div>
+                        <hr />
+                        <form class="my-2" id="account" method="post">
+                            @if (Model.HasStatusMessage)
+                            {
+                                <partial name="_StatusMessage" model="Model.StatusMessage" view-data="@(new ViewDataDictionary(ViewData) { { LoginModel.VIEWDATA_ANTIFORGERY_FIELD_NAME, tokenSet.FormFieldName } })" />
+                            }
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group row py-3">
+                                <div class="col-sm-3 col-form-label">Username:</div>
+                                <div class="col-sm-9">
+                                    <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" />
+                                    <span asp-validation-for="Input.Username" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row pb-3">
+                                <div class="col-sm-3 col-form-label">Password:</div>
+                                <div class="col-sm-9">
+                                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-block mt-3 btn-primary">Let's Go</button>
+                            </div>
+                            <div class="my-4">
+                                <p class="text-center text-primary small">
+                                    <a id="forgot-password" data-role="form"
+                                       data-always="window.NotificationPanel.info(data.Message);"
+                                       data-form-action="@Url.Page("Login", "ForgotPasswordHandler")"
+                                       data-form-method="Post"
+                                       data-input-selector="#@Html.IdFor(m => m.Input.Username)"
+                                       data-validation-form-field-name="@tokenSet.FormFieldName"
+                                       data-validation-message="#loginResultMessage" href="javascript:void(0);">Forgot your Password?</a>
+                                </p>
+                                <p class="text-center small">How can we help you? <a href="mailto:support@suturehealth.com">Email us here</a></p>
+                            </div>
+                            <input type="hidden" asp-for="Input.AuthenticationToken" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

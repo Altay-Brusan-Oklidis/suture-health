@@ -1,0 +1,111 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.Network.InvitationModal
+@using SutureHealth.AspNetCore.Areas.Network.Models.Network;
+@using SutureHealth.Providers;
+
+<div>
+    <div id="InvitationModal" class="modal" style="max-height: 100%;" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close submitModalCancel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="font-size: 25px;">&times;</span>
+                    </button>
+                    <h2 class="modal-title">Congratulations! You are about to invite @Model.CompanyQuantityText to send documents through SutureHealth.</h2>
+                </div>
+                <div class="modal-body" style="padding-left: 90px; padding-right: 50px;">
+                    <div>
+                        <div class="text-center">
+                            <label>Sending companies will pay a minimum of $200/month and be able to work with all of their physicians</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-left radio-div-margin">
+                            <h4 class="font-bold">Will you require these companies to use SutureHealth?</h4>
+                        </div>
+                        <div class="row">
+                            <div style="padding-left: 20px;">
+                                <div class="col-lg-12 radioButton-padding">
+                                    <label><input type="radio" name="InvitationModalRequirement" value="@CommitmentLevel.Require" /> Require it</label>
+                                </div>
+                                <br />
+                                <div class="col-lg-12 radioButton-padding">
+                                    <label><input type="radio" name="InvitationModalRequirement" value="@CommitmentLevel.Recommended" /> Strongly recommend but not require it</label>
+                                </div>
+                                <br />
+                                <div class="col-lg-12 radioButton-padding">
+                                    <label><input type="radio" name="InvitationModalRequirement" value="@CommitmentLevel.NotRequired" /> Leave it up to them</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-left radio-div-margin">
+                        <h4 class="font-bold">When would you like to set the expectation for receiving documents?</h4>
+                    </div>
+                    <div class="row">
+                        <div style="padding-left: 20px">
+                            <div class="col-lg-12 radioButton-padding">
+                                <label><input type="radio" name="InvitationModalTimeExpectation" value="@TimeExpectation.TwoWeeks" /> 2 weeks</label>
+                            </div>
+                            <br />
+                            <div class="col-lg-12 radioButton-padding">
+                                <label><input type="radio" name="InvitationModalTimeExpectation" value="@TimeExpectation.FourWeeks" /> 4 weeks</label>
+                            </div>
+                            <br />
+                            <div class="col-lg-12 radioButton-padding">
+                                <label><input type="radio" name="InvitationModalTimeExpectation" value="@TimeExpectation.SixWeeks" /> 6 weeks</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="InvitationModalFooter" class="modal-footer">
+
+                </div>
+                <div>
+                    <div class="row text-center pb-20">
+                        <div class="col text-center">
+                            <button id="InvitationModalSubmitButton" disabled type="button" class="btn sh-btn-green font-large" data-dismiss="modal">Send Invitations Now</button>
+						</div>
+                    </div>
+
+                    <div class="row text-center">
+                        <div class="col text-center">
+                            <button type="button" class="btn submitModalCancel" data-dismiss="modal">Cancel</button>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var modal = $("#InvitationModal"),
+                modalFooter = $("#InvitationModalFooter");
+
+            modal.modal();
+
+            modal.on("hidden.bs.modal", function () {
+                modal.data("bs.modal", null);
+                modal.parent().remove();
+            });
+
+            $("input[type='radio']", modal).change(function () {
+                var selectedOptions = $("input[type='radio']:checked");
+
+                if (selectedOptions.length != 2) {
+                    return;
+                }
+
+                modalFooter.load("@Url.RouteUrl("NetworkInvitationModalFooter")", { "UsageRequirement": $("input[name='InvitationModalRequirement']:checked").val(), "TimeExpectation": $("input[name='InvitationModalTimeExpectation']:checked").val() }, function () {
+                    $("#InvitationModalSubmitButton").removeAttr("disabled");
+                });
+            });
+
+            $("#InvitationModalSubmitButton").click(function () {
+                $(this).trigger("@InvitationModal.EVENT_SUBMIT", [{
+                    "UsageRequirement": $("input[name='InvitationModalRequirement']:checked").val(),
+                    "ReceiveDocumentTime": $("input[name='InvitationModalTimeExpectation']:checked").val()
+                }]);
+            });
+        });
+    </script>
+</div>

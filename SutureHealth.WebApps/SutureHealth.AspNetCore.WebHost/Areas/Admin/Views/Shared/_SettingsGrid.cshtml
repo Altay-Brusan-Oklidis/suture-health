@@ -1,0 +1,102 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.SettingsGridModel
+<div>
+    <kendo-grid name="Settings" on-edit="OnUpsertSetting" resizable="true">
+        <editable enabled="true" mode="popup" template-id="UpsertSettingModal" />
+        <toolbar>
+            <toolbar-button name="create" text="Add New" />
+        </toolbar>
+        <datasource name="SettingsDataSource" type="DataSourceTagHelperType.Ajax" server-operation="false">
+            <schema>
+                <model id="SettingId">
+                    <fields>
+                        <field name="SettingId" type="number" editable="false" default-value="@(0)" />
+                        <field name="Name" editable="true" />
+                        <field name="Value" editable="true" />
+                        <field name="Type" editable="true" default-value="@("String")" />
+                        <field name="Active" editable="true" default-value="@("true")" />
+                    </fields>
+                </model>
+            </schema>
+            <transport>
+                <read url="@Model.ReadUrl" type="GET" />
+                <update url="@Model.UpdateUrl" type="POST" />
+                <destroy url="@Model.DeleteUrl" type="POST" />
+                <create url="@Model.CreateUrl" type="POST" />
+            </transport>
+        </datasource>
+        <columns>
+            <column field="Name" title="Setting Name" />
+            <column field="Value" title="Setting Value" />
+            <column field="Type" title="Value Type" />
+            <column field="Active" title="Active" template="#= ActiveDisplay(data) #" />
+            <column title="Actions">
+                <commands>
+                    <column-command name="edit" />
+                    <column-command name="destroy" />
+                </commands>
+            </column>
+        </columns>
+    </kendo-grid>
+</div>
+<script type="text/javascript">
+    let setType = function (type) {
+        $("input[name='Value']").hide();
+
+        switch (type) {
+            case "String":
+                $("input[name='Value'][type='text']").show();
+            break;
+            case "Integer":
+                $("input[name='Value'][type='number']").show();
+            break;
+            case "Boolean":
+                $("input[name='Value'][type='checkbox']").show();
+            break;
+        }
+    };
+
+    function ActiveDisplay (dataItem) {
+        return "<input type=\"checkbox\"" + (dataItem.Active ? "checked=\"checked\"" : "") + " onclick=\"return false;\" />";
+    }
+
+    function OnUpsertSetting (e) {
+        setType(e.model.Type);
+        if (e.model.Type === "Boolean"){
+            $("input[name='Value'][type='checkbox']").prop("checked", (e.model.Value?.toLowerCase() ?? "false") === "true");
+        }
+    }
+
+    $(document).ready(function () {
+        $(document).on("change", "select[name='Type']", function () {
+            setType($(this).val());
+            $("input[name='Value']").val("");
+            $("input[name='Value'][type='checkbox']").prop("checked", false);
+        });
+    });
+</script>
+<script id="UpsertSettingModal" type="text/html">
+    <div class="k-edit-form-container">
+        <div class="k-edit-label"><label for="Name">Setting Name</label></div>
+        <div data-container-for="Name" class="k-edit-field"><input type="text" id="Name" name="Name"
+                title="Setting Name" data-bind="value:Name" class="k-textbox k-valid"></div>
+        <div class="k-edit-label"><label for="Type">Value Type</label></div>
+        <div data-container-for="Type" class="k-edit-field">
+            <select class="k-dropdown" style="padding: 4px 0;" name="Type">
+                @foreach (var option in Enum.GetValues<SutureHealth.Application.ItemType>().OrderBy(it => it switch { SutureHealth.Application.ItemType.Integer => 1, SutureHealth.Application.ItemType.Boolean => 2, _ => 0 }))
+                {
+                    @:<option value="@option.ToString()">@option.ToString()</option>
+                }
+            </select>
+        </div>
+        <div class="k-edit-label"><label for="Value">Setting Value</label></div>
+        <div data-container-for="Value" class="k-edit-field">
+            <input class="k-textbox" style="display: none;" type="text" name="Value" />
+            <input class="k-textbox" style="display: none;" type="number" name="Value" />
+            <input class="k-checkbox" style="display: none;" type="checkbox" name="Value" />
+        </div>
+        <div class="k-edit-label"><label for="Active">Active</label></div>
+        <div data-container-for="Active" class="k-edit-field">
+            <input class="k-checkbox" type="checkbox" name="Active" />
+        </div>
+    </div>
+</script>

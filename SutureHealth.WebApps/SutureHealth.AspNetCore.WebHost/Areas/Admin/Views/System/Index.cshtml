@@ -1,0 +1,47 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.System.IndexModel
+@{
+    Model.RequireKendo = true;
+}
+
+@section Styles
+{
+<link rel="stylesheet" href="~/css/AdminStyle.min.css" asp-append-version="true" />
+}
+
+<section class="mt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-1">
+                        <h2 style="font-weight: bold;">
+                            System
+                        </h2>
+                    </div>
+
+                </div>
+                <hr />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#Settings" role="tab">Settings</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="Settings" role="tabpanel">
+                        <partial name="SettingsTab" model="Model.Settings" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

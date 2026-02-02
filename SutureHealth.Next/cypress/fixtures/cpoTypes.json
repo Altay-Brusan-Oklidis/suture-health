@@ -1,0 +1,44 @@
+[
+  {
+    "cpoTypeId": 1103,
+    "description": "Adjusting medical therapy",
+    "sequenceNumber": 1,
+    "minutes": 5,
+    "organizationId": null
+  },
+  {
+    "cpoTypeId": 1104,
+    "description": "Communicating with other health care professionals involved in the patient's care",
+    "sequenceNumber": 2,
+    "minutes": 5,
+    "organizationId": null
+  },
+  {
+    "cpoTypeId": 1105,
+    "description": "Coordinating care",
+    "sequenceNumber": 3,
+    "minutes": 5,
+    "organizationId": null
+  },
+  {
+    "cpoTypeId": 1106,
+    "description": "Reviewing charts, reports, or treatment plans",
+    "sequenceNumber": 4,
+    "minutes": 5,
+    "organizationId": null
+  },
+  {
+    "cpoTypeId": 1107,
+    "description": "Reviewing laboratory or other diagnostic studies",
+    "sequenceNumber": 5,
+    "minutes": 5,
+    "organizationId": null
+  },
+  {
+    "cpoTypeId": 1108,
+    "description": "Revising treatment plan",
+    "sequenceNumber": 6,
+    "minutes": 5,
+    "organizationId": null
+  }
+]

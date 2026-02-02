@@ -1,0 +1,25 @@
+﻿@model IBaseViewModel
+
+
+<li class="nav-item ">
+   <a asp-area="Request" asp-controller="Send" asp-action="Index" if-matches-request="nav-active" match-controller="true" match-action="true" class="nav-link">Send</a>
+</li>
+<li class="nav-item ">
+   <a asp-area="Request" asp-page="/History" if-matches-request="nav-active" match-page="true" class="nav-link">Track</a>
+</li>
+<li class="nav-item ">
+   <feature name="network-page">
+    <a id="networkPage" class="nav-link" asp-area="network" asp-controller="network" asp-action="index" if-matches-request="nav-active" match-area="true">
+        <span>Network</span>
+        <span id="badgeCount" class="network-badge" style="display:none"></span>
+    </a>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            HeaderFunctions.NetworkBadge();
+        });
+    </script>
+</feature>
+</li>
+<li class="nav-item ">
+   <a asp-area="Visit" asp-controller="Visit" asp-action="Index" id="videoChatLink" class="nav-link" if-matches-request="nav-active" match-area="true">Video</a>
+</li>

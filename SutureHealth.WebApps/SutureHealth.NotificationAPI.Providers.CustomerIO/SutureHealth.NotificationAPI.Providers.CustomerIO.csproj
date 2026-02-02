@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SutureHealth.NotificationAPI.Core\SutureHealth.NotificationAPI.Core.csproj" />
+		<ProjectReference Include="..\SutureHealth.NotificationAPI.Providers\SutureHealth.NotificationAPI.Providers.csproj" />
+	</ItemGroup>
+
+</Project>

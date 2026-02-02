@@ -1,0 +1,268 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Organization.IndexModel
+@{
+    Model.RequireKendo = true;
+}
+
+@section Styles
+    {
+    <link rel="stylesheet" href="~/css/AdminStyle.min.css" asp-append-version="true" />
+}
+
+    <section class="mt-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-2">
+                            <h2 style="font-weight: bold;">
+                                Organizations
+                            </h2>
+                        </div>
+                        <div class="col-4 align-self-center">
+                            <a class="btn btn-outline-primary" href='@Model.CreateOrganizationUrl'>Add New Organization</a>
+                            <a class="btn btn-outline-primary" id="ExcelExport">Export Grid</a>
+                        </div>
+                    </div>
+                    <hr class="mt-0" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-3">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <kendo-grid name="Organizations" resizable="true">
+                        <datasource type="DataSourceTagHelperType.Ajax" server-operation="true" server-filtering="true" server-sorting="true" page-size="30">
+                            <sorts>
+                                <sort field="ExternalName" direction="asc" />
+                            </sorts>
+                            <schema>
+                                <model id="OrganizationId">
+                                    <fields>
+                                        <field name="OrganizationId" type="string" />
+                                        <field name="ExternalName" type="string" />
+                                        <field name="InternalName" type="string" />
+                                        <field name="TypeId" type="string" />
+                                        <field name="Type" type="string" />
+                                        <field name="Address" type="string" />
+                                        <field name="City" type="string" />
+                                        <field name="State" type="string" />
+                                        <field name="Zip" type="string" />
+                                        <field name="IsActive" type="boolean" />
+                                        <field name="IsPaid" type="boolean" />
+                                        <field name="DateClosed" type="string" />
+                                        <field name="DateClosedTicks" type="string" />
+                                        <field name="Phone" type="string" />
+                                        <field name="Fax" type="string" />
+                                        <field name="MedicareNumber" type="string" />
+                                        <field name="Npi" type="string" />
+                                        <field name="ParentOrganizationId" type="string" />
+                                        <field name="CompanyId" type="string" />
+                                        <field name="DateCreated" type="string" />
+                                        <field name="DateCreatedTicks" type="number" />
+                                        <field name="EditOrganizationUrl" type="string" />
+                                        <field name="SettingsActionUrl" type="string" />
+                                        <field name="TemplateManagementUrl" type="string" />
+                                    </fields>
+                                </model>
+                            </schema>
+                            <transport>
+                                <read url="@Url.RouteUrl("AdminOrganizationOrganizationsDataSource")" type="POST" />
+                            </transport>
+                        </datasource>
+                        <columns>
+                            <column field="ExternalName" title="External Name" template="<a href='#=EditOrganizationUrl#'>#= ExternalName #</a>">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="InternalName" title="Internal Name">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="TypeId" title="Type" template="#= Type #">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="typeFilter" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="Address" title="Address" hidden="true">
+                                <filterable enabled="false">
+                                    <cell show-operators="false" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="City" title="City" hidden="true">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="State" title="State" hidden="true">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="Zip" title="Zip" hidden="true">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="IsActive" title="Active" template="<i class='far # if (IsActive) { #fa-check-square# } else { #fa-square# }#'></i>">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="boolFilter" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="IsPaid" title="Paid" template="<i class='far # if (IsPaid) { #fa-check-square# } else { #fa-square# }#'></i>">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="boolFilter" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="DateClosedTicks" title="Close Date" template="#= DateClosed #" hidden="true">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="boolFilter" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="Phone" title="Phone">
+                                <filterable enabled="false">
+                                    <cell show-operators="false" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="Fax" title="Fax">
+                                <filterable enabled="false">
+                                    <cell show-operators="false" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="MedicareNumber" title="Medicare">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="Npi" title="NPI">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="OrganizationId" title="Organization ID">
+                                <filterable enabled="true">
+                                    <cell operator="eq" show-operators="false" template="standardFilter" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="ParentOrganizationId" title="Parent Organization ID" hidden="true">
+                                <filterable enabled="true">
+                                    <cell operator="eq" show-operators="false" template="standardFilter" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="CompanyId" title="Company ID">
+                                <filterable enabled="true">
+                                    <cell operator="eq" show-operators="false" template="standardFilter" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="DateCreatedTicks" title="Created" template="#= DateCreated #">
+                                <filterable enabled="false">
+                                    <cell show-operators="false" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column title="Actions">
+                                <commands>
+                                    <column-command name="Settings" click="EditSettings" template="<a title='Edit Settings' class='k-grid-Settings p-1'><i class='fas fa-cog'></i></a>" />
+                                    <column-command name="Templates" click="EditTemplates" template="<a title='Edit Templates' class='k-grid-Templates p-1'><i class='fas fa-files-medical'></i></a>" />
+                                </commands>
+                            </column>
+                        </columns>
+                        <filterable mode="row" extra="false" />
+                        <pageable enabled="true" page-sizes-enabled="true" page-size="20" page-sizes="new int[] { 10, 20, 30, 50 }" />
+                        <sortable enabled="true" />
+                        <column-menu enabled="true" filterable="false" />
+                        <excel all-pages="true" filterable="true" file-name="Organizations.xlsx" />
+                    </kendo-grid>
+                    <kendo-datasource name="OrganizationTypes" type="DataSourceTagHelperType.Ajax" server-operation="false">
+                        <schema>
+                            <model id="OrganizationTypeId">
+                                <fields>
+                                    <field name="OrganizationTypeId" type="number" />
+                                    <field name="Name" type="string" />
+                                </fields>
+                            </model>
+                        </schema>
+                        <transport>
+                            <read url="@Url.RouteUrl("AdminOrganizationOrganizationTypesDataSource")" type="GET" />
+                        </transport>
+                    </kendo-datasource>
+                    <script type="text/javascript">
+                        function typeFilter(e) {
+                            e.element.kendoDropDownList({
+                                "dataSource": OrganizationTypes,
+                                "dataValueField": "OrganizationTypeId",
+                                "dataTextField": "Name",
+                                "valuePrimitive": true
+                            });
+                        }
+
+                        function boolFilter(e) {
+                            let field = e.element.parents("[data-field]").attr("data-field"),
+                                dataSource = (function() {
+                                    switch (field) {
+                                        case "IsActive":
+                                            return [{ "Text": "Active", "Value": true }, { "Text": "Inactive", "Value": false }];
+                                        case "IsPaid":
+                                            return [{ "Text": "Paid", "Value": true }, { "Text": "Unpaid", "Value": false }];
+                                        case "DateClosedTicks":
+                                            return [{ "Text": "Closed", "Value": true }, { "Text": "Not Closed", "Value": false }];
+                                    }
+                                })();
+
+                            e.element.kendoDropDownList({
+                                "dataSource": dataSource,
+                                "dataValueField": "Value",
+                                "dataTextField": "Text",
+                                "valuePrimitive": field === "DateClosedTicks"
+                            });
+                        }
+
+                        function standardFilter(e) {
+                            e.element.kendoTextBox();
+                        }
+
+                        function CreateNewHandler(e) {
+                            return "<a href='@Model.CreateOrganizationUrl'>Create New Org</a>"
+                        }
+
+                        function EditSettings(e) {
+                            e.preventDefault();
+                            window.open($("#Organizations").data("kendoGrid").dataItem($(e.currentTarget).closest("tr")).SettingsActionUrl, "_blank");
+                        }
+
+                        function EditTemplates(e) {
+                            e.preventDefault();
+                            window.open($("#Organizations").data("kendoGrid").dataItem($(e.currentTarget).closest("tr")).TemplateManagementUrl, "_blank");
+                        }
+
+                        $(document).ready(function() {
+                            $("#ExcelExport").click(function() {
+                                $("#Organizations").data("kendoGrid").saveAsExcel();
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>

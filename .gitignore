@@ -1,0 +1,64 @@
+# Video files
+*.mkv
+*.mp4
+*.avi
+*.mov
+*.wmv
+
+# Environment and secrets
+.env
+*.env
+.env.*
+
+# AWS credentials - NEVER commit these
+*accessKeys*.csv
+aws access key/
+
+# Node modules
+node_modules/
+
+# IDE and local config
+.claude/
+.idea/
+.vscode/
+*.suo
+*.user
+
+# Large binary files
+*.pptx
+*.png
+*.zip
+*.tar.gz
+
+# VPN config
+*.ovpn
+
+# Build artifacts
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Reserved Windows names
+nul
+
+# Database backups (too large for GitHub)
+database/backup/
+*.bak
+*.mdf
+*.ldf
+
+# Testing folders with OneDrive file locking issues (can add later)
+**/SutureHealth.PatientAPI.Testing/
+**/SutureHealth.ProviderAPI.Services.Lambda/
+**/Properties/launchSettings.json
+
+# Environment-specific configs with secrets
+**/appsettings.*.json
+**/appsettings.prod.json
+**/appsettings.ci.json
+**/appsettings.demo.json
+**/appsettings.qa.json
+**/appsettings.stage.json
+**/SutureHealth.ProviderAPI.*/

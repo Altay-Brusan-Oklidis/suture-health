@@ -1,0 +1,288 @@
+﻿@model SutureHealth.AspNetCore.Areas.Template.Models.Annotation.OcrEditViewModel
+@{
+    Model.RequireUI = true;
+    Model.RequiresLoading = true;
+}
+@section Scripts {
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="~/js/TemplateOcrEdit.js" asp-append-version="true"></script>
+}
+@section Styles {
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="~/css/LegacyTemplateEditor.min.css" asp-append-version="true" />
+}
+
+<section class="mt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 style="font-weight: bold;">
+                    Edit OCR Annotations
+                </h2>
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="row">
+                    <div class="col-8 border">
+                        <div class="row">
+                            <div class="col-12 p-2 border-bottom">
+                                <h3>Template Pages</h3>
+                            </div>
+                        </div>
+                        <div class="row p-3">
+                            <div class="col-3">
+                                <p><strong>Instructions:</strong></p>
+                                <ol class="small text-secondary">
+                                    <li>Scroll to the appropriate area on the document below.</li>
+                                    <li>Drag and drop the controls to the correct locations.</li>
+                                    <li>Resize controls to fill the desired space.</li>
+                                </ol>
+                                <div>
+                                    <div class="annotationContainer">
+                                        <div id="signature" class="annotation signature annotationDraggable">
+                                            <div class="closeBtn"></div>
+                                            <div class="annotationLabel">Signature</div>
+                                            <div class="signaturePart2"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="annotationContainer">
+                                        <div id="datetimeSigned" class="annotation datetimeSigned annotationDraggable">
+                                            <div class="closeBtn" id="closeDate"></div>
+                                            <div class="annotationLabel">Datetime Signed</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div id="divPdf">
+                                    <div id="divImg" class="column">
+                                        @foreach (var page in Model.TemplatePages)
+                                        {
+                                            <div id="@string.Format("page{0}", page.PageNumber)" class="documentPage">
+                                                <img class="pdfFormTemplate" src="data:image/png;base64,@(page.ImageBase64)" />
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <article class="border p-3">
+                            <h3> OCR Search</h3>
+                            <hr />
+                            <input id="ocr-search-input" type="text" class="form-control" />
+                            <br />
+                            <button id="ocr-search" type="button" class="btn btn-primary">Search</button>
+                        </article>
+                        <article class="border my-3 p-3">
+                            <h3> OCR Annotations</h3>
+                            <div id="ocr-save-alert" class="alert alert-danger" style="display: none;">
+                                OCR mappings could not be saved.  The following error(s) occurred:
+                                <ul id="ocr-save-errors">
+                                </ul>
+                            </div>
+                            <table id="annotation-table" class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="25%">Type</th>
+                                        <th>Search Text</th>
+                                        <th width="15%" style="text-align: center;">Match All</th>
+                                        <th width="25%" style="text-align: center;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr id="annotation-row-template" class="annotation-row" style="display: none;">
+                                        <td data-field="type">
+                                        </td>
+                                        <td>
+                                            <input data-field="search-text" type="text" class="form-control" />
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <input data-field="match-all" type="checkbox" style="transform: scale(2); margin-top: 10px;" />
+                                        </td>
+                                        <td style="text-align: center; white-space: nowrap;">
+                                            <button data-action="delete-annotation" type="button" class="btn btn-default">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <div>
+                                <button id="ocr-cancel-button" type="button" class="btn btn-secondary">Cancel</button>
+                                <button id="ocr-revert-button" type="button" class="btn btn-secondary">Revert</button>
+                                <button id="ocr-save-button" type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var annotations = [],
+            queryOcr = function (searchText, success) {
+                LoadingPanel.loader.show();
+                $.post("@Url.RouteUrl("TemplateAnnotationOcrQuery", new { templateId = Model.TemplateId })", { "searchText": encodeURIComponent(searchText) }, function (data) {
+                    LoadingPanel.loader.hide();
+                    if (success) {
+                        success(data);
+                    }
+                });
+            },
+            onOcrSearch = function (evt) {
+                var interactiveElements = $("#ocr-search-input,#ocr-search");
+
+                interactiveElements.attr("disabled", "disabled");
+                $(document).trigger("OcrSearch:Submit");
+                queryOcr(interactiveElements.filter("#ocr-search-input").val(), function (data) {
+                    if (data.ResultFound) {
+                        $(document).trigger("OcrSearch:ResultFound", [data.BindingResult, data.OtherResults]);
+                    }
+
+                    interactiveElements.removeAttr("disabled");
+                });
+            },
+            onAnnotationChanged = function () {
+                var element = $(this).parents("tr"),
+                    searchTextElement = $("[data-field='search-text']", element),
+                    matchAllCheckbox = $("[data-field='match-all']", element);
+
+                $(document).trigger("Annotation:Changed", [{
+                    "DropId": $(this).parents(".annotation-row").data("drop-id"),
+                    "SearchText": searchTextElement.val(),
+                    "MatchAll": matchAllCheckbox.prop("checked")
+                }]);
+            },
+            initializeAnnotations = function () {
+                $(document).trigger("Annotation:Initialized", [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Annotations, new Newtonsoft.Json.Converters.StringEnumConverter()))]);
+            };
+
+        $("#ocr-cancel-button").click(function () {
+            window.location.href = "@Model.ReturnUrl";
+        });
+
+        $("#ocr-revert-button").click(function () {
+            initializeAnnotations();
+        });
+
+        $("#ocr-save-button").click(function () {
+            var saveButton = $(this),
+                postModel = [];
+
+            saveButton.attr("disabled", "disabled");
+            $("#ocr-save-alert").hide();
+            $("#ocr-save-errors").empty();
+
+            for (var i = 0; i < annotations.length; ++i) {
+                var annotation = annotations[i],
+                    searchText = $("[data-drop-id='" + annotation.id + "'] input[data-field='search-text']").val(),
+                    matchAll = $("[data-drop-id='" + annotation.id + "'] input[data-field='match-all']").prop("checked");
+
+                postModel.push({
+                    "SearchText": searchText,
+                    "PageNumber": annotation.pageNumber,
+                    "TopPixel": annotation.top,
+                    "LeftPixel": annotation.left,
+                    "HeightPixels": annotation.height,
+                    "WidthPixels": annotation.width,
+                    "MatchAll": matchAll,
+                    "Type": function (type) {
+                        switch (type) {
+                            case "signature":
+                                return "VisibleSignature";
+                            case "datetimeSigned":
+                                return "DateSigned";
+                            default:
+                                return "Unknown";
+                        }
+                    }(annotation.type)
+                });
+            }
+
+            LoadingPanel.loader.show();
+            $.post({
+                "url": "@Url.RouteUrl("TemplateAnnotationOcrSave", new { templateId = Model.TemplateId })",
+                "contentType": "application/json",
+                "data": JSON.stringify(postModel),
+                "success": function (response) {
+                    if (response.Success) {
+                        window.location.href = "@Model.ReturnUrl";
+                    }
+                    else {
+                        var errorList = $("#ocr-save-errors");
+
+                        for (var i = 0; i < response.Errors.length; ++i) {
+                            errorList.append("<li>" + response.Errors[i] + "</li>");
+                        }
+                        $("#ocr-save-alert").show();
+                        saveButton.removeAttr("disabled");
+                    }
+                }
+            });
+        });
+
+        $("#ocr-search-input").keypress(function (evt) {
+            if (evt.which == 13) {
+                onOcrSearch(evt);
+            }
+        });
+        $("#ocr-search").click(onOcrSearch);
+
+        $("#annotation-table").on("change", "[data-field='search-text'],[data-field='match-all']", onAnnotationChanged);
+        $("#annotation-table").on("click", "[data-action='delete-annotation']", function () {
+            $(document).trigger("Annotation:Deleted", [$(this).parents(".annotation-row").data("drop-id")]);
+        });
+        $(document).on("AnnotationEditor:AnnotationMouseEnter AnnotationEditor:AnnotationMouseLeave", "", function (evt, dropId) {
+            var isHovering = evt.type == "AnnotationEditor:AnnotationMouseEnter";
+
+            $(".annotation-row[data-drop-id='" + dropId + "']").toggleClass("warning", isHovering);
+        });
+
+        $(document).on("AnnotationEditor:AnnotationsChanged", function (evt, newAnnotations) {
+            var rowTemplate = $("#annotation-row-template"),
+                rowContainer = $("#annotation-table > tbody");
+
+            annotations = newAnnotations;
+
+            rowContainer.empty();
+            for (var i = 0; i < newAnnotations.length; ++i) {
+                var annotation = newAnnotations[i],
+                    clone = rowTemplate.clone();
+
+                clone.removeAttr("id").removeAttr("style");
+                clone.attr("data-drop-id", annotation.id);
+                $("[data-field='type']", clone).text(function (type) {
+                    switch (type) {
+                        case "signature":
+                            return "Signature";
+                        case "datetimeSigned":
+                            return "Datetime Signed";
+                        default:
+                            return "Unknown";
+                    }
+                }(annotation.type));
+                $("[data-field='search-text']", clone).val(annotation.searchText);
+                $("[data-field='match-all']", clone).prop("checked", annotation.matchAll);
+
+                rowContainer.append(clone);
+            }
+        });
+
+        initializeAnnotations();
+        LoadingPanel.loader.hide();
+    });
+</script>

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>SutureHealth.Patients</RootNamespace>
+        <VersionPrefix>$(VERSION_PREFIX)</VersionPrefix>
+    </PropertyGroup>
+    <ItemGroup>
+      <None Remove="appsettings.test.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Slack.Webhooks" Version="1.1.5" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\SutureHealth.ApplicationAPI.Core\SutureHealth.ApplicationAPI.Core.csproj" />
+        <ProjectReference Include="..\SutureHealth.Common\SutureHealth.Common.csproj" />
+        <ProjectReference Include="..\SutureHealth.Linq.Matching\SutureHealth.Linq.Matching.csproj" />
+        <ProjectReference Include="..\SutureHealth.PatientAPI.Core\SutureHealth.PatientAPI.Core.csproj" />
+        <ProjectReference Include="..\SutureHealth.Services.Amazon\SutureHealth.Services.Amazon.csproj" />
+        <ProjectReference Include="..\SutureHealth.Services.Common\SutureHealth.Services.Common.csproj" />
+    </ItemGroup>
+</Project>

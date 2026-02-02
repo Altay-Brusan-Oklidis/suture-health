@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <MSTest>
+    <Parallelize>
+      <Workers>4</Workers>
+      <Scope>ClassLevel</Scope>
+    </Parallelize>
+  </MSTest>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <ASPNETCORE_ENVIRONMENT>ci</ASPNETCORE_ENVIRONMENT>
+      <AWS_PROFILE>SutureHealth</AWS_PROFILE>
+      <AWS_REGION>us-east-1</AWS_REGION>
+      <AWS_XRAY_CONTEXT_MISSING>LOG_ERROR</AWS_XRAY_CONTEXT_MISSING>
+      <SutureHealth__NotificationServicesProvider__Providers__SimpleEmailService__BypassSendingEmail>true</SutureHealth__NotificationServicesProvider__Providers__SimpleEmailService__BypassSendingEmail>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>

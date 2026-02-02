@@ -1,0 +1,198 @@
+﻿@model SutureHealth.AspNetCore.WebHost.Areas.Visit.Models.InviteViewModel
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- HTML Meta Tags -->
+    <title>Waiting for you now</title>
+    <meta name="description" content="You've been invited to a SutureHealth Video Visit.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Waiting for you now">
+    <meta property="og:description" content="Powered by SutureHealth">
+    <meta property="og:image" content="~/images/videoVisitImage_suture.jpg">
+    <link rel="icon" href="~/images/logo2_emblem.png">
+
+    <script src="https://kit.fontawesome.com/7631788b33.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/ChatVideo.min.css" />
+    <link rel="stylesheet" href="~/css/Site.min.css" />
+</head>
+<body>
+    <div id="patient-container">
+        <div class="sutureLogoHeader">
+        </div>
+
+        <div style="text-align: center">
+            <div>
+                <h3 style="margin-bottom:0;">Welcome, please check in to see</h3>
+                <h3>@Model.HostName</h3>
+            </div>
+            <div style="color: #e61610; font-size: 1.2em; font-weight: bold;">
+                If you have a medical emergency, call 911 immediately.
+            </div>
+        </div>
+        <div>
+            @using (Html.BeginRouteForm("VisitInvitePost", new { publicId = Model.PublicId }))
+            {
+                <div style="margin-bottom: 7px;">
+                    <input id="consentCheckbox" type="checkbox" name="virtualVisitConsented" class="patient-consent-box" value="">
+                    <h4 id="iAcceptLabel" class="patient-accept" style="display: inline; cursor: pointer;">I ACCEPT THE FOLLOWING:</h4>
+                    <div id="consent" class="patient-consent-text">
+                        <div>
+                            <b>(Scroll to review)</b> I understand that my health care could be improved by interacting with my care team over electronic media such as video, telephone, email, and text message, also known as virtual visits. I consent to being contacted by my care team over electronic media. I understand and accept the benefits and risks of virtual visits outlined below, and I understand that my agreement will be saved in my health record. I may withdraw this consent at any time.
+
+                            While this video-conference technology is secure, reliable and reputable, it may have occasional connection issues.
+                        </div>
+
+                        <div><b>BENEFITS</b></div>
+
+                        <div>
+                            Virtual visits allow me to communicate with my clinician from my home, work or other locations. However, I will still need to go to in-person appointments as needed or as directed by my care team.
+                        </div>
+
+                        <div><b>RISKS</b></div>
+
+                        <div><b>I understand that if I have a medical emergency, I should call 911 immediately.</b></div>
+
+                        <div>
+                            I understand that a virtual visit does not replace the in-person relationship with my clinician and may not eliminate my need for in-person visits. I am responsible for calling my care team if I have any questions or concerns about my health in between virtual visits.
+
+                            Federal law requires that my care team protect the privacy and security of my health information, known as Protected Health Information (PHI). I understand that my care team will take all necessary steps to protect the privacy and security of my PHI. However, I understand that as with any electronic transmission, the privacy and security of my PHI cannot be guaranteed. I also understand that I should conduct my virtual visit in a private and secure place, so that others cannot see or hear my PHI discussed.
+                        </div>
+
+                        <div><b>NOTICE OF COVERAGE</b></div>
+                        <div>
+                            My health insurance plan has established rules for the payment of health care services. I understand that virtual visits may be subject to co-payment, deductible, and co-insurance based on my insurance benefits plan.
+                        </div>
+                    </div>
+
+                </div>
+
+                
+                <a href="#" id="viewLargerConsentButton" class="textButton" style="float: left;">View Larger</a>
+                <a href="#" id="listenToConsentButton" class="textButton" style="float: right;">
+                    <i class="fas fa-volume-up" style="padding-right: 1vh;"></i>
+                    <span>Listen to consent</span>
+                </a>
+                <div style="text-align: left; margin-top: 5vh; ">
+                    <h4>BEFORE JOINING:</h4>
+                    <ul>
+                        <li><b>Turn on your WiFi</b> (only if signal is stronger than the cellular signal)</li>
+                        <li><b>Move into an area with a strong signal</b></li>
+                    </ul>
+                </div>
+                <div>
+                    <input name="participantName" type="text" class="patient-name-input" placeholder="Your Name (optional)" />
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" id="joinButton" class="button" style="width: 60vw;" disabled="disabled">JOIN</button>
+                </div>
+
+
+                <div class="patient-support-number" style="">
+                    <span>
+                        <b>Call </b><a href="tel://@Model.HostSupportPhoneNumber" style="text-decoration:none">
+                            @Model.HostSupportPhoneNumberFormatted
+                        </a> <b>for any questions</b>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="consentModal" style="display:none; position:absolute; top:0;left:0; width:94vw; height: 100vh; background-color: #fff; text-align: center; padding: 3vh 3vw;">
+        <div style="color: #1e86e8;">
+            <span style="font-size: 1.4em;">CLICK TO LISTEN</span>
+            <div id="playConsentButton" class="button" style="width: 20px; display:inline-block; margin: 0;">
+                <i class="fas fa-play"></i>
+            </div>
+            <div id="pauseConsentButton" class="button negative" style="width: 20px; display:none; margin: 0;">
+                <i class="fas fa-pause"></i>
+            </div>
+        </div>
+        <div style="clear:both;">
+            <audio id="consentAudio" style="width: 50vw;">
+                <source src="~/audio/VirtualVisitConsent.mp3" type="audio/mpeg" />
+            </audio>
+        </div>
+        <div style="float: left; width: 31vw; font-size: 1.12em; text-align: left; margin-top: .7em;"><a class="consentFontSizeButton textButton" href="#">Large</a></div>
+        <div style="float: left; width: 31vw; font-size: 1.25em; margin-top: .3em;"><a class="consentFontSizeButton textButton" href="#">Larger</a></div>
+        <div style="float: left; width: 31vw; font-size: 1.5em; text-align: right;"><a class="consentFontSizeButton textButton" href="#">Largest</a></div>
+        <div id="consent2" class="patient-consent-text" 
+             style="height: 60vh; width: 95vw; margin: 0 auto; overflow-y: scroll; text-align: left; clear: both; font-size: 1.12em;"></div>
+        <div class="button" id="acceptConsentButton">ACCEPT</div>
+        <div class="button negative" id="closeConsentButton">CLOSE</div>
+    </div>
+    <script type="text/javascript" src="~/js/VideoChat.js"></script>
+    <script>
+        var joinButton = document.getElementById('joinButton');
+        var consentCheckbox = document.getElementById('consentCheckbox');
+        var consentModal = document.getElementById('consentModal');
+        var consent2 = document.getElementById('consent2');
+        var consentAudio = document.getElementById('consentAudio');
+        var playConsentButton = document.getElementById('playConsentButton');
+        var pauseConsentButton = document.getElementById('pauseConsentButton');
+        disableButtonOnClick('#joinButton', ' Redirecting… ');
+        consentCheckbox.addEventListener('click', updateJoinButtonActive);
+        function updateJoinButtonActive() {
+            if (consentCheckbox.checked) {
+                joinButton.removeAttribute('disabled');
+            } else {
+                joinButton.setAttribute('disabled', 'disabled');
+                joinButton.innerText = "JOIN";
+            }
+        }
+        document.getElementById('iAcceptLabel').addEventListener('click', function () {
+            consentCheckbox.checked = !consentCheckbox.checked;
+            updateJoinButtonActive();
+        });
+        document.getElementById('closeConsentButton').addEventListener('click', function () {
+            consentModal.style.display = 'none';
+            consentAudio.pause();
+        });
+        document.getElementById('viewLargerConsentButton').addEventListener('click', function () {
+            consentModal.style.display = 'block';
+        });
+        document.getElementById('listenToConsentButton').addEventListener('click', function () {
+            consentModal.style.display = 'block';
+            consentAudio.play();
+        });
+
+        document.getElementById('acceptConsentButton').addEventListener('click', function () {
+            consentCheckbox.checked = true;
+            consentModal.style.display = 'none';
+            consentAudio.pause();
+            updateJoinButtonActive();
+        });
+        document.querySelectorAll('.consentFontSizeButton').forEach(button => button.addEventListener('click', function () {
+            consent2.style.fontSize = button.parentElement.style.fontSize;
+        }));
+
+        playConsentButton.addEventListener('click', function () {
+            consentAudio.play();
+        });
+        pauseConsentButton.addEventListener('click', function () {
+            consentAudio.pause();
+        });
+        consentAudio.addEventListener('play', updateVideoPlayPause);
+        consentAudio.addEventListener('pause', updateVideoPlayPause);
+        function updateVideoPlayPause() {
+            if (consentAudio.paused) {
+                pauseConsentButton.style.display = 'none';
+                playConsentButton.style.display = 'inline-block';
+            } else {
+                pauseConsentButton.style.display = 'inline-block';
+                playConsentButton.style.display = 'none';
+            }
+        }
+
+        window.onload = function () {
+            consent2.innerHTML = document.getElementById('consent').innerHTML;
+        }
+    </script>
+</body>
+</html>

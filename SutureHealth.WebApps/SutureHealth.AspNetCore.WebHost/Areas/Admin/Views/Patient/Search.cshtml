@@ -1,0 +1,177 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Patient.SearchModel
+@{
+    Model.RequireKendo = true;
+}
+
+@section Styles
+    {
+    <link rel="stylesheet" href="~/css/AdminStyle.min.css" asp-append-version="true" />
+}
+
+    <section class="mt-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-1">
+                            <h2 style="font-weight: bold;">
+                                Patients
+                            </h2>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-outline-primary" id="AddNewPatient" type="button">Add New Patient</button>
+                            <button class="btn btn-outline-primary" id="ExcelExport" type="button">Export Grid</button>
+                        </div>
+                    </div>
+                    <hr class="mt-0" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-3">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <kendo-grid name="Patients" resizable="true" detail-template-id="PatientDetail" on-detail-init="onDetailInit">
+                        <datasource type="DataSourceTagHelperType.Ajax" server-operation="true" server-filtering="true" server-sorting="true" page-size="30">
+                            <sorts>
+                                <sort field="LastName" direction="asc" />
+                            </sorts>
+                            <schema>
+                                <model id="PatientId">
+                                    <fields>
+                                        <field name="PatientId" type="string" />
+                                        <field name="FirstName" type="string" />
+                                        <field name="LastName" type="string" />
+                                        <field name="DateOfBirth" type="date" />
+                                        <field name="DateOfBirthDisplay" type="string" />
+                                        <field name="SocialSecurityNumber" type="string" />
+                                        <field name="OrganizationIds" type="string" />
+                                        <field name="PatientRecordNumbers" type="string" />
+                                        <field name="DateCreated" type="string" />
+                                        <field name="DateCreatedTicks" type="string" />
+                                        <field name="DateModified" type="string" />
+                                        <field name="DateModifiedTicks" type="string" />
+                                    </fields>
+                                </model>
+                            </schema>
+                            <transport>
+                                <read url="@Url.RouteUrl("AdminPatientPatientsDataSource")" type="POST" />
+                            </transport>
+                        </datasource>
+                        <columns>
+                            <column field="OrganizationIds" title="Organization IDs" encoded="false" hidden="true">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="standardFilter" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="FirstName" title="First Name">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="LastName" title="Last Name">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" operator="contains" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="DateOfBirth" title="DOB" template="#= DateOfBirthDisplay #">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="SocialSecurityNumber" title="SSN">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="standardFilter" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="IsActive" title="Active" template="<i class='far # if (IsActive) { #fa-check-square# } else { #fa-square# }#'></i>">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="boolFilter" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="PatientRecordNumbers" title="Record Numbers" encoded="false" hidden="true">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="standardFilter" />
+                                </filterable>
+                                <sortable enabled="false" />
+                            </column>
+                            <column field="PatientId" title="PatientId">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" template="standardFilter" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="DateCreatedTicks" title="Date Created" template="#= DateCreated #">
+                                <filterable enabled="false">
+                                    <cell show-operators="false" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                            <column field="DateModifiedTicks" title="Date Updated" template="#= DateModified #">
+                                <filterable enabled="false">
+                                    <cell show-operators="false" />
+                                </filterable>
+                                <sortable enabled="true" />
+                            </column>
+                        </columns>
+                        <filterable mode="row" extra="false" />
+                        <pageable enabled="true" page-sizes-enabled="true" page-size="20" page-sizes="new int[] { 10, 20, 30, 50 }" />
+                        <sortable enabled="true" />
+                        <column-menu enabled="true" filterable="false" />
+                        <excel all-pages="true" filterable="true" file-name="Patients.xlsx" />
+                    </kendo-grid>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script id="PatientDetail" type="text/html">
+        <div class="text-center">
+            <i class="far fa-spinner fa-spin fa-2x"></i>
+        </div>
+    </script>
+    <partial name="_AddEntityToOrganizationDialog" model="Model.AddDialog" />
+    <script type="text/javascript">
+        function onDetailInit(e) {
+            e.detailCell.load(e.data.DetailUrl);
+        }
+
+        function standardFilter(e) {
+            e.element.kendoTextBox();
+        }
+
+        function boolFilter(e) {
+            e.element.kendoDropDownList({
+                "dataSource": [{ "Text": "Active", "Value": true }, { "Text": "Inactive", "Value": false }],
+                "dataValueField": "Value",
+                "dataTextField": "Text"
+            });
+        }
+
+        function AddPatientDialogConfirm() {
+            let orgData = $("#@Model.AddDialog.OrganizationFieldName").data("kendoComboBox").dataItem();
+
+            if (!orgData) {
+                return false;
+            }
+
+            window.location.href = orgData.CreatePatientUrl;
+        }
+
+        $(document).ready(function() {
+            $("#AddNewPatient").click(function() {
+                $("#@Model.AddDialog.DialogName").data("kendoDialog").open();
+            });
+
+            $("#ExcelExport").click(function() {
+                $("#Patients").data("kendoGrid").saveAsExcel();
+            });
+        });
+    </script>

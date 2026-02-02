@@ -1,0 +1,2564 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!-- Document ID: 66841881 - DAT: 55464.99-->
+
+  <ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <realmCode code="US"></realmCode>
+    <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3"></typeId>
+    <templateId root="1.2.840.114350.1.72.1.51693"></templateId>
+    <templateId root="2.16.840.1.113883.10.20.22.1.1"></templateId>
+    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.1.1"></templateId>
+    <templateId root="2.16.840.1.113883.10.20.22.1.9"></templateId>
+    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.1.9"></templateId>
+    <id assigningAuthorityName="EPC" root="1.2.840.114350.1.13.436.2.7.8.688883.256041689"></id>
+    <code code="11506-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Subsequent evaluation note"></code>
+    <title>Encounter Summary</title>
+    <effectiveTime value="20211119105308-0700"></effectiveTime>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal"></confidentialityCode>
+    <languageCode code="en-US"></languageCode>
+    <setId assigningAuthorityName="EPC" extension="3dd7ac3e-488d-11ec-9d7b-5f09a1df5f0e" root="1.2.840.114350.1.13.436.2.7.1.1"></setId>
+    <versionNumber value="2"></versionNumber>
+    <recordTarget>
+      <patientRole>
+        <id extension="CEN55555EJ" root="1.2.840.114350.1.13.436.2.7.3.688884.100"></id>
+        <id assigningAuthorityName="CIGNA" extension="U5555555555" root="1.2.840.114350.1.13.436.2.7.5.698077.1157"></id>
+        <addr use="HP">
+                <!-- HP is "primary home" from codeSystem 2.16.840.1.113883.5.1119 -->
+                <streetAddressLine>123 Sesame Street</streetAddressLine>
+                <city>Lakeville</city>
+                <state>MN</state>
+                <postalCode>55044</postalCode>
+                <country>US</country>
+                <!-- US is "United States" from ISO 3166-1 Country Codes: 1.0.3166.1 -->
+            </addr>
+        <addr use="HP">
+          <streetAddressLine nullFlavor="UNK"></streetAddressLine>
+          <city nullFlavor="UNK"></city>
+          <state nullFlavor="UNK"></state>
+          <postalCode nullFlavor="UNK"></postalCode>
+          <country>USA</country>
+          <useablePeriod xsi:type="IVL_TS">
+            <low value="20210819"></low>
+            <high value="20210818"></high>
+          </useablePeriod>
+        </addr>
+        <telecom use="HP" value="tel:+1-555-123-4568"></telecom>
+        <telecom value="mailto:support@kno2.com"></telecom>
+        <patient>
+          <name use="L">
+            <given>EMS</given>
+            <family>TESTPATIENT</family>
+          </name>
+          <name use="P">
+            <given>EMS</given>
+            <family>TESTPATIENT</family>
+          </name>
+          <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGenderCode" displayName="Male"></administrativeGenderCode>
+          <birthTime value="19350501"></birthTime>
+          <sdtc:deceasedInd value="false"></sdtc:deceasedInd>
+          <maritalStatusCode code="S" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" displayName="Single"></maritalStatusCode>
+          <raceCode code="2106-3" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity" displayName="White"></raceCode>
+          <ethnicGroupCode code="2186-5" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity" displayName="Not Hispanic or Latino"></ethnicGroupCode>
+		  <birthplace>
+                    <place>
+                        <addr>
+                            <city>Lakeville</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>US</country>
+                        </addr>
+                    </place>
+                </birthplace>
+          <languageCommunication>
+            <languageCode code="eng"></languageCode>
+            <modeCode code="RWR" codeSystem="2.16.840.1.113883.5.60" displayName="Received Written"></modeCode>
+            <preferenceInd value="true"></preferenceInd>
+          </languageCommunication>
+        </patient>
+        <providerOrganization>
+          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+          <name>Kno2 Emergency</name>
+          <telecom nullFlavor="NI"></telecom>
+          <addr use="WP">
+            <streetAddressLine>234 Main St</streetAddressLine>
+            <county>Hennepin</county>
+            <city>Minneapolis</city>
+            <state>MN</state>
+            <postalCode>55044</postalCode>
+            <country>USA</country>
+          </addr>
+        </providerOrganization>
+      </patientRole>
+    </recordTarget>
+    <author>
+      <time value="20211119105308-0700"></time>
+      <assignedAuthor>
+        <id extension="9.7" root="1.2.840.114350.1.1"></id>
+        <addr nullFlavor="NA"></addr>
+        <telecom nullFlavor="NA"></telecom>
+        <assignedAuthoringDevice>
+          <manufacturerModelName>Epic - Version 9.7</manufacturerModelName>
+          <softwareName>Epic - Version 9.7</softwareName>
+        </assignedAuthoringDevice>
+        <representedOrganization>
+          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+          <name>Kno2 Emergency</name>
+          <telecom nullFlavor="NI"></telecom>
+          <addr use="WP">
+            <streetAddressLine>234 Main St</streetAddressLine>
+            <county>Hennepin</county>
+            <city>Minneapolis</city>
+            <state>MN</state>
+            <postalCode>55044</postalCode>
+            <country>USA</country>
+          </addr>
+        </representedOrganization>
+      </assignedAuthor>
+    </author>
+    <custodian>
+      <assignedCustodian>
+        <representedCustodianOrganization>
+          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+          <name>Kno2 Emergency</name>
+          <telecom nullFlavor="NI"></telecom>
+          <addr use="WP">
+            <streetAddressLine>234 Main St</streetAddressLine>
+            <county>Hennepin</county>
+            <city>Minneapolis</city>
+            <state>MN</state>
+            <postalCode>55044</postalCode>
+            <country>USA</country>
+          </addr>
+        </representedCustodianOrganization>
+      </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+      <time value="20211119105308-0700"></time>
+      <signatureCode code="S"></signatureCode>
+      <assignedEntity>
+        <id extension="97622" root="1.2.840.114350.1.13.436.2.7.2.697780"></id>
+        <code nullFlavor="UNK"></code>
+        <addr nullFlavor="UNK"></addr>
+        <telecom nullFlavor="UNK"></telecom>
+        <assignedPerson>
+          <name use="L">
+            <given>Kno2</given>
+            <family>HIM</family>
+          </name>
+        </assignedPerson>
+      </assignedEntity>
+    </legalAuthenticator>
+    <participant typeCode="IND">
+      <time value="20210819"></time>
+      <associatedEntity classCode="ECON">
+        <id extension="21828700" root="1.2.840.114350.1.13.436.2.7.2.827665"></id>
+        <code code="FTH" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Father">
+          <originalText>Father</originalText>
+        </code>
+        <addr nullFlavor="UNK"></addr>
+        <telecom use="HP" value="tel:+1-555-123-4567"></telecom>
+        <associatedPerson>
+          <name>ZZTest Parent Father</name>
+        </associatedPerson>
+      </associatedEntity>
+    </participant>
+    <participant typeCode="IND">
+      <time value="20210819"></time>
+      <associatedEntity classCode="ECON">
+        <id extension="21828701" root="1.2.840.114350.1.13.436.2.7.2.827665"></id>
+        <code code="MTH" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Mother">
+          <originalText>Mother</originalText>
+        </code>
+        <addr nullFlavor="UNK"></addr>
+        <telecom use="HP" value="tel:+1-555-234-4567"></telecom>
+        <associatedPerson>
+          <name>ZZTest Parent Mother</name>
+        </associatedPerson>
+      </associatedEntity>
+    </participant>
+    <documentationOf typeCode="DOC">
+      <serviceEvent classCode="PCPR">
+        <templateId root="2.16.840.1.113883.10.20.21.3.1"></templateId>
+        <effectiveTime>
+          <low value="20211117115300-0700"></low>
+          <high value="20211117124300-0700"></high>
+        </effectiveTime>
+        <performer typeCode="PRF">
+          <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+            <originalText>General</originalText>
+          </functionCode>
+          <time>
+            <low value="20210819"></low>
+            <high nullFlavor="PINF"></high>
+          </time>
+          <assignedEntity>
+            <id nullFlavor="UNK"></id>
+            <addr nullFlavor="UNK"></addr>
+            <telecom nullFlavor="NA"></telecom>
+            <assignedPerson>
+              <name use="L">
+                <given>None</given>
+                <given>Given</given>
+                <family>Pcp</family>
+              </name>
+            </assignedPerson>
+            <representedOrganization classCode="ORG">
+              <telecom nullFlavor="UNK"></telecom>
+              <addr nullFlavor="UNK"></addr>
+            </representedOrganization>
+          </assignedEntity>
+        </performer>
+      </serviceEvent>
+    </documentationOf>
+    <relatedDocument typeCode="RPLC">
+      <parentDocument>
+        <id assigningAuthorityName="EPC" root="1.2.840.114350.1.13.436.2.7.8.688883.256031048"></id>
+        <setId assigningAuthorityName="EPC" extension="3dd7ac3e-488d-11ec-9d7b-5f09a1df5f0e" root="1.2.840.114350.1.13.436.2.7.1.1"></setId>
+        <versionNumber value="1"></versionNumber>
+      </parentDocument>
+    </relatedDocument>
+    <componentOf>
+      <encompassingEncounter>
+        <id extension="184262530" root="1.2.840.114350.1.13.436.2.7.3.698084.8"></id>
+        <code code="EMER" codeSystem="2.16.840.1.113883.5.4" displayName="Emergency">
+          <originalText>Emergency</originalText>
+          <translation code="3" codeSystem="1.2.840.114350.1.72.1.30" displayName="Hospital Encounter"></translation>
+          <translation code="0" codeSystem="1.2.840.114350.1.72.1.30.1"></translation>
+        </code>
+        <effectiveTime>
+          <low value="20211117115300-0700"></low>
+          <high value="20211117124300-0700"></high>
+        </effectiveTime>
+        <dischargeDispositionCode code="1" codeSystem="1.2.840.114350.1.13.436.2.7.4.698084.18888" codeSystemName="EPC" displayName="*Home or Self Care"></dischargeDispositionCode>
+        <responsibleParty>
+          <assignedEntity>
+            <id extension="1336460708" root="2.16.840.1.113883.4.6"></id>
+            <addr use="WP">
+              <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+              <streetAddressLine>PO Box 999999</streetAddressLine>
+              <city>Lakeville</city>
+              <state>MN</state>
+              <postalCode>55044-0000</postalCode>
+              <country>USA</country>
+            </addr>
+            <telecom use="WP" value="tel:+1-555-123-8738"></telecom>
+            <telecom value="fax:+1-555-123-8738"></telecom>
+            <assignedPerson>
+              <name>
+                <given>EDDoc</given>
+                <given>TestPhysician</given>
+                <family>TestEDAttending</family>
+              </name>
+            </assignedPerson>
+            <representedOrganization>
+              <name>Kno2 Emergency</name>
+            </representedOrganization>
+          </assignedEntity>
+        </responsibleParty>
+        <encounterParticipant typeCode="ATND">
+          <time value="20211117115300-0700"></time>
+          <assignedEntity>
+            <id extension="1336460708" root="2.16.840.1.113883.4.6"></id>
+            <code nullFlavor="UNK">
+              <originalText>Emergency Medicine</originalText>
+            </code>
+            <addr use="WP">
+              <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+              <streetAddressLine>PO Box 999999</streetAddressLine>
+              <city>Lakeville</city>
+              <state>MN</state>
+              <postalCode>55044-0000</postalCode>
+              <country>USA</country>
+            </addr>
+            <telecom use="WP" value="tel:+1-555-013-4455"></telecom>
+            <telecom value="fax:+1-555-013-4455"></telecom>
+            <assignedPerson>
+              <name use="L">
+                <given>EDDoc</given>
+                <given>TestPhysician</given>
+                <family>TestEDAttending</family>
+                <suffix qualifier="AC"> MD</suffix>
+              </name>
+            </assignedPerson>
+          </assignedEntity>
+        </encounterParticipant>
+        <location>
+          <healthCareFacility>
+            <id extension="100460001" root="1.2.840.114350.1.13.436.2.7.2.686980"></id>
+            <code nullFlavor="UNK">
+              <originalText>Emergency Medicine</originalText>
+              <translation code="17" codeSystem="1.2.840.114350.1.72.1.7.7.10.688867.4150" codeSystemName="Epic.DepartmentSpecialty" displayName="Emergency Medicine"></translation>
+            </code>
+            <location>
+              <name>Kno2 Emergent and Urgent Care Center</name>
+              <addr use="WP">
+                <streetAddressLine>1252 County Rd 8</streetAddressLine>
+                <county>SUMMIT</county>
+                <city>Lakeville</city>
+                <state>MN</state>
+                <postalCode>55044</postalCode>
+              </addr>
+            </location>
+            <serviceProviderOrganization>
+              <id extension="10046" root="1.2.840.114350.1.13.436.2.7.2.696570"></id>
+              <name>Kno2 Emergent and Urgent Care Center</name>
+              <addr use="WP">
+                <streetAddressLine>1252 County Rd 8</streetAddressLine>
+                <county>SUMMIT</county>
+                <city>Lakeville</city>
+                <state>MN</state>
+                <postalCode>55044</postalCode>
+              </addr>
+              <asOrganizationPartOf>
+                <wholeOrganization>
+                  <name>Kno2 Emergency</name>
+                  <addr nullFlavor="NA"></addr>
+                </wholeOrganization>
+              </asOrganizationPartOf>
+            </serviceProviderOrganization>
+          </healthCareFacility>
+        </location>
+      </encompassingEncounter>
+    </componentOf>
+    <component>
+      <structuredBody>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.12"></templateId>
+            <code code="29299-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="REASON FOR VISIT"></code>
+            <title>Reason for Visit</title>
+            <text>
+              <list>
+                <item>
+                  <table>
+                    <colgroup>
+                      <col width="25%"></col>
+                      <col width="75%"></col>
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>Reason</th>
+                        <th>Comments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ID="rfv2">
+                        <td ID="reasonrfv2">Shoulder Pain</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </item>
+              </list>
+            </text>
+            <entry>
+              <observation classCode="OBS" moodCode="EVN">
+                <templateId root="1.2.840.114350.1.72.7"></templateId>
+                <id extension="1o+nFF4ykgIhWiSw1AZ60Drkt8pr1um+3msi5kMvzEg=" root="1.2.840.114350.1.13.436.2.7.2.728286"></id>
+                <code code="8661-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Chief Complaint"></code>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime nullFlavor="UNK"></effectiveTime>
+                <value code="45326000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Shoulder pain" xsi:type="CD">
+                  <originalText>Shoulder Pain</originalText>
+                  <translation code="EPIC#2437" codeSystem="1.2.840.114350.1.13.436.2.7.3.727688.40" codeSystemName="Epic.HpiConcept" displayName="SYMPTOMS - MUSCULOSKELETAL - EXTREMITIES - UPPER EXTREMITIES - SHOULDERS - SHOULDER PAIN"></translation>
+                </value>
+              </observation>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.22"></templateId>
+            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.22"></templateId>
+            <templateId root="2.16.840.1.113883.10.20.22.2.22.1"></templateId>
+            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.22.1"></templateId>
+            <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Hospitalizations+Outpatient visits Narrative"></code>
+            <title>Encounter Details</title>
+            <text>
+              <table>
+                <colgroup>
+                  <col width="10%"></col>
+                  <col width="15%"></col>
+                  <col span="3" width="25%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Department</th>
+                    <th>Care Team</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ID="encounter3" styleCode="xRowNormal">
+                    <td>11/17/2021</td>
+                    <td ID="encounter3type">Emergency</td>
+                    <td>
+                      <paragraph>Kno2 Emergent and Urgent Care Center</paragraph>
+                      <paragraph>1252 County Rd 8</paragraph>
+                      <paragraph>Lakeville, MN 55044</paragraph>
+                      <paragraph>555-555-2233</paragraph>
+                    </td>
+                    <td>
+                      <paragraph styleCode="Bold">TestEDAttending, ED Attending, MD</paragraph>
+                      <paragraph>567 Somewhere Ave</paragraph>
+                      <paragraph>PO Box 999999</paragraph>
+                      <paragraph>Lakeville, MN 55044-0000</paragraph>
+                      <paragraph>555-555-0030 (Work)</paragraph>
+                      <paragraph>555-555-0031 (Fax)</paragraph>
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </text>
+            <entry>
+              <encounter classCode="ENC" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                <id assigningAuthorityName="EPIC" extension="184262530" root="1.2.840.114350.1.13.436.2.7.3.698084.8"></id>
+                <code code="EMER" codeSystem="2.16.840.1.113883.5.4">
+                  <originalText>
+                    <reference value="#encounter3type"></reference>
+                  </originalText>
+                  <translation code="3" codeSystem="1.2.840.114350.1.13.436.2.7.4.698084.30" codeSystemName="Epic.EncounterType"></translation>
+                  <translation code="3" codeSystem="1.2.840.114350.1.72.1.30"></translation>
+                  <translation code="0" codeSystem="1.2.840.114350.1.72.1.30.1"></translation>
+                </code>
+                <text>
+                  <reference value="#encounter3"></reference>
+                </text>
+                <statusCode code="normal"></statusCode>
+                <effectiveTime>
+                  <low value="20211117115300-0700"></low>
+                  <high value="20211117124300-0700"></high>
+                </effectiveTime>
+                <sdtc:dischargeDispositionCode code="1" codeSystem="1.2.840.114350.1.13.436.2.7.4.698084.18888" codeSystemName="EPC" displayName="*Home or Self Care">
+                  <originalText>*Home or Self Care</originalText>
+                </sdtc:dischargeDispositionCode>
+                <performer typeCode="PRF">
+                  <time>
+                    <low nullFlavor="UNK"></low>
+                    <high nullFlavor="UNK"></high>
+                  </time>
+                  <assignedEntity classCode="ASSIGNED">
+                    <id extension="1336460708" root="2.16.840.1.113883.4.6"></id>
+                    <code nullFlavor="UNK">
+                      <originalText>Emergency Medicine</originalText>
+                    </code>
+                    <addr use="WP">
+                      <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+                      <streetAddressLine>PO Box 999999</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>55044-0000</postalCode>
+                      <country>USA</country>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-555-013-4455"></telecom>
+                    <telecom value="fax:+1-555-013-4455"></telecom>
+                    <assignedPerson>
+                      <name>
+                        <given>EDDoc</given>
+                        <given>TestPhysician</given>
+                        <family>TestEDAttending</family>
+                        <suffix qualifier="AC">MD</suffix>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization classCode="ORG">
+                      <name>Kno2 Emergency</name>
+                      <telecom nullFlavor="NI"></telecom>
+                      <addr use="WP">
+                        <streetAddressLine>234 Main St</streetAddressLine>
+                        <county>Hennepin</county>
+                        <city>Minneapolis</city>
+                        <state>MN</state>
+                        <postalCode>55044</postalCode>
+                        <country>USA</country>
+                      </addr>
+                    </representedOrganization>
+                  </assignedEntity>
+                </performer>
+                <participant typeCode="LOC">
+                  <participantRole classCode="SDLOC">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.32"></templateId>
+                    <id extension="100460001" root="1.2.840.114350.1.13.436.2.7.2.686980"></id>
+                    <code nullFlavor="UNK">
+                      <originalText>Emergency Medicine</originalText>
+                      <translation code="17" codeSystem="1.2.840.114350.1.72.1.7.7.10.688867.4150" codeSystemName="Epic.DepartmentSpecialty" displayName="Emergency Medicine"></translation>
+                    </code>
+                    <addr use="WP">
+                      <streetAddressLine>1252 County Rd 8</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>55044</postalCode>
+                    </addr>
+                    <playingEntity classCode="PLC">
+                      <name>Kno2 Emergent and Urgent Care Center</name>
+                      <desc>Emergency Medicine</desc>
+                    </playingEntity>
+                  </participantRole>
+                </participant>
+                <entryRelationship typeCode="SUBJ">
+                  <act classCode="ACT" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.80"></templateId>
+                    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.80"></templateId>
+                    <id extension="184262530-1191185-concern" root="1.2.840.114350.1.13.436.2.7.1.1099.1"></id>
+                    <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"></code>
+                    <statusCode code="active"></statusCode>
+                    <entryRelationship inversionInd="false" typeCode="SUBJ">
+                      <observation classCode="OBS" moodCode="EVN">
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4"></templateId>
+                        <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.4"></templateId>
+                        <id extension="184262530-1191185" root="1.2.840.114350.1.13.436.2.7.1.1099.1"></id>
+                        <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                          <translation code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"></translation>
+                        </code>
+                        <text>Acromioclavicular (AC) joint injury, left, initial encounter</text>
+                        <statusCode code="completed"></statusCode>
+                        <effectiveTime>
+                          <low nullFlavor="UNK"></low>
+                        </effectiveTime>
+                        <value code="699467005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" xsi:type="CD">
+                          <originalText>Acromioclavicular (AC) joint injury, left, initial encounter</originalText>
+                          <translation code="S49.92XA" codeSystem="2.16.840.1.113883.6.90" codeSystemName="ICD10" displayName="Acromioclavicular (AC) joint injury, left, initial encounter"></translation>
+                          <translation code="959.2" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD9" displayName="Acromioclavicular (AC) joint injury, left, initial encounter"></translation>
+                          <translation code="32549870" codeSystem="2.16.840.1.113883.3.247.1.1" codeSystemName="Intelligent Medical Objects ProblemIT" displayName="Acromioclavicular (AC) joint injury, left, initial encounter"></translation>
+                        </value>
+                        <entryRelationship typeCode="REFR">
+                          <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.6"></templateId>
+                            <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" displayName="Status"></code>
+                            <statusCode code="completed"></statusCode>
+                            <effectiveTime>
+                              <low nullFlavor="UNK"></low>
+                            </effectiveTime>
+                            <value code="55561003" codeSystem="2.16.840.1.113883.6.96" displayName="Active" xsi:type="CE"></value>
+                          </observation>
+                        </entryRelationship>
+                      </observation>
+                    </entryRelationship>
+                  </act>
+                </entryRelationship>
+                <entryRelationship typeCode="SUBJ">
+                  <act classCode="ACT" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.80"></templateId>
+                    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.80"></templateId>
+                    <id extension="184262530-762065-concern" root="1.2.840.114350.1.13.436.2.7.1.1099.1"></id>
+                    <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"></code>
+                    <statusCode code="active"></statusCode>
+                    <entryRelationship inversionInd="false" typeCode="SUBJ">
+                      <observation classCode="OBS" moodCode="EVN">
+                        <templateId root="2.16.840.1.113883.10.20.22.4.4"></templateId>
+                        <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.4"></templateId>
+                        <id extension="184262530-762065" root="1.2.840.114350.1.13.436.2.7.1.1099.1"></id>
+                        <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                          <translation code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"></translation>
+                        </code>
+                        <text>Snowboarding accident, initial encounter</text>
+                        <statusCode code="completed"></statusCode>
+                        <effectiveTime>
+                          <low nullFlavor="UNK"></low>
+                        </effectiveTime>
+                        <value code="242693000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" xsi:type="CD">
+                          <originalText>Snowboarding accident, initial encounter</originalText>
+                          <translation code="V00.318A" codeSystem="2.16.840.1.113883.6.90" codeSystemName="ICD10" displayName="Snowboarding accident, initial encounter"></translation>
+                          <translation code="E885.4" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD9" displayName="Snowboarding accident, initial encounter"></translation>
+                          <translation code="1894325" codeSystem="2.16.840.1.113883.3.247.1.1" codeSystemName="Intelligent Medical Objects ProblemIT" displayName="Snowboarding accident, initial encounter"></translation>
+                        </value>
+                        <entryRelationship typeCode="REFR">
+                          <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.6"></templateId>
+                            <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" displayName="Status"></code>
+                            <statusCode code="completed"></statusCode>
+                            <effectiveTime>
+                              <low nullFlavor="UNK"></low>
+                            </effectiveTime>
+                            <value code="55561003" codeSystem="2.16.840.1.113883.6.96" displayName="Active" xsi:type="CE"></value>
+                          </observation>
+                        </entryRelationship>
+                      </observation>
+                    </entryRelationship>
+                  </act>
+                </entryRelationship>
+              </encounter>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.17"></templateId>
+            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.17"></templateId>
+            <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Social history Narrative"></code>
+            <title>Social History</title>
+            <text>
+              <table ID="sochist9">
+                <colgroup>
+                  <col span="2" width="25%"></col>
+                  <col width="13%"></col>
+                  <col width="12%"></col>
+                  <col width="25%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Tobacco Use</th>
+                    <th>Types</th>
+                    <th>Packs/Day</th>
+                    <th>Years Used</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Never Smoker</td>
+                    <td></td>
+                    <td ID="sochist9packsperday"></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr ID="sochist9smokeless">
+                    <td>Smokeless Tobacco: Never Used</td>
+                    <td></td>
+                    <td colspan="2"></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table>
+                <colgroup>
+                  <col span="2" width="25%"></col>
+                  <col width="50%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Alcohol Use</th>
+                    <th>Standard Drinks/Week</th>
+                    <th>Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td ID="alcoholStatus">Yes</td>
+                    <td>0 (1 standard drink = 0.6 oz pure alcohol)</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table>
+                <colgroup>
+                  <col width="25%"></col>
+                  <col width="75%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Sex Assigned at Birth</th>
+                    <th>Date Recorded</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ID="BirthSex10">
+                    <td ID="BirthSex10Value">Not on file</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <footnote ID="subTitle8" styleCode="xSectionSubTitle">documented as of this encounter</footnote>
+            </text>
+            <entry>
+              <observation classCode="OBS" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.78"></templateId>
+                <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.78"></templateId>
+                <id extension="Z7146137^^72166-2" root="1.2.840.114350.1.13.436.2.7.1.1040.1"></id>
+                <code code="72166-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Tobacco smoking status NHIS"></code>
+                <text>
+                  <reference value="#sochist9"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117"></effectiveTime>
+                <value code="266919005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Never smoked tobacco" xsi:type="CD"></value>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20211117"></time>
+                  <assignedAuthor>
+                    <id extension="253092555" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                    <id extension="30129" root="1.2.840.114350.1.13.436.2.7.2.836982"></id>
+                    <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                    <addr nullFlavor="UNK"></addr>
+                    <telecom nullFlavor="UNK"></telecom>
+                    <assignedPerson>
+                      <name use="L">
+                        <given>Donald</given>
+                        <given>Z</given>
+                        <family>Bowling</family>
+                        <suffix qualifier="AC"> RN</suffix>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                      <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                      <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                      <name>Kno2 Emergency</name>
+                      <addr use="WP">
+                        <streetAddressLine>234 Main St</streetAddressLine>
+                        <county>Hennepin</county>
+                        <city>Minneapolis</city>
+                        <state>MN</state>
+                        <postalCode>55044</postalCode>
+                        <country>USA</country>
+                      </addr>
+                    </representedOrganization>
+                  </assignedAuthor>
+                </author>
+              </observation>
+            </entry>
+            <entry>
+              <observation classCode="OBS" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.38"></templateId>
+                <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.38"></templateId>
+                <id extension="Z7146137^^713914004" root="1.2.840.114350.1.13.436.2.7.1.1040.8"></id>
+                <code code="229819007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="Tobacco use and exposure">
+                  <translation code="88031-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Smokeless tobacco status"></translation>
+                </code>
+                <text>
+                  <reference value="#sochist9smokeless"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117"></effectiveTime>
+                <value code="451381000124107" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Smokeless tobacco non-user" xsi:type="CD"></value>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time nullFlavor="UNK"></time>
+                  <assignedAuthor>
+                    <id extension="253092555" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                  </assignedAuthor>
+                </author>
+              </observation>
+            </entry>
+            <entry>
+              <observation classCode="OBS" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.38"></templateId>
+                <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.38"></templateId>
+                <id extension="Z7146137^55465.97^160573003" root="1.2.840.114350.1.13.436.2.7.1.1040.12"></id>
+                <code code="160573003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Alcohol intake">
+                  <translation code="11331-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Alcohol Use"></translation>
+                </code>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117"></effectiveTime>
+                <value code="219006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Current drinker of alcohol (finding)" xsi:type="CD">
+                  <originalText>
+                    <reference value="#alcoholStatus"></reference>
+                  </originalText>
+                </value>
+              </observation>
+            </entry>
+            <entry>
+              <observation classCode="OBS" moodCode="EVN">
+                <templateId extension="2016-06-01" root="2.16.840.1.113883.10.20.22.4.200"></templateId>
+                <id extension="Z7146137" root="1.2.840.114350.1.13.436.2.7.1.1040.20"></id>
+                <code code="76689-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Sex Assigned At Birth"></code>
+                <text>
+                  <reference value="#BirthSex10"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="19980112"></effectiveTime>
+                <value codeSystem="2.16.840.1.113883.5.1" nullFlavor="UNK" xsi:type="CD">
+                  <originalText>
+                    <reference value="#BirthSex10Value"></reference>
+                  </originalText>
+                </value>
+              </observation>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.4"></templateId>
+            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.4"></templateId>
+            <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital signs"></code>
+            <title>Last Filed Vital Signs</title>
+            <text>
+              <table>
+                <colgroup>
+                  <col span="4" width="25%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Vital Sign</th>
+                    <th>Reading</th>
+                    <th>Time Taken</th>
+                    <th>Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr styleCode="xRowNormal">
+                    <td styleCode="xcellHeader">Blood Pressure</td>
+                    <td>
+                      <content ID="sysBP_5708084040">153</content>/
+                      <content ID="diaBP_5708084040">86</content>
+                    </td>
+                    <td>11/17/2021 11:54 AM MST</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="pulse_5708084040" styleCode="xRowAlt">
+                    <td styleCode="xcellHeader">Pulse</td>
+                    <td>80</td>
+                    <td>11/17/2021 11:54 AM MST</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="temp_5708084040" styleCode="xRowNormal">
+                    <td styleCode="xcellHeader">Temperature</td>
+                    <td>36 &#176;C (96.8 &#176;F)</td>
+                    <td>11/17/2021 11:54 AM MST</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="resp_5708084040" styleCode="xRowAlt">
+                    <td styleCode="xcellHeader">Respiratory Rate</td>
+                    <td>18</td>
+                    <td>11/17/2021 11:54 AM MST</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="SpO2_5708084040" styleCode="xRowNormal">
+                    <td styleCode="xcellHeader">Oxygen Saturation</td>
+                    <td>93%</td>
+                    <td>11/17/2021 11:54 AM MST</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="inhaled_" styleCode="xRowAlt">
+                    <td styleCode="xcellHeader">Inhaled Oxygen Concentration</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="weight_5708086380" styleCode="xRowNormal">
+                    <td styleCode="xcellHeader">Weight</td>
+                    <td>79.4 kg (175 lb)</td>
+                    <td>11/17/2021 12:33 PM MST</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="height_5708086380" styleCode="xRowAlt">
+                    <td styleCode="xcellHeader">Height</td>
+                    <td>177.8 cm (5&apos; 10&quot;)</td>
+                    <td>11/17/2021 12:33 PM MST</td>
+                    <td></td>
+                  </tr>
+                  <tr ID="bmi_5708086380" styleCode="xRowNormal">
+                    <td styleCode="xcellHeader">Body Mass Index</td>
+                    <td>25.11</td>
+                    <td>11/17/2021 12:33 PM MST</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <footnote ID="subTitle11" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+            </text>
+            <entry typeCode="DRIV">
+              <organizer classCode="CLUSTER" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.26"></templateId>
+                <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.26"></templateId>
+                <id extension="5708084040-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109"></id>
+                <code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Vital signs">
+                  <translation code="74728-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital signs, weight, height, head circumference, oximetry, BMI, and BSA panel - HL7.CCDAr1.1"></translation>
+                </code>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117185400+0000"></effectiveTime>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708084040-sysBP-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Systolic blood pressure</originalText>
+                    </code>
+                    <text>
+                      <reference value="#sysBP_5708084040"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117185400+0000"></effectiveTime>
+                    <value unit="mm[Hg]" value="153" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117115452-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708084040-diaBP-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Diastolic blood pressure</originalText>
+                    </code>
+                    <text>
+                      <reference value="#diaBP_5708084040"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117185400+0000"></effectiveTime>
+                    <value unit="mm[Hg]" value="86" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117115452-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708084040-pulse-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Heart rate</originalText>
+                    </code>
+                    <text>
+                      <reference value="#pulse_5708084040"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117185400+0000"></effectiveTime>
+                    <value unit="/min" value="80" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117115452-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708084040-tempC83-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Body temperature</originalText>
+                    </code>
+                    <text>
+                      <reference value="#temp_5708084040"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117185400+0000"></effectiveTime>
+                    <value unit="Cel" value="36" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117115452-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708084040-resp-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="9279-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Respiratory rate</originalText>
+                    </code>
+                    <text>
+                      <reference value="#resp_5708084040"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117185400+0000"></effectiveTime>
+                    <value unit="/min" value="18" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117115452-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708084040-SpO2-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="59408-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Oxygen saturation in Arterial blood by Pulse oximetry</originalText>
+                    </code>
+                    <text>
+                      <reference value="#SpO2_5708084040"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117185400+0000"></effectiveTime>
+                    <value unit="%" value="93" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117115452-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+              </organizer>
+            </entry>
+            <entry typeCode="DRIV">
+              <organizer classCode="CLUSTER" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.26"></templateId>
+                <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.26"></templateId>
+                <id extension="5708086380-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109"></id>
+                <code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Vital signs">
+                  <translation code="74728-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital signs, weight, height, head circumference, oximetry, BMI, and BSA panel - HL7.CCDAr1.1"></translation>
+                </code>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117193300+0000"></effectiveTime>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708086380-heightC83-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Body height</originalText>
+                    </code>
+                    <text>
+                      <reference value="#height_5708086380"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117193300+0000"></effectiveTime>
+                    <value unit="cm" value="177.8" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117123330-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708086380-weightC83-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="29463-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Body weight</originalText>
+                    </code>
+                    <text>
+                      <reference value="#weight_5708086380"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117193300+0000"></effectiveTime>
+                    <value unit="kg" value="79.379" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117123330-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.27"></templateId>
+                    <id extension="5708086380-bmi-Z7146137" root="1.2.840.114350.1.13.436.2.7.1.2109.1"></id>
+                    <code code="39156-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>BMI</originalText>
+                    </code>
+                    <text>
+                      <reference value="#bmi_5708086380"></reference>
+                    </text>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117193300+0000"></effectiveTime>
+                    <value unit="kg/m2" value="25.11" xsi:type="PQ"></value>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117123330-0700"></time>
+                      <assignedAuthor>
+                        <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="UNK"></telecom>
+                        <representedOrganization>
+                          <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                          <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                          <name>Kno2 Emergency</name>
+                          <addr use="WP">
+                            <streetAddressLine>234 Main St</streetAddressLine>
+                            <county>Hennepin</county>
+                            <city>Minneapolis</city>
+                            <state>MN</state>
+                            <postalCode>55044</postalCode>
+                            <country>USA</country>
+                          </addr>
+                        </representedOrganization>
+                      </assignedAuthor>
+                    </author>
+                  </observation>
+                </component>
+              </organizer>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.41"></templateId>
+            <id root="8DF1A132-4961-11EC-80D6-0E091C6194B0"></id>
+            <code code="8653-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Discharge Instructions"></code>
+            <title>Discharge Instructions</title>
+            <text>
+              <list ID="Instructions20" styleCode="xTOC">
+                <item>
+                  <caption>Instructions</caption>
+                  <list>
+                    <item>
+                      <paragraph> 
+                        <content styleCode="xLabel">TestEDAttending, ED Attending, MD - 11/17/2021</content>
+                      </paragraph>
+                      <paragraph>
+                        <content styleCode="xLabel">Formatting of this note might be different from the original.</content>
+                        <br></br>Please read all discharge instructions.  Take medications as prescribed.  Please follow-up for reevaluation of your symptoms.  Return to the emergency department immediately for any concerning symptoms such as worsening pain, increased swelling, numbness, tingling, or weakness.</paragraph>
+                      <br></br>
+                    </item>
+                  </list>
+                </item>
+                <item>
+                  <caption>Attachments</caption>
+                  <paragraph styleCode="Bold">The following attachments cannot be sent through Care Everywhere.</paragraph>
+                  <list>
+                    <item>Separated Shoulder (English)</item>
+                  </list></item>
+              </list>
+              <footnote ID="subTitle19" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+            </text>
+            <entry>
+              <act classCode="ACT" moodCode="INT">
+                <templateId root="2.16.840.1.113883.10.20.22.4.20"></templateId>
+                <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.20"></templateId>
+                <code code="311401005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Patient Education"></code>
+                <text>
+                  <reference value="#Instructions20"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+              </act>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <code code="34111-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Emergency department note"></code>
+            <title>ED Notes</title>
+            <text>
+              <list styleCode="xTOC">
+                <item ID="Note15">
+                  <caption>ED Nurse - 11/17/2021 12:37 PM MST</caption>
+                  <paragraph>
+                    <content styleCode="xLabel">Formatting of this note might be different from the original.</content>
+                    <br></br>All belongings returned to patient on discharge. 
+                    <br></br>
+                    <br></br> 
+                    <br></br>ED Nurse
+                    <br></br>11/17/21 1237
+                    <br></br>
+                  </paragraph>
+                  <paragraph styleCode="xLabel">Electronically signed by ED Nurse at 11/17/2021 12:37 PM MST</paragraph>
+                </item>
+                <item ID="Note16">
+                  <caption>Donald Z Bowling, RN - 11/17/2021 11:58 AM MST</caption>
+                  <paragraph>
+                    <content styleCode="xLabel">Formatting of this note might be different from the original.</content>
+                    <br></br>L shoulder pain, point tenderness/deformity over AC joint. Fall while snowboarding impacting snow. </paragraph>
+                  <paragraph styleCode="xLabel">Electronically signed by Donald Z Bowling, RN at 11/17/2021 11:58 AM MST</paragraph>
+                </item>
+                <item ID="Note17">
+                  <caption>ED Attending TestPhysician, MD - 11/17/2021 11:48 AM MST</caption>
+                  <paragraph>
+                    <content styleCode="xLabel">Formatting of this note is different from the original.</content>
+                    <br></br>Final diagnoses: 
+                    <br></br>Acromioclavicular (AC) joint injury, left, initial encounter 
+                    <br></br>Snowboarding accident, initial encounter 
+                    <br></br> 
+                    <br></br>New Prescriptions 
+                    <br></br> No medications on file 
+                    <br></br> 
+                    <br></br>Follow Up Plan: Test Orthopedics - Colorado
+                    <br></br>11650 West 2nd Pl
+                    <br></br>Lakeville Colorado 80228
+                    <br></br>555-321-1234
+                    <br></br>
+                    <br></br>FOLLOW UP:, Follow up with your home orthopedist, within 1 week
+                    <br></br>
+                    <br></br>Medications - No data to display  
+                    <br></br>
+                    <br></br>There are no discharge medications for this patient.
+                    <br></br> 
+                    <br></br>Chief Complaint: Shoulder Pain
+                    <br></br>HPI: This 27 y.o. male presents to the Kno2 Medical Center via Kno2 ski patrol due to left shoulder pain that occurred just prior to arrival when the patient was snowboarding at Kno2 ski resort and caught an edge, falling onto the left side of the head and the left shoulder.  He did not lose consciousness.  He complains of 4 out of 10 pain to the left shoulder.  He denies any numbness, tingling, or weakness.  He denies any other injury.
+                    <br></br>ROS:
+                    <br></br>General: No generalized weakness.
+                    <br></br>CV: Denies chest pain.
+                    <br></br>Respiratory: Denies cough or shortness of breath.
+                    <br></br>GI: Denies nausea or abdominal pain.
+                    <br></br>Musculoskeletal: See history of the present illness. Denies neck pain. Denies back pain.
+                    <br></br>Skin: Denies lacerations. Denies abrasions.
+                    <br></br>Neuro: Denies headache. Denies numbness or tingling.  Denies localized weakness.
+                    <br></br>Allergies:No Known Allergies
+                    <br></br>ED Current OP Medications  
+                    <br></br> None 
+                    <br></br> 
+                    <br></br>
+                    <br></br>Past Medical, Social , and Family History (reviewed):
+                    <br></br>Past Medical History: 
+                    <br></br>Diagnosis Date 
+                    <br></br>• Patient denies medical problems  
+                    <br></br>
+                    <br></br>Past Surgical History reviewed. No pertinent surgical history.
+                    <br></br>Social History 
+                    <br></br>
+                    <br></br>Socioeconomic History 
+                    <br></br>• Marital status: Single 
+                    <br></br>  Spouse name: None 
+                    <br></br>• Number of children: None 
+                    <br></br>• Years of education: None 
+                    <br></br>• Highest education level: None 
+                    <br></br>Occupational History 
+                    <br></br>• None 
+                    <br></br>Tobacco Use 
+                    <br></br>• Smoking status: Never Smoker 
+                    <br></br>• Smokeless tobacco: Never Used 
+                    <br></br>Vaping Use 
+                    <br></br>• Vaping Use: Never used 
+                    <br></br>Substance and Sexual Activity 
+                    <br></br>• Alcohol use: Yes 
+                    <br></br>• Drug use: Defer 
+                    <br></br>• Sexual activity: Defer 
+                    <br></br>Other Topics Concern 
+                    <br></br>• None 
+                    <br></br>Social History Narrative 
+                    <br></br>• None 
+                    <br></br>
+                    <br></br>Social Determinants of Health 
+                    <br></br>
+                    <br></br>Financial Resource Strain:  
+                    <br></br>• Difficulty of Paying Living Expenses: Not on file 
+                    <br></br>Food Insecurity:  
+                    <br></br>• Worried About Running Out of Food in the Last Year: Not on file 
+                    <br></br>• Ran Out of Food in the Last Year: Not on file 
+                    <br></br>Transportation Needs:  
+                    <br></br>• Lack of Transportation (Medical): Not on file 
+                    <br></br>• Lack of Transportation (Non-Medical): Not on file 
+                    <br></br>Physical Activity:  
+                    <br></br>• Days of Exercise per Week: Not on file 
+                    <br></br>• Minutes of Exercise per Session: Not on file 
+                    <br></br>Stress:  
+                    <br></br>• Feeling of Stress : Not on file 
+                    <br></br>Social Connections:  
+                    <br></br>• Frequency of Communication with Friends and Family: Not on file 
+                    <br></br>• Frequency of Social Gatherings with Friends and Family: Not on file 
+                    <br></br>• Attends Religious Services: Not on file 
+                    <br></br>• Active Member of Clubs or Organizations: Not on file 
+                    <br></br>• Attends Club or Organization Meetings: Not on file 
+                    <br></br>• Marital Status: Not on file 
+                    <br></br>Intimate Partner Violence:  
+                    <br></br>• Fear of Current or Ex-Partner: Not on file 
+                    <br></br>• Emotionally Abused: Not on file 
+                    <br></br>• Physically Abused: Not on file 
+                    <br></br>• Sexually Abused: Not on file 
+                    <br></br>Housing Stability:  
+                    <br></br>• Unable to Pay for Housing in the Last Year: Not on file 
+                    <br></br>• Number of Places Lived in the Last Year: Not on file 
+                    <br></br>• Unstable Housing in the Last Year: Not on file 
+                    <br></br>
+                    <br></br>Family No family history on file.
+                    <br></br>
+                    <br></br>Triage Vital Signs:
+                    <br></br>BP: 153/86
+                    <br></br>Temp: 36 &#176;C (96.8 &#176;F)
+                    <br></br>Pulse: 80
+                    <br></br>Resp: 18
+                    <br></br>SpO2: 93 %
+                    <br></br>Physical Examination: Patient is well nourished, well developed, alert, oriented and displaying normal affect. GCS is 15. Cervical spine is nontender to palpation with good range of motion without posterior neck pain. Thoracic and lumbar spine is nontender to palpation. Lungs are clear. Abdomen is soft and nontender. Examination of the AC joint reveals a deformity compatible with a grade 3 subluxation. Patient is tender directly over the AC joint area. Distal neurovascular examination of the injured him upper extremity is intact.
+                    <br></br>Medical Decision Making:
+                    <br></br>Differential diagnoses considered includes clavicle fracture, AC joint disruption, sternal clavicular dislocation, humeral head fracture, and rotator cuff injury. Radiology Impression:
+                    <br></br>I ordered the study and personally reviewed the images on the PACS system.
+                    <br></br>Results for orders placed or performed during the hospital encounter of 11/17/21 
+                    <br></br>XR Acromioclavicular Joint Left without Weight 
+                    <br></br> Narrative 
+                    <br></br> HISTORY:
+                    <br></br>Left shoulder pain
+                    <br></br>
+                    <br></br>COMPARISON:
+                    <br></br>None.
+                    <br></br>
+                    <br></br>FINDINGS:
+                    <br></br>Single anterior view of the acromioclavicular joint obtained.
+                    <br></br>There is no fracture.  There is no glenohumeral dislocation.  Widening of the AC joint noted, consistent with grade 2 acromioclavicular separation.  No lytic or sclerotic bone lesions identified.
+                    <br></br> 
+                    <br></br> Impression 
+                    <br></br> Acromioclavicular separation as discussed above.
+                    <br></br>
+                    <br></br>Thank you for this referral. This examination was interpreted by a Imaging Associates radiologist. Providers with questions may reach a radiologist directly at 555-123-5678.
+                    <br></br>
+                    <br></br>WS: CTestPhysician-HP
+                    <br></br>DICTATED BY: TestPhysician      Date: 11/17/2021 12:15 MT
+                    <br></br>TRANSCRIBED DATE: 11/17/2021 12:15 MT 
+                    <br></br>
+                    <br></br>ED Course: Patient presents with left shoulder pain and deformity focused around the acromioclavicular joint.  X-rays show widening of the acromioclavicular joint.  It was read as a grade 2, however I am concerned it may be wider than that.  I did discuss this with the patient.  He was placed in a sling and swath.  He declined pain medication or an injection of local anesthesia in the clinic.  I did offer him a prescription for pain medication, which he declined.  I did recommend that he use ice, acetaminophen, and ibuprofen for symptom management.  I recommended that he follow-up with orthopedic surgery in approximately 1 week for further evaluation and treatment.  The patient is stable for discharge to home.
+                    <br></br>A sling is placed on the patient by the tech for comfort and stabilization.
+                    <br></br>
+                    <br></br>Pain management is addressed.
+                    <br></br>
+                    <br></br> 
+                    <br></br>ED Attending TestPhysician, MD
+                    <br></br>11/17/21 1236
+                    <br></br>
+                  </paragraph>
+                  <paragraph styleCode="xLabel">Electronically signed by ED Attending TestPhysician, MD at 11/17/2021 12:36 PM MST</paragraph>
+                </item>
+              </list>
+              <footnote ID="subTitle28" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+            </text>
+            <entry>
+              <act classCode="ACT" moodCode="EVN">
+                <templateId extension="2016-11-01" root="2.16.840.1.113883.10.20.22.4.202"></templateId>
+                <code code="34109-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Note">
+                  <translation code="34111-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Emergency department Note"></translation>
+                </code>
+                <text>
+                  <reference value="#Note15"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117123722-0700"></effectiveTime>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20211117123728-0700"></time>
+                  <assignedAuthor>
+                    <id extension="53635761" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                    <id extension="AC202907" root="1.2.840.114350.1.13.436.2.7.2.836982"></id>
+                    <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                    <addr nullFlavor="UNK"></addr>
+                    <telecom nullFlavor="UNK"></telecom>
+                    <assignedPerson>
+                      <name use="L">
+                        <given>Tessa</given>
+                        <family>Spialek</family>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                      <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                      <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                      <name>Kno2 Emergency</name>
+                      <addr use="WP">
+                        <streetAddressLine>234 Main St</streetAddressLine>
+                        <county>Hennepin</county>
+                        <city>Minneapolis</city>
+                        <state>MN</state>
+                        <postalCode>55044</postalCode>
+                        <country>USA</country>
+                      </addr>
+                    </representedOrganization>
+                  </assignedAuthor>
+                </author>
+              </act>
+            </entry>
+            <entry>
+              <act classCode="ACT" moodCode="EVN">
+                <templateId extension="2016-11-01" root="2.16.840.1.113883.10.20.22.4.202"></templateId>
+                <code code="34109-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Note">
+                  <translation code="54094-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Emergency department Triage note"></translation>
+                </code>
+                <text>
+                  <reference value="#Note16"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117115803-0700"></effectiveTime>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20211117115842-0700"></time>
+                  <assignedAuthor>
+                    <id extension="253092555" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                  </assignedAuthor>
+                </author>
+              </act>
+            </entry>
+            <entry>
+              <act classCode="ACT" moodCode="EVN">
+                <templateId extension="2016-11-01" root="2.16.840.1.113883.10.20.22.4.202"></templateId>
+                <code code="34109-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Note">
+                  <translation code="28568-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Physician Emergency department Note"></translation>
+                </code>
+                <text>
+                  <reference value="#Note17"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117114800-0700"></effectiveTime>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20211117123654-0700"></time>
+                  <assignedAuthor>
+                    <id extension="337502855" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                    <id extension="1336460708" root="2.16.840.1.113883.4.6"></id>
+                    <addr use="WP">
+                      <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+                      <streetAddressLine>PO Box 999999</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>55044-0000</postalCode>
+                      <country>USA</country>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-555-555-0030"></telecom>
+                    <telecom use="WP" value="fax:+1-555-555-0031"></telecom>
+                    <assignedPerson>
+                      <name use="L">
+                        <given>EDDoc</given>
+                        <given>TestPhysician</given>
+                        <family>EDPhysician</family>
+                        <suffix qualifier="AC"> MD</suffix>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                      <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                      <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                      <name>Kno2 Emergency</name>
+                      <addr use="WP">
+                        <streetAddressLine>234 Main St</streetAddressLine>
+                        <county>Hennepin</county>
+                        <city>Minneapolis</city>
+                        <state>MN</state>
+                        <postalCode>55044</postalCode>
+                        <country>USA</country>
+                      </addr>
+                    </representedOrganization>
+                  </assignedAuthor>
+                </author>
+              </act>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.10"></templateId>
+            <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.2.10"></templateId>
+            <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Plan of care note"></code>
+            <title>Plan of Treatment</title>
+            <text>
+              <paragraph>Not on file</paragraph>
+              <footnote ID="subTitle30" styleCode="xSectionSubTitle">documented as of this encounter</footnote>
+            </text>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.7"></templateId>
+            <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.2.7"></templateId>
+            <templateId root="2.16.840.1.113883.10.20.22.2.7.1"></templateId>
+            <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.2.7.1"></templateId>
+            <id root="8E045B6A-4961-11EC-80D6-0E091C6194B0"></id>
+            <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures Document"></code>
+            <title>Procedures</title>
+            <text>
+              <table>
+                <colgroup>
+                  <col width="25%"></col>
+                  <col width="10%"></col>
+                  <col width="15%"></col>
+                  <col span="2" width="25%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Procedure Name</th>
+                    <th>Priority</th>
+					<th>Date/Time</th>
+                    <th>Associated Diagnosis</th>
+                    <th>Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ID="procedure35" styleCode="xRowNormal">
+                    <td>
+                      <content ID="procedure35name">IMMOBILIZER: SHOULDER</content>
+                    </td>
+                    <td>STAT</td>
+					<td>11/17/2021 12:32 PM MST</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr ID="procedure34" styleCode="xRowAlt">
+                    <td>
+                      <content ID="procedure34name">XR ACROMIOCLAVICULAR JOINTS BILATERAL W WO WEIGHTS</content>
+                    </td>
+                    <td>STAT</td>
+                    <td>11/17/2021 12:14 PM MST</td>
+                    <td></td>
+                    <td>
+                      <paragraph styleCode="Bold">Results for this procedure are in the 
+                        <content styleCode="xLink2-Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130">results section</content>.</paragraph>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <footnote ID="subTitle33" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+            </text>
+            <entry>
+              <procedure classCode="PROC" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.14"></templateId>
+                <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.14"></templateId>
+                <id extension="397179130^" root="1.2.840.114350.1.13.436.2.7.1.1988.1"></id>
+                <code code="73050" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4">
+                  <originalText>HC XR AC JOINT W-W/O WEIGHTS BI
+                    <reference value="#procedure34name"></reference>
+                  </originalText>
+                  <translation code="37580-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="XR ACROMIOCLAVICULAR JOINTS BILATERAL W WO WEIGHTS"></translation>
+                </code>
+                <text>
+                  <reference value="#procedure34"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117191420+0000"></effectiveTime>
+                <performer typeCode="PRF">
+                  <assignedEntity classCode="ASSIGNED">
+                    <id extension="1336460708" root="2.16.840.1.113883.4.6"></id>
+                    <code nullFlavor="UNK">
+                      <originalText>Emergency Medicine</originalText>
+                    </code>
+                    <addr use="WP">
+                      <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+                      <streetAddressLine>PO Box 999999</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>55044-0000</postalCode>
+                      <country>USA</country>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-555-555-0030"></telecom>
+                    <telecom value="fax:+1-555-555-0031"></telecom>
+                    <assignedPerson>
+                      <name>
+                        <given>EDDoc</given>
+                        <given>TestPhysician</given>
+                        <family>EDPhysician</family>
+                        <suffix qualifier="AC">MD</suffix>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization classCode="ORG">
+                      <name nullFlavor="UNK"></name>
+                      <telecom nullFlavor="UNK"></telecom>
+                      <addr nullFlavor="UNK"></addr>
+                    </representedOrganization>
+                  </assignedEntity>
+                </performer>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20211117115652-0700"></time>
+                  <assignedAuthor>
+                    <id extension="562891459" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                    <id extension="1336460708" root="2.16.840.1.113883.4.6"></id>
+                    <addr use="WP">
+                      <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+                      <streetAddressLine>PO Box 999999</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>55044-0000</postalCode>
+                      <country>USA</country>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-555-555-0030"></telecom>
+                    <telecom use="WP" value="fax:+1-555-555-0031"></telecom>
+                    <assignedPerson>
+                      <name use="L">
+                        <given>EDDoc</given>
+                        <given>TestPhysician</given>
+                        <family>EDPhysician</family>
+                        <suffix qualifier="AC"> MD</suffix>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                      <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                      <name>Kno2 Service Area</name>
+                      <addr use="WP">
+                        <streetAddressLine>188 Inverness Drive West</streetAddressLine>
+                        <streetAddressLine>Suite 500</streetAddressLine>
+                        <city>Minneapolis</city>
+                        <state>MN</state>
+                        <postalCode>55044</postalCode>
+                      </addr>
+                    </representedOrganization>
+                  </assignedAuthor>
+                </author>
+              </procedure>
+            </entry>
+            <entry>
+              <procedure classCode="PROC" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.14"></templateId>
+                <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.14"></templateId>
+                <id extension="397179132^" root="1.2.840.114350.1.13.436.2.7.1.1988.1"></id>
+                <code code="120696" codeSystem="1.2.840.114350.1.13.436.2.7.2.696580" codeSystemName="Epic.EAP.ID">
+                  <originalText>IMMOBILIZER: SHOULDER
+                    <reference value="#procedure35name"></reference>
+                  </originalText>
+                </code>
+                <text>
+                  <reference value="#procedure35"></reference>
+                </text>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime value="20211117193250+0000"></effectiveTime>
+                <performer typeCode="PRF">
+                  <assignedEntity classCode="ASSIGNED">
+                    <id extension="1336460708" root="2.16.840.1.113883.4.6"></id>
+                    <code nullFlavor="UNK">
+                      <originalText>Emergency Medicine</originalText>
+                    </code>
+                    <addr use="WP">
+                      <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+                      <streetAddressLine>PO Box 999999</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>55044-0000</postalCode>
+                      <country>USA</country>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-555-555-0030"></telecom>
+                    <telecom value="fax:+1-555-555-0031"></telecom>
+                    <assignedPerson>
+                      <name>
+                        <given>EDDoc</given>
+                        <given>TestPhysician</given>
+                        <family>EDPhysician</family>
+                        <suffix qualifier="AC">MD</suffix>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization classCode="ORG">
+                      <name nullFlavor="UNK"></name>
+                      <telecom nullFlavor="UNK"></telecom>
+                      <addr nullFlavor="UNK"></addr>
+                    </representedOrganization>
+                  </assignedEntity>
+                </performer>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20211117123250-0700"></time>
+                  <assignedAuthor>
+                    <id extension="562891459" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                  </assignedAuthor>
+                </author>
+              </procedure>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.3"></templateId>
+            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.3"></templateId>
+            <templateId root="2.16.840.1.113883.10.20.22.2.3.1"></templateId>
+            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.3.1"></templateId>
+            <id root="8E071B34-4961-11EC-80D6-0E091C6194B0"></id>
+            <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant diagnostic tests/laboratory data Narrative"></code>
+            <title>Results</title>
+            <text>
+              <list styleCode="xTOC">
+                <item ID="Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130">
+                  <caption ID="Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Procedure">XR Acromioclavicular Joint Left without Weight (11/17/2021 12:14 PM MST)</caption>
+                  <table>
+                    <colgroup>
+                      <col span="2" width="25%"></col>
+                      <col width="50%"></col>
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>Anatomical Region</th>
+                        <th>Laterality</th>
+                        <th>Modality</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Shoulder</td>
+                        <td>Bilateral</td>
+                        <td>Radiographic Imaging</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <colgroup>
+                      <col width="25%"></col>
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>Specimen</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td ID="Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Specimen"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Impressions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td styleCode="xpre">
+                          <paragraph styleCode="Bold">POWERSCRIBE - 11/17/2021 12:15 PM MST</paragraph>
+                          <paragraph ID="Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Impression">
+                            <content> </content>
+                            <br></br>
+                            <content>Acromioclavicular separation as discussed above.</content>
+                            <br></br>
+                            <content> </content>
+                            <br></br>
+                            <content> </content>
+                            <br></br>
+                            <content>Thank you for this referral. This examination was interpreted by a Imaging Associates radiologist. Providers with questions may reach a radiologist directly at 555-123-5678.</content>
+                            <br></br>
+                            <content> </content>
+                            <br></br>
+                            <content>WS: CTestPhysician-HP</content>
+                            <br></br>
+                            <content>DICTATED BY: TestPhysician      Date: 11/17/2021 12:15 MT</content>
+                            <br></br>
+                            <content>TRANSCRIBED DATE: 11/17/2021 12:15 MT</content>
+                          </paragraph>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Narrative</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td styleCode="xpre">
+                          <paragraph styleCode="Bold">POWERSCRIBE - 11/17/2021 12:15 PM MST</paragraph>
+                          <paragraph ID="Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Narrative">
+                            <content>HISTORY:</content>
+                            <br></br>
+                            <content>Left shoulder pain</content>
+                            <br></br>
+                            <content> </content>
+                            <br></br>
+                            <content>COMPARISON:</content>
+                            <br></br>
+                            <content>None.</content>
+                            <br></br>
+                            <content> </content>
+                            <br></br>
+                            <content>FINDINGS:</content>
+                            <br></br>
+                            <content>Single anterior view of the acromioclavicular joint obtained.</content>
+                            <br></br>
+                            <content>There is no fracture.  There is no glenohumeral dislocation.  Widening of the AC joint noted, consistent with grade 2 acromioclavicular separation.  No lytic or sclerotic bone lesions identified.</content>
+                            <br></br>
+                            <content> </content>
+                          </paragraph>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Procedure Note</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td ID="Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.ProcedureNote1133817011" styleCode="xnoIndent">
+                          <paragraph styleCode="Bold">TestPhysician Testing, MD - 11/17/2021</paragraph>
+                          <paragraph>
+                            <content styleCode="xLabel">Formatting of this note might be different from the original.</content>
+                            <br></br>
+                            <content>HISTORY:</content>
+                            <br></br>
+                            <content>Left shoulder pain</content>
+                            <br></br>
+                            <br></br>
+                            <content>COMPARISON:</content>
+                            <br></br>
+                            <content>None.</content>
+                            <br></br>
+                            <br></br>
+                            <content>FINDINGS:</content>
+                            <br></br>
+                            <content>Single anterior view of the acromioclavicular joint obtained.</content>
+                            <br></br>
+                            <content>There is no fracture.  There is no glenohumeral dislocation.  Widening of </content>
+                            <content>the AC joint noted, consistent with grade 2 acromioclavicular separation.  </content>
+                            <content>No lytic or sclerotic bone lesions identified.</content>
+                            <br></br>
+                            <br></br>
+                            <content>IMPRESSION:</content>
+                            <br></br>
+                            <br></br>
+                            <content>Acromioclavicular separation as discussed above.</content>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <content>Thank you for this referral. This examination was interpreted by a </content>
+                            <content>Imaging Associates radiologist. Providers with questions may </content>
+                            <content>reach a radiologist directly at 555-123-5678.</content>
+                            <br></br>
+                            <br></br>
+                            <content>WS: TestPhysician-HP</content>
+                            <br></br>
+                            <content>DICTATED BY: TestPhysician      Date: 11/17/2021 12:15 MT</content>
+                            <br></br>
+                            <content>TRANSCRIBED DATE: 11/17/2021 12:15 MT</content>
+                          </paragraph>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <colgroup>
+                      <col width="25%"></col>
+                      <col width="30%"></col>
+                      <col width="25%"></col>
+                      <col width="20%"></col>
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>Performing Organization</th>
+                        <th>Address</th>
+                        <th>City/State/ZIP Code</th>
+                        <th>Phone Number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td ID="Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.PerformingLab">
+                          <paragraph>POWERSCRIBE</paragraph>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <paragraph></paragraph>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </item>
+              </list>
+              <footnote ID="subTitle36" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+            </text>
+            <entry typeCode="DRIV">
+              <organizer classCode="BATTERY" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.22.4.1"></templateId>
+                <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.1"></templateId>
+                <id extension="397179130" root="1.2.840.114350.1.13.436.2.7.2.798268"></id>
+                <code code="37580-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <originalText>XR Acromioclavicular Joint Left without Weight</originalText>
+                </code>
+                <statusCode code="completed"></statusCode>
+                <effectiveTime>
+                  <low value="20211117191520+0000"></low>
+                  <high value="20211117191520+0000"></high>
+                </effectiveTime>
+                <performer>
+                  <time value="20211117191541+0000"></time>
+                  <assignedEntity>
+                    <id nullFlavor="UNK"></id>
+                    <addr nullFlavor="NA"></addr>
+                    <telecom nullFlavor="NA"></telecom>
+                    <assignedPerson>
+                      <name nullFlavor="UNK"></name>
+                    </assignedPerson>
+                    <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+                      <name>POWERSCRIBE</name>
+                      <addr nullFlavor="UNK"></addr>
+                    </representedOrganization>
+                  </assignedEntity>
+                </performer>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20211117121541-0700"></time>
+                  <assignedAuthor>
+                    <id extension="535995172" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                    <id extension="1790744324" root="2.16.840.1.113883.4.6"></id>
+                    <addr use="WP">
+                      <streetAddressLine>1819 Denver W Dr</streetAddressLine>
+                      <streetAddressLine>Bldg 26 Ste 101</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>80401-0401</postalCode>
+                      <country>USA</country>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-555-123-5678"></telecom>
+                    <telecom use="WP" value="fax:+1-555-015-9999"></telecom>
+                    <assignedPerson>
+                      <name use="L">
+                        <given>TestRad</given>
+                        <given>Testing</given>
+                        <family>TestPhysician</family>
+                        <suffix qualifier="AC"> MD</suffix>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                      <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                      <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                      <name>Kno2 Emergency</name>
+                      <addr use="WP">
+                        <streetAddressLine>234 Main St</streetAddressLine>
+                        <county>Hennepin</county>
+                        <city>Minneapolis</city>
+                        <state>MN</state>
+                        <postalCode>55044</postalCode>
+                        <country>USA</country>
+                      </addr>
+                    </representedOrganization>
+                  </assignedAuthor>
+                </author>
+                <informant>
+                  <assignedEntity>
+                    <id extension="urn:Kno2Health:POC-CE" root="2.16.840.1.113883.19.5.9999.1393"></id>
+                    <representedOrganization>
+                      <name>Kno2 Emergency</name>
+                    </representedOrganization>
+                  </assignedEntity>
+                </informant>
+                <participant typeCode="RESP">
+                  <participantRole classCode="PROV">
+                    <id extension="1336460708" root="2.16.840.1.113883.19.5"></id>
+                    <code nullFlavor="UNK">
+                      <originalText>Emergency Medicine</originalText>
+                    </code>
+                    <addr use="WP">
+                      <streetAddressLine>567 Somewhere Ave</streetAddressLine>
+                      <streetAddressLine>PO Box 999999</streetAddressLine>
+                      <city>Lakeville</city>
+                      <state>MN</state>
+                      <postalCode>55044</postalCode>
+                      <country>USA</country>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-555-555-0030"></telecom>
+                    <telecom value="fax:+1-555-555-0031"></telecom>
+                    <playingEntity classCode="PSN">
+                      <name use="L">
+                        <given>EDDoc</given>
+                        <given>TestPhysician</given>
+                        <family>TestEDAttending</family>
+                        <suffix qualifier="AC"> MD</suffix>
+                      </name>
+                    </playingEntity>
+                  </participantRole>
+                </participant>
+                <component>
+                  <procedure classCode="PROC" moodCode="EVN">
+                    <code code="17636008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Specimen collection (procedure)"></code>
+                    <effectiveTime value="20211117191520+0000"></effectiveTime>
+                    <targetSiteCode nullFlavor="UNK"></targetSiteCode>
+                    <participant typeCode="PRD">
+                      <templateId root="1.2.840.114350.1.72.3.12"></templateId>
+                      <participantRole classCode="SPEC">
+                        <id extension="397179130" root="1.2.840.114350.1.13.436.2.7.7.798268.300"></id>
+                        <playingEntity>
+                          <code nullFlavor="UNK"></code>
+                        </playingEntity>
+                      </participantRole>
+                    </participant>
+                  </procedure>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId root="1.2.840.114350.1.72.3.13"></templateId>
+                    <id extension="33582" root="1.2.840.114350.1.13.436.2.7.3.696580.52175"></id>
+                    <code code="18782-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                      <originalText>Radiology Study observation (narrative)</originalText>
+                    </code>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime>
+                      <low value="20211117190806+0000"></low>
+                      <high value="20211117191420+0000"></high>
+                    </effectiveTime>
+                    <value nullFlavor="NA" xsi:type="ST"></value>
+                    <methodCode code="5" codeSystem="1.2.840.114350.1.13.436.2.7.10.696580.52175" codeSystemName="Epic Modality">
+                      <originalText>Radiographic Imaging</originalText>
+                    </methodCode>
+                    <targetSiteCode code="104" codeSystem="1.2.840.114350.1.13.436.2.7.10.696580.52010" codeSystemName="Epic Anatomical Region">
+                      <originalText>Shoulder</originalText>
+                      <qualifier>
+                        <name code="272741003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"></name>
+                        <value code="51440002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="bilateral" xsi:type="CD">
+                          <originalText>bilateral</originalText>
+                        </value>
+                      </qualifier>
+                    </targetSiteCode>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <functionCode code="LA" codeSystem="2.16.840.1.113883.5.90" codeSystemName="ParticipationType"></functionCode>
+                      <time value="20211117121541-0700"></time>
+                      <assignedAuthor>
+                        <id extension="535995172" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                      </assignedAuthor>
+                    </author>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <time value="20211117191541+0000"></time>
+                      <assignedAuthor>
+                        <id extension="535995172" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                      </assignedAuthor>
+                    </author>
+                    <author>
+                      <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                      <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                      <functionCode code="VRF" codeSystem="2.16.840.1.113883.5.90" codeSystemName="ParticipationType"></functionCode>
+                      <time value="20211117121541-0700"></time>
+                      <assignedAuthor>
+                        <id extension="535995172" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                      </assignedAuthor>
+                    </author>
+                    <informant>
+                      <assignedEntity>
+                        <id extension="397179130" root="1.2.840.114350.1.13.436.2.7.7.798268.295"></id>
+                        <code code="250" codeSystem="1.2.840.114350.1.72.1.7.7.10.798268.295"></code>
+                      </assignedEntity>
+                    </informant>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId root="1.2.840.114350.1.72.3.1"></templateId>
+                    <id extension="397179130" root="1.2.840.114350.1.13.436.2.7.7.798268.1010"></id>
+                    <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" nullFlavor="UNK">
+                      <translation code="IMP" codeSystem="1.2.840.114350.1.72.1.5220" codeSystemName="Epic.ResultText"></translation>
+                    </code>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117191541+0000"></effectiveTime>
+                    <value xsi:type="ED">
+                      <reference value="#Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Impression"></reference>
+                    </value>
+                    <performer typeCode="PRF">
+                      <assignedEntity>
+                        <id nullFlavor="UNK"></id>
+                        <representedOrganization>
+                          <name>POWERSCRIBE</name>
+                        </representedOrganization>
+                      </assignedEntity>
+                    </performer>
+                    <entryRelationship typeCode="COMP">
+                      <act classCode="ACT" moodCode="EVN">
+                        <templateId extension="2016-11-01" root="2.16.840.1.113883.10.20.22.4.202"></templateId>
+                        <code code="34109-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Note">
+                          <originalText>Impression</originalText>
+                          <translation code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory report"></translation>
+                        </code>
+                        <text>
+                          <reference value="#Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Impression"></reference>
+                        </text>
+                        <statusCode code="completed"></statusCode>
+                        <effectiveTime value="20211117121541-0700"></effectiveTime>
+                        <author>
+                          <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                          <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                          <time value="20211117121541-0700"></time>
+                          <assignedAuthor>
+                            <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                            <addr nullFlavor="UNK"></addr>
+                            <telecom nullFlavor="UNK"></telecom>
+                            <representedOrganization>
+                              <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                              <name>POWERSCRIBE</name>
+                              <addr nullFlavor="UNK"></addr>
+                            </representedOrganization>
+                          </assignedAuthor>
+                        </author>
+                        <entryRelationship inversionInd="true" typeCode="COMP">
+                          <encounter classCode="ENC" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                            <id assigningAuthorityName="EPIC" extension="184263485" root="1.2.840.114350.1.13.436.2.7.3.698084.8"></id>
+                            <code code="AMB" codeSystem="2.16.840.1.113883.5.4">
+                              <translation code="55" codeSystem="1.2.840.114350.1.13.436.2.7.4.698084.30" codeSystemName="Epic.EncounterType" displayName="Ancillary Procedure"></translation>
+                              <translation code="55" codeSystem="1.2.840.114350.1.72.1.30" displayName="Ancillary Procedure"></translation>
+                              <translation code="0" codeSystem="1.2.840.114350.1.72.1.30.1"></translation>
+                            </code>
+                            <effectiveTime>
+                              <low value="20211117115812-0700"></low>
+                              <high value="20211117121312-0700"></high>
+                            </effectiveTime>
+                          </encounter>
+                        </entryRelationship>
+                      </act>
+                    </entryRelationship>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId root="1.2.840.114350.1.72.3.1"></templateId>
+                    <id extension="397179130" root="1.2.840.114350.1.13.436.2.7.7.798268.1000"></id>
+                    <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" nullFlavor="UNK">
+                      <translation code="NAR" codeSystem="1.2.840.114350.1.72.1.5220" codeSystemName="Epic.ResultText"></translation>
+                    </code>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117191541+0000"></effectiveTime>
+                    <value xsi:type="ED">
+                      <reference value="#Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Narrative"></reference>
+                    </value>
+                    <performer typeCode="PRF">
+                      <assignedEntity>
+                        <id nullFlavor="UNK"></id>
+                        <representedOrganization>
+                          <name>POWERSCRIBE</name>
+                        </representedOrganization>
+                      </assignedEntity>
+                    </performer>
+                    <entryRelationship typeCode="COMP">
+                      <act classCode="ACT" moodCode="EVN">
+                        <templateId extension="2016-11-01" root="2.16.840.1.113883.10.20.22.4.202"></templateId>
+                        <code code="34109-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Note">
+                          <originalText>Narrative</originalText>
+                          <translation code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory report"></translation>
+                        </code>
+                        <text>
+                          <reference value="#Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.Narrative"></reference>
+                        </text>
+                        <statusCode code="completed"></statusCode>
+                        <effectiveTime value="20211117121541-0700"></effectiveTime>
+                        <author>
+                          <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                          <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                          <time value="20211117121541-0700"></time>
+                          <assignedAuthor>
+                            <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                            <addr nullFlavor="UNK"></addr>
+                            <telecom nullFlavor="UNK"></telecom>
+                            <representedOrganization>
+                              <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                              <name>POWERSCRIBE</name>
+                              <addr nullFlavor="UNK"></addr>
+                            </representedOrganization>
+                          </assignedAuthor>
+                        </author>
+                        <entryRelationship inversionInd="true" typeCode="COMP">
+                          <encounter classCode="ENC" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                            <id assigningAuthorityName="EPIC" extension="184263485" root="1.2.840.114350.1.13.436.2.7.3.698084.8"></id>
+                            <code code="AMB" codeSystem="2.16.840.1.113883.5.4">
+                              <translation code="55" codeSystem="1.2.840.114350.1.13.436.2.7.4.698084.30" codeSystemName="Epic.EncounterType" displayName="Ancillary Procedure"></translation>
+                              <translation code="55" codeSystem="1.2.840.114350.1.72.1.30" displayName="Ancillary Procedure"></translation>
+                              <translation code="0" codeSystem="1.2.840.114350.1.72.1.30.1"></translation>
+                            </code>
+                            <effectiveTime>
+                              <low value="20211117115812-0700"></low>
+                              <high value="20211117121312-0700"></high>
+                            </effectiveTime>
+                          </encounter>
+                        </entryRelationship>
+                      </act>
+                    </entryRelationship>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId root="1.2.840.114350.1.72.3.1"></templateId>
+                    <id extension="1133817011" root="1.2.840.114350.1.13.436.2.7.2.727879"></id>
+                    <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" nullFlavor="UNK">
+                      <translation code="PXN" codeSystem="1.2.840.114350.1.72.1.5220" codeSystemName="Epic.ResultText"></translation>
+                    </code>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117191541+0000"></effectiveTime>
+                    <value xsi:type="ED">
+                      <reference value="#Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.ProcedureNote1133817011"></reference>
+                    </value>
+                    <entryRelationship typeCode="COMP">
+                      <act classCode="ACT" moodCode="EVN">
+                        <templateId extension="2016-11-01" root="2.16.840.1.113883.10.20.22.4.202"></templateId>
+                        <code code="34109-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Note">
+                          <originalText>Procedure Note</originalText>
+                          <translation code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory report"></translation>
+                        </code>
+                        <text>
+                          <reference value="#Result.1.2.840.114350.1.13.436.2.7.2.798268.397179130.ProcedureNote1133817011"></reference>
+                        </text>
+                        <statusCode code="completed"></statusCode>
+                        <effectiveTime value="20211117121541-0700"></effectiveTime>
+                        <author>
+                          <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                          <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                          <time value="20211117121541-0700"></time>
+                          <assignedAuthor>
+                            <id extension="535995172" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                          </assignedAuthor>
+                        </author>
+                        <entryRelationship inversionInd="true" typeCode="COMP">
+                          <encounter classCode="ENC" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                            <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.49"></templateId>
+                            <id assigningAuthorityName="EPIC" extension="184263485" root="1.2.840.114350.1.13.436.2.7.3.698084.8"></id>
+                            <code code="AMB" codeSystem="2.16.840.1.113883.5.4">
+                              <translation code="55" codeSystem="1.2.840.114350.1.13.436.2.7.4.698084.30" codeSystemName="Epic.EncounterType" displayName="Ancillary Procedure"></translation>
+                              <translation code="55" codeSystem="1.2.840.114350.1.72.1.30" displayName="Ancillary Procedure"></translation>
+                              <translation code="0" codeSystem="1.2.840.114350.1.72.1.30.1"></translation>
+                            </code>
+                            <effectiveTime>
+                              <low value="20211117115812-0700"></low>
+                              <high value="20211117121312-0700"></high>
+                            </effectiveTime>
+                          </encounter>
+                        </entryRelationship>
+                      </act>
+                    </entryRelationship>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="1.2.840.114350.1.72.3.4"></templateId>
+                    <id extension="397179130" root="1.2.840.114350.1.13.436.2.7.2.798268"></id>
+                    <code nullFlavor="UNK"></code>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117191541+0000"></effectiveTime>
+                    <value code="7" codeSystem="1.2.840.114350.1.72.1.5007" codeSystemName="Epic.Result.Type" xsi:type="CD">
+                      <qualifier>
+                        <name code="30" codeSystem="1.2.840.114350.1.13.436.2.7.1.798268"></name>
+                        <value code="4" codeSystem="1.2.840.114350.1.13.436.2.7.10.798268.30" xsi:type="CD"></value>
+                      </qualifier></value>
+                  </observation>
+                </component>
+                <component>
+                  <observation classCode="OBS" moodCode="EVN">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.2"></templateId>
+                    <id extension="397179130" root="1.2.840.114350.1.13.436.2.7.2.798268"></id>
+                    <code nullFlavor="UNK"></code>
+                    <statusCode code="completed"></statusCode>
+                    <effectiveTime value="20211117191541+0000"></effectiveTime>
+                    <value nullFlavor="NA" xsi:type="ST"></value>
+                  </observation>
+                </component>
+              </organizer>
+            </entry>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId root="2.16.840.1.113883.10.20.22.2.8"></templateId>
+            <id root="8E0AC310-4961-11EC-80D6-0E091C6194B0"></id>
+            <code code="51848-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Assessments"></code>
+            <title>Visit Diagnoses</title>
+            <text>
+              <table>
+                <colgroup>
+                  <col width="100%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Diagnosis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ID="vdx4" styleCode="xRowNormal">
+                    <td>
+                      <paragraph>
+                        <content ID="vdx4Name">Acromioclavicular (AC) joint injury, left, initial encounter</content>
+                        <content> - Primary</content>
+                      </paragraph>
+                    </td>
+                  </tr>
+                  <tr ID="vdx5" styleCode="xRowAlt">
+                    <td>
+                      <paragraph>
+                        <content ID="vdx5Name">Snowboarding accident, initial encounter</content>
+                      </paragraph>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <footnote ID="subTitle40" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+            </text>
+          </section>
+        </component>
+        <component>
+          <section>
+            <code code="77597-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Orders placed"></code>
+            <title>Orders</title>
+            <text>
+              <table>
+                <colgroup>
+                  <col width="40%"></col>
+                  <col width="10%"></col>
+                  <col span="2" width="25%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Nursing</th>
+                    <th>Count</th>
+                    <th>Last Ordered Date</th>
+                    <th>First Ordered Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IMMOBILIZER: SHOULDER</td>
+                    <td>1</td>
+                    <td>11/17/2021</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <footnote ID="subTitle44" styleCode="xSectionSubTitle">documented in this encounter</footnote>
+            </text>
+          </section>
+        </component>
+        <component>
+          <section>
+            <templateId extension="2019-07-01" root="2.16.840.1.113883.10.20.22.2.500"></templateId>
+            <code code="85847-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Patient Care team information"></code>
+            <title>Care Teams</title>
+            <text>
+              <table ID="ct47">
+                <colgroup>
+                  <col span="3" width="25%"></col>
+                  <col width="13%"></col>
+                  <col width="12%"></col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Team Member</th>
+                    <th>Relationship</th>
+                    <th>Specialty</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr styleCode="xRowNormal">
+                    <td>
+                      <paragraph styleCode="Bold">Pcp, None Given</paragraph>
+                    </td>
+                    <td>PCP - General</td>
+                    <td></td>
+                    <td>8/19/21</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <footnote ID="subTitle46" styleCode="xSectionSubTitle">documented as of this encounter</footnote>
+            </text>
+            <entry>
+              <organizer classCode="CLUSTER" moodCode="EVN">
+                <templateId extension="2019-07-01" root="2.16.840.1.113883.10.20.22.4.500"></templateId>
+                <id nullFlavor="NI"></id>
+                <code code="86744-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Care Team">
+                  <originalText>
+                    <reference value="#ct47"></reference>
+                  </originalText>
+                </code>
+                <statusCode code="active"></statusCode>
+                <effectiveTime>
+                  <low value="20210819"></low>
+                </effectiveTime>
+                <author>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.119"></templateId>
+                  <templateId extension="2019-10-01" root="2.16.840.1.113883.10.20.22.5.6"></templateId>
+                  <time value="20210921135856-0600"></time>
+                  <assignedAuthor>
+                    <id extension="884759043" root="1.2.840.114350.1.13.436.2.7.1.1133"></id>
+                    <id extension="CAREPROV1" root="1.2.840.114350.1.13.436.2.7.2.697780"></id>
+                    <id nullFlavor="UNK" root="2.16.840.1.113883.4.6"></id>
+                    <addr nullFlavor="UNK"></addr>
+                    <telecom nullFlavor="UNK"></telecom>
+                    <assignedPerson>
+                      <name use="L">
+                        <given>Care</given>
+                        <family>Provider</family>
+                      </name>
+                    </assignedPerson>
+                    <representedOrganization>
+                      <id extension="35200" root="1.2.840.114350.1.13.436.2.7.2.688879"></id>
+                      <id nullFlavor="UNK" root="2.16.840.1.113883.4.2"></id>
+                      <name>Kno2 Emergency</name>
+                      <addr use="WP">
+                        <streetAddressLine>234 Main Street</streetAddressLine>
+                        <city>Minneapolis</city>
+                        <state>MN</state>
+                        <postalCode>55044</postalCode>
+                        <country>USA</country>
+                      </addr>
+                    </representedOrganization>
+                  </assignedAuthor>
+                </author>
+                <component>
+                  <act classCode="PCPR" moodCode="EVN">
+                    <templateId extension="2019-07-01" root="2.16.840.1.113883.10.20.22.4.500.1"></templateId>
+                    <id nullFlavor="UNK"></id>
+                    <code code="85847-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Care Team Information"></code>
+                    <statusCode code="active"></statusCode>
+                    <effectiveTime>
+                      <low value="20210819"></low>
+                    </effectiveTime>
+                    <performer typeCode="PRF">
+                      <sdtc:functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+                        <originalText>General</originalText>
+                      </sdtc:functionCode>
+                      <assignedEntity>
+                        <id nullFlavor="UNK"></id>
+                        <code nullFlavor="UNK"></code>
+                        <addr nullFlavor="UNK"></addr>
+                        <telecom nullFlavor="NA"></telecom>
+                        <assignedPerson>
+                          <name use="L">
+                            <given>None</given>
+                            <given>Given</given>
+                            <family>Pcp</family>
+                          </name>
+                        </assignedPerson>
+                      </assignedEntity>
+                    </performer>
+                  </act>
+                </component>
+              </organizer>
+            </entry>
+          </section>
+        </component>
+      </structuredBody>
+    </component>
+  </ClinicalDocument>
+

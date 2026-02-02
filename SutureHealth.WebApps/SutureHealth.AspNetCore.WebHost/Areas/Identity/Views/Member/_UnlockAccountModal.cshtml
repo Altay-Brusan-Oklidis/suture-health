@@ -1,0 +1,42 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.UnlockAccountModel
+<div class="modal" id="UnlockAccountModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Unlock Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class=" mb-3">
+                    Are you sure you want to unlock the account for @(Model.UserName)?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="UnlockAccountModalSubmitButton" type="button" class="btn btn-primary">Unlock Account</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function() {
+        $("#UnlockAccountModal").modal({
+            "backdrop": "static"
+        });
+        $("#UnlockAccountModal").modal("show");
+
+        $("#UnlockAccountModalSubmitButton").click(function() {
+            LoadingPanel.loader.show();
+            $.post("@Model.UnlockAccountActionUrl", function() {
+                $('#UnlockAccountModal').modal("hide");
+                LoadingPanel.loader.hide();
+                $(document).trigger("@SutureHealth.AspNetCore.Areas.Identity.Models.Member.UnlockAccountModel.ACCOUNT_UNLOCKED");
+            });
+        });
+
+        $("#UnlockAccountModal").on("hidden.bs.modal", function() {
+            $(this).modal("dispose");
+        });
+    })();
+</script>

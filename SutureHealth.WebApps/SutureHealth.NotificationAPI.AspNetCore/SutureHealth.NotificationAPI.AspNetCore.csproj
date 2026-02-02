@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>SutureHealth.Notifications</RootNamespace>
+        <VersionPrefix>$(VERSION_PREFIX)</VersionPrefix>
+        <ExcludeXmlAssemblyFiles>false</ExcludeXmlAssemblyFiles>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>../.</DockerfileContext>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DocumentationFile>SutureHealth.NotificationAPI.AspNetCore.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="7.3.0" />
+        <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.1.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+        <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.100.35" />
+        <PackageReference Include="FluentValidation" Version="11.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.12" />
+        <PackageReference Include="Polly" Version="7.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\SutureHealth.AspNetCore.Amazon\SutureHealth.AspNetCore.Amazon.csproj" />
+        <ProjectReference Include="..\SutureHealth.AspNetCore\SutureHealth.AspNetCore.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Core\SutureHealth.NotificationAPI.Core.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Providers.Fax\SutureHealth.NotificationAPI.Providers.Fax.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Providers.SimpleEmailService\SutureHealth.NotificationAPI.Providers.SimpleEmailService.csproj" />
+		<ProjectReference Include="..\SutureHealth.NotificationAPI.Providers.CustomerIO\SutureHealth.NotificationAPI.Providers.CustomerIO.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Providers.TwilioSMS\SutureHealth.NotificationAPI.Providers.TwilioSMS.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Providers\SutureHealth.NotificationAPI.Providers.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Services.SqlServer\SutureHealth.NotificationAPI.Services.SqlServer.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Services\SutureHealth.NotificationAPI.Services.csproj" />
+        <ProjectReference Include="..\SutureHealth.Services.Amazon\SutureHealth.Services.Amazon.csproj" />
+        <ProjectReference Include="..\SutureHealth.Services.Common\SutureHealth.Services.Common.csproj" />
+    </ItemGroup>
+
+</Project>

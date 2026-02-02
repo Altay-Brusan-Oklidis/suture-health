@@ -1,0 +1,47 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Member.MemberDetailModel
+<kendo-grid name="@Model.GridName">
+    <datasource>
+        <sorts>
+            <sort field="Name" direction="asc" />
+        </sorts>
+    </datasource>
+    <columns>
+        <column field="Name" title="Name" />
+        <column field="InternalName" title="Internal Name" />
+        <column field="IsActive" title="Active" template="<i class='far # if (IsActive) { #fa-check-square# } else { #fa-square# }#'></i>" />
+        <column field="IsPrimary" title="Primary" template="<i class='far # if (IsPrimary) { #fa-check-square# } else { #fa-square# }#'></i>" />
+        <column field="IsAdministrator" title="Admin" template="<i class='far # if (IsAdministrator) { #fa-check-square# } else { #fa-square# }#'></i>" />
+        <column field="OrganizationId" title="OrganizationId" />
+    </columns>
+    <sortable enabled="true" />
+</kendo-grid>
+<div class="row">
+    <div class="col-12">
+        <hr class="mt-0" />
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="btn btn-outline-primary" id="@($"{Model.GridName}-AddOrganization")" type="button">Add Organization</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#@Model.GridName").data("kendoGrid").dataSource.data(@Html.Raw(Json.Serialize(Model.Organizations)));
+
+        $("#@($"{Model.GridName}-AddOrganization")").click(function () {
+            $("#@Model.AddOrganizationDialog.DialogName").data("kendoDialog").open();
+        });
+    });
+
+    function @(Model.AddOrganizationDialog.ConfirmFunctionName) () {
+        let orgData = $("#@Model.AddOrganizationDialog.OrganizationFieldName").data("kendoComboBox").dataItem();
+
+        if (!orgData) {
+            return false;
+        }
+
+        window.location.href = orgData.EditMemberUrl;
+    }
+</script>
+<partial name="_AddEntityToOrganizationDialog" model="Model.AddOrganizationDialog" />

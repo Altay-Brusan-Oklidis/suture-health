@@ -1,0 +1,25 @@
+{
+  "Information": [
+    "This file provides default values for the deployment wizard inside Visual Studio and the AWS Lambda commands added to the .NET Core CLI.",
+    "To learn more about the Lambda commands with the .NET Core CLI execute the following command at the command line in the project root directory.",
+    "dotnet lambda help",
+    "All the command line options for the Lambda command can be specified in this file."
+  ],
+  "profile": "SimoPrG",
+  "region": "us-east-1",
+  "configuration": "Release",
+  "package-type": "image",
+  "function-memory-size": 256,
+  "function-timeout": 30,
+  "image-command": "SutureHealth.PatientAPI.Services.Kno2.Lambda::SutureHealth.PatientAPI.Services.Kno2.Lambda.Function::FunctionHandler",
+  "docker-host-build-output-dir": "./bin/Release/lambda-publish",
+  "function-name": "SutureHealthAPI-Kno2-MessagePersister-ci",
+  "function-description": "",
+  "function-role": "arn:aws:iam::267058832120:role/SutureHealthAPITaskExecutionRole-CI",
+  "function-architecture": "x86_64",
+  "function-subnets": "subnet-a2bf3cfa,subnet-313d851b",
+  "function-security-groups": "sg-c3621cbb",
+  "tracing-mode": "PassThrough",
+  "environment-variables": "\"ASPNETCORE_ENVIRONMENT\"=\"ci\"",
+  "image-tag": ""
+}

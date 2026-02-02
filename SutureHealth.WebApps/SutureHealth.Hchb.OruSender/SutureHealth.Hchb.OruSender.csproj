@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <PlatformTarget>x64</PlatformTarget>
+      <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.Hosting">
+        <HintPath>..\..\..\..\.nuget\packages\microsoft.extensions.hosting\7.0.0\lib\net6.0\Microsoft.Extensions.Hosting.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SutureHealth.AspNetCore.Amazon\SutureHealth.AspNetCore.Amazon.csproj" />
+      <ProjectReference Include="..\SutureHealth.Hchb.Services.SqlServer\SutureHealth.Hchb.Services.SqlServer.csproj" />
+      <ProjectReference Include="..\SutureHealth.Hchb.Services\SutureHealth.Hchb.Services.csproj" />
+      <ProjectReference Include="..\SutureHealth.PatientAPI.Core\SutureHealth.PatientAPI.Core.csproj" />
+      <ProjectReference Include="..\SutureHealth.PatientAPI.Services.SqlServer\SutureHealth.PatientAPI.Services.SqlServer.csproj" />
+      <ProjectReference Include="..\SutureHealth.ProviderAPI.Services.SqlServer\SutureHealth.ProviderAPI.Services.SqlServer.csproj" />
+      <ProjectReference Include="..\SutureHealth.ProviderAPI.Services\SutureHealth.ProviderAPI.Services.csproj" />
+      <ProjectReference Include="..\SutureHealth.RequestAPI.Services.SqlServer\SutureHealth.RequestAPI.Services.SqlServer.csproj" />
+      <ProjectReference Include="..\SutureHealth.Services.Amazon\SutureHealth.Services.Amazon.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.test.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.prod.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>

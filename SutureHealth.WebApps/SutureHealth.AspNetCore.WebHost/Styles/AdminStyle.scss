@@ -1,0 +1,46 @@
+﻿.k-pager-wrap .k-link.k-state-selected {
+    color: #fff;
+    background-color: var(--suture-blue);
+    
+}
+k-checkbox:checked {
+    border-color: #c5c5c5;
+    color: var(--suture-blue);
+    background-color: #fff;
+}
+
+.k-primary {
+    color: #fff;
+    border-color: #1650ae;
+    background-color: var(--suture-blue);
+    background-image: none;
+    
+}
+
+.k-primary.k-state-hover, .k-primary:hover {
+    color: #fff;
+    border-color: #0f3674;
+    background-color: #1650ae;
+    background-image: none;
+    
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    background-color: #eae8e8;
+}
+
+.pmatch-circle {
+    border-radius: 50%;
+    padding: 0.2rem 0.3rem;
+    /*background-color: #1e6be8;
+    border: 3px solid #1e6be8;*/
+    color: #000;
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+#filter-box > .k-widget {
+    width: 65% !important;
+    
+}

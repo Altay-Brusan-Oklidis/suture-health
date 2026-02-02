@@ -1,0 +1,188 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel.EntityListing
+@using SutureHealth;
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+@using SutureHealth.AspNetCore.Areas.Network.Models.Listing; 
+
+<div class="network-listing-wrapper">
+    <div class="network-listing-container">
+        <div id="NetworkListing">
+
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .provider-list-item-wrapper {
+        display: none;
+    }
+
+    @foreach(var viewStyle in Enum.GetValues(typeof(IndexViewModel.EntityViewStyle)).Cast<IndexViewModel.EntityViewStyle>())
+    {
+        <text>
+    #NetworkListing.@(viewStyle.GetEnumDescription()) .@(viewStyle.GetEnumDescription())
+    {
+        display: block;
+    }
+        </text>
+    }
+
+    .network-invite-button {
+        display: none;
+    }
+
+    .entity-list-item.invite-available .invite-available, .entity-list-item.invite-selected .invite-selected, .entity-list-item.invite-pending .invite-pending, .entity-list-item.invite-loading .invite-loading {
+        display: inline-block;
+    }
+
+    .entity-relationships-state {
+        display: none;
+    }
+
+    .entity-relationships.entity-relationships-collapsed .entity-relationships-collapsed, .entity-relationships.entity-relationships-expanded .entity-relationships-expanded {
+        display: block;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pageNumber, activeQuery, invitationPreselectionEnabled, hasInvitedProviders = null,
+            lastInvocationDateTicks = @Model.LastInvocationDateTicks,
+            listingContainer = $("#NetworkListing"),
+            populateListing = function (onSuccess, retryCount) {
+                $(document).trigger("@IndexViewModel.EVENT_MASK_CHANGED", [true]);
+
+                $.ajax({
+                    "type": "POST",
+                    "url": "@Url.RouteUrl("NetworkListing")/" + pageNumber + "/@Model.PageSize" + (!isNaN(retryCount) ? "?retryCount=" + retryCount : ""),
+                    "contentType": "application/json",
+                    "data": JSON.stringify(activeQuery),
+                    "success": function (data, status, xhr) {
+                        var loginUrlHeader = xhr.getResponseHeader("LoginPage");
+                        if (loginUrlHeader && loginUrlHeader !== "") {
+                            window.location.href = window.location.origin + loginUrlHeader.substr(1);
+                            return;
+                        }
+
+                        if (onSuccess) {
+                            onSuccess(data, status, xhr);
+                        }
+
+                        @* The below loop handles client-side determining as to whether the "New" indicator should be displayed for a given entity. *@
+                        $("div.entity-list-item", listingContainer).each(function () {
+                            var entity = $(this),
+                                dateCreatedTicks = parseInt(entity.data("suture-joined-network-date-ticks")),
+                                newIndicator = $("[data-model-for='ProviderNewIndicator']", entity);
+
+                            newIndicator.toggle(dateCreatedTicks > lastInvocationDateTicks);
+                        });
+
+                        pageNumber += 1;
+                    },
+                    "complete": function () {
+                        $(document).trigger("@IndexViewModel.EVENT_MASK_CHANGED", [false]);
+                    }
+                });
+            },
+            processInvitations = function () {
+                var providerIdSelected = [];
+
+                $("div.entity-list-item", listingContainer).each(function (itemIndex) {
+                    var entity = $(this),
+                        providerId = parseInt(entity.data("provider-id"));
+
+                    if (entity.hasClass("invite-loading")) {
+                        if (invitationPreselectionEnabled && activeQuery != null) {
+                            @* Don't toggle invite button away from loading if preselection is enabled and we don't yet know what providers have already been invited. *@
+                            var hasClaimsWithUser = entity.data("has-claims-with-user") === "True";
+
+                            if (hasInvitedProviders != null) {
+                                entity.toggleClass("invite-loading " + (!hasInvitedProviders && (hasClaimsWithUser || (activeQuery.SortOrder == "@SearchFilterSortMethod.ClaimsHistory" && itemIndex < 25)) ? "invite-selected" : "invite-available"));
+                            }
+                        }
+                        else {
+                            entity.toggleClass("invite-loading invite-available");
+                        }
+                    }
+
+                    if (!isNaN(providerId) && entity.hasClass("invite-selected")) {
+                        providerIdSelected.push(providerId);
+                    }
+                });
+
+                $(document).trigger("@IndexViewModel.EntityListing.EVENT_INVITATIONS_CHANGED", [providerIdSelected]);
+            },
+            onInitialPopulateSuccess = function (data) {
+                listingContainer.html(data);
+                window.scrollTo(0, 0);
+                processInvitations();
+            },
+            onSubsequentPopulateSuccess = function (data) {
+                listingContainer.append(data);
+                processInvitations();
+            };
+
+        $(document).on("@IndexViewModel.EVENT_PRESET_COUNT_RECEIVED", function (event, presetCountItem) {
+            if (presetCountItem.Key == "@FilterPreset.Invitations.ToString()") {
+                hasInvitedProviders = presetCountItem.Count > 0;
+                processInvitations();
+            }
+        });
+
+        $(document).on("@IndexViewModel.EVENT_QUERY_CHANGED", function (event, model, controlsOnly) {
+            if (controlsOnly) {
+                return;
+            }
+
+            pageNumber = 1;
+            activeQuery = model;
+            invitationPreselectionEnabled = model.Preset == "@FilterPreset.InviteSenders.ToString()";
+
+            populateListing(onInitialPopulateSuccess);
+        });
+
+        $(document).on("@IndexViewModel.EVENT_QUERY_RETRY", function (event, retryCount) {
+            pageNumber -= 1;
+
+            populateListing(pageNumber == 1 ? onInitialPopulateSuccess : onSubsequentPopulateSuccess, retryCount);
+        });
+
+        $(document).on("@IndexViewModel.EVENT_VIEW_STYLE_CHANGED", function (event, viewStyleClass) {
+            listingContainer.removeAttr("class").addClass(viewStyleClass);
+        });
+
+        listingContainer.on("click", "#NetworkListingLoadMore", function () {
+            $("#NetworkListingLoadMore").parent("div").remove();
+
+            populateListing(onSubsequentPopulateSuccess);
+        });
+
+        $(document).on("click", "[data-action='EntityInvite']", function (e) {
+            var entityContainer = $(this).parents("div.entity-list-item");
+            entityContainer.toggleClass("invite-available invite-selected");
+            processInvitations();
+        });
+
+        $(document).on("click", "[data-action='EntityMessage']", function () {
+            $(document).trigger("@IndexViewModel.EVENT_DISPLAY_MESSAGE", [function () {
+                window.open("@Html.Raw(Model.NewFeatureUrl)", "_blank");
+            }]);
+        });
+
+        $(document).on("click", "[data-action='EntityUpgradeAccess']", function () {
+            window.open("@Html.Raw(Model.UpgradeUrl)", "_blank");
+        });
+
+        $(document).on("click", "[data-action='EntityGetSignature']", function () {
+            window.open("/UserArea/CreateRequest.aspx?physicianId=" + $(this).parents("div.entity-list-item").data("user-id"), "_blank");
+        });
+
+        $(document).on("click", "[data-action='EntityExpandRelationships']", function () {
+            $(this).parents(".entity-relationships").toggleClass("entity-relationships-collapsed entity-relationships-expanded");
+        });
+
+        $(document).on("click", "[data-action='EntityShowAllRelationships']", function () {
+            var relationshipListingContainer = $(this).parents(".entity-relationships-listing"),
+                height = relationshipListingContainer.height();
+
+            relationshipListingContainer.addClass("show-all").css("height", height);
+        });
+    });
+</script>

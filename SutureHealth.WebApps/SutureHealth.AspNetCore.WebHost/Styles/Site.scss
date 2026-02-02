@@ -1,0 +1,86 @@
+// Required
+//@import "../node_modules/bootstrap/scss/functions";
+//@import "../node_modules/bootstrap/scss/variables";
+//@import "../node_modules/bootstrap/scss/mixins";
+//@import "../node_modules/bootstrap/scss/root";
+
+// Your variable overrides
+//$primary-button-color: #1e86e8;
+//$theme-colors: ( "primary": $primary-button-color, "danger": #ff4136, "secondary": #fff );
+//$primary-font-family: Montserrat,Verdana,Arial !default;
+//$secondary-font-family: Montserrat;
+//$anchor-color: #337ab7;
+//$default-font-size: 14px;
+
+// Bootstrap and its default variables
+
+
+// Optional
+/*
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+*/
+/*@import "../node_modules/bootstrap/scss/_buttons"; */
+
+/* .btn {
+    &.btn-primary {
+        font-family: $primary-font-family;
+    }
+}
+
+.entity-row-button {
+    .btn {
+        &.btn-secondary {
+            height: 35px;
+            width: 150px;
+            text-align: center;
+            font-size: 18px;
+            font-family: $secondary-font-family;
+            color: #7a7a7a;
+            background-color: #fff;
+            border: 1px solid gray;
+        }
+
+        &.btn-primary {
+            height: 35px;
+            width: 150px;
+            text-align: center;
+            font-size: 18px;
+            font-family: $secondary-font-family;
+            color: $primary-button-color;
+            background-color: #fff;
+            border-color: $primary-button-color;
+            border-width: 2px;
+            border-radius: 2px;
+        }
+    }
+}
+
+.form-group {
+    label {
+        display: inline-block;
+        margin-bottom: 5px;
+        left: 7px;
+        top: -7px;
+        position: absolute;
+        background-color: white;
+        font-weight: bold;
+        font-size: 12px;
+        padding: 0 5px;
+    }
+
+    select {
+        padding: 12px 24px 2px 12px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        display: inline-block;
+    }
+} */
+
+@import 'abstracts/_index.scss';
+@import 'base/_index.scss';
+@import'components/_index.scss';
+@import'layouts/_index.scss';
+
+

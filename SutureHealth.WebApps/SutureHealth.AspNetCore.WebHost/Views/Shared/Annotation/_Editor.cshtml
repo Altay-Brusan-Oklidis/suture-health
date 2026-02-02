@@ -1,0 +1,91 @@
+﻿@model SutureHealth.AspNetCore.Areas.Template.Models.Annotation.EditorViewModel
+@using SutureHealth.Documents;
+<div id="toolbarRow">
+    <div>
+        <div id="toolbar">
+            <div class="instructions">
+                <div>
+                    <strong>Instructions:</strong>
+                </div>
+                <div>
+                    <div>1) Scroll to the appropriate area on the document below.</div>
+                    <div>2) Drag and drop the controls to the correct locations.</div>
+                    <div>3) Resize controls to fill the desired space.</div>
+                </div>
+            </div>
+            <div>
+                <div class="annotationContainer">
+                    <div id="signature" class="annotation signature annotationDraggable">
+                        <div class="closeBtn"></div>
+                        <div class="annotationLabel">Signature</div>
+                        <div class="signaturePart2"></div>
+                    </div>
+                </div>
+
+                <div class="annotationContainer">
+                    <div id="datetimeSigned" class="annotation datetimeSigned annotationDraggable">
+                        <div class="closeBtn" id="closeDate"></div>
+                        <div class="annotationLabel">Datetime Signed</div>
+                    </div>
+                </div>
+
+                <div class="annotationContainer">
+                    <div id="textArea" class="annotation textArea annotationDraggable editableContent">
+                        <div class="controls showWhenSelected">
+                            <div class="closeBtn showWhenSelected"></div>
+                            <div class="moveBtn showWhenSelected"></div>
+                        </div>
+                        <div class="annotationLabel">Text Area</div>
+                        <textarea disabled="disabled" class="showWhenSelected" placeholder="Enter text here…"></textarea>
+                        <div class="textareaPlaceholder">Enter text here...</div>
+                    </div>
+                </div>
+
+                <div class="annotationContainer">
+                    <div id="checkBox" class="annotation checkBox annotationDraggable editableContent">
+                        <div class="controls showWhenSelected">
+                            <div class="closeBtn showWhenSelected"></div>
+                            <div class="moveBtn showWhenSelected"></div>
+                        </div>
+                        <div class="annotationLabel">Check Box</div>
+                        <input type="checkbox" disabled="disabled" />
+                        <div class="box showWhenSelected checked"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="viewer">
+    <div id="divPdf">
+        <div id="divImg" class="column">
+            @foreach (var page in Model.Pages)
+            {
+                <partial name="Annotation/_Page" model="page" />
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function () {
+        window.AnnotationEditor.Initialize(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Annotations.Select(a => new {
+            type = a.Type switch {
+                AnnotationType.VisibleSignature => "signature",
+                AnnotationType.DateSigned => "datetimeSigned",
+                AnnotationType.TextArea => "textArea",
+                AnnotationType.CheckBox => "checkBox",
+                _ => "unknown"
+            },
+            id = a.AnnotationId,
+            left = a.Left,
+            width = a.Width,
+            top = a.Top,
+            height = a.Height,
+            pageNumber = a.PageNumber,
+            value = a.Value,
+            required = a.Type == AnnotationType.TextArea && Model.TextAreaValidationEnabled
+        }))), {
+            "TextAreaValidationEnabled": @Model.TextAreaValidationEnabled.ToString().ToLower()
+        });
+    })();
+</script>

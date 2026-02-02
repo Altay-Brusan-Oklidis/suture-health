@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+    <!-- This property makes the build directory similar to a publish directory and helps the AWS .NET Lambda Mock Test Tool find project dependencies. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <!-- Generate ready to run images during publishing to improve cold start time. -->
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <RootNamespace>SutureHealth.DataScraping.Services.Lambda</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.CloudWatchEvents" Version="4.0.0" />
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.0" />
+    <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.1.0" />
+	<PackageReference Include="DotNetEnv" Version="2.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SutureHealth.AspNetCore.Amazon\SutureHealth.AspNetCore.Amazon.csproj" />
+    <ProjectReference Include="..\SutureHealth.DataScrapingAPI.Core\SutureHealth.DataScrapingAPI.Core.csproj" />
+    <ProjectReference Include="..\SutureHealth.DataScrapingAPI.Services.SqlServer\SutureHealth.DataScrapingAPI.Services.SqlServer.csproj" />
+    <ProjectReference Include="..\SutureHealth.PatientAPI.Services.SqlServer\SutureHealth.PatientAPI.Services.SqlServer.csproj" />
+    <ProjectReference Include="..\SutureHealth.Services.Amazon\SutureHealth.Services.Amazon.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SutureHealthAPI\appsettings.ci.json" Link="appsettings.ci.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.demo.json" Link="appsettings.demo.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.prod.json" Link="appsettings.prod.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.qa.json" Link="appsettings.qa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+  </ItemGroup>
+</Project>

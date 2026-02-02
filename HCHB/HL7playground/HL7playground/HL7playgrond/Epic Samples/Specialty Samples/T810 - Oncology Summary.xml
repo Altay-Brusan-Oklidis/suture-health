@@ -1,0 +1,589 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <realmCode code="US" />
+  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+  <templateId root="1.2.840.114350.1.72.1.51693" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01" />
+  <templateId root="1.2.840.114350.1.72.1.68796783.810" />
+  <id assigningAuthorityName="EPC" extension="00000000-00d1-4e82-3956-c37871551322" root="1.2.840.114350.1.13.5826.1.7.1.1" />
+  <code code="74156-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Oncology Summary" />
+  <title>Oncology Summary</title>
+  <effectiveTime value="20201005134815-0500" />
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
+  <languageCode code="en-US" />
+  <recordTarget>
+    <patientRole>
+      <id extension="GTM1286827" root="1.2.840.114350.1.13.5826.1.7.3.688884.100" />
+      <addr use="HP">
+        <streetAddressLine>124 Market St</streetAddressLine>
+        <city>Green Bay</city>
+        <state>WI</state>
+        <postalCode>54304</postalCode>
+        <country>USA</country>
+      </addr>
+      <telecom use="HP" value="tel:+1-222-222-2222" />
+      <patient>
+        <name use="L">
+          <given>Roberto</given>
+          <family>Gonzalez</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGenderCode" displayName="Male" />
+        <birthTime value="20070912" />
+        <sdtc:deceasedInd value="false" xmlns:sdtc="urn:hl7-org:sdtc" />
+        <maritalStatusCode code="M" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" displayName="Married" />
+        <raceCode nullFlavor="UNK" />
+        <ethnicGroupCode nullFlavor="UNK" />
+        <languageCommunication>
+          <languageCode code="English" />
+          <preferenceInd value="true" />
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id extension="3" root="1.2.840.114350.1.13.3.1.7.2.688879"/>
+        <name>River Hills Health System</name>
+        <telecom use="WP" value="tel:+1-608-555-3326"/>
+        <addr use="WP">
+          <streetAddressLine>8110 Gatehouse Road</streetAddressLine>
+          <county>Sauk</county>
+          <city>Baraboo</city>
+          <state>WI</state>
+          <postalCode>53913</postalCode>
+          <country>USA</country>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20201005134815-0500" />
+    <assignedAuthor>
+      <id extension="9.5" root="1.2.840.114350.1.1" />
+      <addr nullFlavor="NA" />
+      <telecom nullFlavor="NA" />
+      <assignedAuthoringDevice>
+        <manufacturerModelName>Epic - Version 9.5</manufacturerModelName>
+        <softwareName>Epic - Version 9.5</softwareName>
+      </assignedAuthoringDevice>
+      <representedOrganization>
+        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+        <name>Current Final Primary</name>
+        <telecom use="WP" value="tel:+1-608-888-8828" />
+        <addr use="WP">
+          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+          <streetAddressLine>Suite 70</streetAddressLine>
+          <county>DANE</county>
+          <city>MADISON</city>
+          <state>WI</state>
+          <postalCode>53713</postalCode>
+          <country>USA</country>
+        </addr>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+        <name>Current Final Primary</name>
+        <telecom use="WP" value="tel:+1-608-888-8828" />
+        <addr use="WP">
+          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+          <streetAddressLine>Suite 70</streetAddressLine>
+          <county>DANE</county>
+          <city>MADISON</city>
+          <state>WI</state>
+          <postalCode>53713</postalCode>
+          <country>USA</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <documentationOf typeCode="DOC">
+    <serviceEvent classCode="PCPR">
+      <effectiveTime>
+        <low value="20070912" />
+        <high value="20201005" />
+      </effectiveTime>
+      <performer typeCode="PRF">
+        <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+          <originalText>General</originalText>
+        </functionCode>
+        <time>
+          <low value="20201002" />
+          <high nullFlavor="PINF" />
+        </time>
+        <assignedEntity>
+          <id extension="16212" root="1.2.840.114350.1.13.5826.1.7.2.836982" />
+          <code nullFlavor="UNK">
+            <originalText>Allergy</originalText>
+          </code>
+          <addr use="WP">
+            <streetAddressLine>123 Street Name</streetAddressLine>
+            <city>MADISON</city>
+            <state>WI</state>
+            <postalCode>53714</postalCode>
+            <country>USA</country>
+          </addr>
+          <telecom use="WP" value="tel:+1-949-555-5555" />
+          <assignedPerson>
+            <name use="L">
+              <given>Matthew</given>
+              <given>P</given>
+              <family>Hansen</family>
+              <suffix qualifier="AC"> MD</suffix>
+            </name>
+          </assignedPerson>
+          <representedOrganization classCode="ORG">
+            <telecom nullFlavor="UNK" />
+            <addr nullFlavor="UNK" />
+          </representedOrganization>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.5" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.5" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.5.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.5.1" extension="2015-08-01" />
+          <id root="00000000-00D1-4E83-3956-C37871551322" />
+          <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem list - Reported" />
+          <title>Active Problems</title>
+          <text>
+            <table>
+              <colgroup>
+                <col width="75%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Noted Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="problem3" styleCode="normRow">
+                  <td ID="problem3name">Lung cancer</td>
+                  <td>10/05/2020</td>
+                </tr>
+                <tr styleCode="normRow xMergeUp">
+                  <td colspan="2" styleCode="allIndent">
+                    <paragraph styleCode="cellHeader">Cancer Staging: </paragraph>Clinical: Unsigned<br /></td>
+                </tr>
+                <tr ID="problem2" styleCode="altRow">
+                  <td ID="problem2name">Asthma</td>
+                  <td>01/01/2018</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01" />
+              <id extension="1000009614-concern" root="1.2.840.114350.1.13.5826.1.7.2.768076" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20201001" />
+              </effectiveTime>
+              <entryRelationship inversionInd="false" typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01" />
+                  <id extension="1000009614" root="1.2.840.114350.1.13.5826.1.7.2.768076" />
+                  <code code="64572001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                    <translation code="75323-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  </code>
+                  <text>
+                    <reference value="#problem2name" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20180101" />
+                  </effectiveTime>
+                  <value code="195967001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <originalText>
+                      <reference value="#problem2name" />
+                    </originalText>
+                    <translation code="J45.909" codeSystem="2.16.840.1.113883.6.90" codeSystemName="ICD10" displayName="Asthma" />
+                    <translation code="493.90" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD9" displayName="Asthma" />
+                    <translation code="94262" codeSystem="2.16.840.1.113883.3.247.1.1" codeSystemName="Intelligent Medical Objects ProblemIT" displayName="Asthma" />
+                  </value>
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <time value="20201001192443+0000" />
+                    <assignedAuthor>
+                      <id extension="50001" root="1.2.840.114350.1.13.5826.1.7.2.836982" />
+                      <code nullFlavor="UNK" />
+                      <addr use="WP">
+                        <streetAddressLine>1979 MILKY WAY</streetAddressLine>
+                        <county>DANE</county>
+                        <city>VERONA</city>
+                        <state>WI</state>
+                        <postalCode>53593</postalCode>
+                      </addr>
+                      <telecom use="WP" value="tel:+1-608-271-9000" />
+                      <assignedPerson>
+                        <name use="L">
+                          <given>Robert</given>
+                          <given>Sutton</given>
+                          <family>Persona Mr Md</family>
+                          <suffix qualifier="AC"> MD</suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+                        <name>Current Final Primary</name>
+                        <telecom use="WP" value="tel:+1-608-888-8828" />
+                        <addr use="WP">
+                          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+                          <streetAddressLine>Suite 70</streetAddressLine>
+                          <county>DANE</county>
+                          <city>MADISON</city>
+                          <state>WI</state>
+                          <postalCode>53713</postalCode>
+                          <country>USA</country>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                  <entryRelationship typeCode="REFR">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+                      <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" displayName="Status" />
+                      <statusCode code="completed" />
+                      <effectiveTime>
+                        <low value="20180101" />
+                      </effectiveTime>
+                      <value code="55561003" codeSystem="2.16.840.1.113883.6.96" xsi:type="CE" displayName="Active" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01" />
+              <id extension="1000009907-concern" root="1.2.840.114350.1.13.5826.1.7.2.768076" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20201005" />
+              </effectiveTime>
+              <entryRelationship inversionInd="false" typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01" />
+                  <id extension="1000009907" root="1.2.840.114350.1.13.5826.1.7.2.768076" />
+                  <code code="64572001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                    <translation code="75323-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  </code>
+                  <text>
+                    <reference value="#problem3name" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20201005" />
+                  </effectiveTime>
+                  <value code="363358000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <originalText>
+                      <reference value="#problem3name" />
+                    </originalText>
+                    <translation code="C34.90" codeSystem="2.16.840.1.113883.6.90" codeSystemName="ICD10" displayName="Lung cancer" />
+                    <translation code="162.9" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD9" displayName="Lung cancer" />
+                    <translation code="72244" codeSystem="2.16.840.1.113883.3.247.1.1" codeSystemName="Intelligent Medical Objects ProblemIT" displayName="Lung cancer" />
+                  </value>
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <time value="20201005152431+0000" />
+                    <assignedAuthor>
+                      <id extension="802614" root="1.2.840.114350.1.13.5826.1.7.2.836982" />
+                      <code nullFlavor="UNK" />
+                      <addr use="WP">
+                        <streetAddressLine>1979 Milky Way</streetAddressLine>
+                        <county>DANE</county>
+                        <city>VERONA</city>
+                        <state>WI</state>
+                        <postalCode nullFlavor="UNK" />
+                      </addr>
+                      <telecom nullFlavor="UNK" />
+                      <assignedPerson>
+                        <name use="L">
+                          <given>Susan</given>
+                          <family>Everson</family>
+                          <suffix qualifier="AC"> MD</suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+                        <name>Current Final Primary</name>
+                        <telecom use="WP" value="tel:+1-608-888-8828" />
+                        <addr use="WP">
+                          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+                          <streetAddressLine>Suite 70</streetAddressLine>
+                          <county>DANE</county>
+                          <city>MADISON</city>
+                          <state>WI</state>
+                          <postalCode>53713</postalCode>
+                          <country>USA</country>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                  <entryRelationship typeCode="REFR">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+                      <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" displayName="Status" />
+                      <statusCode code="completed" />
+                      <effectiveTime>
+                        <low value="20201005" />
+                      </effectiveTime>
+                      <value code="55561003" codeSystem="2.16.840.1.113883.6.96" xsi:type="CE" displayName="Active" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="X-ONCSUMM-CURPLANS" codeSystem="1.2.840.114350.1.72.2" displayName="Current Oncology Plans" />
+          <title>Current Oncology Plans</title>
+          <text>
+            <list>
+              <caption>ADULT CAPD DIALYSIS</caption>
+              <item styleCode="allIndent">
+                <content styleCode="cellHeader">Plan Start Date: </content>10/5/2020<br /><content styleCode="cellHeader">Plan Provider: </content>Dana Corbin<br /></item>
+            </list>
+            <table>
+              <thead>
+                <tr>
+                  <th>Linked Problems</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <list listType="unordered">
+                      <item>Malignant neoplasm of upper lobe of left lung</item>
+                    </list>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <thead>
+                <tr>
+                  <th>Treatment Medications</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>No medications scheduled.</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <list>
+              <caption>BEACON OP TAXOL (WEEKLY)</caption>
+              <item styleCode="allIndent">
+                <content styleCode="cellHeader">Plan Start Date: </content>10/5/2020<br /><content styleCode="cellHeader">Plan Provider: </content>Dana Corbin<br /></item>
+            </list>
+            <table>
+              <thead>
+                <tr>
+                  <th>Linked Problems</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <list listType="unordered">
+                      <item>Malignant neoplasm of upper lobe of right lung</item>
+                    </list>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <colgroup>
+                <col width="29%" />
+                <col width="35%" span="2" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Treatment Medications</th>
+                  <th>Current Day (Day 1, Cycle 1 - Planned for 10/5/2020)</th>
+                  <th>Next Day (Day 8, Cycle 1 - Planned for 10/12/2020)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <list>
+                      <item>
+                        <list listType="unordered">
+                          <item>dexamethasone (DECADRON)</item>
+                          <item>diphenhydrAMINE (BENADRYL)</item>
+                          <item>epinephrine (ADRENALIN)</item>
+                          <item>famotidine (PEPCID)</item>
+                          <item>heparin (porcine)</item>
+                          <item>hydrocortisone sodium succinate (SOLUCORTEF)</item>
+                          <item>meperidine (DEMEROL)</item>
+                          <item>PACLItaxel (TAXOL) chemo infusion</item>
+                          <item>sodium chloride 0.9 %</item>
+                        </list>
+                      </item>
+                    </list>
+                  </td>
+                  <td>
+                    <list>
+                      <item>
+                        <list listType="unordered">
+                          <item>0.9%  NaCl solution</item>
+                          <item>dexamethasone (DECADRON) injection 10 mg</item>
+                          <item>diphenhydrAMINE (BENADRYL) injection 25 mg</item>
+                          <item>epinephrine (ADRENALIN) injection 0.3 mg</item>
+                          <item>famotidine (PEPCID) injection 20 mg</item>
+                          <item>heparin (porcine) injection 500 Units</item>
+                          <item>hydrocortisone sodium succinate (SOLUCORTEF) injection 100 mg</item>
+                          <item>meperidine (DEMEROL) injection 25 mg</item>
+                          <item>paclitaxel (TAXOL) in sodium chloride 0.9 % chemo infusion</item>
+                          <item>sodium chloride 0.9 % injection 10 mL</item>
+                        </list>
+                      </item>
+                    </list>
+                  </td>
+                  <td>
+                    <list>
+                      <item>
+                        <list listType="unordered">
+                          <item>DEXAMETHASONE SODIUM PHOSPHATE 4 MG/ML IJ SOLN</item>
+                          <item>DIPHENHYDRAMINE HCL 50 MG/ML IJ SOLN</item>
+                          <item>EPINEPHRINE HCL 1 MG/ML IJ SOLN</item>
+                          <item>FAMOTIDINE 10 MG/ML IV SOLN</item>
+                          <item>HEPARIN SODIUM (PORCINE) 100 UNIT/ML IJ SOLN</item>
+                          <item>HYDROCORTISONE SOD SUCCINATE 100 MG IJ SOLR</item>
+                          <item>MEPERIDINE HCL 50 MG/ML IJ SOLN</item>
+                          <item>PACLITAXEL INFUSION</item>
+                          <item>SODIUM CHLORIDE 0.9 % IJ SOLN</item>
+                          <item>SODIUM CHLORIDE 0.9 % IV SOLN</item>
+                        </list>
+                      </item>
+                    </list>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="X-ONCSUMM-PASTPLANS" codeSystem="1.2.840.114350.1.72.2" displayName="Past Plans" />
+          <title>Past Plans</title>
+          <text>No past plan information found.</text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="X-ONCSUMM-RADTX" codeSystem="1.2.840.114350.1.72.2" displayName="Radiation Treatments" />
+          <title>Radiation Treatments</title>
+          <text>
+            <list>
+              <item>
+                <table>
+                  <colgroup>
+                    <col width="13%" />
+                    <col width="8%" />
+                    <col width="14%" />
+                    <col width="12%" />
+                    <col width="10%" />
+                    <col width="16%" />
+                    <col width="15%" />
+                    <col width="12%" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Treatment Site</th>
+                      <th>Started On</th>
+                      <th>Last Treated On</th>
+                      <th>Elapsed Days</th>
+                      <th>Fractions Complete</th>
+                      <th>Last Fraction Dose Given/Prescribed</th>
+                      <th>Total Dose Given/Prescribed</th>
+                      <th>Technique</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Right lung</td>
+                      <td>8/1/2020</td>
+                      <td>10/1/2020</td>
+                      <td>2</td>
+                      <td>2 of 2</td>
+                      <td>300 cGy / 300 cGy</td>
+                      <td>600 cGy / 600 cGy</td>
+                      <td>Tangents</td>
+                    </tr>
+                    <tr>
+                      <td>Right lung</td>
+                      <td>4/1/2020</td>
+                      <td>5/1/2020</td>
+                      <td>1</td>
+                      <td>2 of 2</td>
+                      <td>200 cGy / 200 cGy</td>
+                      <td>400 cGy / 400 cGy</td>
+                      <td>Tangents</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="X-ONCSUMM-LDT" codeSystem="1.2.840.114350.1.72.2" displayName="Lifetime Dose Tracking" />
+          <title>Lifetime Dose Tracking</title>
+          <text>
+            <list>
+              <item>
+                <table>
+                  <colgroup>
+                    <col width="15%" span="3" />
+                    <col width="55%" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Chemical</th>
+                      <th>Lifetime Dose</th>
+                      <th>Automatic Entry</th>
+                      <th>Manual Entry</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Anthracyclines</td>
+                      <td>6 mg/m2 (2 mg)</td>
+                      <td>0 mg/m2 (0 mg)</td>
+                      <td>6 mg/m2 (2 mg)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </item>
+            </list>
+          </text>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

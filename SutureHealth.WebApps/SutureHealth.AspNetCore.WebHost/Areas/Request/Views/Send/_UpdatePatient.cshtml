@@ -1,0 +1,121 @@
+﻿@model SutureHealth.AspNetCore.Areas.Request.Models.Send.UpdatePatientModel
+<kendo-dialog name="UpdatePatientModal" modal="true" title="Update Your Patient's Information" width="720px">
+    <content>
+        <div class="row">
+            <div id="UpdatePatientModalValidationErrors" class="col-sm text-danger">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Name:
+            </div>
+            <div class="col-sm-8">
+                @Model.Name
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                DOB:
+            </div>
+            <div class="col-sm-8">
+                @Model.DateOfBirth.ToString("d")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Gender:
+            </div>
+            <div class="col-sm-8">
+                @if (Model.HasGender)
+                {
+                    @Model.Gender.Value.ToString()
+                }
+                else
+                {
+                    <select asp-for="Gender">
+                        <option value="">Select One</option>
+                        <option value="@SutureHealth.Gender.Male">Male</option>
+                        <option value="@SutureHealth.Gender.Female">Female</option>
+                    </select>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                SSN:
+            </div>
+            <div class="col-sm-8">
+                @if (Model.HasSocialSecurityNumber)
+                {
+                    @Model.SocialSecurityNumber.Substring(Model.SocialSecurityNumber.Length - 4, 4)
+                }
+                else
+                {
+                    <kendo-maskedtextbox for="SocialSecurityNumber" id="SocialSecurityNumber" mask="000-00-0000" />
+                    <kendo-radiogroup for="SocialSecurityNumberType" value="@SutureHealth.AspNetCore.Areas.Request.Models.Send.UpdatePatientModel.SocialSecurityNumberStyle.Full" layout="RadioGroupLayout.Horizontal">
+                        <kendo-radiogroup-items>
+                            <kendo-radiogroup-item label="Full (preferred)" value="@SutureHealth.AspNetCore.Areas.Request.Models.Send.UpdatePatientModel.SocialSecurityNumberStyle.Full"></kendo-radiogroup-item>
+                            <kendo-radiogroup-item label="Last 4 digits" value="@SutureHealth.AspNetCore.Areas.Request.Models.Send.UpdatePatientModel.SocialSecurityNumberStyle.Last4"></kendo-radiogroup-item>
+                            @*<kendo-radiogroup-item label="Unavailable" value="@SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel.SocialSecurityNumberStyle.Unavailable"></kendo-radiogroup-item>*@
+                        </kendo-radiogroup-items>
+                    </kendo-radiogroup>
+                }
+            </div>
+        </div>
+        @if (Model.CanEditMedicareMbi)
+        {
+            <div class="row">
+                <div class="col-sm-3">
+                    Medicare MBI:
+                </div>
+                <div class="col-sm-8">
+                    @if (Model.HasMedicareMbi)
+                    {
+                        @Model.MedicareMbi.ToFormattedMBI()
+                    }
+                    else
+                    {
+                        <kendo-maskedtextbox for="MedicareMbi" mask="0LA0-LA0-LL00" />
+                        <div>Example: 1EG4-TE5-MK73</div>
+                        <div>
+                            <a href="https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNMattersArticles/downloads/SE18006.pdf" target="_blank">
+                                Learn More
+                            </a>
+                            <a href="https://www.cms.gov/Medicare/New-Medicare-Card/Understanding-the-MBI-with-Format.pdf" target="_blank">
+                                (MBI Format)
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-sm">
+                <strong>Why do I need to do this?</strong>
+                <div>
+                    We are missing some key data points for your patient. If your patient has Medicare or Medicare Advantage, we need to update their
+                    record with the new MBI now that Medicare requires it. Please submit the information that you have.
+                </div>
+            </div>
+        </div>
+    </content>
+    <actions>
+        <action text="Submit" primary="true" action="UpdatePatientSubmit"></action>
+        <action text="Don't Have The Information" action="UpdatePatientConfirm"></action>
+    </actions>
+</kendo-dialog>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var maskWidget = $("#SocialSecurityNumber").data("kendoMaskedTextBox");
+
+        $("input[name='SocialSecurityNumberType']").click(function () {
+            let masks = {
+                "Full": "000-00-0000",
+                "Last4": "0000"
+                },
+                selection = $(this).val();
+
+            maskWidget.setOptions({ "mask": masks[selection] });
+        });
+    });
+</script>

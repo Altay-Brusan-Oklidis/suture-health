@@ -1,0 +1,112 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Template.OrganizationSearchModel
+@using SutureHealth.AspNetCore.Areas.Admin.Models.Template;
+@{
+    Model.RequireKendo = true;
+    Model.RequireUI = true;
+}
+
+@section Styles
+{
+<link rel="stylesheet" href="~/css/AdminStyle.min.css" asp-append-version="true" />
+}
+
+<section class="mt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-8">
+                        <h2 style="font-weight: bold;">
+                            Templates for @Model.OrganizationName
+                        </h2>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-outline-primary" onclick="window.location.href = '@Model.AddTemplateUrl'" type="button">Add Template</button>
+                    </div>
+                </div>
+                <hr class="mt-0" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <kendo-grid name="Templates" resizable="true">
+                    <datasource type="DataSourceTagHelperType.Ajax" page-size="30" server-operation="true" server-filtering="false" server-sorting="false" server-paging="false">
+                        <schema>
+                            <model id="TemplateId">
+                                <fields>
+                                    <field name="TemplateId" type="string" editable="false" />
+                                    <field name="Name" type="string" editable="false" />
+                                    <field name="IsApiEnabled" type="boolean" editable="true" />
+                                    <field name="ApiDocumentKey" type="string" editable="true" />
+                                    <field name="TemplateProcessingModeId" type="number" editable="true" />
+                                </fields>
+                            </model>
+                        </schema>
+                        <transport>
+                            <read url="@Url.RouteUrl("AdminTemplateTemplateDataSource", new { organizationId = Model.OrganizationId })" type="POST" />
+                            <update url="@Url.RouteUrl("AdminTemplateUpdateTemplate", new { organizationId = Model.OrganizationId })" type="POST" />
+                        </transport>
+                        <sorts>
+                            <sort field="Name" direction="asc" />
+                        </sorts>
+                    </datasource>
+                    <editable enabled="true" mode="inline" />
+                    <columns>
+                        <column field="Name" title="Name" />
+                        <column field="TemplateId" title="TemplateId" />
+                        <column field="IsApiEnabled" title="API Enabled" template="<i class='far # if (IsApiEnabled) { #fa-check-square# } else { #fa-square# }#'></i>" />
+                        <column field="ApiDocumentKey" title="Document Key" template="<code style='padding: 0;'>#=ApiDocumentKey#</code>" />
+                        <column field="TemplateProcessingModeId" title="Annotation Source" template="#if (HasAnnotationSourceUrl) {#<a href='#=AnnotationSourceUrl#'>#=AnnotationSource#</a>#} else {#<span>#=AnnotationSource#</span>#}#" editor="AnnotationSourceEditor">
+                            <sortable enabled="false" />
+                        </column>
+                        <column title="Actions">
+                            <commands>
+                                <column-command name="edit" />
+                                <column-command name="OcrScan" text="OCR Scan" visible="OcrScanVisible" click="OcrScanClick" template="<a role='button' class='k-button k-button-icontext k-grid-OcrScan'><i class='fa fa-search''></i>OCR Scan</a>" />
+                            </commands>
+                        </column>
+                    </columns>
+                    <sortable enabled="true" />
+                    <pageable enabled="true" refresh="true" page-size="30" page-sizes="new int[] { 15, 30, 60 }" />
+                </kendo-grid>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    function AnnotationSourceEditor(container, options) {
+        let input = $("<input/>");
+
+        input.attr("name", options.field);
+        input.appendTo(container);
+
+        input.kendoDropDownList({
+            "dataSource": [ { "Key": 1, "Value": "Parent Coordinates" }, { "Key": 2, "Value": "DDP" } ],
+            "dataValueField": "Key",
+            "dataTextField": "Value",
+            "valuePrimitive": true
+        });
+    }
+
+    function OcrScanVisible(dataItem) {
+        return dataItem.CanOcrScan;
+    }
+
+    function OcrScanClick(e) {
+        e.preventDefault();
+
+        LoadingPanel.loader.show();
+        $.post({
+            "url": this.dataItem($(e.target).closest("tr")).OcrScanActionUrl,
+            "success": function () {
+                LoadingPanel.loader.hide();
+                $("#Templates").data("kendoGrid").dataSource.fetch();
+            }
+        });
+    }
+</script>

@@ -1,0 +1,22 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Pages.Account.ConfirmEmailViewModel
+@{
+    string[] actions = new string[] { "Close" };
+}
+<script src="~/js/Identity/Account/ConfirmEmail.js" data-role="ConfirmEmailDialog" 
+                                                    data-trigger="@Model.TriggerSelector"
+                                                    data-form="[name=confirmEmailForm]"
+                                                    data-window="#confirmEmailDialog"></script>
+
+<form name="confirmEmailForm" asp-area="Identity" asp-page="/Account/ConfirmEmail" asp-page-handler="SendConfirmationToken">
+    @Html.AntiForgeryToken()
+</form>
+
+<kendo-dialog name="confirmEmailDialog" visible="false" width="600">
+    <content>
+        We've sent an email to @Model.SutureUser.Email please click the link to 
+        confirm your address.
+    </content>
+    <actions>
+        <action text="Ok"></action>
+    </actions>
+</kendo-dialog>

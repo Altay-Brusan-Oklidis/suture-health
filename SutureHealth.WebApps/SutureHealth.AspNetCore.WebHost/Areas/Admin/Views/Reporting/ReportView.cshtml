@@ -1,0 +1,51 @@
+﻿@using Microsoft.Extensions.Options
+@using SutureHealth.Reporting
+@using SutureHealth.Revenue
+@model SutureHealth.AspNetCore.Areas.Admin.Models.Reporting.ReportViewModel
+@{
+    var reportCount = Model.Reports.Count();
+}
+@if (reportCount == 0)
+{
+    <h1>No Reports To Generate</h1>
+}
+else
+{
+    var index = 0;
+    <div>
+        <div style="min-height: 600px; width: 800px; text-align: center; vertical-align: middle; border: solid 2px black; margin: 3em auto;">
+            <div>
+                <div class="report-content" role="main" data-content=".report-content[data-page]">
+                    
+                </div>
+                @* <div id="report-title" class="text-center small font-weight-bold p-5"></div> *@
+            </div>
+            <div class="d-none">
+            @foreach (var report in Model.Reports)
+            {
+                <div class="report-content" data-page="@(index++)" title="@report.Subject">
+                    @(await Component.InvokeAsync(Model.ComponentType, new { report }))
+                </div>
+            }
+            </div>
+        </div>
+        @if (reportCount > 1)
+        {
+            <nav aria-label="Report Navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    @for (var i = 0; i < reportCount; i++)
+                    {
+                        <li class="page-item@(i == 0 ? " active" : "")" data-page="@i"><a class="page-link" href="#">@(i + 1)</a></li>
+                    }
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        }
+    </div>
+    <script src="~/js/Admin/Reporting/ReportViewer.js" asp-append-version="true"></script>
+}

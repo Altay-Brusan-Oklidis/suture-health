@@ -1,0 +1,174 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Review.IndexModel
+@{
+    Model.RequireUI = true;
+    Model.RequireKendo = true;
+    Model.RequiresLoading = true;
+}
+@section Styles
+    {
+    <link rel="stylesheet" href="~/css/AdminStyle.min.css" asp-append-version="true" />
+    <style>
+        /* Style for the column-command buttons */
+        .delete-button {
+            background-color: #721c24 !important; /* Set the desired background color */
+            color: white !important; /* Set the desired text color */
+        }
+    </style>
+}
+
+<section class="mt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-2">
+                        <h2 style="font-weight: bold;">
+                            Review Issues
+                        </h2>
+                    </div>
+                </div>
+                <hr class="mt-0" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <kendo-grid name="Requests" datasource-id="RequestDataSource" resizable="true" on-data-bound="RequestsLoaded">
+                    <columns>
+                        <column field="DateSubmitted" title="Submitted date" format="{0:MM-dd-yyyy hh:mm:ss tt}" width=100 />
+                        <column field="FirstName" title="First Name" width=130 />
+                        <column field="LastName" title="Last Name" width=130 />
+                        <column field="AddressStreetLine1" title="Street Address" width=130 />
+                        <column field="AddressCity" title="City" width=100 />
+                        <column field="AddressState" title="State" width=70 />
+                        <column field="AddressZipCode" title="ZIP" width=70 />
+                        <column field="Birthdate" title="DOB" format="{0:MM-dd-yyyy}" width=90 />
+                        <column field="SocialSecurityNumber" title="SSN" width=100 />
+                        <column field="MedicareNumber" title="Medicare MBI" width=130 />
+                        <column field="MedicaidNumber" title="Medicaid" width=105 />
+                        <column field="SubmittedFacilityName" title="Submitting Org" width=150 />
+                        <column field="Source" title="Source" width=150 />
+                        <column title="Actions" width=200>
+                            <commands>
+                                <column-command name="Resolve" text="Resolve" click="ResolveRequest" />
+                                <column-command name="Delete" text="Delete" click="DeleteRequest" />
+                            </commands>
+                        </column>
+                    </columns>
+                    <column-menu enabled="true" />
+                    <filterable mode="row" extra="false" />
+                    <column-menu enabled="true" filterable="false" />
+                    <sortable enabled="true" />
+                    <pageable refresh="true" page-size="15" page-sizes="new int[] { 15, 30, 50 }" />
+                </kendo-grid>
+            </div>
+        </div>
+        <div style="display: none;">
+            <kendo-dialog name="AutoMergeDialog" title="Auto merge" button-layout="normal" modal="true" visible="false">
+                <content>
+                    The patient was automatically merged with an existing patient. No further action is required.
+                </content>
+                <actions>
+                    <action text="OK" primary="true" action="OnAutoResolve"></action>
+                </actions>
+            </kendo-dialog>
+        </div>
+        <div style="display: none;">
+            <kendo-dialog name="AutoCreateDialog" title="Auto create" button-layout="normal" modal="true" visible="false">
+                <content>
+                    No potential matches were found so this patient was automatically created. No further action is required.
+                </content>
+                <actions>
+                    <action text="OK" primary="true" action="OnAutoResolve"></action>
+                </actions>
+            </kendo-dialog>
+        </div>
+    </div>
+</section>
+@(@Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Admin.Models.Review.ReviewGridListItem>()
+               .Name("RequestDataSource")
+               .Ajax(acfg => acfg.Read(rcfg => rcfg.Route("AdminReviewRequestDataSource")
+                                                   .Type(HttpVerbs.Get))
+                                                   //.ServerOperation(false)
+                                                   .PageSize(15)
+                                                   .Sort(scfg => scfg.Add(r => r.DateSubmitted).Descending())))
+
+
+<script type="text/javascript">
+
+
+    (function () {
+
+        // Wait for the document to be ready
+        $(document).ready(function () {
+            // Initialize the Kendo Dialog
+            $("#AutoMergeDialog").kendoDialog();
+
+            // Access the showDialog variable here
+            var showDialogValue = @Model.ShowDialog.ToString().ToLower();
+
+            if (showDialogValue) {
+                var dialog = $("#AutoMergeDialog").data("kendoDialog");
+                dialog.open();
+            }
+        });
+
+        window.ResolveRequest = function (e) {
+                       
+            e.preventDefault();
+            window.location.href = this.dataItem($(e.target).closest("tr")).PatientMatchUrl;
+            $("#default-loading-panel").css(
+                {
+                    "display": "flex",
+                    "align-items": "center",
+                    "justify-content": "center",
+                    "width": "100%",
+                    "height": "100%",
+                    "position": "fixed",
+                    "top": "0",
+                    "left": "0",
+                    "z-index": "1000032"
+                })
+            .show();
+            
+        };
+
+        window.DeleteRequest = function (e) {
+            e.preventDefault();
+            if (confirm("Are you sure you want to delete the record?")) {
+                LoadingPanel.loader.show();
+                var dataItem = this.dataItem($(e.target).closest("tr")).MatchPatientLogID;
+                var _matchPatientLogId = parseInt(dataItem);
+
+                // Send AJAX request to delete the record
+                $.ajax({
+                    url: '@Url.RouteUrl("AdminReviewDeleteMatch")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ MatchPatientLogId: dataItem }),
+                    success: function (result) {
+
+                        // Handle success response
+                        document.location = '@Url.RouteUrl("AdminReviewIndex")';
+                        location.href = '@Url.RouteUrl("AdminReviewIndex")'
+                        LoadingPanel.loader.hide();
+                    },
+                    error: function (error) {
+                        // Handle error response
+
+                    }
+                });
+
+            }
+        };
+
+        window.RequestsLoaded = function () {
+            LoadingPanel.loader.hide();
+
+        };
+    })();
+</script>

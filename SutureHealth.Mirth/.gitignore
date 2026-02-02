@@ -1,0 +1,5 @@
+/bin/
+/extra/MirthAWS/target
+/tools/HCHB/MessageSenderAgent/bin/
+/tools/HCHB/MessageSenderAgent/obj/
+/mirth/channel/configuration.properties

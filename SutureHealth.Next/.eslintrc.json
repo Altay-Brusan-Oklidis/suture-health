@@ -1,0 +1,57 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb-base",
+    "eslint-config-airbnb-typescript/base",
+    "prettier",
+    "plugin:cypress/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "createDefaultProgram": true
+  },
+  "plugins": ["cypress"],
+  "ignorePatterns": ["styles.js"],
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 140,
+        "ignoreTemplateLiterals": true,
+        "ignoreStrings": true,
+        "ignoreComments": true
+      }
+    ],
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "prefer-rest-params": "off",
+    "no-nested-ternary": "off",
+    "newline-before-return": "error",
+    "indent": "off",
+    "class-methods-use-this": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "cypress.config.ts",
+          "./scripts/proxy.js",
+          "./cypress/**"
+        ]
+      }
+    ],
+    "padding-line-between-statements": [
+      "warn",
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      }
+    ],
+    "react/jsx-curly-brace-presence": [
+      "warn",
+      { "props": "never", "propElementValues": "always" }
+    ],
+    "react/jsx-boolean-value": ["error", "never"]
+  }
+}

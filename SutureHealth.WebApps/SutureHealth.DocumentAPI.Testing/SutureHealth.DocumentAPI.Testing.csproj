@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>SutureHealth.Documents.Testing</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.ci.json" Link="appsettings.ci.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.demo.json" Link="appsettings.demo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.prod.json" Link="appsettings.prod.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.qa.json" Link="appsettings.qa.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.stage.json" Link="appsettings.stage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.0.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.0.0" />
+    <PackageReference Include="coverlet.collector" Version="3.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SutureHealth.AspNetCore.WebHost\SutureHealth.AspNetCore.WebHost.csproj" />
+    <ProjectReference Include="..\SutureHealth.DocumentAPI.Services\SutureHealth.DocumentAPI.Services.csproj" />
+    <ProjectReference Include="..\SutureHealth.DocumentAPI.Services.SqlServer\SutureHealth.DocumentAPI.Services.SqlServer.csproj" />
+  </ItemGroup>
+
+</Project>

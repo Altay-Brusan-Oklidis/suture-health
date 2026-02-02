@@ -1,0 +1,44 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.CommunicationPreferencesViewModel
+@{
+    Model.RequireUI = true;
+}
+@if (Model.HasCompletionAlert)
+{
+    <partial name="_Alert" for="CompletionAlert" />
+}
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-0">@(Model.UserName)'s Communication Preferences</h1>
+                <hr class="mt-0" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="my-3">
+    <div class="container">
+        <div class="row">
+            <form method="post">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-danger">
+                        @Html.ValidationSummary(true)
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <partial name="_CommunicationPreferences" model="@Model.CommunicationPreferences" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="div-distance text-center">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button class="btn btn-secondary" type="button" onclick="window.location.href = '@Model.ReturnUrl'">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

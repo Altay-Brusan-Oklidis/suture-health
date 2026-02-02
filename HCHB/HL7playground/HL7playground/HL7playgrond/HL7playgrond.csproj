@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nhapi" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Cerner Samples\Continuity_of_Care_Document_INPATIENT.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Cerner Samples\Discharge_Summary_ED.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Epic ED Encounter Summary Deidentified Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Sample Epic ED Encounter with Payer Information.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\Anderson T9 - OB Episode and History.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\Gonzales T38 55877.96 - Surgery Details and Notes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\Gonzales T38 55877.99 - Discharge Disposition.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\Gonzales T9 - Growth Chart, Ped Vitals, Surgical History and Medical History.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\T300 - Transplant Summary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\T38 - Eye Exam.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\T800 - Dialysis Summary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Epic Samples\Specialty Samples\T810 - Oncology Summary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

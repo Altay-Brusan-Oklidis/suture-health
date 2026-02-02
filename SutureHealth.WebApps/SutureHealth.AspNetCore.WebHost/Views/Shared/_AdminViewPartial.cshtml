@@ -1,0 +1,36 @@
+﻿@model IBaseViewModel
+@inject IAuthorizationService _authz
+@{
+    var showPatientsInfoAuthzResult = await _authz.AuthorizeAsync(User, AuthorizationPolicies.ShowPatientsInfo);
+    var showPatientsInfo = showPatientsInfoAuthzResult.Succeeded;
+}
+
+<li class="nav-item ">
+   <a asp-area="Admin" asp-page="/Dashboard" if-matches-request="nav-active" match-page="true" class="nav-link">Dashboard</a>
+</li>
+<li class="nav-item ">
+   <a asp-area="Admin" asp-controller="Organization" asp-action="Index" if-matches-request="nav-active" match-area="true" match-controller="true" match-action="true" class="nav-link">Organizations</a>
+</li>
+<li class="nav-item ">
+   <a asp-area="Admin" asp-controller="Member" asp-action="Search" if-matches-request="nav-active" match-area="true" match-controller="true" match-action="true" class="nav-link">Users</a>
+</li>
+@if (showPatientsInfo)
+{
+    <li class="nav-item ">
+        <a asp-area="Admin" asp-controller="Patient" asp-action="Search" if-matches-request="nav-active" match-area="true" match-controller="true" match-action="true" class="nav-link">Patients</a>
+    </li>
+}
+
+<li class="nav-item ">
+   <a asp-area="Admin" asp-controller="System" asp-action="Index" if-matches-request="nav-active" match-area="true" match-controller="true" match-action="true" class="nav-link">System</a>
+</li>
+<li class="nav-item ">
+   <a asp-area="Admin" asp-page="/Notifications" if-matches-request="nav-active" match-page="true" class="nav-link">Notifications</a>
+</li>
+<li class="nav-item ">
+   <a asp-area="Admin" asp-controller="Review" asp-action="Index" if-matches-request="nav-active" match-area="true" match-controller="true" match-action="true" class="nav-link">Review</a>
+</li>
+<li class="nav-item ">
+   <a asp-area="Admin" asp-controller="Api" asp-action="Search" if-matches-request="nav-active" match-area="true" match-controller="true" match-action="true" class="nav-link">API</a>
+</li>
+            

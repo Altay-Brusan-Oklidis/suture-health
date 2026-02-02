@@ -1,0 +1,311 @@
+@model SutureHealth.AspNetCore.Areas.Admin.Models.Review.PatientMatchModel.PatientInfo
+<style type="text/css">
+
+    .modal-dialog {
+        width: 800px;
+        max-width: 800px
+    }
+
+</style>
+<div class="modal fade" id="mergePatientModal" tabindex="-1" role="dialog" aria-labelledby="mergePatientModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="mergePatientTitle"><b>Merge Patient Details</b></h4>
+                <button type="button" onclick="CloseMergePatientModal()" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-6" id="mergeConfirmModal">
+                    <table width="100%" cellspacing="0" cellpadding="0" id="mergeConfirmTable">
+                        <tr name="FirstName">
+                            <td>
+                                <strong>First Name</strong>
+                                <div>
+                                    <input type="radio" name="firstNameBtn" checked> <span>@Model.FirstName</span>  <br>
+                                    <input type="radio" name="firstNameBtn" > <span id="newFirstNamePlaceHolder"></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="MiddleName">
+                            <td>
+                                <strong>Middle Name</strong>
+                                <div>
+                                    <input type="radio" name="middleNameBtn" checked> <span> @Model.MiddleName</span>  <br>
+                                    <input type="radio" name="middleNameBtn" > <span></span>  <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="LastName">
+                            <td>
+                                <strong>Last Name</strong>
+                                <div>
+                                    <input type="radio" name="lastNameBtn" checked> <span>@Model.LastName</span> <br>
+                                    <input type="radio" name="lastNameBtn" > <span></span>  <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="Suffix">
+                            <td>
+                                <strong>Suffix</strong>
+                                <div>
+                                    <input type="radio" name="suffixBtn" checked> <span>@Model.Suffix</span> <br>
+                                    <input type="radio" name="suffixBtn" > <span></span>  <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="DOB">
+                            <td>
+                                <strong>Date Of Birth</strong>
+                                <div>
+                                    <input type="radio" name="dobBtn" checked> <span>@Model.DOB</span>  <br>
+                                    <input type="radio" name="dobBtn" > <span></span>  <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="Line1">
+                            <td>
+                                <strong>Address Line 1</strong>
+                                <div>
+                                    <input type="radio" name="addressLine1Btn" checked> <span>@Model.Address.Line1</span> <br>
+                                    <input type="radio" name="addressLine1Btn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="Line2">
+                            <td>
+                                <strong>Address Line 2</strong>
+                                <div>
+                                    <input type="radio" name="addressLine2Btn" checked> <span>@Model.Address.Line2</span> <br>
+                                    <input type="radio" name="addressLine2Btn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="City">
+                            <td>
+                                <strong>City</strong>
+                                <div>
+                                    <input type="radio" name="cityBtn" checked> <span>@Model.Address.City</span> <br>
+                                    <input type="radio" name="cityBtn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="State">
+                            <td>
+                                <strong>State</strong>
+                                <div>
+                                    <input type="radio" name="stateBtn" checked> <span>@Model.Address.StateOrProvince</span> <br>
+                                    <input type="radio" name="stateBtn" > <span></span><br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="PostalCode">
+                            <td>
+                                <strong>Postal Code</strong>
+                                <div>
+                                    <input type="radio" name="postalCodeBtn" checked> <span> @Model.Address.PostalCode</span> <br>
+                                    <input type="radio" name="postalCodeBtn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="Gender">
+                            <td>
+                                <strong>Gender</strong>
+                                <div>
+                                    <input type="radio" name="genderBtn" checked> <span>@Model.Gender</span><br>
+                                    <input type="radio" name="genderBtn" > <span></span><br>
+                                </div>
+                                <hr>
+
+                            </td>
+                        </tr>
+                        <tr name="HomePhone">
+                            <td>
+                                <strong>
+                                    Home Phone
+                                    <span>
+                                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" name="isPrimary" onclick="UpdatePrimaryCheckBox(this)" type="checkbox" checked="@Model.HomePhone.IsPrimary" /><a> )</a>
+                                    </span>
+                                </strong>
+                                <div>
+                                    <input type="radio" name="homePhoneBtn" checked>
+                                    <span>
+                                        @Model.HomePhone.Value
+                                    </span> <br>
+                                    <input type="radio" name="homePhoneBtn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="WorkPhone">
+                            <td>
+                                <strong>
+                                    Work Phone
+                                    <span>
+                                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" name="isPrimary" onclick="UpdatePrimaryCheckBox(this)" type="checkbox" checked="@Model.WorkPhone.IsPrimary" /><a> )</a>
+                                    </span>
+                                </strong>
+                                <div>
+                                    <input type="radio" name="workPhoneBtn" checked>
+                                    <span>
+                                        @Model.WorkPhone.Value
+                                    </span> <br>
+                                    <input type="radio" name="workPhoneBtn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="Mobile">
+                            <td>
+                                <strong>
+                                    Mobile
+                                    <span>
+                                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" name="isPrimary" onclick="UpdatePrimaryCheckBox(this)" type="checkbox" checked="@Model.Mobile.IsPrimary" /><a> )</a>
+                                    </span>
+                                </strong>
+                                <div>
+                                    <input type="radio" name="mobileBtn" checked>
+                                    <span>
+                                        @Model.Mobile.Value
+                                    </span> <br>
+                                    <input type="radio" name="mobileBtn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="OtherPhone">
+                            <td>
+                                <strong>
+                                    Other Phone
+                                    <span>
+                                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" name="isPrimary" onclick="UpdatePrimaryCheckBox(this)" type="checkbox" checked="@Model.OtherPhone.IsPrimary" /><a> )</a>
+                                    </span>
+                                </strong>
+                                <div>
+                                    <input type="radio" name="otherPhoneBtn" checked>
+                                    <span>
+                                        @Model.OtherPhone.Value
+                                    </span> <br>
+                                    <input type="radio" name="otherPhoneBtn" > <span></span> <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="OrganizationName">
+                            <td>
+                                <strong>Organization</strong>
+                                <div>
+                                    <input type="radio" name="organizationBtn" checked> <span>@Model.OrganizatioName</span> <br>
+                                    <input type="radio" name="organizationBtn" > <span></span><br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="SSN">
+                            <td>
+                                <strong>SSN/Serial</strong>
+                                <div>
+                                    <input type="radio" name="ssnBtn" checked> <span>@Model.SSN</span> <br>
+                                    <input type="radio" name="ssnBtn" > <span></span>  <br>
+                                </div>
+                                <hr>
+
+                            </td>
+                        </tr>
+                        <tr name="MedicareMBI">
+                            <td>
+                                <strong>Medicare MBI</strong>
+                                <div>
+                                    <input type="radio" name="mbiBtn" checked>
+                                    <span>
+                                        @Model.MedicareMBI
+                                    </span>
+                                    <br>
+                                    <input type="radio" name="mbiBtn" >
+                                    <span></span>
+                                    <br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="MedicaidNumber">
+                            <td>
+                                <strong>Medicaid Number</strong>
+                                <div>
+                                    <input type="radio" name="medicaidBtn" checked>
+                                    <span>
+                                        @if (!string.IsNullOrEmpty(@Model.MedicaidNumber))
+                                        {
+                                            @Model.MedicaidNumber  @Html.Raw(" ("+@Model.MedicaidState +") ")
+                                            ;
+
+                                        }
+                                    </span>
+                                    <br>
+
+                                    <input type="radio" name="medicaidBtn" > <span></span><br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr name="PayerMix">
+                            <td>
+                                <strong>Payer Mix</strong>
+                                <div>
+                                    <input type="radio" name="payerMixBtn" checked>
+                                    <span>
+                                        @if (@Model.IsSelfPaid)
+                                        {
+                                            <input type="checkbox" name="selfPayChk" checked disabled>
+                                            <span>Self Pay</span>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" name="selfPayChk" disabled>
+                                            <span>Self Pay</span>
+                                        }
+                                        @if (@Model.IsPrivateInsuranceAvailable)
+                                        {
+                                            <input type="checkbox" name="privateInsuranceChk" checked disabled>
+                                            <span>Private Insurance</span>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" name="privateInsuranceChk" disabled>
+                                            <span>Private Insurance</span>
+                                        }
+
+                                    </span><br>
+                                    <input type="radio" name="payerMixBtn" >
+                                    <span>
+                                        <input type="checkbox" name="targetPatientSelfPayChk" disabled>
+                                        <span>Self Pay</span>
+                                        <input type="checkbox" name="targetPatientPrivateInsuranceChk" disabled>
+                                        <span>Private Insurance</span>
+                                    </span><br>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div style="width: 60%; height: 30px; float: left; background-color: indianred; color: white; text-align: center; font-size: large; display:none;" id="createPatientError"></div>
+                <button type="button" onclick="CloseMergePatientModal()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="MergePatient()" class="btn btn-primary">Merge</button>
+            </div>
+        </div>
+    </div>
+</div>

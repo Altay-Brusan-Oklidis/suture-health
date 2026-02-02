@@ -1,0 +1,135 @@
+@model SutureHealth.AspNetCore.Areas.Network.Models.Listing.EntityListItem
+@using SutureHealth;
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+@using SutureHealth.AspNetCore.Areas.Network.Models.Listing;
+<div class="provider-list-item-wrapper @IndexViewModel.EntityViewStyle.Row.GetEnumDescription()">
+    <div class="row">
+        <div class="col-md-3 col-lg-2">
+            <div class="entity-icon-container @(Model.IsSutureCustomer ? "with-overlay" : string.Empty)">
+                <div class="entity-icon">
+                    <i class="@(Model.ProviderType == ProviderType.Individual ? "fas fa-user-circle" : "fal fa-building" )"></i>
+                </div>
+                @if (Model.IsSutureCustomer)
+                {
+                    <div class="provider-suturesign-client" data-toggle="tooltip" title="Joined @Model.SutureCustomer.DateCreated.ToString("M/d/yyyy")">
+                        <div class="text-center">
+                            <img src="~/images/Suturesign New Browser Logo.png" style="height: 30px; border: 2px solid white; border-radius: 14px;" />
+                        </div>
+                        <div class="provider-list-item-account-type text-center">@Model.SutureCustomer.AccountType</div>
+                        <div class="text-center">
+                            <div class="provider-suturesign-client-date">Since @Model.SutureCustomer.DateCreated.ToString(((DateTime.UtcNow - Model.SutureCustomer.DateCreated).TotalDays / 365) > 2 ? "yyyy" : "MMM yyyy")</div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div data-model-for="ProviderNewIndicator" class="provider-new-indicator-container" style="display: none;">
+                <div class="provider-new-indicator">
+                    NEW
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-5">
+            <div>
+                <div class="provider-list-item-name">
+                    <b>@Model.Name</b>
+                    @if (Model.HasClaimsWithUser)
+                    {
+                        <i class="far fa-file-medical-alt" title="@Model.ClaimsWithUser @(Model.ClaimsWithUser > 1 ? " Claims" : "Claim" ) with Me" style="font-size: larger; margin-left: 5px; color: #00b3b3; display:inline;"></i>
+                    }
+                    @if (Model.IsSutureCustomer && Model.SutureCustomer.IsInNetwork)
+                    {
+                        <i class="far fa-chart-network" style="font-size: larger; margin-left: 5px; color: #00b3b3; display:inline;"></i>
+                    }
+                </div>
+                @if (Model.IsSutureCustomer && Model.ProviderType == ProviderType.Individual && Model.SutureCustomer.HasParentFacilityName)
+                {
+                    <div class="provider-list-item-parent-name">@Model.SutureCustomer.ParentFacilityName</div>
+                }
+                <div class="provider-list-item-contact">
+                    <span class="provider-list-item-address">@Model.FullAddress</span>
+                    @if (Model.HasTenDigitPhone)
+                    {
+                        <a class="provider-list-item-phone" href="tel://@Model.Phone">@(string.Format("{0:(###) ###-####}", long.Parse(Model.Phone)))</a>
+                    }
+                </div>
+            </div>
+            @if (Model.ServiceTypes.Any())
+            {
+                <div class="provider-list-item-services">
+                    @foreach (var s in Model.ServiceTypes)
+                    {
+                        <div class="provider-service-type">@s</div>
+                    }
+                </div>
+            }
+
+            <div>
+                <div class="provider-list-item-npi"><b>NPI: </b>@(Model.Npi.ToString() == "0" ? "" : Model.Npi.ToString())</div>
+            </div>
+
+            @if (Model.Relationships.Any())
+            {
+                <div class="entity-relationships entity-relationships-collapsed">
+                    <div class="entity-relationships-state entity-relationships-collapsed">
+                        <div class="entity-relationships-header" data-action="EntityExpandRelationships">
+                            <i class="fas fa-caret-up providerTypeRelationship"></i>
+                            <div class="provider-list-item-relationship-header">@(Model.ProviderType == ProviderType.Individual ? "Other Offices" : "Clinicians")</div>
+                        </div>
+                    </div>
+                    <div class="entity-relationships-state entity-relationships-expanded">
+                        <div class="entity-relationships-header" data-action="EntityExpandRelationships">
+                            <i class="fas fa-caret-down providerTypeRelationship"></i>
+                            <div class="provider-list-item-relationship-header">@(Model.ProviderType == ProviderType.Individual ? "Other Offices" : "Clinicians")</div>
+                        </div>
+                        <div class="entity-relationships-listing">
+                            @foreach (var relationship in Model.Relationships)
+                            {
+                                <div class="entity-relationship-item" style="margin-left:15px;">
+                                    <div class="entity-relationship-item-name">
+                                        <b>@relationship.Name</b>
+                                        @if (Model.ProviderType != ProviderType.Organization)
+                                        {
+                                            <text>
+                                                - <span class="entity-relationship-item-address">@relationship.FullAddress</span> <a class="entity-relationship-item-phone" href="tel://@relationship.Phone">@(string.Format("{0:(###) ###-####}", relationship.Phone))</a>
+                                            </text>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.Relationships.Count() > 5)
+                            {
+                                <div class="entity-relationships-listing-show-all" style="width: 100%; text-align:center">
+                                    <a data-action="EntityShowAllRelationships" href="javascript:void(0);">Show More</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-4 col-lg-5" style="text-align:right; margin-bottom: 30px;">
+            <div style="margin-bottom: 10px;">
+                @foreach (var button in Model.Buttons.OrderBy(btn => Array.IndexOf(EntityListItemActionButtonExtensions.RowButtonOrder, btn)))
+                {
+                    <div class="entity-row-button">
+                        @await Html.PartialAsync(button, Model)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (Model.Distance > 0)
+    {
+        <div class="provider-distance">
+            @Model.Distance mi
+        </div>
+    }
+    else
+    {
+        <div class="provider-distance">
+            0 mi
+        </div>
+    }
+    <hr style="color: #c0c0c0; margin: 10px 0 10px 17%;" />
+</div>

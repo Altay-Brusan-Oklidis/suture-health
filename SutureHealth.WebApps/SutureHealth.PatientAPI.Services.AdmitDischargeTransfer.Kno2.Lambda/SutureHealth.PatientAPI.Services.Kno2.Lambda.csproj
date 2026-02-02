@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <AWSProjectType>Lambda</AWSProjectType>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <RootNamespace>SutureHealth.Patients.Services.Lambda</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.0" />
+        <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\SutureHealth.AspNetCore.Amazon\SutureHealth.AspNetCore.Amazon.csproj" />
+        <ProjectReference Include="..\SutureHealth.PatientAPI.Core\SutureHealth.PatientAPI.Core.csproj" />
+        <ProjectReference Include="..\SutureHealth.PatientAPI.Services.AdmitDischargeTransfer.Kno2\SutureHealth.PatientAPI.Services.AdmitDischargeTransfer.Kno2.csproj" />
+        <ProjectReference Include="..\SutureHealth.PatientAPI.Services.AdmitDischargeTransfer.SqlServer\SutureHealth.PatientAPI.Services.AdmitDischargeTransfer.SqlServer.csproj" />
+        <ProjectReference Include="..\SutureHealth.Services.Amazon\SutureHealth.Services.Amazon.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\SutureHealthAPI\appsettings.ci.json" Link="appsettings.ci.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="..\SutureHealthAPI\appsettings.demo.json" Link="appsettings.demo.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="..\SutureHealthAPI\appsettings.json" Link="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="..\SutureHealthAPI\appsettings.prod.json" Link="appsettings.prod.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="..\SutureHealthAPI\appsettings.qa.json" Link="appsettings.qa.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+    </ItemGroup>
+</Project>

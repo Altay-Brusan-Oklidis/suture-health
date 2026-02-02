@@ -1,0 +1,165 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Api.SearchModel
+@{
+
+    Model.RequireKendo = true;
+}
+
+@section Styles
+{
+<link rel="stylesheet" href="~/css/AdminStyle.min.css" asp-append-version="true" />
+}
+
+<section class="mt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3">
+                        <h2 style="font-weight: bold;">
+                            API Request Management
+                        </h2>
+                    </div>
+                </div>
+                <hr class="mt-0" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8 p-3 shadow">
+                <h5>Advanced Search</h5>
+                <form action="javascript:void(0);">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <kendo-autocomplete name="OrganizationId" datasource-id="SubmittingOrganizationDataSource" datatextfield="Name" on-select="OrganizationSelected" on-change="OrganizationChanged" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <select id="Status" asp-items="Model.Statuses" class="form-select"></select>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="Search" type="button" class="btn btn-block btn-primary">Search</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="reset" class="btn btn-block btn-secondary">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11 my-4">
+                <kendo-grid name="Requests" datasource-id="RequestDataSource">
+                    <columns>
+                        <column field="DateSubmitted" title="Submitted" />
+                        <column field="RequestId" title="Request Id" />
+                        <column field="SendingOrganization" title="Submitting Facility" />
+                        <column field="SigningOrganization" title="Recipient Org" />
+                        <column field="SignerName" title="Recipient (Signer)" />
+                        <column field="PatientName" title="Patient Name" />
+                        <column field="Status" title="Status" />
+                        <column title="Actions">
+                            <commands>
+                                <column-command name="View" text="View" click="DownloadRequestJson" />
+                                <column-command name="Patient" text="Patient" click="DownloadRequestJson" />
+                            </commands>
+                        </column>
+                    </columns>
+                    <column-menu enabled="true" />
+                    <sortable enabled="true" />
+                    <pageable page-size="15" page-sizes="new int[] { 15, 30, 50 }" />
+                </kendo-grid>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <kendo-grid name="Requests" datasource-id="RequestDataSource">
+            <columns>
+                <column field="DateSubmitted" title="Submitted" />
+                <column field="RequestId" title="Request Id" />
+                <column field="SendingOrganization" title="Submitting Org" />
+                <column field="SigningOrganization" title="Recipient Org" />
+                <column field="SignerName" title="Recipient (Signer)" />
+                <column field="PatientName" title="Patient Name" />
+                <column field="Status" title="Status" />
+                <column title="Actions">
+                    <commands>
+                        <column-command name="View" text="View" click="DownloadRequestJson" />
+                        <column-command name="Patient" text="Patient" click="DownloadRequestJson" />
+                    </commands>
+                </column>
+            </columns>
+            <column-menu enabled="true" />
+            <sortable enabled="true" />
+            <pageable page-size="15" page-sizes="new int[] { 15, 30, 50 }" />
+        </kendo-grid>
+    </div>
+</div>
+@(Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Admin.Models.Api.OrganizationSearchListItem>()
+              .Name("SubmittingOrganizationDataSource")
+              .Ajax(acfg => acfg.Read(rcfg => rcfg.Route("AdminApiSubmittingOrganizationSearch")).ServerOperation(true)))
+@(Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Admin.Models.Api.RequestGridListItem>()
+              .Name("RequestDataSource")
+              .Custom(ccfg => ccfg.PageSize(15)))
+<script type="text/javascript">
+    (function () {
+        var organizationId = null,
+            downloadStringAsJson = function (jsonString, fileName) {
+                let body = $("body"),
+                    element = $("<a></a>")
+                                .attr("href", "data:text/json;charset=utf-8," + encodeURIComponent(jsonString))
+                                .attr("download", fileName ? fileName : "content.json");
+
+                body.append(element);
+                element[0].click();
+                body.remove(element);
+            };
+
+        $(document).ready(function () {
+            $("#Search").click(function () {
+                LoadingPanel.loader.show();
+
+                $.post({
+                    "url": "@Url.RouteUrl("AdminApiRequestGrid")",
+                    "contentType": "application/json",
+                    "data": JSON.stringify({
+                        "OrganizationId": organizationId,
+                        "Status": $("#Status").val()
+                    }),
+                    "success": function (data) {
+                        RequestDataSource.data(data);
+                        LoadingPanel.loader.hide();
+                    }
+                });
+            });
+        });
+
+        window.OrganizationSelected = function (e) {
+            organizationId = e.dataItem.OrganizationId;
+        };
+
+        window.OrganizationChanged = function () {
+            if (this.value() === "") {
+                organizationId = null;
+            }
+        };
+
+        window.DownloadRequestJson = function (e) {
+            let request = this.dataItem($(e.target).closest("tr")),
+                isPatientCommand = e.data.commandName === "Patient";
+
+            e.preventDefault();
+            downloadStringAsJson(isPatientCommand ? request.PatientMatchJson : request.RequestJson, (isPatientCommand ? "Request_MatchLog_" : "Request_") + request.RequestId + ".json");
+        };
+    })();
+</script>

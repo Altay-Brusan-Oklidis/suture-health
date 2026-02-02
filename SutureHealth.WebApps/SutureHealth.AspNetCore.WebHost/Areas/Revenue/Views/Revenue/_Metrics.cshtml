@@ -1,0 +1,42 @@
+﻿@model SutureHealth.AspNetCore.Areas.Revenue.Models.MetricsViewModel
+
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-3">
+        <p><a class="howToBillLink" href="http://suturehealth.com/billingforsignatures" target="_blank">How To Bill For Signatures</a></p>
+    </div>
+    
+    <div class="col-12 col-md-6 align-self-center">
+        
+            <div class="row">
+                <div class="col-4">
+                    <h5 class="text-center text-primary" style=" font-weight: 600;">Last 30 Days: <span style="font-size: 24px;">$@Model.Last30DaysRevenue.ToString("n0")</span></h5>
+                    <p class="rvu text-center text-primary mb-0">(@(Model.Last30DaysRVU.ToString() == "0" ? "0" : Model.Last30DaysRVU.ToString("n2")) RVU)</p>
+                </div>
+                <div class="col-4 ">
+                   <h5 class="text-center text-primary" style=" font-weight: 600;"> Year To Date: <span style="font-size: 24px;">$@Model.YearToDateRevenue.ToString("n0")</span></h5>
+                    <p class="rvu text-center text-primary mb-0">(@(Model.YearToDateRVU.ToString() == "0" ? "0" : Model.YearToDateRVU.ToString("n2")) RVU) </p>
+                </div>
+                <div class="col-4">
+                    <h5 class="text-center text-primary" style=" font-weight: 600;"> All Time: <span style="font-size: 24px;">$@Model.AllTimeRevenue.ToString("n0")</span></h5>
+                    <p class="rvu text-center text-primary mb-0">(@(Model.AllTimeRVU.ToString() == "0" ? "0" : Model.AllTimeRVU.ToString("n2")) RVU)</p>
+                </div>
+            </div>
+            <div class="row mt-1 justify-content-center">
+                <div class="col-6">
+                    
+                </div>
+            </div>
+        
+
+    </div>
+
+     @if (!Model.IsPaidUser)
+    {
+        <div class="col-12 col-md-3 text-end">
+            <a class="UpgradeLink" href="http://suturehealth.com/signerupgrade" target="_blank">UPGRADE to get 12 months reporting</a>
+        </div>
+    }
+    
+</div>
+

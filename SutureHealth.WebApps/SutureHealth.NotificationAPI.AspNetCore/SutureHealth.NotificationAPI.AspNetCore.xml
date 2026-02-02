@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SutureHealth.NotificationAPI.AspNetCore</name>
+    </assembly>
+    <members>
+        <member name="T:SutureHealth.Notifications.AspNetCore.ConfigureSwaggerOptions">
+            <summary>
+            Configures the Swagger generation options.
+            </summary>
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+        </member>
+        <member name="M:SutureHealth.Notifications.AspNetCore.ConfigureSwaggerOptions.#ctor(Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SutureHealth.Notifications.AspNetCore.ConfigureSwaggerOptions"/> class.
+            </summary>
+            <param name="provider">The <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
+        </member>
+        <member name="M:SutureHealth.Notifications.AspNetCore.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:SutureHealth.Notifications.AspNetCore.v0001.Controllers.NotificationController">
+            <summary>
+            Class <see cref="T:SutureHealth.Notifications.AspNetCore.v0001.Controllers.NotificationController"/> used for implementing cloud api for notification. 
+            </summary>
+        </member>
+        <member name="T:SutureHealth.Notifications.AspNetCore.v0001.Models.Notification">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

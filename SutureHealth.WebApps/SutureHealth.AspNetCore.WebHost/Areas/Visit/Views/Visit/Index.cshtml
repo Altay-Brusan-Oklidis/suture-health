@@ -1,0 +1,422 @@
+﻿@model SutureHealth.AspNetCore.WebHost.Areas.Visit.Models.IndexViewModel
+@{
+    ViewBag.Title = "Video";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<link rel="stylesheet" href="~/css/ChatVideo.min.css" />
+<link rel="stylesheet" href="~/css/Site.min.css" />
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+<script src="~/js/VideoChat.js"></script>
+
+<div id="create-videovisit" class="container ">
+    <div class="row">
+        <div id="dialpadScreen" class="col-7">
+            <div>
+                @if (ViewBag.requiredPhone == true)
+                {
+                    <div class="text-danger div-distance" style="color: #e61610; font-weight: bold;">
+                        CLICK TO <a asp-route="MemberAccount"  asp-route-memberid="@Model.CurrentUser.Id" asp-route-returnUrl="@Context.Request.Path.Value">ADD YOUR MOBILE NUMBER</a> BEFORE STARTING A VIDEO VISIT
+                    </div>
+                }
+                <h3 class="text-center">
+                    Invite your patient via text message
+                </h3>
+
+                <form method="post" action=@Url.RouteUrl("IndexPost")>
+                        <input id="participantPhoneNumber" name="participantPhoneNumber" @(ViewBag.requiredPhone == true ? "disabled" : "")
+                            class="videovisit-number form-control primaryColor" type="tel" style="font-size:25px;text-align:center"
+                            onchange="ValidatePhoneNumber();" onkeyup="ValidatePhoneNumber();" placeholder="Dial a 10-digit number" />
+                    <div>
+                        <input id="robocallEnabled" type="checkbox" name="robocallEnabled" @(ViewBag.TelemedicineRobocallEnabled ? "checked" : "")
+                                data-url="@Url.Action("ChangeRoboCallEnabled")"/>
+                        <label for="robocallEnabled" style="font-weight:bold;">Robo-Scheduler</label>
+                        <sup><a href="#" style="color: inherit;" title="Automated call to participant that increases join rates and improves visit timing."><i class="far fa-info-circle"></i></a></sup>
+                    </div>
+
+                    <div id="dialPad">
+                        <div class="position key">1</div>
+                        <div class="position key">2</div>
+                        <div class="position key">3</div>
+                        <div class="position key">4</div>
+                        <div class="position key">5</div>
+                        <div class="position key">6</div>
+                        <div class="position key">7</div>
+                        <div class="position key">8</div>
+                        <div class="position key">9</div>
+                        <div class="position">&nbsp;</div>
+                        <div class="position key">0</div>
+                        <div class="position backspace">
+                            <i class="fal fa-backspace" style="color: #333; font-size: .9em;"></i>
+                        </div>
+                    </div>
+                    @*<button type="submit" class="joinButtons sh-btn sh-btn-blue sh-btn-fullheight" style="background-color: #2bc04f;" disabled>
+                            Join Now
+                        </button>
+                        <button type="submit" class="joinButtons sh-btn sh-btn-blue sh-btn-fullheight" style="background-color: #2bc04f; margin-top: 10px;" disabled>
+                            Text Me When They Join
+                        </button>*@
+                    <input type="hidden" name="joinNow" />
+                    <button id="joinButton" type="submit" class="sh-btn sh-btn-green sh-btn-fullheight" disabled>
+                        Join Now
+                    </button>
+                    <button id="inviteButton" type="submit" class="sh-btn sh-btn-green sh-btn-fullheight" disabled>
+                        Text Me When They Join
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div id="videoVisitsMarketing" style="float: right; margin-top: 60px; text-align: left;" class="col-5">
+            <div style="font-weight: bold; margin-bottom: 10px;">Secure telemedicine made simple!</div>
+            <div>
+                <ul>
+                    <li>Patients receive a room link via test message</li>
+                    <li>Join the virtual room with just a web browser on any device</li>
+                    <li>Integrated patient consents</li>
+                    <li style="font-weight: bold;">NO APP DOWNLOAD!</li>
+                </ul>
+            </div>
+        </div>
+
+    
+    </div>
+    
+    
+    <div id="roomsScreen" class="screen">
+        <input type="hidden" id="hiddenExpiration" value="@ViewBag.ExpireTime.Ticks" />
+        <div class="page-title-container">
+            <div class="rightButton">
+                <i class="fa fa-clock-o primaryColor" aria-hidden="true"></i>
+                <a asp-controller="Recents" asp-action="Recents" asp-area="Visit">Recents</a>
+            </div>
+            <div class="rightButton">
+                <i class="fas fa-sync primaryColor" aria-hidden="true"></i>
+                <a href="@Url.Action("Index")">Refresh</a>
+            </div>
+            <div style="float:left;" class="text-left">
+                <div class="h2 page-title" style="display: inline-block; margin-top: 0;">
+                    <i class="far fa-clipboard"></i>
+                    Today
+                </div>
+
+            </div>
+            <div style="font-weight: bold;">
+                <span>(All rooms expire at <span class="expireTime"></span> local time)</span>
+            </div>
+        </div>
+        <div class="mobile-title-container">
+            <span>(All rooms expire at <span class="expireTime"></span> local time)</span>
+        </div>
+        <div class="roomList">
+            @if (Model.Visits.Count() <= 0)
+            {
+                <div style="font-weight: bold;">No rooms today</div>
+            }
+            @foreach (var visit in Model.Visits)
+            {
+                <div class="roomRow" style="clear: both;">
+                    <a asp-route="VisitDeactivate" asp-route-publicId="@visit.PublicId" class="button deactivateLink negative inverted buttonWhenActive" style="display: @(visit.Active ? "inline" : "none")">CLOSE</a>
+                    <a asp-route="VisitRoom" asp-route-publicId="@visit.PublicId" class="button buttonWhenActive joinButtons" style="display: @(visit.Active ? "inline" : "none")">JOIN</a>
+
+                    @if (visit.PatientCurrentlyJoined == false)
+                    {
+                        <a asp-route="VisitResendInvite" asp-route-publicId="@visit.PublicId" class="button reinviteButton secondary buttonWhenActive" style="display: @(visit.Active ? "inline" : "none")">REINVITE</a>
+                    }
+                    <a asp-route="VisitReactivate" asp-route-publicId="@visit.PublicId" class="button reactivateLink inverted secondary buttonWhenNotActive" style="display: @(visit.Active == false ? "inline" : "none")">OPEN</a>
+
+                    <div style="text-align:left; float:left;">
+                        <h4>@visit.ParticipantPhoneNumberFormatted</h4>
+                        <div style="font-weight: bold;">@(visit.LastPatientName != null && System.Text.RegularExpressions.Regex.Replace(visit.LastPatientName, "\\D", string.Empty) != visit.LastPatientSessionPhoneNumber ? visit.LastPatientName : string.Empty ) &nbsp;</div>
+                        @if (visit.Active)
+                        {
+                            <div style="font-size: .9em;">Invited at <span data-ticks="@visit.CreatedAt.UtcDateTime.Ticks"></span></div>
+                        }
+                    </div>
+                    <div style="float:left; padding: 0 .3em; overflow: hidden; white-space: nowrap;">
+                        <div class="button inverted disabled buttonWhenNotActive" style="font-size: .7em; display: @(visit.Active == false ? "inline-block" : "none")">CLOSED</div>
+
+                        @if (visit.PatientHasJoined)
+                        {
+                            <div class="button negative buttonWhenActive" style="font-size: .7em; display: @(visit.Active && visit.PatientCurrentlyJoined ? "inline-block" : "none")">JOINED</div>
+
+                            if (visit.PatientCurrentlyJoined && visit.Active)
+                            {
+                                <div>@(visit.JoinedMinutes < 1 ? "1" : visit.JoinedMinutes.ToString()) min ago</div>
+                                <div style="font-weight: bold;" data-ticks="@visit.LastPatientSessionCreatedAt?.UtcDateTime.Ticks"></div>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="recentsScreen" class="screen">
+        @*<a href="@Url.Action("ViewVisits")" style="margin-top:20px;" class="btn sh-btn-green font-large">
+            <i class="fas fa-video"></i>
+            <span>View your Visits</span>
+        </a>*@
+        <div class="primaryColor font-bold recentsMobileMessage" style="padding-top: 30vh; font-size: 1.5em; display:none;">Recents are only available on desktop at this time</div>
+
+    </div>
+    <div id="menu" class="menu">
+        <div id="dialpadButton" class="menuButton" style="width: 25%">
+            <i class="far fa-phone"></i>
+            <div>Dialpad</div>
+        </div>
+        <div id="roomsButton" class="menuButton" style="width: 25%">
+            <i class="far fa-clipboard"></i>
+            <div>Rooms</div>
+        </div>
+        <div id="recentsButton" class="menuButton" style="width: 25%">
+            <i class="far fa-clock"></i>
+            <div>Recents</div>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="modal obscure">
+    <div class="banner">
+        <div>Sending invitation via text</div>
+        <div id="nextStep" style="font-weight: bold; padding: 1vh 0;">Joining Now ...</div>
+        <div style="font-size: .7em;">It may take your patient some time to review the consent.</div>
+    </div>
+</div>
+<div id="confirmationModal" class="modal obscure">
+    <div class="banner">
+        <div style="padding: 4vh;">
+            <div id="confirmationMessage" style="text-align: left;">Closing the room will prevent patients from joining</div>
+
+            <div id="confirmButton" class="button">Close Room</div>
+            <div id="cancelButton" class="button disabled">Cancel</div>
+
+        </div>
+    </div>
+</div>
+<div id="webrtcNotSupportedModal" class="modal obscure">
+    <div class="banner">
+        <h4>Aw shucks!</h4>
+        <div style="padding: 4vh;">
+            <div id="confirmationMessage" style="text-align: left;">
+                <p>
+                    Your web browser does not support video calls over the internet without a download.
+                    We will text you when the patient joins so you can join from your smart phone.
+                </p>
+
+                ﻿<p>Use one of the following web browsers instead:</p>
+
+                <ul>
+                    <li>Chrome</li>
+                    <li>Microsoft Edge (replaces Internet Explorer)</li>
+                    <li>Safari (12+)</li>
+                </ul>
+            </div>
+
+            <div id="okButton" class="button">OK</div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.5.10/cleave.min.js"></script>
+<script type="text/javascript">
+
+        querySelectorAllAsArray = function (selector, node) {
+            if (!node) {
+                node = document;
+            }
+            return Array.prototype.slice.call(node.querySelectorAll(selector));
+        }
+
+        var menu = document.getElementById('menu');
+        var confirmationModal = document.getElementById('confirmationModal');
+        var webrtcNotSupportedModal = document.getElementById('webrtcNotSupportedModal');
+        var confirmButton = document.getElementById('confirmButton');
+        var screens = ['dialpad', 'rooms', 'recents'];
+        var joinNowInput = document.getElementsByName('joinNow')[0];
+
+        function selectScreen(selectedScreen) {
+            selectedScreen = selectedScreen || screens[0];
+            screens.forEach(function (screen) {
+                var selected = screen == selectedScreen;
+                var screenDiv = $("#" + screen + 'Screen');
+                var button = document.getElementById(screen + 'Button');
+                if (selected) {
+                    button.className = ' menuButton selected';
+                    screenDiv.removeClass("screenhidden");
+                    screenDiv.addClass("screen");
+                } else {
+                    button.className = ' menuButton';
+                    screenDiv.addClass("screen screenhidden");
+                }
+                button.onclick = function () {
+                    selectScreen(screen);
+                };
+            });
+        }
+        selectScreen();
+
+        document.getElementById('joinButton').addEventListener("click", invite);
+        document.getElementById('inviteButton').addEventListener("click", invite);
+        function invite(event) {
+            event.preventDefault();
+            var joiningNow = event.srcElement.id == 'joinButton';
+            joinNowInput.value = joiningNow;
+            checkWebrtc(function (success) {
+                if (success == false) {
+                    joiningNow = false;
+                }
+                if (joiningNow == false) {
+                    document.getElementById('nextStep').innerText = 'We will text you when they join';
+                    joinNowInput.value = 'false';
+                }
+                document.getElementById('modal').style.display = 'block';
+                setTimeout(function () {
+                    event.srcElement.form.submit();
+                }, 4000);
+            });
+            return false;
+        }
+        function checkWebrtc(callback) {
+            if (navigator.mediaDevices == undefined) {
+                webrtcNotSupportedModal.style.display = 'block';
+                document.getElementById('okButton').onclick = function (event) {
+                    webrtcNotSupportedModal.style.display = '';
+                    if (callback) {
+                        callback(false);
+                    }
+                };
+            } else {
+                callback(true);
+            }
+        }
+        querySelectorAllAsArray('.joinButtons').forEach(function (button) {
+            button.onclick = function (event) {
+                event.preventDefault();
+                checkWebrtc(function (success) {
+                    if (success) {
+                        var url = event.srcElement.getAttribute('href');
+                        window.location = url;
+                    }
+                    document.getElementById('webrtcNotSupportedModal').style.display = '';
+                });
+                return false;
+            };
+        });
+
+        var input = document.getElementById('participantPhoneNumber');
+        function ValidatePhoneNumber() {
+            if (input.value.match(/^\(\d{3}\)\s\d{3}-\d{4}$/)) {
+                //$(".inviteButtons").css("background-color", "#2BC04F");
+                $("button").removeAttr("disabled");
+            }
+            else {
+                //$("button").css("background-color", "#C0C0C0");
+                $("button").attr("disabled", "disabled");
+            }
+        }
+
+        input.addEventListener("paste", function (event) {
+            updateInput(event.clipboardData.getData('text/plain'));
+        });
+        $(".key").click(function () {
+            updateInput(input.value + this.innerHTML);
+        })
+
+        $(".backspace").click(function () {
+            var phone = input.value.replace(/\D/g, '');
+            updateInput(phone.substr(0, phone.length - 1));
+        });
+        function updateInput(value) {
+            cleave.setRawValue(value);
+            ValidatePhoneNumber();
+        }
+
+        function updateButtonVisibility(hide, button) {
+            var displayValue = 'inline-block';
+            if (hide) {
+                displayValue = 'none';
+            }
+            button.style.display = displayValue;
+        }
+        querySelectorAllAsArray('.deactivateLink, .reactivateLink').forEach(function (element) {
+            element.onclick = function (event) {
+                event.preventDefault();
+                var closingRoom = element.className.indexOf('deactivateLink') > -1;
+                var message = 'Closing the room will prevent patients from joining';
+                if (closingRoom == false) {
+                    message = 'Opening the room will:<ul><li>Enable patients to join until it expires</li><li>Reinvite them</li></ul>';
+                }
+                document.getElementById('confirmationMessage').innerHTML = message;
+                confirmButton.innerText = closingRoom ? 'Close Room' : 'Open Room';
+                confirmationModal.style.display = 'block';
+                if (closingRoom) {
+                    confirmButton.classList.add('negative');
+                } else {
+                    confirmButton.classList.remove('negative');
+                }
+                confirmButton.onclick = function () {
+
+                    postAjax(element.getAttribute('href'), {});
+                    querySelectorAllAsArray('.buttonWhenNotActive', element.parentElement).forEach(function (button) {
+                        updateButtonVisibility(!closingRoom, button);
+                    });
+                    querySelectorAllAsArray('.buttonWhenActive', element.parentElement).forEach(function (button) {
+                        updateButtonVisibility(closingRoom, button);
+                    });
+
+                    confirmationModal.style.display = '';
+                }
+                return false;
+            };
+        });
+        document.getElementById('cancelButton').addEventListener('click', function () {
+            confirmationModal.style.display = '';
+        });
+        querySelectorAllAsArray('.reinviteButton').forEach(function (button) {
+            button.onclick = function () {
+                event.preventDefault();
+                postAjax(event.srcElement.getAttribute('href'), {});
+
+                document.getElementById('nextStep').innerText = 'We will text you when they join';             
+                document.getElementById('modal').style.display = 'block';
+                delayAsync(4000).then(function () {
+                    document.getElementById('modal').style.display = '';
+                });
+
+                return false;
+            };
+        });
+        querySelectorAllAsArray('[data-ticks]').forEach(function (element) {
+            var dateTime = new Date(parseInt(element.getAttribute('data-ticks')) / 10000);
+            var hours = dateTime.getHours();
+            var formattedTime = (hours > 12 ? hours - 12 : hours) + ":" + getPaddedMinutes(dateTime) + " " + (hours > 11 ? "PM" : "AM");
+            element.innerText = formattedTime;
+        });
+        function getPaddedMinutes(dateTime) {
+            var minutesText = String(dateTime.getMinutes());
+            if (minutesText.length < 2) {
+                minutesText = '0' + minutesText;
+            }
+            return minutesText;
+        }
+        querySelectorAllAsArray('.expireTime').forEach(function (element) {
+            var dateTime = new Date(document.getElementById('hiddenExpiration').value / 10000);
+            var hours = dateTime.getHours();
+            var minutes = dateTime.getMinutes();
+            var formattedTime = (hours > 12 ? hours - 12 : hours) + (minutes > 0 ? (":" + minutes) : "") + (hours > 11 ? "pm" : "am");
+            element.innerText = formattedTime;
+        });
+
+        var cleave = new Cleave('#participantPhoneNumber', {
+            delimiters: ['(', ') ', '-'],
+            blocks: [0, 3, 3, 4],
+            numericOnly: true
+        });
+
+    document.getElementById('robocallEnabled').addEventListener("change", function (event) {
+        var element = event.srcElement;
+        postAjax(element.getAttribute('data-url'), { enable: element.checked });
+    });
+
+</script>

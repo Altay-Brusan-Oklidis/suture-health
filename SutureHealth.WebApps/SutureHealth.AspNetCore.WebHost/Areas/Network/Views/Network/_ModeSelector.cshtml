@@ -1,0 +1,94 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel.ModeSelector
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+<div id="ModeSelector" style="display:none">
+    @foreach(var preset in Model.Presets)
+    {
+        <div data-key="@preset.Key" class="network-preset-div" title="@preset.Title">
+            <div class="network-preset-icon">
+                <i class="@preset.IconClass"></i>
+            </div>
+            <div class="preset-navigation inline-block" style="width: 70%;">
+                @preset.Title
+            </div>
+            <div class="preset-count inline-block" style="width: 10%;">
+                @*@if (preset.HasCount)
+        {
+            <i class="fas fa-cog fa-spin"></i>
+        }*@
+                <i class="fas fa-cog fa-spin"></i>
+            </div>
+        </div>
+    }
+</div>
+<style type="text/css">
+    #ModeSelector div {
+        cursor: pointer;
+    }
+
+        #ModeSelector tr > td:first-child {
+            padding-left: 5px;
+            border-left: 4px solid transparent;
+        }
+
+        #ModeSelector div:hover > div:first-child {
+            border-left: 4px solid grey !important;
+        }
+
+        #ModeSelector div.active > div:first-child {
+            border-left: 4px solid #00b3b3 !important;
+        }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var allPresets = $("div[data-key]", "#ModeSelector"),
+            setPreset = function (key) {
+                allPresets.removeClass("active");
+                allPresets.filter("[data-key='" + key + "']").addClass("active");
+        };
+
+        $(document).on("@IndexViewModel.EVENT_QUERY_CHANGED", function (event, model) {
+            setPreset(model.Preset);
+        });
+
+        allPresets.click(function () {
+            var selectedKey = $(this).data("key");
+
+            $(document).trigger("@IndexViewModel.ModeSelector.EVENT_PRESET_CHANGED", [{ "Preset": selectedKey }]);
+            
+        });
+
+        @if (Model.Presets.Any(p => p.HasCount))
+        {
+            <text>
+            var queryKeys = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Presets.Where(p => p.ShouldQuery).Select(p => p.Key)));
+            $(document).on("@IndexViewModel.EVENT_PRESET_COUNT_RECEIVED", function (event, presetCountItem) {
+                var presetSelection = allPresets.filter("[data-key='" + presetCountItem.Key + "']");
+                $(".preset-count", presetSelection).html(presetCountItem.Count > 0 ? presetCountItem.DisplayCount : 0);
+                if (presetCountItem.Count == 0 && $.inArray(presetCountItem.Key, ["@FilterPreset.Invitations.ToString()"])) {
+                    presetSelection.remove();
+                }
+            });
+
+            $.ajax({
+                "type": "POST",
+                "url": "@Url.RouteUrl("NetworkPresetCount")",
+                "data": JSON.stringify(queryKeys),
+                "contentType": "application/json",
+                "success": function (data) {
+                    $.each(data.Presets, function (i, preset) {
+                        $(document).trigger("@IndexViewModel.EVENT_PRESET_COUNT_RECEIVED", [preset]);
+                    });
+                },
+                "error": function () {
+                    $.each(queryKeys, function (i, key) {
+                        $(".preset-count", allPresets.filter("[data-key='" + key + "']")).html("");
+                    });
+                },
+                "complete": function () {
+                    $("#ModeSelector").delay(5000).show(0);
+                }
+            });
+            </text>
+        }
+    });
+</script>

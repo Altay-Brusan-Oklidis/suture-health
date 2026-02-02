@@ -1,0 +1,203 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.CommunicationPreferencesModel
+@using SutureHealth;
+<div class="row justify-content-center">
+    <div class="col-12 px-4 mt-3 mt-md-0">
+        <div class="row">
+            <div class="col-@(Model.HasUnsubscribe ? 10 : 12)">
+                <h5 class="mb-0">Notifications</h5>
+                @if (Model.ShowInstructions)
+                {
+                    <p class="small text-secondary">
+                        Please select when you would prefer to receive notifications. You can always edit when you want to receive notifications. However, you must have at least one day selected.
+                    </p>
+                }
+                <span asp-validation-for="Selections" class="text-danger"></span>
+            </div>
+            @if (Model.HasUnsubscribe)
+            {
+                <div class="col-2 text-end">
+                    <div class="form-check form-switch d-inline-block">
+                        <input asp-for="Unsubscribe.IsUnsubscribed" type="checkbox" class="form-check-input">
+                        <label asp-for="Unsubscribe.IsUnsubscribed" class="form-check-label">Unsubscribe</label>
+                    </div>
+                </div>
+            }
+        </div>
+        <hr />
+        @if (Model.HasMultipleReports)
+        {
+            <div class="row my-3">
+                <div class="col-12 col-md-6">
+                    <select id="NotificationReportType" name="NotificationReportType" asp-items="Model.Reports" class="form-select"></select>
+                </div>
+            </div>
+        }
+        else
+        {
+            <input id="NotificationReportType" name="NotificationReportType" type="hidden" value="@Model.Reports.FirstOrDefault()?.Value" />
+        }
+        @foreach (var channel in Model.Channels)
+        {
+            <div class="row">
+                <div class="col-11">
+                    <div>
+                        <h6>@channel.Name</h6>
+                        @if (channel.HasInformationalText)
+                        {
+                            <span class="small text-secondary"><i class="far fa-lightbulb" aria-hidden="true"></i> @channel.InformationalText</span>
+                        }
+                    </div>
+                    <div class="btn-group-container d-inline-flex p-3">
+                        <div data-toggle="buttons" data-selection-required="@channel.SelectionRequired.ToString().ToLower()">
+                            @foreach (var day in Model.Days)
+                            {
+                                <label class="btn btn-light form-check-label">
+                                    <input class="form-check-input" type="checkbox" data-channel-id="@channel.ChannelId" name="@((int)day)" autocomplete="off" />
+                                    @day.ToString()
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@if (Model.HasUnsubscribe)
+{
+    <div class="modal fade" id="UnsubscribeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_4_6727)">
+                                <path d="M23.7747 19.6631L1.35015 2.13162C1.0914 1.92463 0.713779 1.96625 0.50678 2.225L0.131782 2.69337C-0.0755917 2.95212 -0.0335919 3.32974 0.225157 3.53674L22.65 21.0683C22.9088 21.2753 23.286 21.2333 23.4934 20.9749L23.8684 20.5065C24.0754 20.2478 24.0338 19.8701 23.7747 19.6631ZM6.1325 15.7999C6.75912 14.9738 7.42549 13.7074 7.68499 11.6532L5.97988 10.3201C5.85725 13.7224 4.61226 14.8456 3.92339 15.5858C3.69839 15.8277 3.59864 16.1168 3.60051 16.3999C3.60464 17.0149 4.08726 17.5999 4.80426 17.5999H15.2915L12.989 15.7999H6.1325ZM12.0001 5.59998C14.3198 5.59998 16.2001 7.48022 16.2001 9.79996C16.2001 9.80746 16.1978 9.81421 16.1978 9.82171C16.1986 10.4532 16.2413 11.0131 16.3024 11.5366L18.5348 13.2818C18.2232 12.4519 17.9971 11.3509 17.9971 9.79996C17.9971 6.88622 15.9541 4.55374 13.1993 3.98149V3.19999C13.1993 2.53737 12.6623 2 12.0001 2C11.3378 2 10.8008 2.53737 10.8008 3.19999V3.98149C9.8251 4.18436 8.94649 4.61674 8.20849 5.20848L9.63986 6.32748C10.3126 5.86923 11.1245 5.59998 12.0001 5.59998ZM12.0001 21.1999C13.3246 21.1999 14.399 20.1255 14.399 18.7999H9.60123C9.60123 20.1255 10.6756 21.1999 12.0001 21.1999Z" fill="black" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4_6727">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg> Unsubscribe
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    To unsubscribe this user, you must select a reason:
+                    @foreach (var value in Enum.GetValues<SutureHealth.AspNetCore.Areas.Identity.Models.Member.CommunicationPreferencesModel.UnsubscribeModel.UnsubscribeReason>())
+                    {
+                        <input id="UnsubscribeReason-@value.ToString()" type="radio" class="btn-check" name="@Html.NameFor(m => m.Unsubscribe.Reason)" value="@value.ToString()" autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="UnsubscribeReason-@value.ToString()">@value.GetEnumDescription()</label>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="UnsubscribeSubmit" type="button" class="btn btn-primary">Unsubscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div id="CommunicationPreferencesSelections"></div>
+<script type="text/javascript">
+    (function () {
+        var selectionsFormField = "@Html.NameFor(m => m.Selections)",
+            reportChannels = @(Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ReportChannels))),
+            selections = @(Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Selections ?? Array.Empty<SutureHealth.AspNetCore.Areas.Identity.Models.Member.CommunicationPreferencesSelection>()))),
+            isUnsubscribed = @((Model.Unsubscribe?.IsUnsubscribed ?? false).ToString().ToLower()),
+            renderReportSelections = function (reportTypeId) {
+                let allInputs = $("input[data-channel-id]"),
+                    activeChannels = reportChannels[parseInt(reportTypeId)];
+                reportSelections = selections.filter(function (selection) {
+                    return selection.ReportTypeId == parseInt(reportTypeId);
+                });
+
+                allInputs.prop("checked", false).attr("disabled", "disabled");
+                allInputs.parent().removeClass("active");
+                if (!isUnsubscribed) {
+                    for (let i in activeChannels) {
+                        allInputs.filter("[data-channel-id='" + activeChannels[i] + "']").removeAttr("disabled");
+                    }
+                }
+                for (let i in reportSelections) {
+                    let element = allInputs.filter("[data-channel-id='" + reportSelections[i].ChannelId + "'][name='" + reportSelections[i].Day + "']");
+
+                    element.prop("checked", true);
+                    element.parent().addClass("active");
+                }
+            },
+            storeReportSelections = function () {
+                let reportTypeId = parseInt($("#NotificationReportType").val()),
+                    newSelections = selections.filter(function (selection) {
+                        return selection.ReportTypeId != reportTypeId;
+                    });
+
+                $("input[data-channel-id]:checked").each(function () {
+                    newSelections.push({
+                        "ReportTypeId": reportTypeId,
+                        "ChannelId": $(this).data("channel-id"),
+                        "Day": parseInt($(this).attr("name"))
+                    });
+                });
+
+                selections = newSelections;
+                renderFormFields();
+            },
+            renderFormFields = function () {
+                $("input[name^='" + selectionsFormField + "']").remove();
+                for (let i in selections) {
+                    for (let property in selections[i]) {
+                        $("#CommunicationPreferencesSelections").append($("<input type=\"hidden\" name=\"" + selectionsFormField + "[" + i + "]." + property + "\" value=\"" + selections[i][property] + "\" />"));
+                    }
+                }
+            };
+
+        $("select#NotificationReportType").change(function () {
+            renderReportSelections($(this).val());
+        });
+
+        $("input[data-channel-id]").click(function (e) {
+            if (!$(this).prop("checked") &&
+                (($("input[data-channel-id='" + $(this).attr("data-channel-id") + "']:checked").length == 0 && $(this).parents("[data-selection-required='true']").length > 0) ||
+                    (@(Model.RequireAtLeastOneSelection.ToString().ToLower()) && $("input[data-channel-id]:checked").length == 0))) {
+                e.preventDefault();
+                return false;
+            }
+
+            storeReportSelections();
+            $(this).parent().toggleClass("active", $(this).prop("checked"));
+        });
+
+    @if (Model.HasUnsubscribe)
+    {
+        <text>
+                $("#@Html.IdFor(m => m.Unsubscribe.IsUnsubscribed)").change(function () {
+                    if ($(this).prop("checked")) {
+                        bootstrap.Modal.getOrCreateInstance(document.getElementById("UnsubscribeModal")).show();
+                    }
+                    else {
+                        isUnsubscribed = false;
+                        renderReportSelections($("#NotificationReportType").val());
+                    }
+                });
+
+            $("#UnsubscribeSubmit").click(function () {
+                if ($("input[name='@Html.NameFor(m => m.Unsubscribe.Reason)']:checked").length == 0) {
+                    return;
+                }
+
+                LoadingPanel.loader.show();
+                $("#UnsubscribeModal").parents("form").submit();
+            });
+
+            $("#UnsubscribeModal").on("hidden.bs.modal", function () {
+                $("#@Html.IdFor(m => m.Unsubscribe.IsUnsubscribed)").prop("checked", false);
+                $("input[name='@Html.NameFor(m => m.Unsubscribe.Reason)']").prop("checked", false);
+            });
+        </text>
+    }
+
+            renderFormFields();
+        renderReportSelections($("#NotificationReportType").val());
+    })();
+</script>

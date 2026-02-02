@@ -1,0 +1,1653 @@
+{
+  "medicalConditions": [
+    {
+      "faceToFaceDescriptorId": 718,
+      "description": "Alzheimer's Disease",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 719,
+      "description": "Anemia",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 720,
+      "description": "Arthritis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 722,
+      "description": "Cardiac Arrhythmia",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 723,
+      "description": "Cardiomyopathy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 724,
+      "description": "Cerebrovascular Disease",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 730,
+      "description": "Dehydration",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 731,
+      "description": "Dementia",
+      "sequenceNumber": 6,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 736,
+      "description": "Frailty",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 737,
+      "description": "Gastrointestinal Hemorrhage",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 738,
+      "description": "Hip Replacement",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 741,
+      "description": "Ischemic Heart Disease",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 742,
+      "description": "Knee Replacement",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 744,
+      "description": "Myocarditis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 746,
+      "description": "Osteomyelitis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 747,
+      "description": "Ostomy placement",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 749,
+      "description": "Pneumonia",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 750,
+      "description": "Psychosis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 753,
+      "description": "Septicemia",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 755,
+      "description": "Urinary Tract Infection",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 756,
+      "description": "Valvular Heart Disease",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 758,
+      "description": "Wound infection",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 832,
+      "description": "CABG (Coronary Artery Bypass Grafting)",
+      "sequenceNumber": 1,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 833,
+      "description": "CAD (Coronary Artery Disease)",
+      "sequenceNumber": 2,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 834,
+      "description": "CHF (Congestive Heart Failure)",
+      "sequenceNumber": 3,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 835,
+      "description": "COPD with wheezing/dyspnea",
+      "sequenceNumber": 4,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 836,
+      "description": "CVA (Cerebrovascular Accident)",
+      "sequenceNumber": 5,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 837,
+      "description": "Diabetes Mellitus (uncontrolled)",
+      "sequenceNumber": 7,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 838,
+      "description": "Hypertension (uncontrolled)",
+      "sequenceNumber": 8,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 839,
+      "description": "Osteoarthritis with difficulty walking",
+      "sequenceNumber": 9,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 840,
+      "description": "Wound (non-healing) of: ",
+      "sequenceNumber": 10,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 841,
+      "description": "-- MOST COMMON DIAGNOSES ABOVE --",
+      "sequenceNumber": 0,
+      "isPlaceholder": true
+    },
+    {
+      "faceToFaceDescriptorId": 842,
+      "description": "Abscess of: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 843,
+      "description": "Asthma with wheezing/dyspnea",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 844,
+      "description": "Back pain",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 845,
+      "description": "Burn of: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 846,
+      "description": "Cellulitis of: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 847,
+      "description": "Cerebral Palsy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 848,
+      "description": "CKD (Chronic Kidney Disease)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 849,
+      "description": "Deconditioning (severe)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 850,
+      "description": "Depression",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 851,
+      "description": "Failure to thrive",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 852,
+      "description": "Fall (status post)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 853,
+      "description": "Fracture (femur) with gait instability",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 854,
+      "description": "Fracture (fibula) with gait instability",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 855,
+      "description": "Fracture (hip) with gait instability",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 856,
+      "description": "Fracture (humerus)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 857,
+      "description": "Fracture (pelvic) with gait instability",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 858,
+      "description": "Fracture (tibia) with gait instability",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 859,
+      "description": "Fracture (vertebral)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 860,
+      "description": "Fracture of: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 861,
+      "description": "Hepatitis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 862,
+      "description": "Infection of: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 863,
+      "description": "Intervertebral Disc Disorder",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 864,
+      "description": "Malnutrition",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 865,
+      "description": "Multiple Sclerosis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 866,
+      "description": "Myocardial Infarction (acute)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 867,
+      "description": "Paralytic Syndrome due to: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 868,
+      "description": "Parkinson's Disease",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 869,
+      "description": "Pregnancy Complication due to: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 870,
+      "description": "Renal Failure (acute)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 871,
+      "description": "Renal Failure (ESRD)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 872,
+      "description": "Respiratory failure due to: ",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 873,
+      "description": "Rheumatoid arthritis with difficulty performing self-care",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 874,
+      "description": "Shoulder replacement",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 875,
+      "description": "Spondylosis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 876,
+      "description": "Stroke",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 877,
+      "description": "Syncope",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 878,
+      "description": "Urinary Retention requiring a catheter",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 879,
+      "description": "Vertigo",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 958,
+      "description": "Agoraphobia",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 959,
+      "description": "Bladder cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 960,
+      "description": "Breast cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 961,
+      "description": "Chemoradiation intolerance/side effects",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 962,
+      "description": "Chemotherapy intolerance/side effects",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 963,
+      "description": "Cholangiocarcinoma",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 964,
+      "description": "Colon cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 965,
+      "description": "Cystitis (hemorrhagic)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 966,
+      "description": "Cystitis (radiation)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 967,
+      "description": "Delusions (severe)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 968,
+      "description": "Depression (acute with vegetative symptoms)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 969,
+      "description": "DVT (deep vein thrombosis) of:",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 970,
+      "description": "Esophageal cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 971,
+      "description": "Gallbladder cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 972,
+      "description": "Gliobalastoma multiforme",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 973,
+      "description": "Hallucinations (severe)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 974,
+      "description": "Leukemia (acute lymphocytic)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 975,
+      "description": "Leukemia (chronic lymphocytic)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 976,
+      "description": "Lung cancer (non-small cell)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 977,
+      "description": "Lung cancer (small cell)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 978,
+      "description": "Lymphoma",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 979,
+      "description": "Lymphoma (non-Hodgkins)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 980,
+      "description": "Metastatic cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 981,
+      "description": "Mucositis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 982,
+      "description": "Multiple Myeloma",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 983,
+      "description": "Myelodysplastic Syndrome",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 984,
+      "description": "Myelofibrosis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 985,
+      "description": "NPH (normal pressure hydrocephalus)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 986,
+      "description": "Ovarian cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 987,
+      "description": "Pancreatic cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 988,
+      "description": "Panic disorder",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 989,
+      "description": "Paranoia",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 990,
+      "description": "Parotid cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 991,
+      "description": "Pneumothorax",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 992,
+      "description": "Prostate cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 993,
+      "description": "Radiation intolerance/side effects",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 994,
+      "description": "Radiation pneumonitis",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 995,
+      "description": "Renal cell carcinoma",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 996,
+      "description": "Wound (surgical)",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1087,
+      "description": "Preterm infant",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1088,
+      "description": "Hepatocellular carcinoma",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1089,
+      "description": "Uterine Cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1090,
+      "description": "Osteosarcoma",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1091,
+      "description": "Ascites",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1092,
+      "description": "Mesothelioma",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1093,
+      "description": "Gastric Cancer",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1094,
+      "description": "Cancer of Head/Neck",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1095,
+      "description": "Pleural Effusion",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1102,
+      "description": "Thoracotomy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    }
+  ],
+  "clinicalReasons": [
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 767,
+      "description": "Lab values require medical management and/or patient instruction",
+      "sequenceNumber": 9,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 770,
+      "description": "Medication management based on lab values is required",
+      "sequenceNumber": 13,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 886,
+      "description": "Medication management/training is needed due to a knowledge deficit",
+      "sequenceNumber": 14,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 887,
+      "description": "Teaching for the patient/caregiver is required due to a knowledge deficit",
+      "sequenceNumber": 21,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 888,
+      "description": "-- SELECT ALL THAT APPLY FROM BELOW --",
+      "sequenceNumber": 6,
+      "isPlaceholder": true
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 889,
+      "description": "Catheter management requires skilled nursing",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 890,
+      "description": "Diet requires teaching and monitoring due to a knowledge deficit",
+      "sequenceNumber": 8,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 891,
+      "description": "IV antibiotics are required for infection",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 892,
+      "description": "IV therapy/injection is required for appropriate treatment",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 893,
+      "description": "Medication administration is required due to patient's physical inability to self-administer",
+      "sequenceNumber": 11,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 894,
+      "description": "Nutrition deficiencies require TPN and/or lipids",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 895,
+      "description": "Nutrition deficiencies require tube feedings",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 896,
+      "description": "Oxygen therapy for O2 saturation <93% requires skilled nursing",
+      "sequenceNumber": 15,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 897,
+      "description": "Post-operative complications require assessment and monitoring",
+      "sequenceNumber": 17,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 898,
+      "description": "Skin integrity (poor) requires care as evidenced by breakdown and erythema",
+      "sequenceNumber": 19,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 899,
+      "description": "Weight gain and/or edema requires assessment and monitoring",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 900,
+      "description": "Weight loss requires assessment and monitoring",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 902,
+      "description": "Ventilator requires skilled management and monitoring",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 997,
+      "description": "-- SELECT MULTIPLE ITEMS -- AT LEAST ONE FROM BOTH SECTIONS --",
+      "sequenceNumber": 1,
+      "isPlaceholder": true
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 998,
+      "description": "Anti-coagulation therapy initiated and requires monitoring",
+      "sequenceNumber": 7,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 999,
+      "description": "Medication (new) initiated requires monitoring and teaching",
+      "sequenceNumber": 10,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1000,
+      "description": "Medication changes require monitoring and teaching",
+      "sequenceNumber": 12,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1001,
+      "description": "Pain management requires skilled care",
+      "sequenceNumber": 16,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1002,
+      "description": "Teaching for the patient/caregiver on signs/symptoms of complications",
+      "sequenceNumber": 22,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1003,
+      "description": "Wound care training for patient and/or caregiver",
+      "sequenceNumber": 23,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1004,
+      "description": "-- LESS COMMON SELECTIONS BELOW --",
+      "sequenceNumber": 25,
+      "isPlaceholder": true
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1005,
+      "description": "Bowel management (complex) requires skilled care",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1006,
+      "description": "Complex care plan requires skilled management",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1007,
+      "description": "High readmission risk with low threshold for decompensation",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1008,
+      "description": "Mood dysregulation requires skilled care",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1009,
+      "description": "Nasogastric (NG) tube requires skilled care and monitoring for complications",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1010,
+      "description": "Nasojejunal (NJ) tube requires skilled care and monitoring for complications",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1011,
+      "description": "Ostomy requires skilled care and monitoring for complications",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1012,
+      "description": "Psychiatric evaluation and therapy require skilled care",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1013,
+      "description": "Tracheostomy requires aspiration, skilled care, and monitoring for complications",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1014,
+      "description": "Potential for complication/decompensation requires assessment and monitoring",
+      "sequenceNumber": 18,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1015,
+      "description": "Recent surgery requires SN for post-acute care (e.g. wound care, care to drains)",
+      "sequenceNumber": 5,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1016,
+      "description": "ADL/IADL/self-care inabilities require nursing care",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1017,
+      "description": "Wound requires skilled care and monitoring for complications",
+      "sequenceNumber": 24,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1018,
+      "description": "Exacerbation requires SN to manage based on the following clinical findings: ",
+      "sequenceNumber": 2,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1019,
+      "description": "Onset requires SN to assess and manage based on the following clinical findings: ",
+      "sequenceNumber": 4,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1020,
+      "description": "Observation and management by SN required based on following clinical findings: ",
+      "sequenceNumber": 3,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1021,
+      "description": "Surgical wound requires skilled care and monitoring for complications",
+      "sequenceNumber": 20,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1096,
+      "description": "Growth and feeding patterns require assessment",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1097,
+      "description": "Breast feeding teaching required due to a maternal knowledge deficit",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1098,
+      "description": "Cardiovascular status requires regular assessment",
+      "sequenceNumber": 7,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Nursing",
+      "faceToFaceDescriptorId": 1099,
+      "description": "Cardiopulmonary status requires regular assessment",
+      "sequenceNumber": 7,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 784,
+      "description": "Pelvic floor weakness requires evaluation/treatment",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 793,
+      "description": "Wheelchair management training requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 908,
+      "description": "-- SELECT ALL THAT APPLY FROM BELOW --",
+      "sequenceNumber": 4,
+      "isPlaceholder": true
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 916,
+      "description": "Orthotic evaluation/training requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 917,
+      "description": "Prosthetic evaluation/training requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 919,
+      "description": "Splint application/taping requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 920,
+      "description": "Walker training requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1022,
+      "description": "-- SELECT MULTIPLE ITEMS -- AT LEAST ONE FROM BOTH SECTIONS --",
+      "sequenceNumber": 1,
+      "isPlaceholder": true
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1023,
+      "description": "PT to evaluate/treat based on the following clinical findings: ",
+      "sequenceNumber": 2,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1024,
+      "description": "PT to restore function based on the following clinical findings: ",
+      "sequenceNumber": 3,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1025,
+      "description": "ADL/IADL/self-care inabilities require therapy",
+      "sequenceNumber": 5,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1026,
+      "description": "Balance problems with household transfers require therapy",
+      "sequenceNumber": 6,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1027,
+      "description": "Endurance (poor) with household tasks requires strength training",
+      "sequenceNumber": 7,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1028,
+      "description": "Fall risk (high) requires home safety assessment",
+      "sequenceNumber": 8,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1029,
+      "description": "Falls (frequent) with single-step transfers and uneven surfaces require therapy",
+      "sequenceNumber": 9,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1030,
+      "description": "Gait instability with single-step transfers and uneven surfaces requires therapy",
+      "sequenceNumber": 10,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1031,
+      "description": "Mobility (poor) with household tasks requires mobility training",
+      "sequenceNumber": 11,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1032,
+      "description": "Range of motion (poor) with household tasks requires therapy",
+      "sequenceNumber": 12,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1033,
+      "description": "Vision (poor) requires household task and safety training",
+      "sequenceNumber": 13,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1034,
+      "description": "Weakness impairing household tasks requires strength training",
+      "sequenceNumber": 14,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1035,
+      "description": "Weakness limiting ability to stand without assistance requires strength training",
+      "sequenceNumber": 15,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1036,
+      "description": "Weakness requires strength training based on the following impairments: ",
+      "sequenceNumber": 16,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1037,
+      "description": "-- LESS COMMON SELECTIONS BELOW --",
+      "sequenceNumber": 17,
+      "isPlaceholder": true
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1038,
+      "description": "Sensorimotor coordination (poor) with household tasks requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1039,
+      "description": "Aerobic capacity (poor) with household tasks requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1040,
+      "description": "Cognitive impairment with household tasks requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1041,
+      "description": "Inability to bear weight requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1042,
+      "description": "Joint function (poor) with household tasks requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1043,
+      "description": "Motor function (poor) with household tasks requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1044,
+      "description": "Neuromotor coordination (poor) with household tasks requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "PhysicalTherapy",
+      "faceToFaceDescriptorId": 1100,
+      "description": "Pain management requires regular therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 798,
+      "description": "Augmentative communication device evaluation/training requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 924,
+      "description": "Aspiration requires therapy",
+      "sequenceNumber": 6,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 925,
+      "description": "Swallowing difficulty requires therapy",
+      "sequenceNumber": 10,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 926,
+      "description": "-- SELECT ALL THAT APPLY FROM BELOW --",
+      "sequenceNumber": 4,
+      "isPlaceholder": true
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 927,
+      "description": "Aphagia/dysphagia requires therapy",
+      "sequenceNumber": 5,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 928,
+      "description": "Aphasia/dysphasia requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 929,
+      "description": "Aphonia/dysphonia requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 930,
+      "description": "Cognitive impairment requires therapy",
+      "sequenceNumber": 7,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 931,
+      "description": "Dysarthria requires therapy",
+      "sequenceNumber": 8,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 932,
+      "description": "Hearing loss requires communication training",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 933,
+      "description": "Oromotor dysfunction/weakness requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 934,
+      "description": "Orosensory dysfunction requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 935,
+      "description": "Speech difficulty requires therapy",
+      "sequenceNumber": 9,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 936,
+      "description": "Verbal apraxia/dyspraxia requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 937,
+      "description": "Vocal cord dysfunction requires therapy",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 1045,
+      "description": "-- SELECT MULTIPLE ITEMS -- AT LEAST ONE FROM BOTH SECTIONS --",
+      "sequenceNumber": 1,
+      "isPlaceholder": true
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 1046,
+      "description": "ST to evaluate/treat based on the following clinical findings: ",
+      "sequenceNumber": 2,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 1047,
+      "description": "ST to restore function based on the following clinical findings: ",
+      "sequenceNumber": 3,
+      "isPlaceholder": false
+    },
+    {
+      "category": "Speech",
+      "faceToFaceDescriptorId": 1048,
+      "description": "-- LESS COMMON SELECTIONS BELOW --",
+      "sequenceNumber": 11,
+      "isPlaceholder": true
+    }
+  ],
+  "homeboundReasons": [
+    {
+      "faceToFaceDescriptorId": 811,
+      "description": "Auditory impairment makes leaving home unsafe",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 940,
+      "description": "Medically contraindicated to leave home due to: ",
+      "sequenceNumber": 6,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 953,
+      "description": "Psychiatric illness manifested in refusal to leave home",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1049,
+      "description": "-- SELECT MULTIPLE ITEMS -- AT LEAST ONE FROM BOTH SECTIONS --",
+      "sequenceNumber": 1,
+      "isPlaceholder": true
+    },
+    {
+      "faceToFaceDescriptorId": 1050,
+      "description": "Assistance is required to leave home",
+      "sequenceNumber": 2,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1051,
+      "description": "Assistive device is required to leave home",
+      "sequenceNumber": 3,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1052,
+      "description": "Bed-bound status requires patient to be homebound",
+      "sequenceNumber": 4,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1053,
+      "description": "Direct supervision required when leaving home",
+      "sequenceNumber": 5,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1054,
+      "description": "Special transportation is required to leave home",
+      "sequenceNumber": 7,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1055,
+      "description": "-- SELECT ALL THAT APPLY FROM BELOW --",
+      "sequenceNumber": 8,
+      "isPlaceholder": true
+    },
+    {
+      "faceToFaceDescriptorId": 1057,
+      "description": "Ambulates maximum of 100' with assistance",
+      "sequenceNumber": 10,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1058,
+      "description": "Ambulates maximum of 100' with assistive device",
+      "sequenceNumber": 11,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1059,
+      "description": "Balance disturbances make ambulating household distances unsafe",
+      "sequenceNumber": 12,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1060,
+      "description": "Confusion makes leaving home unsafe",
+      "sequenceNumber": 13,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1061,
+      "description": "Deconditioning/poor endurance makes ambulating household distances difficult",
+      "sequenceNumber": 14,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1062,
+      "description": "Fall risk (high) with single-step transfers and uneven surfaces",
+      "sequenceNumber": 15,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1063,
+      "description": "Gait instability with single-step transfers and uneven surfaces",
+      "sequenceNumber": 16,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1064,
+      "description": "Infection risk (high) makes leaving home contraindicated",
+      "sequenceNumber": 17,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1065,
+      "description": "Non-weight bearing (NWB) restriction makes leaving home contraindicated",
+      "sequenceNumber": 18,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1066,
+      "description": "Pain severity limits mobility to household distances",
+      "sequenceNumber": 19,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1067,
+      "description": "Post-surgical restrictions make leaving home contraindicated",
+      "sequenceNumber": 20,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1068,
+      "description": "Shortness of breath with minimal activity makes leaving home difficult",
+      "sequenceNumber": 21,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1069,
+      "description": "Vision impairment makes leaving home unsafe",
+      "sequenceNumber": 22,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1070,
+      "description": "Weakness limits ability to stand without assistance",
+      "sequenceNumber": 23,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1071,
+      "description": "Weakness makes ambulating household distances difficult",
+      "sequenceNumber": 24,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1072,
+      "description": "-- LESS COMMON SELECTIONS BELOW --",
+      "sequenceNumber": 25,
+      "isPlaceholder": true
+    },
+    {
+      "faceToFaceDescriptorId": 1073,
+      "description": "Agoraphobia makes leaving home difficult and contraindicated",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1074,
+      "description": "Depression (acute) with vegetative symptoms",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1075,
+      "description": "Medical device/equipment makes leaving home difficult and contraindicated",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1076,
+      "description": "Minimal-weight bearing (MWB) restriction makes leaving home contraindicated",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1077,
+      "description": "Motor impairment makes ambulating household distances difficult",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1078,
+      "description": "Neurological impairment makes ambulating household distances difficult",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1079,
+      "description": "Obesity makes ambulating household distances difficult",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1080,
+      "description": "Panic disorder makes leaving home unsafe and contraindicated",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1081,
+      "description": "Paralysis makes ambulating household distances difficult",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1082,
+      "description": "Paranoia makes leaving home unsafe and contraindicated",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1083,
+      "description": "Psychiatric illness impairing judgment makes leaving home unsafe",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1084,
+      "description": "Seizures (frequent) make leaving home unsafe",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1085,
+      "description": "Vascular impairment/claudication limits mobility to household distances",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1086,
+      "description": "Wound (open) makes leaving home contraindicated",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    },
+    {
+      "faceToFaceDescriptorId": 1101,
+      "description": "Infant",
+      "sequenceNumber": 0,
+      "isPlaceholder": false
+    }
+  ],
+  "skilledServices": {
+    "nursing": "Nursing",
+    "physicalTherapy": "Physical Therapy",
+    "occupationalTherapy": "Occupational Therapy",
+    "speechTherapy": "Speech Therapy"
+  }
+}

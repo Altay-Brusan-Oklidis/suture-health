@@ -1,0 +1,477 @@
+@page
+@model SutureHealth.AspNetCore.Pages.History
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@using Kendo.Mvc.UI
+
+@{ 
+    Model.RequireUI = true;
+    Model.RequiresLoading = true;
+    ViewBag.Title = "History";
+}
+@section Styles
+{
+   <!-- <link rel="stylesheet" href="~/css/RequestHistory.min.css" asp-append-version="true" /> -->
+    
+}
+
+@Html.AntiForgeryToken()
+
+<section class="mb-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 find-this-grid">
+                @(
+                            Html.Kendo().Grid<SutureHealth.AspNetCore.Pages.RequestHistoryItem>()
+                                  .Name("RequestGrid")
+                                  .ColumnMenu(true)
+                                  .Columns(columns =>
+                                  {
+                                      columns.Select()
+                                     .HtmlAttributes(new { data_DisablePdfLaunch = true })
+                                     .IncludeInMenu(false)
+                                     .Title("Select All")
+                                     .Width(38);
+                                      columns.Command(command => command.Custom("ViewHistory")
+                                                                .Click("gridShowHistoryHandler")
+                                                                .Template("<a role='button' class='k-icon k-grid-ViewHistory' href='\\#'><span class='far fa-clock'></span></a>"))
+                                     .HtmlAttributes(new { data_DisablePdfLaunch = true })
+                                     .Width(38);
+                                      columns.Bound(x => x.LastModified).ClientHeaderTemplate("")
+                                                                .ClientTemplate("# if(LastModified != null) { # <i role='button' class='k-icon'><span class='far fa-edit' title='#= LastModified #'></span></i> # } #")
+                                                                .Filterable(false)
+                                                                .IncludeInMenu(false)
+                                                                .Width(40);
+                                      columns.Bound(x => x.RequestStatus).Hidden(true)
+                                                                 .IncludeInMenu(false);
+                                      columns.Bound(x => x.RequestStatusDate).Filterable(filter => filter.Cell(cell => cell.Template("dateRangeFilterHandler")))
+                                                                     .Format("{0:d}")
+                                                                     .Title("Processed")
+                                                                     .Width(120);
+                                      columns.Bound(x => x.EffectiveDate).Filterable(filter => filter.Cell(cell => cell.Template("dateRangeFilterHandler")))
+                                                                 .Format("{0:d}")
+                                                                 .Title("Effective")
+                                                                 .Width(120);
+                                      columns.Bound(x => x.PatientName).Filterable(filter => filter.Cell(cell => cell.DataSource(ds => ds.ServerFiltering(true).Ajax().Read(dsr => dsr.Url(Url.Page("History", "PatientFilter")).Data("forgeryToken").Type(HttpVerbs.Post)))
+                                                                                                             .Template("PatientNameFilterHandler")
+                                                                                                             .ShowOperators(false)))
+                                                               .Title("Patient")
+                                                               .Width(250);
+                                      columns.Bound(x => x.PatientBirthdate).Filterable(false)
+                                                                    .Format("{0:d}")
+                                                                    .Title("DOB")
+                                                                    .Width(96);
+                                      columns.Bound(x => x.MedicalRecordNumber).Hidden(Model.CurrentUser.IsUserSigningMember())
+                                                                       .IncludeInMenu(Model.CurrentUser.IsUserSender())
+                                                                       .Filterable(filter => filter.Cell(cell => cell.DataSource(ds => ds.ServerFiltering(true).Ajax().Read(dsr => dsr.Url(Url.Page("History", "MrnFilter")).Data("forgeryToken").Type(HttpVerbs.Post)))
+                                                                                                                     .MinLength(3)
+                                                                                                                     .DataTextField("MedicalRecordNumber")))
+                                                                       .Title("MRN").Width(110);
+                                      columns.Bound(x => x.Practice).Filterable(f => f.Cell(c => c.MinLength(3).SuggestionOperator(FilterType.Contains)))
+                                                            .Hidden(Model.CurrentUser.IsUserSigningMember()).IncludeInMenu(Model.CurrentUser.IsUserSender())
+                                                            .Title("Practice").Width(115);
+                                      columns.Bound(x => x.Form)
+                                     .Filterable(f => f.Cell(c => c.MinLength(3).SuggestionOperator(FilterType.Contains)))
+                                     .Title("Type")
+                                     .Width(225);
+                                      columns.Bound(x => x.Status).Filterable(false).Title("Status").Width(77);
+                                      columns.Bound(x => x.ApprovalStatus).Filterable(false)
+                                                                  .Title("Approval Status")
+                                                                  .Hidden(Model.CurrentUser.IsUserSender())
+                                                                  .IncludeInMenu(Model.CurrentUser.IsUserSigningMember())
+                                                                  .Width(100);
+                                      columns.Bound(x => x.SubmittedAt).Filterable(filter => filter.Cell(cell => cell.Template("dateRangeFilterHandler")))
+                                                               .Format("{0:d}")
+                                                               .Title("Submitted")
+                                                               .Width(100);
+                                      columns.Bound(x => x.Age).Filterable(false).Title("Days").Width(75);
+                                      columns.Bound(x => x.SubmitterOrganizationName).Hidden(Model.CurrentUser.IsUserSender()).IncludeInMenu(Model.CurrentUser.IsUserSigningMember()).Title("Submitted By").Width(115);
+                                      columns.Bound(x => x.SignerName).Filterable(f => f.Cell(c => c.DataTextField("SignerLastName")
+                                                                                            .MinLength(3)
+                                                                                            .SuggestionOperator(FilterType.Contains)))
+                                                              .Title("Signer").Width(165);
+                                      columns.Bound(x => x.Office).Filterable(false).Hidden(true).Title("Office").Width(110);
+                                      columns.Bound(x => x.SignerMemberId).Hidden(true).IncludeInMenu(false);
+                                      columns.Bound(x => x.SignerOrganizationId).Hidden(true).IncludeInMenu(false);
+                                      columns.Bound(x => x.CollaboratorName).Hidden(true).IncludeInMenu(Model.CurrentUser.IsUserSigningMember()).Title("NP/PA").Width(115);
+                                      columns.Bound(x => x.RejectionReason).HtmlAttributes(new { @class = "rejectionReason", data_DisablePdfLaunch = true })
+                                                                   .Filterable(false)
+                                                                   .Title("Rejection Reason")
+                                                                   .Width(115);
+                                      columns.Bound(x => x.FormId).HtmlAttributes(new { data_DisablePdfLaunch = true })
+                                     .Filterable(f => f.Cell(c => c.Operator("Equals").MinLength(9).Template("docIdNumberFilterHandler")))
+                                     .Title("DocID")
+                                     .Width(100);
+                                      columns.Bound(x => x.SignerHasFiled).Hidden(true).IncludeInMenu(false);
+                                      columns.Bound(x => x.SignerFiledString).Hidden(true).IncludeInMenu(Model.CurrentUser.IsUserSigningMember()).Title("Filed").Width(85);
+                                      columns.Bound(x => x.SubmitterHasFiled).Hidden(true).IncludeInMenu(false);
+                                      columns.Bound(x => x.SubmitterFiledString).Hidden(true).IncludeInMenu(Model.CurrentUser.IsUserSender()).Title("Filed").Width(85);
+                                      columns.Bound(x => x.FaxStatus).Filterable(false).Title("FaxStatus").Width(120);
+                                      columns.Bound(x => x.ManualRetry).Filterable(false).Title("ManualRetry").Width(120);
+                                  })
+                      .DataSource(data => {
+                          data.Ajax()
+                              .Filter(filters => {
+                                  filters.Add(filter => filter.SubmittedAtOneYear).IsGreaterThanOrEqualTo(DateTime.UtcNow.Date.AddYears(-1));
+                                  
+                                  if (Model.ArchivedFilter.Enabled && Model.ArchivedFilter.Value.HasValue) filters.Add(filter => filter.SubmitterHasArchived).IsEqualTo(Model.ArchivedFilter.Value.GetValueOrDefault(true));
+                                  if (Model.StatusFilter.Value != Model.StatusFilter.DefaultValue) filters.Add(filter => filter.RequestStatus).IsEqualTo(Model.StatusFilter.Value);
+                                  if (Model.CurrentUser.IsUserSigningMember())
+                                  {
+                                      if (Model.SignerFilter.Enabled && Model.SignerFilter.Value.HasValue) filters.Add(filter => filter.SignerMemberId).IsEqualTo(Model.SignerFilter.Value.GetValueOrDefault(Model.CurrentUser.Id));
+                                      if (Model.LocationFilter.Value.HasValue) filters.Add(filter => filter.SignerOrganizationId).IsEqualTo(Model.LocationFilter.Value);
+                                      if (Model.FilingFilter.Value.HasValue) filters.Add(filter => filter.SignerHasFiled).IsEqualTo(Model.FilingFilter.Value.GetValueOrDefault(false));
+                                  }
+                                  else
+                                  {
+                                      if (Model.FilingFilter.Value.HasValue) filters.Add(filter => filter.SubmitterHasFiled).IsEqualTo(Model.FilingFilter.Value.GetValueOrDefault(true));
+                                      if (Model.LocationFilter.Value.HasValue) filters.Add(filter => filter.SubmitterOrganizationId).IsEqualTo(Model.LocationFilter.Value);
+                                  }
+                              })
+                              .Events(e => e.RequestStart("OnGridRequestStart").RequestEnd("OnGridRequestEnd"))
+                              .PageSize(10)
+                              .Read(r => r.Url(Url.Page("History")).Data("forgeryToken").Type(HttpVerbs.Post))
+                              .Model(m => {
+                                  m.Field<DateTime>("SubmittedAt");
+                                  m.Field<int>("FormId");
+                              });
+                      })
+                      .Events(events => events.Change("gridChangeHandler")
+                                              .DataBound("gridDataBoundHandler")
+                                              .ExcelExport("gridExcelExportHandler"))
+                      .Excel(excel => excel.AllPages(true).FileName($"SutureSign_{DateTime.UtcNow.ToString("yyyy_MM_dd_HH_mm_ss")}.xlsx"))
+                      .Filterable(filter => {
+                          filter.Extra(false)
+                                .Mode(GridFilterMode.Row)
+                                .Operators(ops => ops.ForString(config => config.Clear().Contains("Contains")));
+                      })
+                      .Groupable(false)
+                      .HtmlAttributes(new {
+                          data_toolbar_selector = "#GridToolBarSecondRow",
+                          data_archiving_serviceUrl = Url.Page("History", "ArchiveItems"),
+                          data_downloading_serviceUrl = Url.RouteUrl("DownloadRequests"),
+                          data_filing_serviceUrl = Url.Page("History", "FileItems"),
+                          data_history_serviceUrl = Url.Page("History", "ItemHistory"),
+                          data_resending_serviceUrl = Url.Page("History", "ResendItems"),
+                          data_retracting_serviceUrl = Url.Page("History", "RetractItems"),
+                          data_one_year_ago = DateTime.UtcNow.Date.Subtract(TimeSpan.FromDays(365)),
+                          data_IsSender = Json.Serialize(Model.CurrentUser.IsUserSender()),
+                          data_IsSigner = Json.Serialize(Model.CurrentUser.IsUserSigningMember()),
+                          data_status_filter_dropdown = "#StatusFilterDropdown",
+                          data_view_filter_dropdown = "#TrackFilterDropdown"
+                      })
+                      .NoRecords(empty => empty.Template("<div class='empty-data'>Sorry, no results found.  Try expanding your filters and including documents older than 1 year.</div>"))
+                      .Pageable(paging => paging.Refresh(true).PageSizes(new [] { 10, 20, 50 }).Messages(m => m.Display("{0:#,##} - {1:#,##} of {2:#,##} Requests")))
+                      .Resizable(size => size.Columns(true))
+                      .Reorderable(order => order.Columns(true))
+                      .Scrollable(scroll => scroll.Enabled(true).Height("auto"))
+                      .Sortable(true)
+                      .ToolBar(toolbar => toolbar.ClientTemplateId("GridToolbarTemplate"))
+                )
+    </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<div class="row">
+   
+</div>
+@(Html.Kendo().Window().Name("RequestHistory")
+    .Title("Request History")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .MaxHeight("80vh")
+    .MinHeight(400)
+    .Width(900)
+)
+@(Html.Kendo().Dialog().Name("configurationDialog")
+      .Visible(false))
+@(Html.Kendo().Tooltip().Name("RowTooltip")
+                        .For("#RequestGrid")
+                        .Filter("tr[data-uid]")
+                        .ShowAfter(250)
+                        .ContentHandler("rowTooltipHandler")
+)
+<script id="GridToolbarTemplate" type="text/x-kendo-template">
+    @(Html.Kendo().ToolBar()
+                  .Name("GridToolBar")
+                  
+                  .Items(items =>
+                  {
+                      if (Model.ArchivedFilter.Enabled) items.Add().TemplateId("TrackFilterTemplate");
+                      if (Model.LocationFilter.Enabled) items.Add().TemplateId("LocationFilterTemplate");
+                      if (Model.SignerFilter.Enabled) items.Add().TemplateId("SignerFilterTemplate");
+                      if (Model.StatusFilter.Enabled) items.Add().TemplateId("StatusFilterTemplate");
+                      if (Model.FilingFilter.Enabled) items.Add().TemplateId("FiledFilterTemplate");
+
+                     
+                    })
+                    .Deferred(true))
+                    
+                @(Html.Kendo().ToolBar()
+                  .Name("GridToolBarSecondRow")
+                  .HtmlAttributes(new {
+                      data_retry_selector = "retryRequestButton",
+                      data_archive_selector = "archiveRequestButton",
+                      data_download_selector = "downloadRequestButton",
+                      data_filed_selector = "markFiledRequestButton",
+                      data_resend_selector = "resendRequestButton",
+                      data_retract_selector = "retractRequestButton",
+                      
+                  })
+                  .Items(items =>
+                  {                      
+                      items.Add().Type(CommandType.Button).Id("downloadRequestButton").Text("Download").Enable(false).HtmlAttributes(new { @class = "btn btn-primary" }).Click("downloadRequestHandler").Overflow(ShowInOverflowPopup.Auto);
+                      items.Add().Type(CommandType.Button).Id("markFiledRequestButton").Text("Mark as Filed").Enable(false).HtmlAttributes(new { @class = "btn btn-default" }).Click("fileRequestHandler").Overflow(ShowInOverflowPopup.Auto);
+                      
+                      items.Add().Type(CommandType.Button).Id("resendRequestButton").Text("Resend").Enable(false).HtmlAttributes(new { @class = "btn btn-secondary" }).Click("resendRequestHandler").Overflow(ShowInOverflowPopup.Auto);
+                      if (Model.CurrentUser.IsUserSender())
+                      {
+                          items.Add().Type(CommandType.Button).Id("retractRequestButton").Text("Retract").Enable(false).HtmlAttributes(new { @class = "btn btn-secondary" }).Click("retractRequestHandler").Overflow(ShowInOverflowPopup.Auto);
+                          items.Add().Type(CommandType.Button).Id("archiveRequestButton").Text("Archive").Enable(false).HtmlAttributes(new { @class = "btn btn-secondary" }).Click("archiveRequestHandler").Overflow(ShowInOverflowPopup.Auto);
+                          items.Add().Type(CommandType.Button).Id("retryRequestButton").Text("Retry").Enable(true).HtmlAttributes(new { @class = "btn btn-default" }).Click("retryRequestHandler").Overflow(ShowInOverflowPopup.Auto);
+                      }                     
+                    })
+                    .Deferred(true))
+
+                    @(Html.Kendo().ToolBar()
+                  .Name("GridToolBarThirdRow")
+                  
+                  .Items(items =>
+                  {
+                     
+                      items.Add().Type(CommandType.Button)
+                                 .HtmlAttributes(new { @class = "floatedButton"})
+                                 .Text("Include documents older than 1 year")
+                                 .Togglable(true)
+                                 .Toggle("includeOlderDocumentsHandler");
+                                 items.Add().Type(CommandType.Button).Text("Clear Filters").HtmlAttributes(new { @class = "btn btn-secondary floatedButton" }).Click("resetFilterHandler").Overflow(ShowInOverflowPopup.Auto);
+                                 items.Add().Template("<a class=\" floatedButton k-grid-excel k-toggle-button k-button k-button-md k-button-rectangle k-rounded-md k-button-solid k-button-solid-base\" href=\"#\">Export List</a>").HtmlAttributes(new { @class = "pull-right" }).Overflow(ShowInOverflowPopup.Auto);
+                    })
+                    .Deferred(true))
+</script>
+<script id="FiledFilterTemplate" type="text/html">
+    <label>Filed</label>
+    @(Html.Kendo().DropDownList()
+                  .Name("FiledFilterDropdown")
+                  .BindTo(Model.FilingFilter.Items)
+                  .HtmlAttributes(new {
+                        data_filter_default = Model.FilingFilter.DefaultValue, 
+                        data_filter_field = (Model.CurrentUser.IsUserSigningMember()) ? "SignerHasFiled" : "SubmitterHasFiled",
+                        data_filter_grid = "#RequestGrid",
+                        data_filter_type = "boolean",
+                  })
+                  .OptionLabel("All")
+                  .AutoWidth(true)
+                  .Deferred(true))
+</script>
+<script id="LocationFilterTemplate" type="text/html">
+    <label>Office</label>
+    @(Html.Kendo().DropDownList()
+                  .AutoWidth(true)
+                  .BindTo(Model.LocationFilter.Items)
+                  .Name("LocationFilterDropdown")
+                  .HtmlAttributes(new {
+                        data_filter_grid = "#RequestGrid",
+                        data_filter_field = Model.CurrentUser.IsUserSigningMember() ? "SignerOrganizationId" : "SubmitterOrganizationId",
+                        data_filter_default = Model.LocationFilter.DefaultValue
+                  })
+                  .OptionLabel("All")
+                  .Deferred(true))
+</script>
+<script id="SignerFilterTemplate" type="text/html">
+    <label>Signer</label>
+    @(Html.Kendo().DropDownList()
+                  .AutoWidth(true)
+                  .BindTo(Model.SignerFilter.Items)
+                  .HtmlAttributes(new {
+                        data_filter_grid = "#RequestGrid",
+                        data_filter_field = "SignerMemberId",
+                        data_filter_default = Model.LocationFilter.DefaultValue
+                  })
+                  .Name("SignerFilterDropdown")
+                  .OptionLabel("All")
+                  .Deferred(true))
+</script>
+<script id="StatusFilterTemplate" type="text/html">
+    <label>Status</label>
+    @(Html.Kendo().DropDownList()
+                  .AutoWidth(true)
+                  .Name("StatusFilterDropdown")
+                  .DataTextField("Text")
+                  .DataValueField("Value")
+                  .DataSource(source => source.Read(read => read.Url(Url.Page("History", "RequestStatusItems")).Data("filterRequestStatus").Type(HttpVerbs.Post))
+                                              .ServerFiltering(true))
+                  .Events(config => config.DataBound("statusFilterDataBound"))
+                  .HtmlAttributes(new {
+                        data_filter_grid = "#RequestGrid",
+                        data_filter_field = "RequestStatus",
+                        data_filter_default = Model.LocationFilter.DefaultValue 
+                  })
+                  .CascadeFrom("TrackFilterDropdown")
+                  .OptionLabel("All")
+                  .Deferred(true))
+</script>
+<script id="TrackFilterTemplate" type="text/html">
+    <label>View</label>
+    @(Html.Kendo().DropDownList()
+                  .AutoWidth(true)
+                  .Name("TrackFilterDropdown")
+                  .BindTo(Model.ArchivedFilter.Items)
+                  .Events(config => config.Cascade("trackfiltercascade"))
+                  .HtmlAttributes(new {
+                        data_filter_default = Model.ArchivedFilter.DefaultValue,
+                        data_filter_field = "SubmitterHasArchived",
+                        data_filter_grid = "#RequestGrid",
+                        data_filter_type = "boolean"
+                  })
+                  .OptionLabel("All")
+                  .Deferred(true))
+</script>
+<script id="dateRangeFilterTemplate" type="text/html">
+    <div class="row">
+        <div class="col-8 mb-1">
+            @(Html.Kendo().DatePicker()
+                          .Name("#=filterField#FromDatePicker")
+                          .HtmlAttributes(new { placeholder = "From", data_filter_grid = "\\#RequestGrid", data_filter_operator = "gte" })
+                          .Deferred(true)
+                          .ToClientTemplate())
+        </div>
+        <div class="col-8">
+            @(Html.Kendo().DatePicker()
+                          .Name("#=filterField#ThruDatePicker")
+                          .HtmlAttributes(new { placeholder = "To", data_filter_grid = "\\#RequestGrid", data_filter_operator = "lte" })
+                          .Deferred(true)
+                          .ToClientTemplate())
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>
+</script>
+
+
+<script id="SignerAutoCompleteTemplate" type="text/html">
+    @(Html.Kendo().AutoComplete()
+                  .Name("Physicians")
+                  .DataTextField("ShortName")
+                  .Filter("contains")
+                  .Placeholder("Signer")
+                  .DataSource(ds => ds.Ajax().Read(r => r.Url(Url.Page("History", "PhysicianRead")).Data("forgeryToken").Type(HttpVerbs.Post)))
+                  .Deferred(true)
+                  .ToClientTemplate())
+</script>
+
+@Html.Kendo().DeferredScriptsFor("GridToolBar")
+@Html.Kendo().DeferredScriptsFor("GridToolBarSecondRow")
+@Html.Kendo().DeferredScriptsFor("GridToolBarThirdRow")
+@Html.Kendo().DeferredScriptsFor("TrackFilterDropdown")
+@Html.Kendo().DeferredScriptsFor("FiledFilterDropdown")
+@Html.Kendo().DeferredScriptsFor("LocationFilterDropdown")
+@Html.Kendo().DeferredScriptsFor("SignerFilterDropdown")
+@Html.Kendo().DeferredScriptsFor("StatusFilterDropdown")
+
+<script type="text/x-kendo-template" id="historyTemplate">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="date-field">
+                    Date
+                </th>
+                <th class="action-field">
+                    Action
+                </th>
+                <th class="user-field">
+                    User
+                </th>
+                <th>
+                    Organization
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            # for (var i = 0; i < data.historyData.length; i++) { 
+                var item = data.historyData[i];
+            #
+            <tr>
+                <td>#= kendo.toString(kendo.parseDate(item.TaskDate), "d") #</td>
+                <td>#= item.ActionText #</td>
+                <td>#= item.DisplayName #</td>
+                <td>#= item.OrganizationName #</td>
+            </tr>
+            # } #
+        </tbody>
+    </table>
+</script>
+<script type="text/html" id="historyTemplate_RowData"></script>
+<script src="~/js/Pages/RequestHistoryController.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    $(function() {
+
+        $("#RequestGrid [data-field='PatientName'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='MedicalRecordNumber'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='Practice'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='Type'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='Form'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='SignerName'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='SubmitterOrganizationName'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='CollaboratorName'] span.k-select span").addClass("k-i-search").removeClass("k-i-filter");
+        $("#RequestGrid [data-field='PatientName'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='MedicalRecordNumber'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='Practice'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='Type'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='Form'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='SignerName'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='FormId'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='SubmitterOrganizationName'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid [data-field='CollaboratorName'] button span").addClass("k-i-close").removeClass("k-i-filter-clear");
+        $("#RequestGrid").data("kendoGrid").thead.find("[data-field=LastModified] > .k-header-column-menu").remove();
+        $("#RequestGrid").data("kendoGrid").thead.find("[data-field=LastModified] > a.k-link").remove();
+        $("#RequestGrid").data("kendoGrid").columns.filter(function (c, i) { return c.field == "RequestStatusDate" }).every(function (element, index) { element.exportFormat = "MM/dd/yyyy HH:mm:ss"; });
+        $("#RequestGrid").data("kendoGrid").columns.filter(function (c, i) { return c.field == "SubmittedAt" }).every(function (element, index) { element.exportFormat = "MM/dd/yyyy HH:mm:ss"; });
+
+        $("#RequestGrid tbody").on("click", "tr", function(e) {
+            var rowElement = this;
+            var rowUid = $(rowElement).attr("data-uid");
+            var grid = $("#RequestGrid").getKendoGrid();
+            var dataItem = grid.dataSource.getByUid(rowUid);
+
+            if (dataItem && dataItem.PdfUrl)
+            {
+                var cell = $(e.target).closest("td");
+                var disableLaunch = cell.data("disablepdflaunch");
+                if (dataItem.PdfUrl !== null && (disableLaunch === undefined || disableLaunch === false))
+                {
+                    window.open(dataItem.PdfUrl, '_blank');
+                }
+            }
+        });
+    });
+
+    function filterRequestStatus(e) {
+        var data = kendo.antiForgeryTokens();
+        data.archivedFilterValue = $("#TrackFilterDropdown").val();
+        return data;
+    }
+
+    function trackfiltercascade(e) {
+        var tracking = e.sender.value();
+        if (!tracking) {
+            var status = $("#StatusFilterDropdown").data("kendoDropDownList");
+            status.dataSource.read();
+        }
+    }
+
+    function statusFilterDataBound(e) {
+        this.enable();
+        var selectedItem = this.dataSource.data().filter(function (item) { return item.Selected; });
+        if (selectedItem != null && selectedItem.length > 0)
+        {
+            var selectedValue = selectedItem[0].Value;
+            this.value(selectedValue);
+        }
+    }
+</script>

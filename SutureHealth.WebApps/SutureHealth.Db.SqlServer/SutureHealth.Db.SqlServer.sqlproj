@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>SutureHealth.SutureSignAPI.SqlServer</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{f59a5e23-2ee7-4a28-a98c-c4d7b7a0df18}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath />
+    <RootNamespace>SutureHealth.SutureSignAPI.SqlServer</RootNamespace>
+    <AssemblyName>SutureHealth.SutureSignAPI.SqlServer</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <SqlTargetName>SutureSignApi</SqlTargetName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="stage" />
+    <Folder Include="stage\Tables" />
+    <Folder Include="shapi" />
+    <Folder Include="shapi\Tables" />
+    <Folder Include="import" />
+    <Folder Include="import\Tables" />
+    <Folder Include="import\Views" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="archive" />
+    <Folder Include="archive\Tables" />
+    <Folder Include="shapi\Stored Procedures" />
+    <Folder Include="dbo\Views" />
+    <Folder Include="dbo\Types" />
+    <Folder Include="dbo\Functions" />
+    <Folder Include="kno2" />
+    <Folder Include="kno2\Tables" />
+    <Folder Include="dataScraping" />
+    <Folder Include="dataScraping\Tables" />
+    <Folder Include="dbo\Synonyms" />
+    <Folder Include="hchb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Views\FhirUsers.sql" />
+    <Build Include="shapi\Tables\Provider.sql" />
+    <Build Include="shapi\Tables\MedicareClaimSummaryByProvider.sql" />
+    <Build Include="shapi\Tables\MedicareClaimSummaryByProviderAndFile.sql" />
+    <Build Include="shapi\Tables\MedicareClaimSummaryByProviderAndFileAndPhysician.sql" />
+    <Build Include="shapi\Tables\ProviderService.sql" />
+    <Build Include="shapi\Tables\ProviderSignatureActivitySummary.sql" />
+    <Build Include="shapi\Tables\ProviderRelationship.sql" />
+    <Build Include="shapi\Tables\ZipCode.sql" />
+    <Build Include="import\Tables\medicare_claims_by_provider.sql" />
+    <Build Include="import\Tables\medicare_claims_by_provider_and_file.sql" />
+    <Build Include="import\Tables\medicare_claims_by_provider_and_file_and_physician.sql" />
+    <Build Include="import\Tables\npi_to_medicare_number_map.sql" />
+    <Build Include="import\Tables\npidata-pfile.sql" />
+    <Build Include="import\Tables\uszc-geo-full.sql" />
+    <Build Include="import\Tables\zip4ll-full.sql" />
+    <Build Include="import\Views\npidata_provider.sql" />
+    <Build Include="import\Views\npidata_providerservice.sql" />
+    <Build Include="import\Views\provider.sql" />
+    <Build Include="import\Views\suture_facility.sql" />
+    <Build Include="import\Views\suture_facility_service.sql" />
+    <Build Include="import\Views\suture_provider.sql" />
+    <Build Include="import\Views\suture_signature_activity_summary.sql" />
+    <Build Include="import\Views\suture_user.sql" />
+    <Build Include="import\Views\suture_user_facility.sql" />
+    <Build Include="dbo\Stored Procedures\load_provider.sql" />
+    <Build Include="dbo\Stored Procedures\load_provider_medicare_claims.sql" />
+    <Build Include="dbo\Stored Procedures\load_provider_service.sql" />
+    <Build Include="dbo\Stored Procedures\load_provider_signature_activity_summary.sql" />
+    <Build Include="dbo\Stored Procedures\load_provider_user_facility.sql" />
+    <Build Include="dbo\Stored Procedures\load_zipcode.sql" />
+    <Build Include="dbo\Stored Procedures\execute_provider_data_load.sql" />
+    <Build Include="dbo\Stored Procedures\execute_provider_switch_over.sql" />
+    <Build Include="archive\schema.sql" />
+    <Build Include="import\schema.sql" />
+    <Build Include="shapi\schema.sql" />
+    <Build Include="stage\schema.sql" />
+    <Build Include="dbo\Stored Procedures\toggle_indexes.sql" />
+    <Build Include="stage\Tables\Provider.sql" />
+    <Build Include="stage\Tables\MedicareClaimSummaryByProvider.sql" />
+    <Build Include="stage\Tables\MedicareClaimSummaryByProviderAndFile.sql" />
+    <Build Include="stage\Tables\MedicareClaimSummaryByProviderAndFileAndPhysician.sql" />
+    <Build Include="stage\Tables\ProviderService.sql" />
+    <Build Include="stage\Tables\ProviderSignatureActivitySummary.sql" />
+    <Build Include="stage\Tables\ZipCode.sql" />
+    <Build Include="dbo\Stored Procedures\clone_foreign_key_constraints.sql" />
+    <Build Include="dbo\Stored Procedures\remove_foreign_key_constraints.sql" />
+    <Build Include="archive\Tables\Provider.sql" />
+    <Build Include="archive\Tables\MedicareClaimSummaryByProvider.sql" />
+    <Build Include="archive\Tables\MedicareClaimSummaryByProviderAndFile.sql" />
+    <Build Include="archive\Tables\MedicareClaimSummaryByProviderAndFileAndPhysician.sql" />
+    <Build Include="archive\Tables\ProviderService.sql" />
+    <Build Include="archive\Tables\ProviderSignatureActivitySummary.sql" />
+    <Build Include="archive\Tables\ProviderRelationship.sql" />
+    <Build Include="archive\Tables\ZipCode.sql" />
+    <Build Include="dbo\Tables\Notification.sql" />
+    <Build Include="import\Views\provider_service.sql" />
+    <Build Include="import\Views\suture_provider_service.sql" />
+    <Build Include="shapi\Stored Procedures\GetNewClientDistributionList.sql" />
+    <Build Include="stage\Tables\ProviderRelationship.sql" />
+    <Build Include="dbo\Stored Procedures\CreateRequestTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\CreateRequest.sql" />
+    <Build Include="dbo\Tables\TemplateProcessingMode.sql" />
+    <Build Include="dbo\Tables\AnnotationFieldType.sql" />
+    <Build Include="dbo\Tables\OCRDocument.sql" />
+    <Build Include="dbo\Tables\TemplateConfiguration.sql" />
+    <Build Include="dbo\Tables\AnnotationOCRMapping.sql" />
+    <Build Include="dbo\Stored Procedures\SelectParentTemplatesByFacilityId.sql" />
+    <Build Include="import\Views\ZipCode.sql" />
+    <Build Include="dbo\Stored Procedures\CreateAnnotationsFromParentTemplate.sql" />
+    <Build Include="dbo\Tables\TransmittedRequest.sql" />
+    <Build Include="dbo\Tables\RequestSubscriptionNotification.sql" />
+    <Build Include="dbo\Tables\RequestDocument.sql" />
+    <Build Include="dbo\Tables\RequestIdentifier.sql" />
+    <Build Include="dbo\Tables\RequestPatient.sql" />
+    <Build Include="dbo\Tables\RequestSigner.sql" />
+    <Build Include="dbo\Tables\RequestSubscription.sql" />
+    <Build Include="dbo\Tables\RequestError.sql" />
+    <Build Include="dbo\Views\Patient.sql" />
+    <Build Include="dbo\Views\PatientAddress.sql" />
+    <Build Include="dbo\Views\PatientIdentifier.sql" />
+    <Build Include="dbo\Views\Organization.sql" />
+    <Build Include="dbo\Views\Member.sql" />
+    <Build Include="dbo\Views\OrganizationMember.sql" />
+    <Build Include="dbo\Tables\Integrator.sql" />
+    <Build Include="dbo\Tables\IntegratorOrganization.sql" />
+    <Build Include="dbo\Tables\IntegratorOrganizationAuthentication.sql" />
+    <Build Include="dbo\Views\DiagnosisCode.sql" />
+    <Build Include="dbo\Views\OrganizationContact.sql" />
+    <Build Include="dbo\Tables\Service.sql" />
+    <Build Include="dbo\Tables\ProviderInvitation.sql" />
+    <Build Include="dbo\Tables\RequestPatientIdentifier.sql" />
+    <Build Include="dbo\Tables\RequestPatientContact.sql" />
+    <Build Include="dbo\Tables\RequestPatientAddress.sql" />
+    <Build Include="dbo\Stored Procedures\SelectParentTemplateByTemplateId.sql" />
+    <Build Include="dbo\Types\TemplateAnnotation.sql" />
+    <Build Include="dbo\Stored Procedures\CreateAnnotations.sql" />
+    <Build Include="dbo\Stored Procedures\CreatePatient.sql" />
+    <Build Include="dbo\Views\IntegratorSenderDocumentKeys.sql" />
+    <Build Include="dbo\Views\RequestOutcome.sql" />
+    <Build Include="dbo\Views\MemberContact.sql" />
+    <Build Include="dbo\Stored Procedures\RetractRequest.sql" />
+    <Build Include="dbo\Tables\CompletedRequest.sql" />
+    <Build Include="dbo\Tables\RequestPatientMatchLog.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateSutureSignPatient.sql" />
+    <Build Include="dbo\Functions\ParseNumbers.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestDocumentDownloaded.sql" />
+    <Build Include="dbo\Functions\GetSutureSignDate.sql" />
+    <Build Include="dbo\Tables\TransmittedRequestStatusTransition.sql" />
+    <Build Include="dbo\Types\ProviderKey.sql" />
+    <Build Include="dbo\Functions\IsProviderInClientsNetwork.sql" />
+    <Build Include="dbo\Functions\GetSigningMembersByUserId.sql" />
+    <Build Include="dbo\Functions\CalculateClaimsCountBetweenProviders.sql" />
+    <Build Include="dbo\Stored Procedures\VerifyLoginAttempt.sql" />
+    <Build Include="dbo\Views\ApplicationSetting.sql" />
+    <Build Include="dbo\Views\MemberSetting.sql" />
+    <Build Include="dbo\Views\OrganizationSetting.sql" />
+    <Build Include="dbo\Views\OutcomeQueueMessage.sql" />
+    <Build Include="dbo\Stored Procedures\SelectRevenueMetricsReport.sql" />
+    <Build Include="dbo\Stored Procedures\SelectInboxBadgeCount.sql" />
+    <Build Include="dbo\Views\MemberRelationship.sql" />
+    <Build Include="dbo\Views\TemplateType.sql" />
+    <Build Include="dbo\Views\Template.sql" />
+    <Build Include="dbo\Views\TemplateAnnotation.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateOrganization.sql" />
+    <Build Include="dbo\Types\IntegerKey.sql" />
+    <Build Include="dbo\Types\OrganizationMemberUpsert.sql" />
+    <Build Include="dbo\Stored Procedures\UpsertMember.sql" />
+    <Build Include="dbo\Views\ServiceableRequest.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestFiled.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestArchived.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestIncomplete.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestResent.sql" />
+    <Build Include="dbo\Stored Procedures\SelectRequestTasks.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestDownloaded.sql" />
+    <Build Include="dbo\Functions\GetFileNameForRequest.sql" />
+    <Build Include="dbo\Stored Procedures\AssociatePatientToCompany.sql" />
+    <Build Include="dbo\Stored Procedures\LogPatientMatch.sql" />
+    <Build Include="dbo\Stored Procedures\SelectActiveTemplatesByOrganizationId.sql" />
+    <Build Include="dbo\Stored Procedures\CreateRequestFromWebApp.sql" />
+    <Build Include="dbo\Stored Procedures\SearchSigningMembers.sql" />
+    <Build Include="dbo\Stored Procedures\GetMatchingSubmittedRequests.sql" />
+    <Build Include="dbo\Views\PatientOrganizationKey.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestViewed.sql" />
+    <Build Include="dbo\Stored Procedures\UpdatePatient.sql" />
+    <Build Include="dbo\Stored Procedures\SelectPdfTemplateTypesByOrganizationId.sql" />
+    <Build Include="dbo\Types\PatientMatchingScore.sql" />
+    <Build Include="dbo\Stored Procedures\CreateOrganizationTemplate.sql" />
+    <Build Include="dbo\Views\MemberPublicIdentity.sql" />
+    <Build Include="dbo\Stored Procedures\VerifyUserPassword.sql" />
+    <Build Include="dbo\Stored Procedures\CompleteMemberRegistration.sql" />
+    <Build Include="dbo\Views\PatientMatchLog.sql" />
+    <Build Include="dbo\Views\PatientMatchOutcome.sql" />
+    <Build Include="dbo\Stored Procedures\AssociatePatientToOrganization.sql" />
+    <Build Include="dbo\Views\NotificationType.sql" />
+    <Build Include="dbo\Views\OrganizationType.sql" />
+    <Build Include="dbo\Views\SenderDigestReportData.sql" />
+    <Build Include="dbo\Views\SignerDigestReportData.sql" />
+    <Build Include="dbo\Stored Procedures\CreateOrganization.sql" />
+    <Build Include="dbo\Stored Procedures\ToggleOrganizationActiveStatus.sql" />
+    <Build Include="dbo\Tables\MemberToken.sql" />
+    <Build Include="dbo\Tables\MemberHash.sql" />
+    <Build Include="dbo\Tables\ReportType.sql" />
+    <Build Include="dbo\Tables\ReportEligibility.sql" />
+    <Build Include="dbo\Tables\ReportSchedule.sql" />
+    <Build Include="dbo\Tables\MemberReportSchedule.sql" />
+    <Build Include="dbo\Tables\MemberAuditEvent.sql" />
+    <Build Include="dbo\Views\HistoricalRequest.sql" />
+    <Build Include="dbo\Views\MemberIdentity.sql" />
+    <Build Include="dbo\Stored Procedures\CreatePublicIdentity.sql" />
+    <Build Include="dbo\Stored Procedures\ToggleMemberActiveStatus.sql" />
+    <Build Include="dbo\Stored Procedures\SetPublicIdentityActive.sql" />
+    <Build Include="dbo\Views\ReportMemberSchedule.sql" />
+    <Build Include="dbo\Stored Procedures\AddOrUpdateMemberReportSchedule.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestAssistanceRequested.sql" />
+    <Build Include="dbo\Views\AssistantDigestReportData.sql" />
+    <Build Include="dbo\Types\MemberReportSchedule.sql" />
+    <Build Include="dbo\Views\CpoType.sql" />
+    <Build Include="dbo\Views\CpoEntry.sql" />
+    <Build Include="dbo\Views\CpoEntrySelection.sql" />
+    <Build Include="dbo\Stored Procedures\AddCpoEntry.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestRejected.sql" />
+    <Build Include="dbo\Stored Procedures\SignRequest.sql" />
+    <Build Include="dbo\Views\RejectionReason.sql" />
+    <Build Include="dbo\Views\FaceToFaceDescriptor.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestApproved.sql" />
+    <Build Include="kno2\schema.sql" />
+    <Build Include="kno2\Tables\Message.sql" />
+    <Build Include="kno2\Tables\Attachment.sql" />
+    <Build Include="kno2\Tables\AttachmentMeta.sql" />
+    <Build Include="kno2\Tables\Signer.sql" />
+    <Build Include="kno2\Tables\Tab.sql" />
+    <Build Include="kno2\Tables\AdditionalNotification.sql" />
+    <Build Include="kno2\Tables\Patient.sql" />
+    <Build Include="dataScraping\schema.sql" />
+    <Build Include="dataScraping\Tables\ScrapedPatientDetail.sql" />
+    <Build Include="dataScraping\Tables\ScrapedPatient.sql" />
+    <Build Include="dataScraping\Tables\Condition.sql" />
+    <Build Include="dataScraping\Tables\ConditionHistory.sql" />
+    <Build Include="dataScraping\Tables\Allergy.sql" />
+    <Build Include="dataScraping\Tables\AllergyHistory.sql" />
+    <Build Include="dataScraping\Tables\Observation.sql" />
+    <Build Include="dataScraping\Tables\ObservationHistory.sql" />
+    <Build Include="dataScraping\Tables\Procedure.sql" />
+    <Build Include="dataScraping\Tables\ProcedureHistory.sql" />
+    <Build Include="dataScraping\Tables\Contact.sql" />
+    <Build Include="dataScraping\Tables\ContactHistory.sql" />
+    <Build Include="dataScraping\Tables\Prescription.sql" />
+    <Build Include="dataScraping\Tables\PrescriptionHistory.sql" />
+    <Build Include="dataScraping\Tables\Immunization.sql" />
+    <Build Include="dataScraping\Tables\ImmunizationHistory.sql" />
+    <Build Include="dataScraping\Tables\Medication.sql" />
+    <Build Include="dataScraping\Tables\MedicationHistory.sql" />
+    <Build Include="dataScraping\Tables\ScrapedPatientDetailHistory.sql" />
+    <Build Include="dataScraping\Tables\ScrapedPatientHistory.sql" />
+    <Build Include="kno2\Tables\Conversation.sql" />
+    <Build Include="kno2\Tables\IntegrationLog.sql" />
+    <Build Include="kno2\Tables\Classification.sql" />
+    <Build Include="kno2\Tables\Telecom.sql" />
+    <Build Include="dbo\Synonyms\LegacyRequest.sql" />
+    <Build Include="dbo\Views\CollaboratorDigestReportData.sql" />
+    <Build Include="dbo\Stored Procedures\ForwardRequest.sql" />
+    <Build Include="dbo\Views\MemberReportException.sql" />
+    <Build Include="dbo\Stored Procedures\SelectRequestMetadata.sql" />
+    <Build Include="dbo\Stored Procedures\AddRequestMetadata.sql" />
+    <Build Include="dbo\Views\RequestViewHistory.sql" />
+    <Build Include="dbo\Tables\Role.sql" />
+    <Build Include="dbo\Tables\MemberRole.sql" />
+    <Build Include="dbo\Tables\ActionIdentifier.sql" />
+    <Build Include="dbo\Views\MemberPermission.sql" />
+    <Build Include="dbo\Tables\MemberPermissionStatement.sql" />
+    <None Include="PermissionStatements.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestUnapproved.sql" />
+    <Build Include="dbo\Tables\Action.sql" />
+    <Build Include="dbo\Tables\Permission.sql" />
+    <Build Include="dbo\Tables\MemberGroup.sql" />
+    <Build Include="dbo\Tables\RolePermission.sql" />
+    <Build Include="dbo\Tables\MemberMemberGroup.sql" />
+    <Build Include="dbo\Tables\MemberGroupRole.sql" />
+    <Build Include="dbo\Functions\MemberIdExists.sql" />
+    <Build Include="dbo\Stored Procedures\SelectOrganizationIdsInPatientScopeForSender.sql" />
+    <Build Include="dbo\Tables\TimeZoneValue.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestDataSubmission.sql" />
+    <Build Include="dbo\Views\RequestApproval.sql" />
+    <Build Include="dbo\Stored Procedures\SelectHierarchicalSetting.sql" />
+    <Build Include="dbo\Tables\ResourceType.sql" />
+    <Build Include="dbo\Tables\ResourceIdentifier.sql" />
+    <Build Include="dbo\Views\OrganizationPatient.sql" />
+    <Build Include="dbo\Tables\RequestMemberBacklog.sql" />
+    <Build Include="dbo\Stored Procedures\MarkRequestAuditEvent.sql" />
+    <Build Include="dbo\Functions\SelectRevenueReportFunction.sql" />
+    <Build Include="dbo\Stored Procedures\GetTasks.sql" />
+    <Build Include="dbo\Stored Procedures\GetSchemaName.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateRequestTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateTransactionTemplate.sql" />
+    <Build Include="dbo\Views\MemberImage.sql" />
+    <Build Include="dbo\Views\OrganizationImage.sql" />
+    <Build Include="dbo\Stored Procedures\IsSubscribedToInboxMarketing.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateInboxMarketingSubscription.sql" />
+    <Build Include="dbo\Types\PatientPhoneListStruct.sql" />
+    <Build Include="dbo\Views\PatientPhone.sql" />
+    <Build Include="dbo\Views\SystemBillableEntity.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateTransactionSigner.sql" />
+    <BuildExtensionConfiguration Include="hchb\HCHB_Cleanup.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateTransactionStatus.sql" />
+    <Build Include="dbo\Stored Procedures\UpdatePatientSocialSecurity.sql" />
+    <Build Include="dbo\Stored Procedures\ResetPatientPayerMixFlags.sql" />
+    <Build Include="dbo\Views\PatientFhir.sql" />
+    <Build Include="dbo\Views\PatientFhir_MatchErrorLog.sql" />
+    <Build Include="dbo\Stored Procedures\ChangeEffectiveDate.sql" />
+    <Build Include="dbo\Stored Procedures\ChangeDxCode.sql" />
+    <Build Include="dbo\Stored Procedures\GetTasksByMaxTaskId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Condition="'$(NetCoreBuild)' == 'true'" Include="$(NETCoreTargetsPath)\SystemDacpacs\150\master.dacpac">
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+    <ArtifactReference Condition="'$(NetCoreBuild)' != 'true'" Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\150\SqlSchemas\master.dacpac">
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+    <ArtifactReference Include="SutureSignWeb.Db.SqlServer.dacpac">
+      <HintPath>SutureSignWeb.Db.SqlServer.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>SutureSignWeb</DatabaseSqlCmdVariable>
+    </ArtifactReference>
+  </ItemGroup>
+  <Import Condition="'$(NetCoreBuild)' == 'true'" Project="$(NETCoreTargetsPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <PackageReference Condition="'$(NetCoreBuild)' == 'true'" Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UnSignDocuments.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="HCHBSchema">
+      <DefaultValue>HCHB_CommonSpirit</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="SutureSignWeb">
+      <DefaultValue>SutureSignWeb.Db.SqlServer</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>

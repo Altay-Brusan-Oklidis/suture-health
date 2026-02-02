@@ -1,0 +1,13 @@
+﻿$base-font-size: 14px;
+$font-family-normal: 'Open Sans', sans-serif;
+$font-family-wide: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: bold;
+}
+
+.text-primary{
+    color: $suture-blue;
+}

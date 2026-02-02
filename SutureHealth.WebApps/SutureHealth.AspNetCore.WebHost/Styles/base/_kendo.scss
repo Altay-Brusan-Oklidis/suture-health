@@ -1,0 +1,264 @@
+﻿//Kendo Pagination
+
+.k-state-selected {
+    background-image: none;
+    background-color: $suture-blue;
+}
+
+.k-pager-wrap .k-link.k-state-selected {
+    background-color: $suture-blue;
+}
+
+// Kendo PAgination Input
+.k-picker.k-focus, .k-picker:focus, .k-widget.k-picker.k-focus, .k-widget.k-picker:focus, .k-widget.k-picker:focus-within, .k-button-solid-base.k-focus, .k-button-solid-base:focus, .k-button-solid-primary:focus {
+    border-color: $suture-blue;
+    box-shadow: 0 0 4px 0 rgb(30 107 232 / 75%);
+}
+
+//Selected Color
+.k-list-item.k-selected, .k-list-item.k-selected.k-hover, .k-list.k-selected:hover {
+    background-color: $suture-blue;
+}
+
+//Kendo Buttons
+
+.k-button-solid-primary, .k-button-solid-primary:active {
+    background-color: $suture-blue;
+    border: 1px solid $suture-blue;
+    background-image: none;
+}
+
+.k-button-solid-primary:hover {
+    background-color: $suture-dark-blue;
+    border: 1px solid $suture-blue;
+    background-image: none;
+}
+
+.k-button-solid-base.k-active, .k-button-solid-base.k-selected, .k-button-solid-base:active {
+    background-color: $suture-blue;
+    border: 1px solid $suture-dark-blue;
+    background-image: none;
+}
+
+//Grid Combobox Filter
+.k-filtercell .k-combobox {
+    background-color: #fafafa;
+    border-color: #e6e6e6;
+
+    button.k-input-button {
+        display: none;
+    }
+}
+
+//GRID Toolbar Background
+.k-toolbar {
+    background-image: none;
+    background-color: #ffffff;
+}
+
+//KENDO CHECK BOXES
+.k-checkbox:checked {
+    color: $suture-blue;
+}
+
+.k-checkbox:checked:focus, .k-checkbox:focus {
+    color: $suture-blue;
+    border-color: #c5c5c5;
+    box-shadow: none;
+}
+
+//CALENDAR
+.k-calendar .k-footer .k-nav-today {
+    color: $suture-blue;
+}
+
+.k-calendar td.k-state-focused .k-link {
+    box-shadow: 0 0 4px 0 rgb(30 107 232 / 75%);
+}
+
+.k-calendar .k-today .k-link {
+    color: $suture-blue;
+    border: 1px solid $suture-blue;
+    box-shadow: inset 0 0 0 1px $suture-blue;
+}
+
+.k-calendar td.k-state-selected .k-link {
+    background-color: $suture-blue;
+    border: 1px solid $suture-blue;
+    background-image: none;
+}
+
+.btn-primary.k-button-solid-base.k-disabled {
+    color: #fff !important;
+}
+
+//PT CREATE
+.k-radio {
+    border-color: #c5c5c5;
+    background-color: #fff;
+}
+
+.k-radio:checked {
+    color: $suture-blue;
+}
+
+.k-radio:checked:focus {
+    box-shadow: 0 0 3px 0 $suture-blue;
+}
+//CONFIRM
+.k-stepper .k-step-current .k-step-indicator, .k-stepper .k-step-current.k-step-hover .k-step-indicator, .k-stepper .k-step-current:hover .k-step-indicator {
+    border-color: $suture-blue;
+    color: #fff;
+    background-color: $suture-blue;
+}
+
+.k-stepper .k-step-done .k-step-indicator {
+    border-color: $suture-blue;
+    color: #fff;
+    background-color: $suture-blue;
+}
+
+.k-stepper .k-step-current.k-step-hover .k-step-indicator, .k-stepper .k-step-current:hover .k-step-indicator {
+    background-color: $suture-dark-blue;
+}
+
+.k-stepper .k-step-done:hover .k-step-indicator {
+    background-color: $suture-dark-blue;
+}
+
+//Track MOdal
+.k-window-footer {
+    padding: 8px 12px;
+    text-align: right;
+}
+
+.k-window-footer .k-button {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+//GRID HIGHLIGHTS
+
+.k-grid tr.k-state-selected {
+    background-color: #d2d2d2;
+    color: #333333;
+}
+
+
+.k-grid tr.k-state-selected:hover {
+    background-color: #d3d3d3;
+    color: #333333;
+}
+
+.k-wizard-content {
+    overflow-y: visible;
+}
+
+.k-maskedtextbox input {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+}
+
+.k-maskedtextbox {
+    border: 1px solid #ced4da;
+}
+
+.k-grid-content tr td {
+    border-left-width: 0;
+}
+
+.k-alt {
+    background-color: #ffffff;
+}
+
+.k-grid tr td, .k-pivot-layout .k-grid tr td {
+    border-bottom-width: 1px;
+    border-style: solid;
+}
+
+.k-grid td {
+    border-color: #e6e6e6;
+}
+
+.k-grid-header .k-header, .k-filter-row, .k-filter-row:hover {
+    color: #606060 !important;
+    background-color: #fafafa !important;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    border-color: #e6e6e6;
+}
+
+.k-input {
+    background-color: #fafafa;
+    border-color: #e6e6e6;
+}
+
+.k-filter-row > th, k-state-default .k-select {
+    border-color: #e6e6e6;
+}
+
+.k-grid tr:hover {
+    background-color: #d3d3d3;
+    background-image: url(textures/highlight.png);
+    background-image: none,linear-gradient(to bottom,rgba(255,255,255,.25) 0,rgba(255,255,255,0) 100%);
+    background-position: 50% 50%;
+}
+
+.k-master-row:hover {
+    background-color: #d3d3d3;
+}
+
+.k-widget {
+    border-color: #e6e6e6;
+}
+
+.k-picker, .k-widget.k-picker {
+    border-color: #e6e6e6;
+    color: #2e2e2e;
+    background-color: #fff;
+    background-image: linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,0));
+}
+
+
+.k-picker.k-hover, .k-picker:hover, .k-widget.k-picker.k-hover, .k-widget.k-picker:hover {
+    background-color: #fff !important;
+    border-color: #f5f5f5 !important;
+    -webkit-box-shadow: 0 2px 6px rgb(0 0 0 / 20%), 0 2px 3px rgb(0 0 0 / 5%) !important;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 20%), 0 2px 3px rgb(0 0 0 / 5%) !important;
+}
+
+.k-grid-norecords {
+    margin: 12px !important;
+}
+
+#RequestSendForm .k-input, #RequestSendForm .k-widget {
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+#effectiveDate .k-input {
+    padding: 0 1px;
+}
+
+.k-calendar .k-calendar-header .k-nav-today:focus, .k-calendar .k-calendar-header .k-nav-today:hover, .k-calendar .k-footer .k-nav-today:focus, .k-calendar .k-footer .k-nav-today:hover {
+    color: $suture-dark-blue;
+}
+
+.k-autocomplete.k-state-default, .k-dropdown-wrap.k-state-default, .k-numeric-wrap.k-state-default, .k-picker-wrap.k-state-default {
+    background-image: none;
+    background-position: 50% 50%;
+    color: #444;
+    background-color: #fff;
+    border-color: #d8d8d8;
+}
+
+.k-maskedtextbox input#ClinicalDateDatePicker {
+    font-size: inherit!important;
+}
+#effectiveDate .k-input{
+    padding:1px;
+}

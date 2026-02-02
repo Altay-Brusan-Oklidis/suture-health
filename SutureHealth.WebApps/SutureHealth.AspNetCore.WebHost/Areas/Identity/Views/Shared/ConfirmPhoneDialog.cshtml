@@ -1,0 +1,81 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Pages.Account.ConfirmPhoneViewModel
+@{
+    string[] actions = new string[] { "Close" };
+}
+<script src="~/js/Identity/Account/ConfirmPhone.js" data-role="ConfirmPhoneDialog" 
+                                                    data-trigger="@Model.TriggerSelector"
+                                                    data-window="#confirmPhoneDialog"></script>
+<kendo-window name="confirmPhoneDialog" visible="false" width="600"
+              title="Confirm your mobile number" 
+              actions="actions">
+    <content>
+        <kendo-wizard name="confirmationPhoneWizard" on-done="ConfirmPhoneWizardComplete" on-select="ConfirmPhoneWizardSelect">
+            <wizard-steps>
+                <wizard-step title="Send Confirmation Code">
+                    <wizard-step-content>
+                        <div>
+                            <form method="post" action="@Url.Page("/Account/ConfirmPhone", "SendConfirmationToken", new { area = "Identity"})">
+                                <p>
+                                    From time-to-time, we will send you integral patient related notifications, to make sure
+                                    you stay up to date with your patients please make sure we have your correct email address.
+                                </p>
+                                <div class="form-group row">
+                                    <label for="confirmationDestination" class="col-sm-2 col-form-label optional">Mobile Number:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" readonly="readonly" name="confirmationDestination" value="@Model.SutureUser.MobileNumber.ToFormattedPhoneNumber()">
+                                    </div>
+                                </div>
+                                @Html.AntiForgeryToken()
+                            </form>
+                            <div class="optional">
+                                <p>
+                                    By entering your phone number you are opting in to receive Suture Health's text
+                                    message notifications. Standard data rates apply.
+                                </p>
+                            </div>
+                        </div>
+                    </wizard-step-content>
+                    <wizard-step-buttons>
+                        <wizard-step-button name="sendConfirmationCodeButton" text="Send Confirmation Code" click="ConfirmPhoneWizardButtonClick"></wizard-step-button>
+                    </wizard-step-buttons>
+                </wizard-step>
+                <wizard-step title="Verify Confirmation Code">
+                    <wizard-step-content>
+                        <div>
+                            <div>
+                                A text message has been sent to your mobile device
+                            </div>
+                            <form method="post" action="@Url.Page("/Account/ConfirmPhone", "VerifyConfirmationToken", new { area = "Identity"})">
+                                <div asp-validation-summary="All"></div>
+                                <label for="verificationToken">Enter Token:</label>
+                                <input type="number" required="required" maxlength="6" minlength="6" asp-for="VerificationToken" 
+                                    data-msg-required="The confirmation code must be entered to continue."/>
+                                <span asp-validation-for="VerificationToken" class="text-danger"></span>
+                                @Html.AntiForgeryToken()
+                            </form>
+                            <div class="optional">
+                                <p>
+                                    We are committed to keeping your mobile number confidential. We will not provide your
+                                    personal information to any third party individual, government agency, or company.
+                                </p>
+                            </div>
+                        </div>
+                    </wizard-step-content>
+                    <wizard-step-buttons>
+                        <wizard-step-button name="verifyConfirmationCodeButton" text="Confirm Mobile Number" click="ConfirmPhoneWizardButtonClick"></wizard-step-button>
+                    </wizard-step-buttons>
+                </wizard-step>
+                <wizard-step title="Done">
+                    <wizard-step-content>
+                        <div id="confirmationPanel">
+                            Thanks!
+                        </div>
+                    </wizard-step-content>
+                    <wizard-step-buttons>
+                        <wizard-step-button name="done"></wizard-step-button>
+                    </wizard-step-buttons>
+                </wizard-step>
+            </wizard-steps>
+        </kendo-wizard>
+    </content>
+</kendo-window>

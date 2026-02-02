@@ -1,0 +1,26 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel.PagedEntityListing
+@using SutureHealth.AspNetCore.Areas.Network.Models.Listing;
+@if (Model.HasEntities)
+{
+    foreach (var entity in Model.Entities)
+    {
+        <div class="entity-list-item @(Html.GetInvitationStateCssClass(entity))" data-provider-id="@entity.ProviderId" data-user-id="@(entity.IsSutureCustomer ? entity.SutureCustomer.SignerUserId.GetValueOrDefault().ToString() : default(long).ToString())" data-suture-joined-network-date-ticks="@(entity.IsSutureCustomer ? entity.SutureCustomer.DateCreatedTicks.ToString() : default(long).ToString())" data-has-claims-with-user="@entity.HasClaimsWithUser" style="position: relative;">
+            @Html.Partial("_EntityListItem-Row", entity)
+            @Html.Partial("_EntityListItem-Grid", entity)
+        </div>
+    }
+
+    if (Model.HasMorePages)
+    {
+        <div class="text-center" style="margin: 10px 0 10px 0; display: inline-block; width: 100%;">
+            <a id="NetworkListingLoadMore" class="network-load-more">Load More</a>
+        </div>
+    }
+}
+else if (Model.IsFirstPage)
+{
+    <div class="text-center" style="display: inline-block; width: 100%;">
+        <h3>Sorry, no results found.</h3>
+        <h4>Try expanding your search. Invite more companies or <a href="mailto:support@suturehealth.com">make a specific request.</a></h4>
+    </div>
+}

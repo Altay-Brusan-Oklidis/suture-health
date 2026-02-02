@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SutureHealth.ApplicationAPI.AspNetCore</name>
+    </assembly>
+    <members>
+        <member name="M:SutureHealth.Application.v0001.Controllers.AuthenticationController.Login">
+            <summary>
+            Log in using a username and password for OAuth authentication
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0001.Controllers.AuthenticationController.Token(System.String)">
+            <summary>
+            Exchanges an OAuth authorization code for refresh and access tokens
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0001.Controllers.AuthenticationController.RefreshToken(System.String)">
+            <summary>
+            Returns a new OAuth access token given a valid refresh token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0100.Controllers.AuthenticationController.Login(SutureHealth.Application.v0100.Models.LoginInputModel)">
+            <summary>
+            Log in using a username and password.
+            </summary>
+            <returns>The Security Credentials used for future requests.</returns>
+            <response code="200">Successful login.</response>
+            <response code="400">Message containing the reason for the failure.</response>
+        </member>
+        <member name="M:SutureHealth.Application.v0100.Controllers.SettingController.GetMiscSettings">
+            <summary>
+            Returns some miscellaneous settings like ShowNewInbox, AllowOtherToSignFromScreen and DocumentViewDuration
+            according to the hierarchical levels (Member > Org > App)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0100.Controllers.SettingController.SaveMiscSettings(SutureHealth.Application.v01._00.Models.MiscSettings)">
+            <summary>
+            Saves the misc settings which are not null, into the Member Settings of the logged-in user.
+            </summary>
+            <param name="miscSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0100.Controllers.SettingController.GetFirstInboxTour">
+            <summary>
+            Gets the IsFirstInboxTour Setting for the logged-in user
+            </summary>
+            <param name="firstInboxTour"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0100.Controllers.SettingController.SetFirstInboxTour">
+            <summary>
+            Sets the isFirstInboxTourDone setting for the logged-in member to true
+            </summary>
+            <param name="firstInboxTour"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0100.Controllers.SettingController.DeleteMemberMiscSettings(System.String)">
+            <summary>
+            Delete one of the misc settings of a member who is logged-in.
+            </summary>
+            <param name="miscSettingName">the name of the one setting under member misc settings</param>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Application.v0100.Models.Organization.ToString">
+            <summary>
+            Get the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+    </members>
+</doc>

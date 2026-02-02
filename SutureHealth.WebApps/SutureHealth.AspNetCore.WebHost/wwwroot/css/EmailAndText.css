@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+ul {
+    padding-inline-start: 0 !important;
+}
+
+.suture-button {
+    text-transform: none !important;
+    padding: 8px 14px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.row-break {
+    width:60%;
+    max-width: 300px;
+    text-align:middle;
+    font-size: 15px;
+    color: #23496d;
+    word-break: break-word;
+    margin: 10px 20px;
+    border: 1px solid #25d2f5;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* START DIGEST REPORT */
+.cta-button {
+    font-family: Inter; 
+    padding: 10px 24px 10px 24px;
+    min-width: 180px; 
+    display: block; 
+    text-decoration: none; 
+    text-align: center; 
+    font-weight: 600; 
+    font-size: 18px; 
+    font-style: normal;
+    color: #fff; 
+    background: #1E6BE6; 
+    line-height: 28px; 
+    border-radius: 6px !important;
+}
+
+.cta-button:hover {
+    color: #fff; 
+}
+
+.revenue-h3 {
+    font-weight: 800; 
+    font-family: Inter, Verdana; 
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center; 
+}
+
+.revenue-amount {
+    font-weight: 700; 
+    font-family: Inter, Verdana; 
+    font-size: 24pt; 
+    font-style: normal;
+    line-height: 29.05px;
+    padding-bottom: 16px;
+    text-align: center;
+}
+
+.rvu-data {
+    font-family: Inter, Verdana;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center; 
+}
+
+.info-text {
+    padding-left: 340px;
+    padding-right: 18px;
+    padding-bottom: 18px;
+    text-align: right;
+    font-family: Inter, Verdana;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.report-data {
+    width: 450px; 
+    color: #ffffff; 
+    background-color: #929292; 
+    margin-left: auto; 
+    margin-right: auto; 
+    padding: 15px; 
+    border-radius: 10px !important;
+}
+
+.data-title {
+    padding-bottom: 5px;
+    text-align:left; 
+    font-family: Inter, Verdana; 
+    margin: 0; 
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+
+.data-subtext {
+    padding-left: 21px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.data-primary-number {
+    text-align: right; 
+    margin: 0; 
+    padding-right: 51px;
+    font-family: Inter, Verdana;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.list-text {
+    text-align:left; 
+    font-family: Inter, Verdana; 
+    padding-left: 41px;
+    padding-bottom: 11px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.data-sub-number {
+    text-align: right; 
+    margin: 0; 
+    padding-right: 51px;
+    padding-bottom: 11px;
+    font-family: Inter, Verdana;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.footer-tr {
+    padding-top: 20px;
+    font-size: 11px;
+    font-family: Inter, Verdana; 
+    line-height: 175%;
+    text-align: center;
+    width: 450px;
+}
+
+.footer-cell {
+    max-width: 200px !important;
+    width: 33% !important;
+    line-height: 100%;
+    font-family: Inter, Verdana; 
+    font-size: 12px;
+    text-align: center;
+}
+
+.footer-item {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* END DIGEST REPORT */
+
+
+/* START NEW REGISTRATION */
+.header-title {
+    font-family: Inter, Verdana; 
+    font-weight: 500;
+    font-size: 20px;
+    color: #1e6be8;
+    line-height: 175%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.content-title {
+    font-size: 18px !important;
+    line-height: 175% !important;
+    padding-bottom: 4px;
+}
+
+.sub-text {
+    text-align: center;
+    font-size: 12px;
+    line-height: 175%;
+}
+
+.li-item {
+    font-size: 15px;
+}
+/* END NEW REGISTRATION */

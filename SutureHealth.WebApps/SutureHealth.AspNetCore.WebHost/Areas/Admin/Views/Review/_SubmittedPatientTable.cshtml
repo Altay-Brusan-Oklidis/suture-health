@@ -1,0 +1,270 @@
+@model SutureHealth.AspNetCore.Areas.Admin.Models.Review.PatientMatchModel.PatientInfo
+<table class="table table-bordered table-hover" style="margin-top: 20px;">
+    <thead class="thead-light">
+        <tr>
+            <th colspan="2">Submitted Patient Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                First Name
+            </td>
+            <td class="firstName">
+                @Model.FirstName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Middle Name
+            </td>
+            <td class="middleName">
+                @Model.MiddleName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Last Name
+            </td>
+            <td class="lastName">
+                @Model.LastName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Suffix
+            </td>
+            <td class="suffix">
+                @Model.Suffix
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DOB
+            </td>
+            <td class="dob">
+                @Model.DOB
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Street Address Line 1
+            </td>
+            <td class="line1">
+                @Model.Address.Line1
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Street Address Line 2
+            </td>
+            <td class="line1">
+                @Model.Address.Line2
+            </td>
+        </tr>
+        <tr>
+            <td>
+                City
+            </td>
+            <td class="city">
+                @Model.Address.City
+            </td>
+        </tr>
+        <tr>
+            <td>
+                State
+            </td>
+            <td class="state">
+                @Model.Address.StateOrProvince
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Postal Code
+            </td>
+            <td class="zip">
+                @Model.Address.PostalCode.ToFormattedZip()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td class="gender">
+                @Model.Gender
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Home Phone
+            </td>
+            <td class="homePhone">
+                @Model.HomePhone.Value
+                @if (!string.IsNullOrEmpty(Model.HomePhone.Value))
+                {
+                    <span>
+                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.HomePhone.IsPrimary" /><a> )</a>
+                    </span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Work Phone
+            </td>
+            <td class="workPhone">
+                @Model.WorkPhone.Value
+                @if (!string.IsNullOrEmpty(Model.WorkPhone.Value))
+                {
+                    <span>
+                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.WorkPhone.IsPrimary" /><a> )</a>
+                    </span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Mobile
+            </td>
+            <td class="mobile">
+                @Model.Mobile.Value
+                @if (!string.IsNullOrEmpty(Model.Mobile.Value))
+                {
+                    <span>
+                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.Mobile.IsPrimary" /><a> )</a>
+                    </span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Other Phone
+            </td>
+            <td class="otherPhone">
+                @Model.OtherPhone.Value
+                @if (!string.IsNullOrEmpty(Model.OtherPhone.Value))
+                {
+                    <span>
+                        <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.OtherPhone.IsPrimary" /><a> )</a>
+                    </span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Facility
+            </td>
+            <td class="organizationName">
+                @Model.OrganizatioName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                SSN
+            </td>
+            <td class="ssn">
+                @Model.SSN
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Medicare MBI
+            </td>
+            <td class="mbi">
+                @Model.MedicareMBI
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Medicaid Number
+            </td>
+            <td class="medicaid">
+                @if (@Model.MedicaidNumber.IsNullOrEmpty())
+                {
+                    <a>&nbsp;</a>
+                }
+                else
+                {
+                    if (!@Model.MedicaidState.IsNullOrEmpty())
+                    {
+                        @Model.MedicaidNumber @Html.Raw(" ("+@Model.MedicaidState+")")
+                        ;
+                    }
+                    else
+                    {
+                        @Model.MedicaidNumber
+                        ;
+                    }
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Payer Mix
+            </td>
+            <td class="payerMix">
+                @if (@Model.IsSelfPaid)
+                {
+                    <input type="checkbox" name="selfPayChk" checked disabled>
+                    <span>Self Pay</span> <br>
+                }
+                else
+                {
+                    <input type="checkbox" name="selfPayChk" disabled>
+                    <span>Self Pay</span> <br>
+                }
+                @if (@Model.IsPrivateInsuranceAvailable)
+                {
+                    <input type="checkbox" name="privateInsuranceChk" checked disabled>
+                    <span>Private Insurance</span> <br>
+                }
+                else
+                {
+                    <input type="checkbox" name="privateInsuranceChk" disabled>
+                    <span>Private Insurance</span> <br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Patient Id
+            </td>
+            <td>
+                <a>&nbsp;</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Create Date
+            </td>
+            <td>
+                <a>&nbsp;</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Update Date
+            </td>
+            <td>
+                <a>&nbsp;</a>
+            </td>
+        </tr>
+@*        <tr>
+            <td>
+                Documents                
+            </td>
+            <td>
+                <a>&nbsp;</a>
+            </td>
+        </tr>*@
+
+        @*        <tr>
+        <td>
+        External Patient Id
+        </td>
+        <td class="mrn">
+        @Model.ExternalMRN
+        </td>
+        </tr>*@
+    </tbody>
+</table>

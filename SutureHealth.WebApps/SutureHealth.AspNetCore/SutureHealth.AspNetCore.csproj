@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <VersionPrefix>$(VERSION_PREFIX)</VersionPrefix>
+        <RootNamespace>SutureHealth</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DebugType>portable</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <CodeAnalysisRuleSet>SutureHealth.AspNetCore.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <CodeAnalysisRuleSet>SutureHealth.AspNetCore.ruleset</CodeAnalysisRuleSet>
+        <DebugType>portable</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="6.3.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SutureHealth.ApplicationAPI.Core\SutureHealth.ApplicationAPI.Core.csproj" />
+      <ProjectReference Include="..\SutureHealth.Common\SutureHealth.Common.csproj" />
+      <ProjectReference Include="..\SutureHealth.Services.Common\SutureHealth.Services.Common.csproj" />
+    </ItemGroup>
+</Project>

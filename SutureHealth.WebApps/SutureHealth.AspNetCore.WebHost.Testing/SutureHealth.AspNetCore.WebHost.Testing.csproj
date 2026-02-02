@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="appsettings.test.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.json" Link="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.ci.json" Link="appsettings.ci.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.stage.json" Link="appsettings.stage.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.demo.json" Link="appsettings.demo.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.prod.json" Link="appsettings.prod.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="..\SutureHealth.AspNetCore.WebHost\appsettings.qa.json" Link="appsettings.qa.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+        <Content Include="appsettings.test.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.8" />
+        <PackageReference Include="Moq.EntityFrameworkCore" Version="7.0.0.2" />
+        <PackageReference Include="MSTest.TestAdapter" Version="3.0.0" />
+        <PackageReference Include="MSTest.TestFramework" Version="3.0.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+        <PackageReference Include="Moq" Version="4.18.3" />
+        <PackageReference Include="coverlet.collector" Version="3.2.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="NUnit" Version="3.14.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\SutureHealth.AspNetCore.WebHost\SutureHealth.AspNetCore.WebHost.csproj" />
+        <ProjectReference Include="..\SutureHealth.PatientAPI.Testing\SutureHealth.PatientAPI.Testing.csproj" />
+    </ItemGroup>
+
+</Project>

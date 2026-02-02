@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>   
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="HtmlSamples\OpenEmrPatientDetailSample.txt" />
+    <None Remove="HtmlSamples\OpenEmrPatientSample.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.ci.json" Link="appsettings.ci.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.demo.json" Link="appsettings.demo.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.stage.json" Link="appsettings.stage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.prod.json" Link="appsettings.prod.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+    <Content Include="..\SutureHealthAPI\appsettings.qa.json" Link="appsettings.qa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>    
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="HtmlSamples\OpenEmrPatientDetailSample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HtmlSamples\OpenEmrPatientSample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.TestUtilities" Version="2.0.0" />
+    <PackageReference Include="AWSSDK.Lambda" Version="3.7.13.35" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.6" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
+    <PackageReference Include="coverlet.collector" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SutureHealth.AspNetCore.WebHost.Testing\SutureHealth.AspNetCore.WebHost.Testing.csproj" />
+    <ProjectReference Include="..\SutureHealth.DataScrapingAPI.Core\SutureHealth.DataScrapingAPI.Core.csproj" />
+    <ProjectReference Include="..\SutureHealth.DataScrapingAPI.Services.Lambda\SutureHealth.DataScrapingAPI.Services.Lambda.csproj" />
+    <ProjectReference Include="..\SutureHealth.DataScrapingAPI.Services.SqlServer\SutureHealth.DataScrapingAPI.Services.SqlServer.csproj" />
+    <ProjectReference Include="..\SutureHealth.DataScrapingAPI.Services\SutureHealth.DataScrapingAPI.Services.csproj" />
+  </ItemGroup>
+
+</Project>

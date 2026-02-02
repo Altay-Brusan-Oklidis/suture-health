@@ -1,0 +1,1378 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+    <realmCode code="US"/>
+    <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="1.2.840.114350.1.72.1.51693"/>
+    <templateId root="2.16.840.1.113883.10.20.22.1.1"/>
+    <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+    <templateId root="2.16.840.1.113883.10.20.22.1.9"/>
+    <templateId root="2.16.840.1.113883.10.20.22.1.9" extension="2015-08-01"/>
+    <id assigningAuthorityName="EPC" extension="b14ce745-8514-4c07-894a-b487be2ef963"
+        root="1.2.840.114350.1.13.2.1.7.1.1"/>
+    <code code="11506-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+        displayName="Subsequent evaluation note"/>
+    <title>Encounter Summary</title>
+    <effectiveTime value="20201002140509-0500"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal"/>
+    <languageCode code="en-US"/>
+    <recordTarget>
+        <patientRole>
+            <id extension="LVH2805900" root="1.2.840.114350.1.13.2.1.7.3.688884.100"/>
+            <addr use="HP">
+                <streetAddressLine>4698 Vilegas Dr.</streetAddressLine>
+                <county>Dane</county>
+                <city>BARABOO</city>
+                <state>WI</state>
+                <postalCode>53913-6782</postalCode>
+                <country>USA</country>
+            </addr>
+            <telecom use="HP" value="tel:+1-505-595-4700"/>
+            <telecom use="WP" value="tel:+1-608-556-8712"/>
+            <telecom use="MC" value="tel:+1-608-215-7680"/>
+            <telecom value="mailto:birder@aol.com"/>
+            <patient>
+                <name use="L">
+                    <given>Lewis</given>
+                    <family>Baranowski</family>
+                </name>
+                <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"
+                    codeSystemName="AdministrativeGenderCode" displayName="Male"/>
+                <birthTime value="19640919"/>
+                <sdtc:deceasedInd value="false" xmlns:sdtc="urn:hl7-org:sdtc"/>
+                <maritalStatusCode code="M" codeSystem="2.16.840.1.113883.5.2"
+                    codeSystemName="MaritalStatusCode" displayName="Married"/>
+                <raceCode code="2106-3" codeSystem="2.16.840.1.113883.6.238"
+                    codeSystemName="CDC Race and Ethnicity" displayName="White"/>
+                <ethnicGroupCode code="2186-5" codeSystem="2.16.840.1.113883.6.238"
+                    codeSystemName="CDC Race and Ethnicity" displayName="Not Hispanic or Latino"/>
+                <languageCommunication>
+                    <languageCode code="en"/>
+                    <modeCode code="RWR" codeSystem="2.16.840.1.113883.5.60"
+                        displayName="Received Written"/>
+                    <preferenceInd value="true"/>
+                </languageCommunication>
+            </patient>
+            <providerOrganization>
+                <id extension="2" root="1.2.840.114350.1.13.2.1.7.2.688879"/>
+                <name>Lakeland Valley Hospital</name>
+                <telecom nullFlavor="NA"/>
+                <addr use="WP">
+                    <streetAddressLine>5544 John Nolen Dr</streetAddressLine>
+                    <city>Madison</city>
+                    <state>WI</state>
+                    <postalCode>53713</postalCode>
+                    <country>USA</country>
+                </addr>
+            </providerOrganization>
+        </patientRole>
+    </recordTarget>
+    <author>
+        <time value="20201002140509-0500"/>
+        <assignedAuthor>
+            <id extension="9.2" root="1.2.840.114350.1.1"/>
+            <addr nullFlavor="NA"/>
+            <telecom nullFlavor="NA"/>
+            <assignedAuthoringDevice>
+                <manufacturerModelName>Epic - Version 9.2</manufacturerModelName>
+                <softwareName>Epic - Version 9.2</softwareName>
+            </assignedAuthoringDevice>
+            <representedOrganization>
+                <id extension="2" root="1.2.840.114350.1.13.2.1.7.2.688879"/>
+                <name>Lakeland Valley Hospital</name>
+                <telecom nullFlavor="NA"/>
+                <addr use="WP">
+                    <streetAddressLine>5544 John Nolen Dr</streetAddressLine>
+                    <city>Madison</city>
+                    <state>WI</state>
+                    <postalCode>53713</postalCode>
+                    <country>USA</country>
+                </addr>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian>
+        <assignedCustodian>
+            <representedCustodianOrganization>
+                <id extension="2" root="1.2.840.114350.1.13.2.1.7.2.688879"/>
+                <name>Lakeland Valley Hospital</name>
+                <telecom nullFlavor="NA"/>
+                <addr use="WP">
+                    <streetAddressLine>5544 John Nolen Dr</streetAddressLine>
+                    <city>Madison</city>
+                    <state>WI</state>
+                    <postalCode>53713</postalCode>
+                    <country>USA</country>
+                </addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <participant typeCode="IND">
+        <time value="20030624"/>
+        <associatedEntity classCode="ECON">
+            <id extension="57382" root="1.2.840.114350.1.13.2.1.7.2.827665"/>
+            <code code="SPS" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode"
+                displayName="Spouse">
+                <originalText>Spouse</originalText>
+            </code>
+            <addr use="HP">
+                <streetAddressLine>2 Hawk Feather Circle</streetAddressLine>
+                <city>Madison</city>
+                <state>WI</state>
+                <postalCode>53717</postalCode>
+                <country>USA</country>
+            </addr>
+            <telecom use="HP" value="tel:+1-608-256-2238"/>
+            <telecom use="WP" value="tel:+1-608-453-9873"/>
+            <telecom use="MC" value="tel:+1-608-433-7524"/>
+            <associatedPerson>
+                <name>Barbara</name>
+            </associatedPerson>
+        </associatedEntity>
+    </participant>
+    <participant typeCode="IND">
+        <time value="20030624"/>
+        <associatedEntity classCode="ECON">
+            <id extension="57383" root="1.2.840.114350.1.13.2.1.7.2.827665"/>
+            <code code="MTH" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode"
+                displayName="Mother">
+                <originalText>Mother</originalText>
+            </code>
+            <addr use="HP">
+                <streetAddressLine>6610 Greenway Drive</streetAddressLine>
+                <city>Cudahy</city>
+                <state>WI</state>
+                <postalCode>53110</postalCode>
+                <country>USA</country>
+            </addr>
+            <telecom use="HP" value="tel:+1-414-788-5434"/>
+            <telecom use="MC" value="tel:+1-414-553-2127"/>
+            <associatedPerson>
+                <name>Barbara</name>
+            </associatedPerson>
+        </associatedEntity>
+    </participant>
+    <participant typeCode="IND">
+        <time value="20030624"/>
+        <associatedEntity classCode="ECON">
+            <id extension="57384" root="1.2.840.114350.1.13.2.1.7.2.827665"/>
+            <code code="FTH" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode"
+                displayName="Father">
+                <originalText>Father</originalText>
+            </code>
+            <addr use="HP">
+                <streetAddressLine>6610 Greenway Drive</streetAddressLine>
+                <city>Cudahy</city>
+                <state>WI</state>
+                <postalCode>53110</postalCode>
+                <country>USA</country>
+            </addr>
+            <telecom use="HP" value="tel:+1-414-788-5434"/>
+            <telecom use="MC" value="tel:+1-414-553-2127"/>
+            <associatedPerson>
+                <name>Robert</name>
+            </associatedPerson>
+        </associatedEntity>
+    </participant>
+    <documentationOf typeCode="DOC">
+        <serviceEvent classCode="PCPR">
+            <templateId root="2.16.840.1.113883.10.20.21.3.1"/>
+            <effectiveTime>
+                <low value="20150409"/>
+                <high value="20201002"/>
+            </effectiveTime>
+            <performer typeCode="PRF">
+                <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88"
+                    codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+                    <originalText>General</originalText>
+                </functionCode>
+                <time>
+                    <low value="20140723"/>
+                    <high nullFlavor="PINF"/>
+                </time>
+                <assignedEntity>
+                    <id extension="2401437018" root="2.16.840.1.113883.4.6"/>
+                    <code nullFlavor="UNK">
+                        <originalText>Family Practice</originalText>
+                    </code>
+                    <addr use="WP">
+                        <streetAddressLine>4310 Country View Road</streetAddressLine>
+                        <city>Baraboo</city>
+                        <state>WI</state>
+                        <postalCode>53913</postalCode>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-608-555-1212"/>
+                    <telecom value="fax:+1-608-555-7237"/>
+                    <assignedPerson>
+                        <name>
+                            <given>Marty</given>
+                            <family>Seeger</family>
+                        </name>
+                    </assignedPerson>
+                    <representedOrganization classCode="ORG">
+                        <name>River Hills Health System</name>
+                        <telecom use="WP" value="tel:+1-608-555-3326"/>
+                        <telecom value="mailto:GeneralAssistance@riverhills.com"/>
+                        <addr use="WP">
+                            <streetAddressLine>8110 Gatehouse Road</streetAddressLine>
+                            <county>Sauk</county>
+                            <city>Baraboo</city>
+                            <state>WI</state>
+                            <postalCode>53913</postalCode>
+                            <country>USA</country>
+                        </addr>
+                    </representedOrganization>
+                </assignedEntity>
+            </performer>
+            <performer typeCode="PRF">
+                <functionCode code="385777007" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMEDCT">
+                    <originalText>Continuing Care Coordinator</originalText>
+                </functionCode>
+                <time>
+                    <low value="20190309"/>
+                    <high nullFlavor="PINF"/>
+                </time>
+                <assignedEntity>
+                    <id extension="1000000228" root="2.16.840.1.113883.4.6"/>
+                    <code nullFlavor="UNK">
+                        <originalText>Case Management</originalText>
+                    </code>
+                    <addr use="WP">
+                        <streetAddressLine>1979 Milky Way</streetAddressLine>
+                        <city>VERONA</city>
+                        <state>WI</state>
+                        <postalCode>53593</postalCode>
+                    </addr>
+                    <telecom use="WP" value="tel:+1-608-555-4586"/>
+                    <telecom value="fax:+1-608-555-4126"/>
+                    <assignedPerson>
+                        <name>
+                            <given>Eliza</given>
+                            <family>Jenkins</family>
+                            <suffix qualifier="AC">RN</suffix>
+                        </name>
+                    </assignedPerson>
+                    <representedOrganization classCode="ORG">
+                        <name>Lakeland Valley Hospital</name>
+                        <telecom nullFlavor="UNK"/>
+                        <addr use="WP">
+                            <streetAddressLine>5544 John Nolen Dr</streetAddressLine>
+                            <city>Madison</city>
+                            <state>WI</state>
+                            <postalCode>53713</postalCode>
+                            <country>USA</country>
+                        </addr>
+                    </representedOrganization>
+                </assignedEntity>
+            </performer>
+        </serviceEvent>
+    </documentationOf>
+    <componentOf>
+        <encompassingEncounter>
+            <id extension="545335" root="1.2.840.114350.1.13.2.1.7.3.698084.8"/>
+            <code code="AMB" codeSystem="2.16.840.1.113883.5.4" displayName="Ambulatory">
+                <originalText>Office Visit</originalText>
+                <translation code="101" codeSystem="1.2.840.114350.1.72.1.30"
+                    displayName="Office Visit"/>
+            </code>
+            <effectiveTime>
+                <low value="20150409"/>
+                <high value="20150409"/>
+            </effectiveTime>
+            <encounterParticipant typeCode="ATND">
+                <time value="20150409"/>
+                <assignedEntity>
+                    <id nullFlavor="UNK"/>
+                    <code nullFlavor="UNK">
+                        <originalText>Ophthalmology</originalText>
+                    </code>
+                    <addr use="WP">
+                        <streetAddressLine nullFlavor="UNK"/>
+                        <city>MADISON</city>
+                        <state>WI</state>
+                        <postalCode nullFlavor="UNK"/>
+                    </addr>
+                    <telecom nullFlavor="UNK"/>
+                    <assignedPerson>
+                        <name>
+                            <given>Tony</given>
+                            <given>E</given>
+                            <family>Kadil</family>
+                            <suffix qualifier="AC">M.D.</suffix>
+                        </name>
+                    </assignedPerson>
+                </assignedEntity>
+            </encounterParticipant>
+            <location>
+                <healthCareFacility>
+                    <id extension="2" root="1.2.840.114350.1.13.2.1.7.2.686980"/>
+                    <code nullFlavor="UNK">
+                        <originalText>Ophthalmology</originalText>
+                    </code>
+                    <location>
+                        <name>Central Ophthalmology Clinic</name>
+                        <addr use="WP">
+                            <streetAddressLine>624 12th St. S.W.</streetAddressLine>
+                            <city>MADISON</city>
+                            <state>WI</state>
+                            <postalCode>53707</postalCode>
+                        </addr>
+                    </location>
+                    <serviceProviderOrganization>
+                        <id extension="200" root="1.2.840.114350.1.13.2.1.7.2.696570"/>
+                        <name>Epic Medical Center</name>
+                        <addr use="WP">
+                            <streetAddressLine>624 12th St. S.W.</streetAddressLine>
+                            <city>MADISON</city>
+                            <state>WI</state>
+                            <postalCode>53707</postalCode>
+                        </addr>
+                        <asOrganizationPartOf>
+                            <wholeOrganization>
+                                <name>Lakeland Valley Hospital</name>
+                                <addr nullFlavor="NA"/>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.12"/>
+                    <code code="29299-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="REASON FOR VISIT"/>
+                    <title>Reason for Visit</title>
+                    <text>
+                        <list>
+                            <item>
+                                <table>
+                                    <colgroup>
+                                        <col width="25%"/>
+                                        <col width="75%"/>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>Reason</th>
+                                            <th>Comments</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ID="rfv2">
+                                            <td ID="reasonrfv2">Eye Exam</td>
+                                            <td ID="rfv2comments">yearly diabetic exam</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </item>
+                        </list>
+                    </text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.2.840.114350.1.72.7"/>
+                            <id extension="UIOz8Ae4n4PPz8hycyHm7AhUliDe4fLscfqRvlIUZj0="
+                                root="1.2.840.114350.1.13.2.1.7.2.728286"/>
+                            <code code="8661-1" codeSystem="2.16.840.1.113883.6.1"
+                                codeSystemName="LOINC" displayName="Chief Complaint"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime nullFlavor="UNK"/>
+                            <value nullFlavor="UNK" xsi:type="CD"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <originalText>Eye Exam</originalText>
+                            </value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.22"/>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.22" extension="2015-08-01"/>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.22.1"/>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.22.1" extension="2015-08-01"/>
+                    <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="History of encounters"/>
+                    <title>Encounter Details</title>
+                    <text>
+                        <table>
+                            <colgroup>
+                                <col width="10%"/>
+                                <col width="15%"/>
+                                <col width="25%" span="3"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Department</th>
+                                    <th>Care Team</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ID="encounter3" styleCode="normRow">
+                                    <td>04/09/2015</td>
+                                    <td ID="encounter3type">Office Visit</td>
+                                    <td>
+                                        <paragraph>Central Ophthalmology Clinic</paragraph>
+                                        <paragraph>624 12th St. S.W.</paragraph>
+                                        <paragraph>MADISON, WI 53707</paragraph>
+                                    </td>
+                                    <td>
+                                        <paragraph styleCode="Bold">Kadil, Tony E, M.D.</paragraph>
+                                        <paragraph>MADISON, WI</paragraph>
+                                    </td>
+                                    <td ID="encounter3desc">Screening for eye condition (Primary
+                                        Dx)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </text>
+                    <entry>
+                        <encounter classCode="ENC" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.49"
+                                extension="2015-08-01"/>
+                            <id assigningAuthorityName="EPIC" extension="545335"
+                                root="1.2.840.114350.1.13.2.1.7.3.698084.8"/>
+                            <code code="AMB" codeSystem="2.16.840.1.113883.5.4">
+                                <originalText>
+                                    <reference value="#encounter3type"/>
+                                </originalText>
+                                <translation code="101"
+                                    codeSystem="1.2.840.114350.1.13.2.1.7.4.698084.30"
+                                    codeSystemName="Epic.EncounterType"/>
+                                <translation code="101" codeSystem="1.2.840.114350.1.72.1.30"/>
+                            </code>
+                            <text>
+                                <reference value="#encounter3"/>
+                            </text>
+                            <statusCode code="normal"/>
+                            <effectiveTime value="20150409"/>
+                            <performer typeCode="PRF">
+                                <time>
+                                    <low nullFlavor="UNK"/>
+                                    <high nullFlavor="UNK"/>
+                                </time>
+                                <assignedEntity classCode="ASSIGNED">
+                                    <id nullFlavor="UNK"/>
+                                    <code nullFlavor="UNK">
+                                        <originalText>Ophthalmology</originalText>
+                                    </code>
+                                    <addr use="WP">
+                                        <streetAddressLine nullFlavor="UNK"/>
+                                        <city>MADISON</city>
+                                        <state>WI</state>
+                                        <postalCode nullFlavor="UNK"/>
+                                    </addr>
+                                    <telecom nullFlavor="UNK"/>
+                                    <assignedPerson>
+                                        <name>
+                                            <given>Tony</given>
+                                            <given>E</given>
+                                            <family>Kadil</family>
+                                            <suffix qualifier="AC">M.D.</suffix>
+                                        </name>
+                                    </assignedPerson>
+                                    <representedOrganization classCode="ORG">
+                                        <name>Lakeland Valley Hospital</name>
+                                        <addr use="WP">
+                                            <streetAddressLine>5544 John Nolen
+                                                Dr</streetAddressLine>
+                                            <city>Madison</city>
+                                            <state>WI</state>
+                                            <postalCode>53713</postalCode>
+                                            <country>USA</country>
+                                        </addr>
+                                    </representedOrganization>
+                                </assignedEntity>
+                            </performer>
+                            <participant typeCode="LOC">
+                                <participantRole classCode="SDLOC">
+                                    <templateId root="2.16.840.1.113883.10.20.22.4.32"/>
+                                    <id extension="2" root="1.2.840.114350.1.13.2.1.7.2.686980"/>
+                                    <code nullFlavor="UNK">
+                                        <originalText>Ophthalmology</originalText>
+                                    </code>
+                                    <addr use="WP">
+                                        <streetAddressLine>624 12th St. S.W.</streetAddressLine>
+                                        <city>MADISON</city>
+                                        <state>WI</state>
+                                        <postalCode>53707</postalCode>
+                                    </addr>
+                                    <playingEntity classCode="PLC">
+                                        <name>Central Ophthalmology Clinic</name>
+                                        <desc>Ophthalmology</desc>
+                                    </playingEntity>
+                                </participantRole>
+                            </participant>
+                            <entryRelationship typeCode="COMP">
+                                <act classCode="ACT" moodCode="EVN">
+                                    <templateId root="2.16.840.1.113883.10.20.22.4.64"/>
+                                    <code code="48767-8" codeSystem="2.16.840.1.113883.6.1"
+                                        codeSystemName="LOINC"/>
+                                    <text>
+                                        <reference value="#encounter3desc"/>
+                                    </text>
+                                    <statusCode code="completed"/>
+                                </act>
+                            </entryRelationship>
+                            <entryRelationship typeCode="SUBJ">
+                                <act classCode="ACT" moodCode="EVN">
+                                    <templateId root="2.16.840.1.113883.10.20.22.4.80"/>
+                                    <templateId root="2.16.840.1.113883.10.20.22.4.80"
+                                        extension="2015-08-01"/>
+                                    <id extension="545335-125255-concern"
+                                        root="1.2.840.114350.1.13.2.1.7.1.1099.1"/>
+                                    <code code="29308-4" codeSystem="2.16.840.1.113883.6.1"
+                                        codeSystemName="LOINC"/>
+                                    <statusCode code="active"/>
+                                    <entryRelationship typeCode="SUBJ" inversionInd="false">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                                            <templateId root="2.16.840.1.113883.10.20.22.4.4"
+                                                extension="2015-08-01"/>
+                                            <id extension="545335-125255"
+                                                root="1.2.840.114350.1.13.2.1.7.1.1099.1"/>
+                                            <code code="282291009"
+                                                codeSystem="2.16.840.1.113883.6.96"
+                                                codeSystemName="SNOMED CT">
+                                                <translation code="29308-4"
+                                                  codeSystem="2.16.840.1.113883.6.1"
+                                                  displayName="Diagnosis" codeSystemName="LOINC"/>
+                                            </code>
+                                            <text>Screening for eye condition</text>
+                                            <statusCode code="completed"/>
+                                            <effectiveTime>
+                                                <low nullFlavor="UNK"/>
+                                            </effectiveTime>
+                                            <value xsi:type="CD" code="243876005"
+                                                codeSystem="2.16.840.1.113883.6.96"
+                                                codeSystemName="SNOMED CT"
+                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                                <originalText>Screening for eye
+                                                  condition</originalText>
+                                                <translation code="Z13.5"
+                                                  codeSystem="2.16.840.1.113883.6.90"
+                                                  displayName="Screening for eye condition"
+                                                  codeSystemName="ICD10"/>
+                                                <translation code="V80.2"
+                                                  codeSystem="2.16.840.1.113883.6.103"
+                                                  displayName="Screening for eye condition"
+                                                  codeSystemName="ICD9"/>
+                                                <translation code="198014"
+                                                  codeSystem="2.16.840.1.113883.3.247.1.1"
+                                                  displayName="Screening for eye condition"
+                                                  codeSystemName="Intelligent Medical Objects ProblemIT"
+                                                />
+                                            </value>
+                                            <entryRelationship typeCode="REFR">
+                                                <observation classCode="OBS" moodCode="EVN">
+                                                  <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+                                                  <code code="33999-4"
+                                                  codeSystem="2.16.840.1.113883.6.1"
+                                                  displayName="Status"/>
+                                                  <statusCode code="completed"/>
+                                                  <effectiveTime>
+                                                  <low nullFlavor="UNK"/>
+                                                  </effectiveTime>
+                                                  <value xsi:type="CE" code="55561003"
+                                                  codeSystem="2.16.840.1.113883.6.96"
+                                                  displayName="Active"
+                                                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                                  />
+                                                </observation>
+                                            </entryRelationship>
+                                        </observation>
+                                    </entryRelationship>
+                                </act>
+                            </entryRelationship>
+                        </encounter>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.17"/>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.17" extension="2015-08-01"/>
+                    <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="Social history Narrative"/>
+                    <title>Social History</title>
+                    <text>
+                        <table>
+                            <colgroup>
+                                <col width="25%" span="2"/>
+                                <col width="13%"/>
+                                <col width="12%"/>
+                                <col width="25%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Tobacco Use</th>
+                                    <th>Types</th>
+                                    <th>Packs/Day</th>
+                                    <th>Years Used</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Former Smoker</td>
+                                    <td>Cigarettes</td>
+                                    <td>1</td>
+                                    <td>35</td>
+                                    <td>Quit: 06/15/2007</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td styleCode="noIndent"><content styleCode="cellHeader"
+                                            >Comments:</content> Quit smoking follwing episode of
+                                        hemoptysis, negative bronchoscopy</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <colgroup>
+                                <col width="25%" span="4"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Alcohol Use</th>
+                                    <th>Drinks/Week</th>
+                                    <th>oz/Week</th>
+                                    <th>Comments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td ID="alcoholStatus">Yes</td>
+                                    <td/>
+                                    <td>1.7</td>
+                                    <td>Beer or wine on weekend</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="75%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Sex Assigned at Birth</th>
+                                    <th>Date Recorded</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ID="BirthSex8">
+                                    <td ID="BirthSex8Value">Not on file</td>
+                                    <td/>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <footnote ID="subTitle6" styleCode="xSectionSubTitle">documented as of this
+                            encounter</footnote>
+                    </text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.78"
+                                extension="2014-06-09"/>
+                            <id extension="Z10177^^72166-2"
+                                root="1.2.840.114350.1.13.2.1.7.1.1040.1"/>
+                            <code code="72166-2" codeSystem="2.16.840.1.113883.6.1"
+                                codeSystemName="LOINC" displayName="Tobacco smoking status NHIS"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime value="20140705"/>
+                            <value xsi:type="CD" code="8517006" codeSystem="2.16.840.1.113883.6.96"
+                                codeSystemName="SNOMED CT" displayName="Former smoker"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.85"
+                                extension="2014-06-09"/>
+                            <id extension="Z10177^^77176002"
+                                root="1.2.840.114350.1.13.2.1.7.1.1040.2"/>
+                            <code code="11367-0" codeSystem="2.16.840.1.113883.6.1"
+                                codeSystemName="LOINC" displayName="History of tobacco use"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime>
+                                <low nullFlavor="UNK"/>
+                                <high value="20070615"/>
+                            </effectiveTime>
+                            <value xsi:type="CD" code="77176002" codeSystem="2.16.840.1.113883.6.96"
+                                codeSystemName="SNOMED CT" displayName="Current smoker"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            <author>
+                                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                                <time value="20140705"/>
+                                <assignedAuthor>
+                                    <id nullFlavor="UNK"/>
+                                    <code nullFlavor="UNK"/>
+                                    <addr use="WP">
+                                        <streetAddressLine nullFlavor="UNK"/>
+                                        <city>MADISON</city>
+                                        <state>WI</state>
+                                        <postalCode nullFlavor="UNK"/>
+                                    </addr>
+                                    <telecom nullFlavor="UNK"/>
+                                    <assignedPerson>
+                                        <name use="L">
+                                            <given>Tony</given>
+                                            <given>E</given>
+                                            <family>Kadil</family>
+                                            <suffix qualifier="AC"> M.D.</suffix>
+                                        </name>
+                                    </assignedPerson>
+                                    <representedOrganization>
+                                        <id extension="2" root="1.2.840.114350.1.13.2.1.7.2.688879"/>
+                                        <name>Lakeland Valley Hospital</name>
+                                        <telecom nullFlavor="UNK"/>
+                                        <addr use="WP">
+                                            <streetAddressLine>5544 John Nolen
+                                                Dr</streetAddressLine>
+                                            <city>Madison</city>
+                                            <state>WI</state>
+                                            <postalCode>53713</postalCode>
+                                            <country>USA</country>
+                                        </addr>
+                                    </representedOrganization>
+                                </assignedAuthor>
+                            </author>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.85"
+                                extension="2014-06-09"/>
+                            <id extension="Z10177^^65568007"
+                                root="1.2.840.114350.1.13.2.1.7.1.1040.2"/>
+                            <code code="11367-0" codeSystem="2.16.840.1.113883.6.1"
+                                codeSystemName="LOINC" displayName="History of tobacco use"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime>
+                                <low nullFlavor="UNK"/>
+                                <high value="20070615"/>
+                            </effectiveTime>
+                            <value xsi:type="CD" code="65568007" codeSystem="2.16.840.1.113883.6.96"
+                                codeSystemName="SNOMED CT" displayName="Cigarette Smoker"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                            <author>
+                                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+                                <time value="20140705"/>
+                                <assignedAuthor>
+                                    <id nullFlavor="UNK"/>
+                                    <code nullFlavor="UNK"/>
+                                    <addr use="WP">
+                                        <streetAddressLine nullFlavor="UNK"/>
+                                        <city>MADISON</city>
+                                        <state>WI</state>
+                                        <postalCode nullFlavor="UNK"/>
+                                    </addr>
+                                    <telecom nullFlavor="UNK"/>
+                                    <assignedPerson>
+                                        <name use="L">
+                                            <given>Tony</given>
+                                            <given>E</given>
+                                            <family>Kadil</family>
+                                            <suffix qualifier="AC"> M.D.</suffix>
+                                        </name>
+                                    </assignedPerson>
+                                    <representedOrganization>
+                                        <id extension="2" root="1.2.840.114350.1.13.2.1.7.2.688879"/>
+                                        <name>Lakeland Valley Hospital</name>
+                                        <telecom nullFlavor="UNK"/>
+                                        <addr use="WP">
+                                            <streetAddressLine>5544 John Nolen
+                                                Dr</streetAddressLine>
+                                            <city>Madison</city>
+                                            <state>WI</state>
+                                            <postalCode>53713</postalCode>
+                                            <country>USA</country>
+                                        </addr>
+                                    </representedOrganization>
+                                </assignedAuthor>
+                            </author>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.38"
+                                extension="2015-08-01"/>
+                            <id extension="Z10177^^8663-7" root="1.2.840.114350.1.13.2.1.7.1.1040.3"/>
+                            <code code="8663-7" codeSystem="2.16.840.1.113883.6.1"
+                                codeSystemName="LOINC"
+                                displayName="Cigarettes smoked current (pack per day) - Reported"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime value="20140705"/>
+                            <value xsi:type="REAL" value="1"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.38"
+                                extension="2015-08-01"/>
+                            <id extension="Z10177^^401201003"
+                                root="1.2.840.114350.1.13.2.1.7.1.1040.4"/>
+                            <code code="401201003" codeSystem="2.16.840.1.113883.6.96"
+                                codeSystemName="SNOMED-CT" displayName="Cigarette pack-years">
+                                <translation nullFlavor="UNK"/>
+                            </code>
+                            <statusCode code="completed"/>
+                            <effectiveTime value="20140705"/>
+                            <value xsi:type="REAL" value="35"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.38"
+                                extension="2015-08-01"/>
+                            <id extension="Z10177^58157.99^160573003"
+                                root="1.2.840.114350.1.13.2.1.7.1.1040.12"/>
+                            <code code="160573003" codeSystem="2.16.840.1.113883.6.96"
+                                codeSystemName="SNOMED CT" displayName="Alcohol intake">
+                                <translation code="11331-6" codeSystem="2.16.840.1.113883.6.1"
+                                    displayName="History of Alcohol Use" codeSystemName="LOINC"/>
+                            </code>
+                            <statusCode code="completed"/>
+                            <effectiveTime value="20140705"/>
+                            <value xsi:type="CD" code="219006" codeSystem="2.16.840.1.113883.6.96"
+                                codeSystemName="SNOMED CT"
+                                displayName="Current drinker of alcohol (finding)"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <originalText>
+                                    <reference value="#alcoholStatus"/>
+                                </originalText>
+                            </value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.2.840.114350.1.72.5.1"/>
+                            <id extension="Z10177" root="1.2.840.114350.1.13.2.1.7.7.698084.19214"/>
+                            <code code="X-SDOH-19214" codeSystem="1.2.840.114350.1.72.1.8"
+                                codeSystemName="X-SDOH" displayName="Tobacco Comment"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime nullFlavor="UNK"/>
+                            <value xsi:type="ST"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Quit smoking
+                                follwing episode of hemoptysis, negative bronchoscopy</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="1.2.840.114350.1.72.5.1"/>
+                            <id extension="Z10177" root="1.2.840.114350.1.13.2.1.7.7.698084.19222"/>
+                            <code code="X-SDOH-19222" codeSystem="1.2.840.114350.1.72.1.8"
+                                codeSystemName="X-SDOH" displayName="Alcohol Comment"/>
+                            <statusCode code="completed"/>
+                            <effectiveTime nullFlavor="UNK"/>
+                            <value xsi:type="ST"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Beer or wine
+                                on weekend</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.200"
+                                extension="2016-06-01"/>
+                            <code code="76689-9" codeSystem="2.16.840.1.113883.6.1"
+                                codeSystemName="LOINC" displayName="Sex Assigned At Birth"/>
+                            <text>
+                                <reference value="#BirthSex8"/>
+                            </text>
+                            <statusCode code="completed"/>
+                            <value nullFlavor="UNK" xsi:type="CD" codeSystem="2.16.840.1.113883.5.1"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <originalText>
+                                    <reference value="#BirthSex8Value"/>
+                                </originalText>
+                            </value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.10"/>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.10" extension="2014-06-09"/>
+                    <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="Plan of care note"/>
+                    <title>Plan of Treatment</title>
+                    <text>
+                        <table>
+                            <caption>Upcoming Encounters</caption>
+                            <colgroup>
+                                <col width="10%"/>
+                                <col width="15%"/>
+                                <col width="25%" span="3"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Specialty</th>
+                                    <th>Care Team</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ID="encounter25" styleCode="normRow">
+                                    <td>10/27/2021</td>
+                                    <td ID="encounter25type">Orders Only</td>
+                                    <td ID="encounter25specialty">Emergency Medicine</td>
+                                    <td>
+                                        <paragraph styleCode="Bold">Eddison, Chris, M.D.</paragraph>
+                                        <paragraph>5301 TOKAY BLVD.</paragraph>
+                                        <paragraph>MADISON, WI 53719</paragraph>
+                                        <paragraph>608-271-9000</paragraph>
+                                    </td>
+                                    <td/>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <footnote ID="subTitle24" styleCode="xSectionSubTitle">documented as of this
+                            encounter</footnote>
+                    </text>
+                    <entry>
+                        <encounter classCode="ENC" moodCode="INT">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+                            <templateId root="2.16.840.1.113883.10.20.22.4.40"
+                                extension="2014-06-09"/>
+                            <id assigningAuthorityName="EPIC" extension="545348"
+                                root="1.2.840.114350.1.13.2.1.7.3.698084.8"/>
+                            <code code="AMB" codeSystem="2.16.840.1.113883.5.4">
+                                <originalText>
+                                    <reference value="#encounter25type"/>
+                                </originalText>
+                                <translation code="111"
+                                    codeSystem="1.2.840.114350.1.13.2.1.7.4.698084.30"
+                                    codeSystemName="Epic.EncounterType"/>
+                                <translation code="111" codeSystem="1.2.840.114350.1.72.1.30"/>
+                            </code>
+                            <text>
+                                <reference value="#encounter25"/>
+                            </text>
+                            <statusCode code="active"/>
+                            <effectiveTime value="20211027"/>
+                            <performer typeCode="PRF">
+                                <time>
+                                    <low nullFlavor="UNK"/>
+                                    <high nullFlavor="UNK"/>
+                                </time>
+                                <assignedEntity classCode="ASSIGNED">
+                                    <id extension="2342409211" root="2.16.840.1.113883.4.6"/>
+                                    <code nullFlavor="UNK">
+                                        <originalText>Emergency Medicine</originalText>
+                                    </code>
+                                    <addr use="WP">
+                                        <streetAddressLine>5301 TOKAY BLVD.</streetAddressLine>
+                                        <county>Dane</county>
+                                        <city>MADISON</city>
+                                        <state>WI</state>
+                                        <postalCode>53719</postalCode>
+                                        <country>USA</country>
+                                    </addr>
+                                    <telecom use="WP" value="tel:+1-608-271-9000"/>
+                                    <assignedPerson>
+                                        <name>
+                                            <given>Chris</given>
+                                            <family>Eddison</family>
+                                            <suffix qualifier="AC">M.D.</suffix>
+                                        </name>
+                                    </assignedPerson>
+                                    <representedOrganization classCode="ORG">
+                                        <name>Lakeland Valley Hospital</name>
+                                        <addr use="WP">
+                                            <streetAddressLine>5544 John Nolen
+                                                Dr</streetAddressLine>
+                                            <city>Madison</city>
+                                            <state>WI</state>
+                                            <postalCode>53713</postalCode>
+                                            <country>USA</country>
+                                        </addr>
+                                    </representedOrganization>
+                                </assignedEntity>
+                            </performer>
+                            <participant typeCode="LOC">
+                                <participantRole classCode="SDLOC">
+                                    <templateId root="2.16.840.1.113883.10.20.22.4.32"/>
+                                    <id extension="119" root="1.2.840.114350.1.13.2.1.7.2.686980"/>
+                                    <code nullFlavor="UNK">
+                                        <originalText>
+                                            <reference value="#encounter25specialty"/>
+                                        </originalText>
+                                    </code>
+                                    <addr nullFlavor="UNK"/>
+                                    <playingEntity classCode="PLC">
+                                        <name>Emergency Dept, EMC</name>
+                                        <desc>Emergency Medicine</desc>
+                                    </playingEntity>
+                                </participantRole>
+                            </participant>
+                        </encounter>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.22.2.8"/>
+                    <id root="41FD4B80-D564-41E0-88B1-C2BF50F4A668"/>
+                    <code code="51848-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="Assessments"/>
+                    <title>Visit Diagnoses</title>
+                    <text>
+                        <table>
+                            <colgroup>
+                                <col width="100%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Diagnosis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ID="vdx4" styleCode="normRow">
+                                    <td>
+                                        <paragraph>
+                                            <content ID="vdx4Name">Screening for eye
+                                                condition</content>
+                                            <content> - Primary</content>
+                                        </paragraph>
+                                        <paragraph styleCode="allIndent">Screening for other eye
+                                            conditions</paragraph>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <footnote ID="subTitle30" styleCode="xSectionSubTitle">documented in this
+                            encounter</footnote>
+                    </text>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="70948-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="Ocular physical exam"/>
+                    <title>Eye Exam</title>
+                    <text>
+                        <table>
+                            <caption>Visual Acuity (Snellen - Linear)</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Dist sc</td>
+                                    <td>20/100</td>
+                                    <td>20/200</td>
+                                </tr>
+                                <tr>
+                                    <td>Dist cc</td>
+                                    <td>20/20</td>
+                                    <td>20/20</td>
+                                </tr>
+                                <tr>
+                                    <td>Near sc</td>
+                                    <td>6/11/21</td>
+                                    <td>6/11/21</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Correction: Glasses</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Tonometry (Applanation, 11:07 AM)</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pressure</td>
+                                    <td>13</td>
+                                    <td>12</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Pupils</caption>
+                            <colgroup>
+                                <col width="15%"/>
+                                <col width="43%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Pupils</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Right eye</td>
+                                    <td>PERRL</td>
+                                </tr>
+                                <tr>
+                                    <td>Left eye</td>
+                                    <td>PERRL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Visual Fields (Counting fingers)</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td/>
+                                    <td>Full</td>
+                                    <td>Full</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Extraocular Movement</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td/>
+                                    <td>Full</td>
+                                    <td>Full</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Dilation</caption>
+                            <tbody>
+                                <tr>
+                                    <td>Both Eyes: 0.5% Mydriacyl @ 11:09 AM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Color</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ishihara</td>
+                                    <td>13/13</td>
+                                    <td>13/13</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>External Exam</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>External</td>
+                                    <td>Normal</td>
+                                    <td>Normal</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Slit Lamp Exam</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lids/Lashes</td>
+                                    <td>Normal</td>
+                                    <td>Normal</td>
+                                </tr>
+                                <tr>
+                                    <td>Conjunctiva/Sclera</td>
+                                    <td>White and quiet</td>
+                                    <td>White and quiet</td>
+                                </tr>
+                                <tr>
+                                    <td>Cornea</td>
+                                    <td>Clear</td>
+                                    <td>Clear</td>
+                                </tr>
+                                <tr>
+                                    <td>Anterior Chamber</td>
+                                    <td>Deep and quiet</td>
+                                    <td>Deep and quiet</td>
+                                </tr>
+                                <tr>
+                                    <td>Iris</td>
+                                    <td>Round and reactive</td>
+                                    <td>Round and reactive</td>
+                                </tr>
+                                <tr>
+                                    <td>Lens</td>
+                                    <td>Clear</td>
+                                    <td>Clear</td>
+                                </tr>
+                                <tr>
+                                    <td>Vitreous</td>
+                                    <td>Normal</td>
+                                    <td>Normal</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Fundus Exam</caption>
+                            <colgroup>
+                                <col width="25%"/>
+                                <col width="37%"/>
+                                <col width="38%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Right eye</th>
+                                    <th>Left eye</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Disc</td>
+                                    <td>Normal</td>
+                                    <td>Normal</td>
+                                </tr>
+                                <tr>
+                                    <td>Macula</td>
+                                    <td>Normal</td>
+                                    <td>Normal</td>
+                                </tr>
+                                <tr>
+                                    <td>Vessels</td>
+                                    <td>Normal</td>
+                                    <td>Normal</td>
+                                </tr>
+                                <tr>
+                                    <td>Periphery</td>
+                                    <td>Normal</td>
+                                    <td>Normal</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>Wearing Rx</caption>
+                            <colgroup>
+                                <col width="15%"/>
+                                <col width="22%"/>
+                                <col width="21%" span="2"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th/>
+                                    <th>Sphere</th>
+                                    <th>Cylinder</th>
+                                    <th>Axis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Right eye</td>
+                                    <td>+1.25</td>
+                                    <td>+0.25</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Left eye</td>
+                                    <td>+1.75</td>
+                                    <td>+0.75</td>
+                                    <td>60</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </text>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

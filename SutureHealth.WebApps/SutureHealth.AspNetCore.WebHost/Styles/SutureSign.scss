@@ -1,0 +1,190 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/*a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+} */
+
+/* Provide sufficient contrast against white background */
+/* a {
+    color: #0366d6;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+} */
+
+/* Sticky footer styles
+-------------------------------------------------- */
+/*html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+    */
+/* Sticky footer styles
+-------------------------------------------------- */
+
+
+.busy-indicator {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.10s ease 0s;
+    -moz-transition: all 0.10s ease 0s;
+    -ms-transition: all 0.10s ease 0s;
+    -o-transition: all 0.10s ease 0s;
+    transition: all 0.10s ease 0s;
+}
+
+.busy-indicator.show {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: all 0.07s ease 0s;
+    -moz-transition: all 0.07s ease 0s;
+    -ms-transition: all 0.07s ease 0s;
+    -o-transition: all 0.07s ease 0s;
+    transition: all 0.07s ease 0s;
+}
+
+.busy-indicator .busy-indicator-panel {
+    margin: auto;
+    width: 14em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #333333;
+    padding: 2em;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.busy-indicator .busy-indicator-panel > * {
+    display: inherit;
+    margin: 0.5em auto;
+}
+
+.busy-indicator .status-text {
+    color: White;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+}
+
+.modal-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.666);
+    padding-top: 20em;
+    z-index: 10000;
+}
+
+.k-loading-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000032;
+}
+
+.k-loading-panel-mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    opacity: 0.8;
+}
+
+.k-loading-panel-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.k-loading-panel-text {
+    margin-top: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.k-loader-pulsing-2 .k-loader-segment {
+    position: absolute;
+}
+
+.clinical-date-hint {
+    font-size: 10px;
+}
+
+/*.sh-btn-default {
+    color: #fff !important;
+    background-color: #929292;
+}
+
+.sh-btn-blue {
+    background-color: #00b3b3;
+    font-family: Montserrat, Verdana, Arial;
+    color: #ffffff;
+}
+
+.sh-btn-blue:hover {
+    background-color: #48d3d9;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.sh-btn-green {
+    background-color: #1e86e8 !important;
+    font-family: Montserrat, Verdana, Arial !important;
+    color: #ffffff !important;
+}
+
+.sh-btn-green:hover {
+    background-color: #2aadfa !important;
+    color: #fff !important;
+    text-decoration: none !important;
+} */

@@ -1,0 +1,14 @@
+﻿@page
+@model SutureHealth.AspNetCore.Areas.Identity.Pages.Account.ConfirmPhoneModel
+
+@{
+    Model.RequireKendo = true;
+    Model.RequireValidation = true;
+}
+
+<button data-trigger="ConfirmMobileDialog">Confirm</button>
+
+@(await Html.PartialAsync("ConfirmPhoneDialog", new ConfirmPhoneViewModel {
+    SutureUser = @Model.CurrentUser,
+    TriggerSelector = "[data-trigger='ConfirmMobileDialog']"
+}))

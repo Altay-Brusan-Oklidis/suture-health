@@ -1,0 +1,399 @@
+﻿@model SutureHealth.AspNetCore.Areas.Request.Models.Send.SendModel
+@using SutureHealth.AspNetCore.Areas.Request.Models.Send;
+
+@{
+    Model.RequireUI = true;
+    Model.RequireValidation = true;
+    ViewBag.Title = "Send";
+    var DateFormats = new string[] { "MM/dd/yyyy" };
+}
+
+@section Scripts {
+    <script src="~/js/RequestSend.js" asp-append-version="true"></script>
+}
+
+    <section class="my-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="shadow p-4">
+                        <div class="request-send-loader text-center">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <strong>Loading...</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <i class="fas fa-3x fa-spinner fa-spin" style="margin: 16px auto;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="RequestSendForm" method="post" enctype="multipart/form-data" style="display: none;">
+                            @if (!Model.HasRequestTemplate)
+                        {
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                    @if (Model.IsSurrogateSender)
+                                    {
+                                        <div class="row form-group">
+                                            <div class="col-sm-3 col-form-label">From:</div>
+                                            <div class="col-sm-8">
+                                                <div>
+                                                    <kendo-autocomplete name="FromOfficeAutoComplete" datasource-id="OfficeDataSource" placeholder="Search sending organizations" delay="500" min-length="3" enforce-min-length="true" datatextfield="Summary" on-select="FromOfficeSelected" on-change="FromOfficeChanged">
+                                                    </kendo-autocomplete>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input asp-for="FromOfficeExpandSearch" id="FromOfficeExpandSearch" type="checkbox" class="form-check-input" />
+                                                    <label for="FromOfficeExpandSearch" class="form-check-label">Expand beyond my state.</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.HasMultipleOffices)
+                                    {
+                                        <div class="row form-group">
+                                            <div class="col-sm-3 col-form-label">Office:</div>
+                                            <div class="col-sm-8">
+                                                <kendo-dropdownlist name="OfficeDropDownList" datasource-id="OfficeDataSource" datavaluefield="OrganizationId" datatextfield="Name" on-change="OfficeChanged" on-data-bound="OfficeDataBound">
+                                                </kendo-dropdownlist>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="row form-group my-2">
+                                        <div class="col-sm-3 col-form-label">Template:</div>
+                                        <div class="col-sm-8">
+                                            <kendo-dropdownlist name="TemplateDropDownList" datasource-id="TemplateDataSource" datatextfield="Summary" datavaluefield="TemplateId" on-change="TemplateChanged" on-data-bound="TemplateDataBound" height="600">
+                                            </kendo-dropdownlist>
+                                            <span asp-validation-for="TemplateId" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-sm-1 text-center">
+                                            <a id="TemplateHelp" href="javascript:void(0);">Help?</a>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group request-send my-2">
+                                        <div class="col-sm-3 col-form-label">Signer:</div>
+                                        <div class="col-sm-8">
+                                            <div>
+                                                <kendo-autocomplete name="SignerAutoComplete" placeholder="Name or NPI" delay="500" datasource-id="SignerDataSource" min-length="2" enforce-min-length="true" datatextfield="Summary" datavaluefield="MemberId" on-select="SignerSelected" on-change="SignerChanged">
+                                                </kendo-autocomplete>
+                                            </div>
+                                            <div class="form-check">
+                                                <input asp-for="SignerExpandSearch" id="SignerExpandSearch" type="checkbox" class="form-check-input" />
+                                                <label for="SignerExpandSearch" class="form-check-label">Expand search beyond your state.</label>
+                                            </div>
+                                            <span asp-validation-for="SignerMemberId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group request-send my-2">
+                                        <div class="col-sm-3 col-form-label">Location:</div>
+                                        <div class="col-sm-8">
+                                            <kendo-dropdownlist name="LocationDropDownList" datasource-id="SignerLocationDataSource" datavaluefield="OrganizationId" datatextfield="Summary" on-change="SignerLocationChanged" on-data-bound="SignerLocationDataBound">
+                                            </kendo-dropdownlist>
+                                            <span asp-validation-for="SignerOrganizationId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group request-send request-send-collaborator my-2">
+                                        <div class="col-sm-3 col-form-label">Collaborating Clinician:</div>
+                                        <div class="col-sm-8">
+                                            <kendo-dropdownlist name="CollaboratorDropDownList" datavaluefield="MemberId" datatextfield="Summary" on-change="CollaboratorChanged">
+                                                <datasource>
+                                                    <schema>
+                                                        <model id="MemberId"></model>
+                                                    </schema>
+                                                </datasource>
+                                            </kendo-dropdownlist>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group request-send request-send-assistant my-2">
+                                        <div class="col-sm-3 col-form-label">Assistant &nbsp; (i.e. Nurse):</div>
+                                        <div class="col-sm-8">
+                                            <kendo-dropdownlist name="AssistantDropDownList" datavaluefield="MemberId" datatextfield="Summary" on-change="AssistantChanged">
+                                                <datasource>
+                                                    <schema>
+                                                        <model id="MemberId"></model>
+                                                    </schema>
+                                                </datasource>
+                                            </kendo-dropdownlist>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group request-send my-2">
+                                        <div class="col-sm-3 col-form-label">Patient:</div>
+                                        <div class="col-sm-8">
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <kendo-autocomplete name="PatientAutoComplete" placeholder="Name or Patient Record Number" delay="500" datasource-id="PatientDataSource" min-length="2" enforce-min-length="true" datatextfield="Summary" on-select="PatientSelected" on-change="PatientChanged">
+                                                    </kendo-autocomplete>
+                                                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="d-grid gap-2">
+                                                        <a id="AddNewPatient" href="javascript:void(0);" class="btn btn-outline-primary " aria-hidden="true">Add Patient</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div id="effectiveDate" class="row form-group request-send my-2 ">
+                                        <div class="col-sm-3 col-form-label">
+                                            <div><span id="ClinicalDateLabel">Date</span>:</div>
+                                            <div><small>(MM/DD/YYYY)</small></div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <kendo-maskedtextbox name="ClinicalDateDatePicker" mask="00/00/0000" on-change="ClinicalDateChanged">
+                                            </kendo-maskedtextbox>
+
+                                            <script type="text/javascript">
+                                                $(document).ready(function() {
+                                                    let inputField = $("#ClinicalDateDatePicker");
+
+                                                    inputField.kendoDatePicker({
+                                                        "format": "MM/dd/yyyy",
+                                                        "change": window.ClinicalDateChanged
+                                                    });
+                                                    inputField.attr("placeholder", "Date listed on document");
+                                                    inputField.closest(".k-datepicker")
+                                                        .add(inputField)
+                                                        .removeClass("k-textbox");
+                                                });
+                                            </script>
+                                            <span asp-validation-for="ClinicalDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group my-2 request-send request-send-diagnosis-code">
+                                        <div class="col-sm-3 col-form-label">
+                                            <div>Primary Dx Code:</div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <kendo-autocomplete name="PrimaryDxCodeAutoComplete" placeholder="Start typing code" delay="500" datasource-id="PrimaryDxCodeDataSource" min-length="1" enforce-min-length="true" datatextfield="Summary" on-select="PrimaryDxCodeSelected" on-change="PrimaryDxCodeChanged">
+                                            </kendo-autocomplete>
+                                            <span asp-validation-for="DiagnosisCodeId" class="text-danger"></span>
+                                            <div style="font-size: xx-small;" class="newLine">*To assist with signer billing reports</div>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2 form-group request-send request-send-pdf">
+                                        <div class="col-sm-3 col-form-label">
+                                            Upload Form:
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <kendo-upload name="PdfContents" multiple="false" on-select="PdfContentsSelected">
+                                                <validation allowed-extensions="@(new string[] { ".pdf" })" />
+                                                <localization select="Choose File" />
+                                            </kendo-upload>
+                                            <span asp-validation-for="PdfContents" class="text-danger"></span>
+                                            <div style="clear: both;">
+                                                <a href="https://sites.google.com/suturehealth.com/sutureu/home/sender-side/pdf-solutions" target="_blank" class="pdf-help">PDF Files Only (System Size Limit: <span id="SystemSizeLimit"></span> MB)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group request-send request-send-pdf">
+                                        <div class="col-sm-3 col-form-label">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="form-check">
+                                                <input asp-for="PreviewBeforeSending" class="form-check-input ea-triggers-bound" id="PreviewBeforeSending" type="checkbox" />
+                                                <label asp-for="PreviewBeforeSending" class="form-check-label"> Preview or reposition signature before sending</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group justify-content-end mt-4 request-send">
+                                        <div class="col-9">
+                                            <div class="row justify-content-center">
+                                                <div class="col-6">
+                                                    <div class="d-grid">
+                                                        <button class="btn btn-primary" type="submit">Send</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 ">
+                                                    <div class="d-grid">
+                                                        <a class="btn " id="ResetFields" href="javascript:void(0);">Reset Fields</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row request-send request-send-no-send" style="display: none;">
+                                        <div class="col-sm-3 col-form-label">
+                                        </div>
+                                        <div class="col-sm-8 text-left">
+                                            <span class="text-danger">This office is for creating company-wide templates only.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <input asp-for="FromOfficeAutoComplete" type="hidden" />
+                        <input asp-for="TemplateId" type="hidden" />
+                        <input asp-for="SignerMemberId" type="hidden" />
+                        <input asp-for="SignerOrganizationId" type="hidden" />
+                        <input asp-for="CollaboratorMemberId" type="hidden" />
+                        <input asp-for="AssistantMemberId" type="hidden" />
+                        <input asp-for="PatientId" type="hidden" />
+                        <input asp-for="ClinicalDate" type="hidden" />
+                        <input asp-for="DiagnosisCodeId" type="hidden" />
+                        <input asp-for="SignerAutoComplete" type="hidden" />
+                        <input asp-for="PatientAutoComplete" type="hidden" />
+                        <input asp-for="PrimaryDxCodeAutoComplete" type="hidden" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 d-none d-md-block">
+                <div class="row">
+                    <div class="col-2">  <i class="fas fa-2x fa-file-medical-alt text-primary"></i></div>
+                    <div class="col-10">
+                        <h5> One-Stop Shop Signing</h5>
+                        <hr />
+                        <p class="small">One platform where both signers and senders exchange and sign clinical documents.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">  <i class="fas fa-2x fa-ban text-primary"></i></div>
+                    <div class="col-10">
+                        <h5>Eliminate Resubmissions</h5>
+                        <hr />
+                        <p class="small">SutureSign automatically reminds signers of their pending documents and aging - eliminating costly resubmissions.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">  <i class="fas fa-2x fa-history text-primary"></i></div>
+                    <div class="col-10">
+                        <h5> Optimize Timely Signing</h5>
+                        <hr />
+                        <p class="small">Simple and familiar workflows, bulk signing and monetizing home health signatures deliver value to signers and shorten signature times.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    (function() {
+        window.OnRequestSendInitialize(@(Html.Raw(System.Text.Json.JsonSerializer.Serialize<ISerializedSendModel>(Model))), @Model.OverrideClientModel.ToString().ToLower(), @Model.HasRequestTemplate.ToString().ToLower());
+    })();
+</script>
+
+<style>
+    .row.form-group .k-widget {
+        width: 100%;
+    }
+</style>
+
+<div id="UpdatePatientModalContainer">
+</div>
+<div style="display: none;">
+    <kendo-dialog name="DuplicateRequestWarning" visible="false" modal="true" title="Alert!">
+        <content>
+            <div>
+                <p>Our records indicate this document may have already been sent.</p>
+                <p>Resubmitting duplicate documents is not allowed. Please confirm it is not a duplicate.</p>
+            </div>
+        </content>
+        <actions>
+            <action text="Not a Duplicate" action="DuplicateRiskConfirmation"></action>
+            <action text="Cancel" primary="true"></action>
+        </actions>
+    </kendo-dialog>
+
+    <kendo-dialog name="DuplicateRequestError" visible="false" modal="true" title="Alert!">
+        <content>
+            <p>YOU MAY NOT SEND THIS DOCUMENT.</p>
+            <p>
+                A duplicate document has already been signed or is pending. Resubmitting duplicate documents is not allowed.
+                If it is pending and you need to submit a different version, you must first retract the duplicate document.
+            </p>
+        </content>
+        <actions>
+            <action text="Cancel" primary="true"></action>
+        </actions>
+    </kendo-dialog>
+
+    <kendo-dialog name="CompanyProfileError" visible="false" modal="true" title="Alert!">
+        <content>
+            <div>
+                <h4 class="text-left">You must complete your company profile before sending.</h4>
+            </div>
+            <div>Make sure the following are correct:</div>
+            <ul>
+                <li><strong>NPI Number</strong></li>
+                <li><strong>CMS Certification Number (CCN), if Medicare certified</strong></li>
+                <li><strong>Address</strong></li>
+                <li><strong>Phone</strong></li>
+                <li><strong>Fax</strong></li>
+            </ul>
+        </content>
+        <actions>
+            <action text="Go To Company Profile" action="RedirectToCompanyProfile"></action>
+            <action text="Cancel" primary="true"></action>
+        </actions>
+    </kendo-dialog>
+
+    <kendo-dialog name="FreeSignerError" visible="false" modal="true" title="Alert!">
+        <content>
+            <div>
+                We're sorry. The signer you are attempting to send this document to is not a paid subscriber.<br /><br /><br />
+                You must have a paid subscription to SutureSign to send documents to a signer who is not also a paid subscriber.
+            </div>
+        </content>
+        <actions>
+            <action text="OK" primary="true"></action>
+        </actions>
+    </kendo-dialog>
+
+    <kendo-dialog name="GenericDialog" visible="false" modal="true" title="Alert!">
+        <actions>
+            <action text="OK" primary="true"></action>
+        </actions>
+    </kendo-dialog>
+</div>
+@if (!Model.HasRequestTemplate)
+{
+    @(Html.Kendo().DataSource<OrganizationTemplatesJsonModel.Template>()
+                  .Name("TemplateDataSource")
+                  .Custom(ccfg => ccfg.Transport(tcfg => tcfg.Read("TemplateDataSourceHandler")).Group(gcfg => gcfg.Add<string>("Group")).Schema(scfg => scfg.Model(mcfg => mcfg.Id("TemplateId"))).ServerGrouping(true)))
+
+    @(Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Search.Models.Signer.SigningOrganizationMember>()
+                  .Name("SignerDataSource")
+                  .Custom(ccfg => ccfg.Transport(tcfg => tcfg.Read("SignerDataSourceHandler")).ServerFiltering(true)))
+
+    @(Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Search.Models.Patient.SearchJsonModel.Patient>()
+                  .Name("PatientDataSource")
+                  .Custom(ccfg => ccfg.Transport(tcfg => tcfg.Read("PatientDataSourceHandler")).ServerFiltering(true)))
+
+    @(Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Search.Models.DiagnosisCode.SearchJsonModel.DiagnosisCode>()
+                  .Name("PrimaryDxCodeDataSource")
+                  .Custom(ccfg => ccfg.Transport(tcfg => tcfg.Read("PrimaryDxCodeDataSourceHandler")).ServerFiltering(true)))
+
+    @(Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Request.Models.Send.SignerDetailsJsonModel.Location>()
+                  .Name("SignerLocationDataSource")
+                  .Custom(ccfg => ccfg.Transport(tcfg => tcfg.Read("SignerLocationDataSourceHandler")).ServerFiltering(true).Schema(scfg => scfg.Model(mcfg => mcfg.Id("OrganizationId")))))
+
+    if (Model.IsSurrogateSender)
+    {
+        @(Html.Kendo().DataSource<SutureHealth.AspNetCore.Areas.Request.Models.Send.SendModel.FromOffice>()
+                      .Name("OfficeDataSource")
+                      .Custom(ccfg => ccfg.Transport(tcfg => tcfg.Read("FromOfficeDataSourceHandler")).ServerFiltering(true).Schema(scfg => scfg.Model(mcfg => mcfg.Id("OrganizationId")))))
+    }
+    else
+    {
+        <kendo-datasource name="OfficeDataSource" type="DataSourceTagHelperType.Custom" server-operation="false">
+            <schema>
+                <model id="OrganizationId" />
+            </schema>
+        </kendo-datasource>
+    }
+
+    <script type="text/javascript">
+        (function () {
+            OfficeDataSource.data(@(Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Offices))));
+        })();
+    </script>
+}

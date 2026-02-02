@@ -1,0 +1,60 @@
+﻿@model SutureHealth.AspNetCore.Areas.Template.Models.Annotation.EditViewModel
+@{
+    Model.RequireUI = true;
+    Model.RequiresLoading = true;
+}
+@section Scripts {
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="~/js/TemplateEdit.js" asp-append-version="true"></script>
+<script src="~/js/LegacyTemplateEditor.js" asp-append-version="true"></script>
+}
+@section Styles {
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="~/css/TemplateEdit.min.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/LegacyTemplateEditor.min.css" asp-append-version="true" />
+}
+
+<section class="pt-3">
+    <div class="container-fluid">
+        <div class="row">
+             <div class="col-sm-6 align-self-center">
+        <h4>Edit Template - @Model.TemplateName</h4>
+    </div>
+    <div class="col-sm-6 text-right">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button id="SaveButton" class="btn btn-primary" data-organization-id="@Model.OrganizationId" data-template-id="@Model.TemplateId" data-return-url="@Model.SaveReturnUrl" data-post-url="@Url.RouteUrl("TemplateAnnotationSave")" type="button">
+            @(Model.IsParentTemplate ? "Save" : "Send for Signature")
+        </button>
+        <button id="CancelButton" class="btn btn-default" data-url="@Model.CancelReturnUrl" type="button">Cancel</button>
+        </div>
+    </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-12">
+               <hr />
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+        <div id="ValidationSummary" class="alert alert-danger" role="alert" style="display: none;">
+        </div>
+    </div>
+        </div>
+     </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <partial name="Annotation/_Editor" model="Model.Editor" />
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,164 @@
+﻿/*main {
+    margin: 20px auto;
+}*/
+
+h1.page-title {
+    font-size: 23px;
+    display: inline;
+}
+
+#PatientForm h2 {
+    border-bottom: 1px solid #333 !important;
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.k-dialog button{
+    background-image: none !important;
+}
+
+.k-dialog .k-primary {
+    border-color: #1e86e8;
+    background-color: #1e86e8;
+}
+
+.k-dialog .k-primary:focus:hover {
+    border-color: #1e86e8;
+}
+
+#Gender .form-group label {
+    left: unset;
+    top: -10px;
+}
+
+.page-title-container {
+    padding: 10px 0;
+    border-bottom: 1px solid #dfdfdf;
+    margin: 15px;
+}
+
+label.k-radio-label {
+    left: unset;
+    top: 5px;
+    margin-left: 17px;
+}
+
+#payerMixColumn .form-check-label {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#MedicareMBI {
+    text-transform: uppercase;
+}
+
+#medicareMBIRequiredNote {
+    margin-top: -10px;
+}
+
+.input-validation-error {
+    border: 1px solid #c10026 !important;
+}
+
+.text-danger {
+    display: block;
+    text-align: right;
+}
+
+.k-radio, .k-radio:checked {
+    color: #0075ff;
+}
+
+.mbi-example {
+    padding-right: 20px;
+}
+
+.medicareMBIExample {
+    margin: -10px 0 10px 15px;
+}
+
+.inbox-view-info {
+    display: none;
+    position: absolute;
+    width: 200px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #f7f6f6;
+    border: 1px #929292 solid;
+    color: #333;
+    font-size: 9pt;
+    padding: 1em;
+    z-index: 1;
+    font-family: Open Sans,Verdana,Arial;
+    line-height: 1.4em;
+}
+
+.inbox-view-info-icon:hover .inbox-view-info {
+    display: block;
+}
+ 
+.inbox-view-info-icon {
+    font-size: .8em;
+    position: relative;
+    top: -0.5em;
+}
+
+.genderErrorMessage {
+    position: absolute;
+    margin-top: 20px;
+    right: 15px;
+}
+
+.form-group label {
+    font-weight: normal;
+}
+
+#socialSecurityNumberType label {
+    vertical-align: super;
+}
+
+/* SF Adding Styles*/
+.k-calendar-container .k-header, .k-calendar .k-header .k-state-hover, .k-calendar .k-today.k-state-focused {
+    background-color: #333 !important;
+}
+
+.k-primary:focus:active:not(.k-state-disabled):not([disabled]) {
+    box-shadow: 0 0 2px 1px #1e86e8 !important;
+}
+k-radio:focus {
+    box-shadow: 0 0 3px 0 #c5c5c5;
+    border-color: #c5c5c5;
+}
+
+.k-button.k-state-active, .k-button.k-state-selected, .k-button:active {
+    color: #2e2e2e;
+    background-color: #a99f9a;
+    border-color: #b6b6b6;
+    background-image: none !important;
+    
+}
+.k-button:focus, .k-button:focus:hover, .k-state-disabled .k-button.k-state-focused, .k-button:focus:active {
+    border-color: #b6b6b6;
+    box-shadow: 0 0 2px 1px #c5c5c5;
+}
+.k-radio:checked:focus {
+    box-shadow: 0 0 2px 1px #c5c5c5;
+}
+.btn-secondary {
+    color: #fff !important;
+    background-color: #929292 !important;
+}
+.btn-secondary:hover{
+    color: #ffffff !important;
+    background-color: #6e6e6e !important;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+
+    #Gender>.k-radio-item>label{
+       left: auto;
+    }
+
+}

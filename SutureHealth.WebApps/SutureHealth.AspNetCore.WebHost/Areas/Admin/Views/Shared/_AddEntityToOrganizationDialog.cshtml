@@ -1,0 +1,32 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.AddEntityToOrganizationDialogModel
+<script type="text/javascript">
+    (function () {
+        window.@(Model.DialogName)_Cancel = function () {
+            $("#@Model.OrganizationFieldName").data("kendoComboBox").value("");
+        };
+    })();
+</script>
+<kendo-dialog name="@Model.DialogName" title="@Model.DialogTitle" visible="false" modal="true" on-close="@(Model.DialogName)_Cancel">
+    <content>
+        <div class="k-edit-form-container">
+            <div class="k-edit-form-container">
+                <div class="k-edit-label">
+                    Organization
+                </div>
+                <div class="k-edit-field">
+                    <kendo-combobox name="@Model.OrganizationFieldName" auto-bind="false" filter="FilterType.Contains" min-length="2" enforce-min-length="true" datavaluefield="OrganizationId" datatextfield="Name">
+                        <datasource type="DataSourceTagHelperType.Ajax" server-operation="true" server-filtering="true">
+                            <transport>
+                                <read url="@Model.OrganizationDataSourceUrl" type="POST" />
+                            </transport>
+                        </datasource>
+                    </kendo-combobox>
+                </div>
+            </div>
+        </div>
+    </content>
+    <actions>
+        <action action="@Model.ConfirmFunctionName" text="@Model.ConfirmButtonLabel" primary="true" />
+        <action text="Cancel" />
+    </actions>
+</kendo-dialog>

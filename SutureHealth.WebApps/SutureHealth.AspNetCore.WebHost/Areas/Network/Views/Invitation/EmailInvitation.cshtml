@@ -1,0 +1,615 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.Invitation.EmailInvitation
+
+@{
+    Layout = null;
+    ViewBag.Title = "SutureHealth";
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
+<head>
+    <title>@Model.FacilityName requests to send you documents</title>
+    <meta property="og:title" content="Physicians are requesting you send documents ">
+    <meta name="twitter:title" content="Physicians are requesting you send documents ">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if gte mso 9]>
+    <xml>
+    <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    <style>
+    ul > li {
+    text-indent: -1em;
+    }
+    </style>
+    <![endif]-->
+    <!--[if mso]>
+    <style type="text/css">
+    body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
+    </style>
+    <![endif]-->
+    <meta name="generator" content="HubSpot">
+    <meta property="og:url" content="https://www.suturesign.com/-temporary-slug-8af1a83c-d58e-4a2d-8c3b-91b29fb0533f">
+    <meta name="robots" content="noindex,follow">
+    <style type="text/css">
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important
+        }
+
+        #outlook a {
+            padding: 0
+        }
+
+        .yshortcuts a {
+            border-bottom: none !important
+        }
+
+        .ExternalClass {
+            width: 100%
+        }
+
+            .ExternalClass, .ExternalClass p, .ExternalClass td, .ExternalClass div, .ExternalClass span, .ExternalClass font {
+                line-height: 100%
+            }
+
+        p {
+            margin: 0
+        }
+
+        body {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            moz-osx-font-smoothing: grayscale
+        }
+
+        [owa] .hse-column-container {
+            max-width: 600px !important;
+            width: 600px !important
+        }
+
+        [owa] .hse-section-full-width .hse-column-container {
+            max-width: 100% !important;
+            width: 100% !important
+        }
+
+        [owa] .hse-column {
+            display: table-cell;
+            vertical-align: top
+        }
+
+        [owa] .hse-section-1-col .hse-column {
+            max-width: 600px !important;
+            width: 600px !important
+        }
+
+        [owa] hse-section-full-width.hse-section .hse-column {
+            max-width: 100% !important;
+            width: 100% !important;
+            display: block !important
+        }
+
+        [owa] .hse-section-2-col .hse-wide {
+            max-width: 400px !important;
+            width: 400px !important
+        }
+
+        [owa] .hse-section-2-col .hse-narrow {
+            max-width: 200px !important;
+            width: 200px !important
+        }
+
+        [owa] .hse-section-2-col .hse-column {
+            max-width: 300px;
+            width: 300px
+        }
+
+        [owa] .hse-section-3-col .hse-column {
+            max-width: 200px !important;
+            width: 200px !important
+        }
+
+        [owa] .hse-section-4-col .hse-column {
+            max-width: 150px !important;
+            width: 150px !important
+        }
+
+        media only screen and (min-width:640px) {
+            .hse-section-full-width.hse-section .hse-column-container
+
+        {
+            max-width: 100% !important;
+            width: 100% !important
+        }
+
+        .hse-section-full-width.hse-section .hse-column {
+            max-width: 100% !important;
+            width: 100% !important;
+            display: block !important
+        }
+
+        .hse-column-container {
+            max-width: 600px !important;
+            width: 600px !important
+        }
+
+        .hse-column {
+            display: table-cell;
+            vertical-align: top
+        }
+
+        .hse-section-1-col .hse-column {
+            max-width: 600px !important;
+            width: 600px !important
+        }
+
+        .hse-section-2-col .hse-column {
+            max-width: 300px !important;
+            width: 300px !important
+        }
+
+        .hse-section-2-col .hse-wide {
+            max-width: 400px !important;
+            width: 400px !important
+        }
+
+        .hse-section-2-col .hse-narrow {
+            max-width: 200px !important;
+            width: 200px !important
+        }
+
+        .hse-section-3-col .hse-column {
+            max-width: 200px !important;
+            width: 200px !important
+        }
+
+        .hse-section-4-col .hse-column {
+            max-width: 150px !important;
+            width: 150px !important
+        }
+
+        }
+
+        media only screen and (max-width:639px) {
+            img .stretch-on-mobile,.hs_rss_email_entries_table img
+
+        {
+            height: auto !important;
+            width: 100% !important
+        }
+
+        .display_block_on_small_screens {
+            display: block
+        }
+    </style>
+</head>
+<body bgcolor="#FFFFFF" style="margin:0 !important; padding:0 !important; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word">
+    <!--[if gte mso 9]>
+    <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="tile" size="100%,100%" src="" color="#FFFFFF"/>
+    </v:background>
+    <![endif]-->
+    <div class="hse-body-background" style="background-color:#ffffff" bgcolor="#ffffff">
+        <table role="presentation" class="hse-body-wrapper-table" cellpadding="0" cellspacing="0" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; margin:0; padding:0; width:100% !important; min-width:320px !important; height:100% !important" width="100%" height="100%">
+            <tbody>
+                <tr>
+                    <td class="hse-body-wrapper-td" valign="top" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word">
+                        <div id="hs_cos_wrapper_main" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_email_flex_area" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="email_flex_area">
+                            <div id="builtin_section-0" class="hse-section hse-section-1-col hse-section-first" style="padding-left:10px; padding-right:10px; padding-top:20px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border hse-border-top" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; border-top:1px solid #d3d3d3; background-color:#FFFFFF; padding-bottom:10px; padding-top:10px" bgcolor="#FFFFFF">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3;border-top:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border hse-border-top" width="600" bgcolor="#FFFFFF">
+                                    <tr style="background-color:#FFFFFF;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:598px;padding-bottom:10px; padding-top:10px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="598" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:598px">
+                                    <![endif]-->
+                                    <div id="builtin_column_0-0" class="hse-column">
+                                        <div id="hs_cos_wrapper_builtin_module_0_0_0" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                            <table class="hse-image-wrapper" role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="center" valign="top" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:#000000; word-break:break-word; text-align:center; padding:10px 20px; font-size:0px">
+                                                            <a href="https://www.suturesign.com" target="_blank" style="color:#00a4bd; mso-line-height-rule:exactly" data-hs-link-id="0">
+                                                                <img alt="SutureHealth Logo " src="https://secure.suturesign.com/images/logo2_600x221.png" style="outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; border:none; max-width:100%; font-size:16px" width="284" align="middle">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                            <div id="section_1581618892383" class="hse-section hse-section-1-col" style="padding-left:10px; padding-right:10px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; background-color:#ffffff" bgcolor="#ffffff">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border" width="600" bgcolor="#ffffff">
+                                    <tr style="background-color:#ffffff;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:598px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="598" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:598px">
+                                    <![endif]-->
+                                    <div id="column_1581618892383_0" class="hse-column">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                                        <div id="hs_cos_wrapper_module_15804997768573" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                                            <div id="hs_cos_wrapper_module_15804997768573_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text">
+                                                                <h2 style="margin:0; mso-line-height-rule:exactly; line-height:175%; font-size:22px; text-align:center" align="center">Physicians from @Model.FacilityName want you to send documents via SutureHealth</h2>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">You are already using SutureHealth, and @Model.UsageRequirementText().</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">@Model.UsageRequirementTimeText()</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                            <div id="section_1581618750664" class="hse-section hse-section-2-col" style="padding-left:10px; padding-right:10px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; background-color:#ffffff" bgcolor="#ffffff">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border" width="600" bgcolor="#ffffff">
+                                    <tr style="background-color:#ffffff;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:299px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="299" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:299px">
+                                    <![endif]-->
+                                    <div id="column_1581618750664_0" class="hse-column">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                            <tbody>
+                                                @for (int i = 0; i < Model.PhysicianFullNames.Count(); i += 2)
+                                                {
+                                    <tr>
+                                        <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                            <p style="mso-line-height-rule:exactly; line-height:175%">@(Model.PhysicianFullNames.ElementAtOrDefault(i) != null ? Model.PhysicianFullNames.ElementAtOrDefault(i) : string.Empty)</p>
+                                        </td>
+                                        <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                            <p style="mso-line-height-rule:exactly; line-height:175%">@(Model.PhysicianFullNames.ElementAtOrDefault(i+1) != null ? Model.PhysicianFullNames.ElementAtOrDefault(i+1) : string.Empty)</p>
+                                        </td>
+                                    </tr>}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:299px;">
+                                    <![endif]-->
+                                </div>
+                            </div>
+                            <div id="section_1581618863274" class="hse-section hse-section-1-col" style="padding-left:10px; padding-right:10px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; background-color:#ffffff" bgcolor="#ffffff">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border" width="600" bgcolor="#ffffff">
+                                    <tr style="background-color:#ffffff;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:598px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="598" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:598px">
+                                    <![endif]-->
+                                    <div id="column_1581618863274_0" class="hse-column">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                                        <div id="hs_cos_wrapper_module_15816205458734" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                                            <div id="hs_cos_wrapper_module_15816205458734_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text">
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">If you currently have a Community account, you will need to <a href="mailto:sales@suturehealth.com" rel=" noopener" style="mso-line-height-rule:exactly; color:#1e6be8" data-hs-link-id="0" target="_blank">contact sales</a> and upgrade to an Enterprise (paid) account, which will allow you to work with all physicians on the network and even add new physicians.</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">Thank you for complying with our new policy.</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">&nbsp;</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">Sincerely,</p>
+                                                                <p style="mso-line-height-rule:exactly; line-height:175%">@Model.SubmitterFullName</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                            <div id="section_1581520040782" class="hse-section hse-section-1-col" style="padding-left:10px; padding-right:10px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; background-color:#ffffff" bgcolor="#ffffff">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border" width="600" bgcolor="#ffffff">
+                                    <tr style="background-color:#ffffff;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:598px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="598" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:598px">
+                                    <![endif]-->
+                                    <div id="column_1581520040782_0" class="hse-column">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                                        <div id="hs_cos_wrapper_module_15815200407241" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                                            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td align="center" width="auto" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; width:auto; display:block">
+                                                                            <table border="0" cellspacing="0" cellpadding="0" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td align="center" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word">
+                                                                                            <table role="presentation" style="border-spacing:0 !important; mso-table-lspace:0pt; mso-table-rspace:0pt; background-color:#1e6be8; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; border-collapse:separate!important" bgcolor="#1e6be8">
+                                                                                                <tbody>
+                                                                                                    <tr>
+                                                                                                        <!--[if mso]>
+                                                                                                        <td border="0" align="center" style="padding: 12px 18px 12px 18px;"><![endif]-->
+                                                                                                        <!--[if !mso]><!-- -->
+                                                                                                        <td align="center" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word">
+                                                                                                            <!--<![endif]-->
+                                                                                                            <a href="http://www.secure.suturesign.com" target="_blank" style="mso-line-height-rule:exactly; padding:12px 18px; font-size:16px; font-family:Arial, sans-serif; color:#ffffff; font-weight:normal; text-decoration:none; font-style:normal; display:block; text-align:center" align="center" data-hs-link-id="0">Send Documents Now</a>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                            <div id="section_1581520150628" class="hse-section hse-section-1-col" style="padding-left:10px; padding-right:10px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; background-color:#ffffff" bgcolor="#ffffff">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border" width="600" bgcolor="#ffffff">
+                                    <tr style="background-color:#ffffff;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:598px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="598" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:598px">
+                                    <![endif]-->
+                                    <div id="column_1581520150628_0" class="hse-column">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                                        <div id="hs_cos_wrapper_module_15815201505713" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                                            <!--[if gte mso 9]>
+                                                            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:558px; height:2px;" fillcolor="none">
+                                                            <v:fill type="tile"/>
+                                                            <v:textbox inset="0,0,0,0">
+                                                            <div>
+                                                            <![endif]-->
+                                                            <table role="presentation" width="100%" align="center" border="0" style="position:relative; top:-1px; min-width:160px; width:100%; max-width:100%; border-spacing:0; mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; font-size:1px">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="100%" valign="middle" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; line-height:0; border:transparent; border-bottom:1px solid #000000; mso-border-bottom-alt:1px solid #000000; border-bottom-width:1px">&nbsp;</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <!--[if gte mso 9]></div></v:textbox></v:rect><![endif]-->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                            <div id="section_1581520573964" class="hse-section hse-section-1-col" style="padding-left:10px; padding-right:10px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; background-color:#ffffff" bgcolor="#ffffff">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border" width="600" bgcolor="#ffffff">
+                                    <tr style="background-color:#ffffff;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:598px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="598" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:598px">
+                                    <![endif]-->
+                                    <div id="column_1581520573964_0" class="hse-column">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                                        <div id="hs_cos_wrapper_module_15815205788536" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                                            <div id="hs_cos_wrapper_module_15815205788536_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text">
+                                                                <h2 style="margin:0; mso-line-height-rule:exactly; font-size:18px; line-height:175%; text-align:left" align="left"></h2>
+                                                                <h2 style="margin:0; mso-line-height-rule:exactly; font-size:18px; line-height:175%; text-align:left" align="left">As you already know, SutureHealth will:</h2>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                            <div id="section_1580499754526" class="hse-section hse-section-2-col" style="padding-left:10px; padding-right:10px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; background-color:#ffffff" bgcolor="#ffffff">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border" width="600" bgcolor="#ffffff">
+                                    <tr style="background-color:#ffffff;">
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:299px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="299" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:299px">
+                                    <![endif]-->
+                                    <div id="column_1580499754526_0" class="hse-column" style="display:inline-block; width:49%;">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; padding:10px 20px">
+                                                        <div id="hs_cos_wrapper_module_15804997605031" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                                            <div id="hs_cos_wrapper_module_15804997605031_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text">
+                                                                <ul style="mso-line-height-rule:exactly; line-height:125%">
+                                                                    <li style="mso-line-height-rule:exactly"><span style="font-size: 13px;">Decrease signature turnaround time</span></li>
+                                                                    <li style="mso-line-height-rule:exactly"><span style="font-size: 13px;">Provide automatic reminders for our pending documents</span></li>
+                                                                    <li style="mso-line-height-rule:exactly"><span style="font-size: 13px;">Decrease your costs for getting documents signed,</span></li>
+                                                                    <li style="mso-line-height-rule:exactly"><span style="font-size: 13px;">Speed up your billing and improve cash flow</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:299px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="299" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:299px">
+                                    <![endif]-->
+                                    <div id="column_1580499754526_1" class="hse-column" style="display:inline-block">
+                                        <div id="hs_cos_wrapper_module_15804997635122" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                            <table class="hse-image-wrapper" role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="center" valign="top" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:#000000; word-break:break-word; text-align:center; padding:10px 20px; font-size:0px">
+                                                            <!--We're going to change this on the next release to live. Should be able to dynamically get the image then.-->
+                                                            <img alt="SutureHealth Network Concept" src="https://secure.suturesign.com/images/network_concept.png" style="outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; max-width:100%; font-size:16px" width="259" align="middle">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                            <div id="builtin_section-2" class="hse-section hse-section-1-col hse-section-last" style="padding-left:10px; padding-right:10px; padding-bottom:20px">
+                                <!--[if !((mso)|(IE))]><!-- -->
+                                <div class="hse-column-container hse-border-bottom hse-border" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; border-left:1px solid #d3d3d3; border-right:1px solid #d3d3d3; box-sizing:border-box; border-bottom:1px solid #d3d3d3; padding-bottom:20px; padding-top:20px">
+                                    <!--<![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <div class="hse-column-container" style="min-width:280px;max-width:600px;width:100%;Margin-left:auto;Margin-right:auto;border-collapse:collapse;border-spacing:0;">
+                                    <table align="center" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:600px;border-bottom:1px solid #d3d3d3;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3" cellpadding="0" cellspacing="0" role="presentation" class="hse-border-bottom hse-border">
+                                    <tr>
+                                    <![endif]-->
+                                    <!--[if (mso)|(IE)]>
+                                    <td valign="top" style="width:598px;padding-bottom:20px; padding-top:20px;">
+                                    <![endif]-->
+                                    <!--[if gte mso 9]>
+                                    <table role="presentation" width="598" cellpadding="0" cellspacing="0" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:598px">
+                                    <![endif]-->
+                                    <div id="builtin_column_2-0" class="hse-column">
+                                        <div id="hs_cos_wrapper_builtin_module_2_0_1" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                            <table role="presentation" class="hse-footer hse-secondary" width="100%" cellpadding="0" cellspacing="0" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; font-family:Arial, sans-serif; font-size:12px; line-height:135%; color:#23496d; margin-bottom:0; padding:0" align="center">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="center" valign="top" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#000000; word-break:break-word; text-align:center; margin-bottom:0; line-height:135%; padding:10px 20px">
+                                                            <p style="mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:12px; font-weight:normal; text-decoration:none; font-style:normal; color:#999999">
+                                                                SutureHealth, 530 Beacon Pkwy W Suite 502, Birmingham, Alabama 35209, United States, 205.417.2400
+                                                            </p>
+                                                            <p style="mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:12px; font-weight:normal; text-decoration:none; font-style:normal; color:#999999">
+                                                                <a target="_blank" href="mailto:sales@suturehealth.com">sales&#64;suturehealth.com</a>
+                                                            </p>
+                                                            <p style="mso-line-height-rule:exactly">
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--[if gte mso 9]></table><![endif]-->
+                                    <!--[if (mso)|(IE)]></td><![endif]-->
+                                    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

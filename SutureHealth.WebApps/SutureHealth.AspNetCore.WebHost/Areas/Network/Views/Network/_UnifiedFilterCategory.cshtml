@@ -1,0 +1,21 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.UnifiedFilterCategory
+<div style="margin-top:25px;">
+    <span class="filterSectionHeader">@Model.Title</span>
+    @if (Model.HasTooltip)
+    {
+        @Html.Partial(Model.TooltipViewName)
+    }
+    @if (Model.CanClearSection)
+    {
+        <a href="javascript:void(0);" data-section-key="@Model.Type.ToString()" style="float:right" data-action="ClearSection">Clear All</a>
+    }
+    @foreach (var filter in Model.Filters)
+    {
+        <div class="unifiedFilterCategory">
+            <label style="font-weight:normal;">
+            <input type="checkbox" name="@Model.Type.ToString()" value="@filter.Key" />
+            @filter.Value
+            </label>
+        </div>
+    }
+</div>

@@ -1,0 +1,59 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.SendRegistrationEmailModel
+<div class="modal" id="SendRegistrationEmailModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Send Registration Email</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    @if (Model.IsRegistered)
+                    {
+                        <text>
+                            The account @(Model.UserName) does not currently have registration pending.
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            Are you sure you want to send the registration email for @(Model.UserName)?
+                        </text>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                @if (Model.IsRegistered)
+                {
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="SendRegistrationEmailModalSubmitButton" type="button" class="btn btn-primary">Send Email</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function() {
+        $("#SendRegistrationEmailModal").modal({
+            "backdrop": "static"
+        });
+        $("#SendRegistrationEmailModal").modal("show");
+
+        $("#SendRegistrationEmailModalSubmitButton").click(function() {
+            LoadingPanel.loader.show();
+            $.post("@Model.SendRegistrationEmailActionUrl", function() {
+                $('#SendRegistrationEmailModal').modal("hide");
+                LoadingPanel.loader.hide();
+            });
+        });
+
+        $("#SendRegistrationEmailModal").on("hidden.bs.modal", function() {
+            $(this).modal("dispose");
+        });
+    })();
+</script>

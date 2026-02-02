@@ -1,0 +1,963 @@
+﻿@model SutureHealth.AspNetCore.WebHost.Areas.Visit.Models.RoomViewModel
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SutureHealth - Video Visit - Room</title>
+    <link rel="icon" href="~/images/logo2_emblem.png">
+    <link rel="stylesheet" href="~/css/ChatVideo.min.css" />
+    <link rel="stylesheet" href="~/css/Site.min.css" />
+    <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
+    <script>window.LogRocket && window.LogRocket.init('aids27/videovisit-beta');</script>
+    <script src="https://kit.fontawesome.com/7631788b33.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" asp-fallback-src="~/js/require.min.js" asp-fallback-test="window.require" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body style="background-color: #606060">
+    <div id="videoChat">
+        <div id="problems" class="negative"
+                style="position:absolute; bottom:12.1vh; left:0px; width: 98vw; text-align: center; padding: 1vw; z-index: 1; background-color: #232323;">
+            <div class="refreshButton log-it" style="cursor: pointer; font-size: 1.3em;">Click here if you have audio or video problems</div>
+        </div>
+        <div id="local-media-div-container">
+            @*<div id="local-media-div-background"><i class="fas fa-user"></i></div>*@
+            <div id="local-media-div">
+                <div class="muteIndicator muteIndicator-audio fas fa-microphone-slash" style="display: none;"></div>
+                <div class="muteIndicator muteIndicator-video fas fa-video-slash" style="display: none;"></div>
+                <audio></audio>
+                <video></video>
+            </div>
+            <div id="local-media-info" style="display:none;">
+                <div class="info">@Model.Name</div>
+            </div>
+        </div>
+        <div id="remote-media-div">
+            <div class="muteIndicator muteIndicator-audio fas fa-microphone-slash" style="display: none;"></div>
+            <div class="muteIndicator muteIndicator-video fas fa-video-slash" style="display: none;"></div>
+            <audio></audio>
+            <video></video>
+        </div>
+        <div id="remoteName">
+            <span style="font-size: .8em;">Click "Allow" if asked to give camera access</span>
+        </div>
+        <div id="menuDiv" class="menu dark">
+            <div>
+                <div class="menuButton" style=" background-color: #e61610; display: none; float: right;" id="endCallButton">
+                    <i class="fas fa-times"></i>
+                    <div>END</div>
+                </div>
+                <div class="menuButton" style="display: none; float:right;" id="debugButton">
+                    <i class="fas fa-debug" id="debugButton"></i>
+                    <div>Debug</div>
+                </div>
+            </div>
+            <div>
+                <div class="menuButton" id="my_audioButton">
+                    <i class="fas fa-microphone"></i>
+                    <div>Mute</div>
+                </div>
+                <div class="menuButton" style="width: 11vh;" id="my_videoButton">
+                    <i class="fas fa-video"></i>
+                    <div>Stop Video</div>
+                </div>
+                <div class="menuButton" id="myVideoToggleButton">
+                    <div class="iconPreview no-attribution"
+                         style="        width: 11vh;
+        height: 4.5vh;
+        background-size: 6vh;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwIDEwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN5bWJvbCB2aWV3Qm94PSItMjcuMjk5IC0zOS4wMjQgNTQuNTk4IDc4LjA0NyI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTExLjE1NywzNC4wMmMtMS4yNzUtMS44NS0zLjQwOC0zLjAyNi01LjczMy0zLjAyNmMtMi4xMywwLTQuMTE4LDAuOTg1LTUuNDI0LDIuNjA3ICAgYy0xLjMwNi0xLjYyMi0zLjI5NC0yLjYwNy01LjQyMy0yLjYwN2MtMi4zMjUsMC00LjQ1NywxLjE3Ni01LjczNCwzLjAyNmMtMS4yNzUtMS44NS0zLjQwOC0zLjAyNi01LjczMy0zLjAyNiAgIGMtMS45MTMsMC0zLjY0OCwwLjc3Ni00LjkwOCwyLjAyOXYtNjYuNDc0YzEuMjYsMS4yNTMsMi45OTUsMi4wMjksNC45MDgsMi4wMjljMi4zMjUsMCw0LjQ1OC0xLjE3Niw1LjczMy0zLjAyNiAgIGMxLjI3NywxLjg1LDMuNDA5LDMuMDI2LDUuNzM0LDMuMDI2YzIuMTI5LDAsNC4xMTctMC45ODYsNS40MjMtMi42MDdjMS4zMDYsMS42MjIsMy4yOTQsMi42MDcsNS40MjQsMi42MDcgICBjMi4zMjUsMCw0LjQ1OC0xLjE3Niw1LjczMy0zLjAyNmMxLjI3NywxLjg1LDMuNDA5LDMuMDI2LDUuNzM0LDMuMDI2YzEuOTEzLDAsMy42NDctMC43NzYsNC45MDctMi4wMjh2NjYuNDczICAgYy0xLjI2LTEuMjUzLTIuOTk0LTIuMDI4LTQuOTA3LTIuMDI4QzE0LjU2NywzMC45OTUsMTIuNDM1LDMyLjE3LDExLjE1NywzNC4wMnoiPjwvcGF0aD48cGF0aCBmaWxsPSIjRkZGRkZGIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNLTIwLjQ2My0zNy41MjQgICBjMC4zOTEsMS42MTUsMS44MzksMi44MjIsMy41NzMsMi44MjJjMS43MzMsMCwzLjE4MS0xLjIwNywzLjU3Mi0yLjgyMmg0LjMyM2MwLjM5MSwxLjYxNSwxLjgzOSwyLjgyMiwzLjU3MywyLjgyMiAgIHMzLjE4Mi0xLjIwNywzLjU3My0yLjgyMmgzLjcwMWMwLjM5MSwxLjYxNSwxLjgzOSwyLjgyMiwzLjU3MywyLjgyMnMzLjE4Mi0xLjIwNywzLjU3My0yLjgyMmg0LjMyMiAgIGMwLjM5MSwxLjYxNSwxLjgzOSwyLjgyMiwzLjU3MywyLjgyMnMzLjE4Mi0xLjIwNywzLjU3My0yLjgyMmg1LjMzNXY3NS4wNDdoLTUuMjY2Yy0wLjIxOS0xLjgyNS0xLjc1OS0zLjI1LTMuNjQxLTMuMjUgICBzLTMuNDIzLDEuNDI1LTMuNjQxLDMuMjVIOS4wNjVjLTAuMjE5LTEuODI1LTEuNzU5LTMuMjUtMy42NDEtMy4yNXMtMy40MjMsMS40MjUtMy42NDEsMy4yNWgtMy41NjQgICBjLTAuMjE5LTEuODI1LTEuNzU5LTMuMjUtMy42NDEtMy4yNXMtMy40MjMsMS40MjUtMy42NDEsMy4yNWgtNC4xODZjLTAuMjE5LTEuODI1LTEuNzU4LTMuMjUtMy42NDEtMy4yNSAgIGMtMS44ODMsMC0zLjQyMywxLjQyNS0zLjY0MSwzLjI1aC01LjI2N3YtNzUuMDQ3SC0yMC40NjN6Ij48L3BhdGg+PC9zeW1ib2w+PHN5bWJvbCB2aWV3Qm94PSItMzAuMjgyIC00OC4wNTYgNjAuNTYzIDk0LjExMyI+PHBhdGggZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTE2LjAwNiw0My4wNTYgICBjLTMuMjMzLTQuODgzLTguNzctOC4xMDgtMTUuMDY1LTguMTA4cy0xMS44MzIsMy4yMjUtMTUuMDY1LDguMTA4aC0xMC41ODR2LTg4LjExM2gxMC41ODRjMy4yMzMsNC44ODMsOC43Nyw4LjEwOCwxNS4wNjUsOC4xMDggICBzMTEuODMyLTMuMjI0LDE1LjA2NS04LjEwOEgyNi41OXY4OC4xMTNIMTYuMDA2eiI+PC9wYXRoPjxsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iNyw4IiB4MT0iMjcuNzgxIiB5MT0iLTIwLjc1NSIgeDI9Ii0yNy43ODIiIHkyPSItMjAuNzU1Ij48L2xpbmU+PC9zeW1ib2w+PHN5bWJvbCB2aWV3Qm94PSItMjQuNzEyIC00Mi44MzQgNTQuMzU2IDg1LjY2NyI+PHBhdGggZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTE3LjE4MSw0MC4zMzNoLTQuNDc1ICAgYy0wLjQ2Ni0yLjM1NS0yLjUzOS00LjEzMS01LjAzMS00LjEzMWMtMi40OTEsMC00LjU2NSwxLjc3Ni01LjAzLDQuMTMxaC00Ljg4M2MtMC40NjYtMi4zNTUtMi41MzktNC4xMzEtNS4wMzEtNC4xMzEgICBjLTIuNDkxLDAtNC41NjUsMS43NzYtNS4wMyw0LjEzMWgtNC44ODNjLTAuNDY2LTIuMzU1LTIuNTM5LTQuMTMxLTUuMDMtNC4xMzF2LTcyLjAyM2MyLjYyMiwwLDQuNzYtMS45NzQsNS4wNjktNC41MTJoNC44MDYgICBjMC4zMDksMi41MzksMi40NDcsNC41MTIsNS4wNjksNC41MTJjMi42MjIsMCw0Ljc2LTEuOTc0LDUuMDY5LTQuNTEyaDQuODA2YzAuMzA5LDIuNTM5LDIuNDQ3LDQuNTEyLDUuMDY5LDQuNTEyICAgYzIuNjIyLDAsNC43Ni0xLjk3NCw1LjA2OS00LjUxMmg0LjM5OGMwLjMwOSwyLjUzOSwyLjQ0Nyw0LjUxMiw1LjA2OSw0LjUxMnY3Mi4wMjNDMTkuNzIsMzYuMjAyLDE3LjY0NywzNy45NzgsMTcuMTgxLDQwLjMzM3oiPjwvcGF0aD48bGluZSBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IjcsNiIgeDE9Ii0yMi42NDQiIHkxPSItMTcuMzk1IiB4Mj0iMjcuNjQ0IiB5Mj0iLTE3LjM5NSI+PC9saW5lPjwvc3ltYm9sPjxzeW1ib2wgdmlld0JveD0iLTIzLjk3MSAtNDIuMDk0IDQ3Ljk0NCA4NC4xODgiPjxnPjxwYXRoIGZpbGw9IiNGRkZGRkYiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzLjUyMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTcuMTgyLDQwLjMzM2gtNC40NzUgICAgYy0wLjQ2Ni0yLjM1NS0yLjUzOS00LjEzMS01LjAzMS00LjEzMWMtMi40OTEsMC00LjU2NSwxLjc3Ni01LjAzLDQuMTMxaC00Ljg4M2MtMC40NjYtMi4zNTUtMi41MzktNC4xMzEtNS4wMzEtNC4xMzEgICAgYy0yLjQ5MSwwLTQuNTY1LDEuNzc2LTUuMDMsNC4xMzFoLTQuODgzYy0wLjQ2Ni0yLjM1NS0yLjUzOS00LjEzMS01LjAzLTQuMTMxdi03Mi4wMjNjMi42MjIsMCw0Ljc2LTEuOTc0LDUuMDY5LTQuNTEyaDQuODA2ICAgIGMwLjMwOSwyLjUzOSwyLjQ0Nyw0LjUxMiw1LjA2OSw0LjUxMmMyLjYyMiwwLDQuNzYtMS45NzQsNS4wNjktNC41MTJoNC44MDZjMC4zMDksMi41MzksMi40NDcsNC41MTIsNS4wNjksNC41MTIgICAgYzIuNjIyLDAsNC43Ni0xLjk3NCw1LjA2OS00LjUxMmg0LjM5OGMwLjMwOSwyLjUzOSwyLjQ0Nyw0LjUxMiw1LjA2OSw0LjUxMnY3Mi4wMjNDMTkuNzIxLDM2LjIwMiwxNy42NDgsMzcuOTc4LDE3LjE4Miw0MC4zMzN6Ij48L3BhdGg+PC9nPjxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzLjgxMTMiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgcG9pbnRzPSI1LjE0LDE3LjAyIDExLjk1MiwxMy44NTMgICAgOC40MzEsNy4yMTcgNy41MjQsLTAuMjQxIDAuMTI0LDEuMDU3IC03LjI0OCwtMC4zODUgLTguMzAxLDcuMDUzIC0xMS45NTEsMTMuNjIgLTUuMjAxLDE2LjkxOSAtMC4wODQsMjIuNDIgICI+PC9wb2x5Z29uPjwvc3ltYm9sPjxzeW1ib2wgaWQ9ImEiIHZpZXdCb3g9Ii0yMS4wODcgLTMxLjI2NiA0Mi4xNyA3Mi44NyI+PHBhdGggZmlsbD0iI0ZGRkZGRiIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTYuMzczLDM5LjEwNGg1LjIxYzAtMy44NywzLjEzLTcsNy03di01My44NyAgIGMtMy44NywwLTctMy4xNC03LTdoLTUuMjEiPjwvcGF0aD48cGF0aCBmaWxsPSIjRkZGRkZGIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNLTYuMzc3LTI4Ljc2NmgtNS4yMWMwLDMuODYtMy4xMyw3LTcsN3Y1My44NyAgIGMzLjg3LDAsNywzLjEzLDcsN2g1LjIxIj48L3BhdGg+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjIuMzczIiB5MT0iMzkuMTA0IiB4Mj0iLTIuMzc3IiB5Mj0iMzkuMTA0Ij48L2xpbmU+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjIuMzczIiB5MT0iLTI4Ljc2NiIgeDI9Ii0yLjM3NyIgeTI9Ii0yOC43NjYiPjwvbGluZT48Zz48cGF0aCBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMC45IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0tOS45MDEtMTAuMTE4YzAtMC45OTQtMC44MDYtMS44LTEuOC0xLjggICAgcy0xLjgsMC44MDYtMS44LDEuOHMwLjgwNiwxLjgsMS44LDEuOFMtOS45MDEtOS4xMjQtOS45MDEtMTAuMTE4eiI+PC9wYXRoPjxwYXRoIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTS0yLjEwMS0xMC4xMThjMC0wLjk5NC0wLjgwNi0xLjgtMS44LTEuOCAgICBzLTEuOCwwLjgwNi0xLjgsMS44czAuODA2LDEuOCwxLjgsMS44Uy0yLjEwMS05LjEyNC0yLjEwMS0xMC4xMTh6Ij48L3BhdGg+PHBhdGggc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjAuOSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNNS42OTktMTAuMTE4YzAtMC45OTQtMC44MDYtMS44LTEuOC0xLjhzLTEuOCwwLjgwNi0xLjgsMS44ICAgIHMwLjgwNiwxLjgsMS44LDEuOFM1LjY5OS05LjEyNCw1LjY5OS0xMC4xMTh6Ij48L3BhdGg+PHBhdGggc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjAuOSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTMuNDk5LTEwLjExOGMwLTAuOTk0LTAuODA2LTEuOC0xLjgtMS44ICAgIHMtMS44LDAuODA2LTEuOCwxLjhzMC44MDYsMS44LDEuOCwxLjhTMTMuNDk5LTkuMTI0LDEzLjQ5OS0xMC4xMTh6Ij48L3BhdGg+PC9nPjwvc3ltYm9sPjxzeW1ib2wgdmlld0JveD0iLTIxLjA4NiAtMzEuMjY2IDQyLjE3IDcyLjg3Ij48dXNlIHhsaW5rOmhyZWY9IiNhIiB3aWR0aD0iNDIuMTciIGhlaWdodD0iNzIuODciIHg9Ii0yMS4wODciIHk9Ii0zMS4yNjYiIHRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgNi45OTY0ODJlLTAwNCAtMi42NzEwMzNlLTAwNCkiIG92ZXJmbG93PSJ2aXNpYmxlIj48L3VzZT48bGluZSBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiB4MT0iOS4yMjQiIHkxPSIxMy43NSIgeDI9Ii05LjIyMyIgeTI9IjEzLjc1Ij48L2xpbmU+PC9zeW1ib2w+PGcgZGlzcGxheT0ibm9uZSI+PHBhdGggZGlzcGxheT0iaW5saW5lIiBmaWxsPSIjRkZGRkZGIiBkPSJNOTQ4Ljc5MiwxMTk0Ljc0M0gtMjg5LjAwNmMtMi4wODQsMC0zLjc4OS0xLjcwNS0zLjc4OS0zLjc4OVYzLjc4OSAgIGMwLTIuMDg0LDEuNzA1LTMuNzg5LDMuNzg5LTMuNzg5SDk0OC43OTJjMi4wODQsMCwzLjc4OSwxLjcwNSwzLjc4OSwzLjc4OXYxMTg3LjE2NCAgIEM5NTIuNTgyLDExOTMuMDM4LDk1MC44NzcsMTE5NC43NDMsOTQ4Ljc5MiwxMTk0Ljc0M3oiPjwvcGF0aD48L2c+PGc+PGc+PHBhdGggZD0iTTE0LDg2aDcyYzQuOTQ4LDAsOS00LjA1Miw5LTlWMzYuNWMwLTQuOTQ4LTQuMDUyLTktOS05SDc1LjE5OGMtMS40ODUsMC0zLjA4NS0xLjE1MS0zLjU1LTIuNTYybC0yLjc5NC04LjM3NyAgICBDNjguMzgzLDE1LjE1MSw2Ni43ODcsMTQsNjUuMzAyLDE0SDM0LjY5OGMtMS40ODUsMC0zLjA4NSwxLjE1MS0zLjU1MSwyLjU2MmwtMi43OTQsOC4zNzdjLTAuNDcsMS40MTEtMi4wNjUsMi41NjItMy41NSwyLjU2MkgxNCAgICBjLTQuOTQ4LDAtOSw0LjA1Mi05LDlWNzdDNSw4MS45NDgsOS4wNTIsODYsMTQsODZ6IE0zNy4xMTcsNDIuMzhjMy4wNjYtMy4xNjEsNy4xNTktNC45OSwxMS41NTMtNS4yMjMgICAgYzkuMjU3LTAuNDI4LDE3LjE2NSw2LjUwMiwxOC4wNDIsMTUuNjI1bDMuMTI0LTAuMTQ5YzAuNTI1LTAuMDI1LDAuODE5LDAuNTk3LDAuNDY2LDAuOTg3bC02LjExNSw2Ljc1ICAgIGMtMC4yMTksMC4yNDItMC41OTQsMC4yNi0wLjgzNSwwLjA0bC02Ljc0My02LjEzM2MtMC4zOS0wLjM1NC0wLjE1Ni0xLjAwMywwLjM3LTEuMDI3bDIuMzI3LTAuMTA3ICAgIGMwLjM1MS0wLjAxNiwwLjYyMS0wLjMzNSwwLjU1Ny0wLjY4Yy0wLjk0NC01LjA5OS01LjUyNy04Ljg0NC0xMC44NDYtOC42MDZjLTIuNjY0LDAuMTQxLTUuMDg1LDEuMjExLTYuOTQ5LDMuMDUyICAgIGMtMC4yMjYsMC4yMjQtMC41ODIsMC4yNDItMC44MTgsMC4wMjlsLTQuMDk4LTMuNzA5QzM2LjkwNSw0My4wMDYsMzYuODg2LDQyLjYxOCwzNy4xMTcsNDIuMzh6IE0yNy4yNzksNTYuNTU3bDYuOTcyLTYuOTQ4ICAgIGMwLjIzMS0wLjIzLDAuNjA1LTAuMjMsMC44MzUsMC4wMDFsNi45NDksNi45NzJjMC4zNzEsMC4zNzIsMC4xMDcsMS4wMDgtMC40MTgsMS4wMDhIMzkuMTJjLTAuMzY3LDAtMC42NTYsMC4zMzMtMC41ODIsMC42OTIgICAgYzAuNDI3LDIuMDcyLDEuNDQsMy45OTksMi45NzEsNS41M2MyLjE1NCwyLjEzMyw0Ljk2OSwzLjM0LDcuOTY3LDMuMzRjMy4wMiwwLDUuODY3LTEuMTgsNy45NzYtMy4yOTRsNC42MTgsNC42MTggICAgYzAuMjM1LDAuMjM1LDAuMjM1LDAuNjIyLTAuMDA3LDAuODQ5Yy0zLjQzMSwzLjIyMi03Ljg3Nyw0Ljk3NS0xMi41ODcsNC45NDFjLTQuOTEyLDAtOS41MzYtMS45MzMtMTMuMDI4LTUuNDA5ICAgIGMtMi45MjItMi45MjMtNC43MzMtNi43MDUtNS4yMjgtMTAuNzY5Yy0wLjAzNi0wLjI5Ny0wLjI4Mi0wLjUyMy0wLjU4MS0wLjUyM2gtMi45NDNDMjcuMTY5LDU3LjU2NiwyNi45MDYsNTYuOTI5LDI3LjI3OSw1Ni41NTd6ICAgICI+PC9wYXRoPjwvZz48L2c+PC9zdmc+&quot;);"></div>
+                    <div>Flip Camera</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="waitingForParticipantDiv" class="modal">
+        @if (ViewBag.PhysicianOnAnotherCall ?? false)
+        {
+            <div id="" class="banner" style="padding-bottom: 2vh">@(Model.OtherParticipantName)<br /> is in another video call</div>
+            <div class="content">
+                <p style="text-align: center;">We have notified them that you are waiting.</p>
+            </div>
+        }
+        <div id="waitingBanner" class="banner">WHILE YOU ARE WAITING ...</div>
+        <div class="content">
+            <ul>
+                <li>Turn on your WiFi <span style="font-weight: normal;">(only if signal is stronger than the cellular signal)</span></li>
+                <li>Move into an area with a strong signal</li>
+            </ul>
+            @if (Model.UserId != null)
+            {
+                <h4 style="margin-top: 4vmin;">TAKING A WHILE?</h4>
+                <p>Your patient may be reviewing the consent.</p>
+
+                <h4 style="margin-top: 4vmin;">NEED TO GO?</h4>
+                <p>Hang up, we will text you when they join.</p>
+            }
+        </div>
+    </div>
+    <div id="cameraFailed" class="modal">
+        <div class="banner error">CAMERA ERROR</div>
+        <div class="content">
+            <div class="button refreshButton">Try Again</div>
+            <div class="button dark inverted" id="continueWithoutVideoButton">Continue without video</div>
+            <p>If you have trouble connecting your video:</p>
+            <ul>
+                <li>Swap cameras</li>
+                <li>Close all other browser tabs <span style="font-weight: normal">(especially those that may have access to your camera)</span></li>
+                <li>Restart your browser</li>
+                <li>Restart your device/computer</li>
+            </ul>
+        </div>
+    </div>
+    <div id="poorInternet" class="modal">
+        <div class="banner error">YOUR CONNECTION IS POOR</div>
+        <div class="content">
+            <p style="font-weight: bold;">To improve your connection:</p>
+            <ul>
+                <li>Turn on your WiFi <span style="font-weight: normal;">(only if signal is stronger than the cellular signal)</span></li>
+                <li>Move into an area with a strong signal</li>
+            </ul>
+            <div class="buttons">
+                <div class="button refreshButton" style="">Try Again</div>
+                <div class="button dark inverted" id="continueWithSlowConnectionButton">Continue with Poor Connection</div>
+            </div>
+        </div>
+    </div>
+    <div id="disabledVideo" class="modal">
+        <div class="banner">VIDEO STOPPED</div>
+        <div class="content">
+            <p style="font-weight: bold;">We turned off your video to help with your connection.</p>
+            <p style="font-weight: normal; margin: 2vh 0;">To restart it, click "Start Video" below.</p>
+            <div class="button closeModalButton">OK</div>
+        </div>
+    </div>
+    <div id="welcome" class="modal">
+        <div class="banner">YOUR CALL HAS ENDED</div>
+        <div class="content">
+            <p>If you got disconnected:</p>
+            <ul>
+                <li>Turn on your WIFI <span style="font-weight: normal;">(only if signal is stronger than the cellular signal)</span></li>
+                <li>Move into an area with a strong signal</li>
+            </ul>
+            <div style="text-align: center;">
+                <div class="button join" id="joinCallButton">REJOIN</div>
+                <div class="button negative" id="closeButton">CLOSE</div>
+                <h4>How was your experience?</h4>
+                <div id="feedbackRatingContainer">
+                    <i class="far fa-smile" data-value="3"></i>
+                    <i class="far fa-meh" data-value="2"></i>
+                    <i class="far fa-frown" data-value="1"></i>
+                    <form>
+                        <input type="hidden" id="feedbackRatingInput" />
+                    </form>
+                </div>
+                <div>
+                    <input id="feedbackCommentsInput" placeholder="Comments ..."
+                           style="padding: .5vh; font-size: 1.5em; width: calc(100% - 1vh);" />
+                    <button class="button" id="sendFeedbackButton" disabled style="width: 100%;">Send Comments</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="advancedModal" class="modal">
+        <h3 style="font-weight: bold;">ADVANCED - @Model.VisitPublicId</h3>
+        <h4>VisitId = @Model.VideoVisitId; VisitSessionId = @Model.VideoVisitSessionId</h4>
+        <div><select id="audioDeviceSelect"></select></div>
+        <div class="button" id="restartAudioButton">Restart Audio Track</div>
+        <div><select id="videoDeviceSelect"></select></div>
+        <div class="button" id="nextCameraButton">Next Camera</div>
+        <div class="button" id="startBandwidthMonitorButton">Monitor Bandwidth</div>
+        <div class="button" id="stopHeartbeatButton">Stop Session Heartbeat</div>
+        <div class="button" id="closeDebugMenuButton">Close</div>
+    </div>
+
+    <script src="~/js/VideoChat.js"></script>
+
+    <script>
+
+        const localMediaDiv = document.getElementById('local-media-div');
+        const localMediaMuteIcon = document.getElementById('local-media-mute-icon');
+        const remoteMediaDiv = document.getElementById('remote-media-div');
+        const welcomeDiv = document.getElementById('welcome');
+        const poorInternetModal = document.getElementById('poorInternet');
+        const advancedModal = document.getElementById('advancedModal');
+        const disabledVideoModal = document.getElementById('disabledVideo');
+        const cameraFailedDiv = document.getElementById('cameraFailed');
+        const waitingForParticipantDiv = document.getElementById('waitingForParticipantDiv');
+        const waitingBanner = document.getElementById('waitingBanner');
+        const menuDiv = document.getElementById('menuDiv');
+        const joinCallButton = document.getElementById('joinCallButton');
+        const closeButton = document.getElementById('closeButton');
+        const myVideoButton = document.getElementById('my_videoButton');
+        const myAudioButton = document.getElementById('my_audioButton');
+        const sendFeedbackButton = document.getElementById('sendFeedbackButton');
+        const endCallButton = document.getElementById('endCallButton');
+        const debugButton = document.getElementById('debugButton');
+        const remoteNameDiv = document.getElementById('remoteName');
+        const restartAudioButton = document.getElementById('restartAudioButton');
+        const nextCameraButton = document.getElementById('nextCameraButton');
+        const startBandwidthMonitorButton = document.getElementById('startBandwidthMonitorButton');
+        const stopHeartbeatButton = document.getElementById('stopHeartbeatButton');
+        const sendDebugReportButton = document.getElementById('sendDebugReportButton');
+        const continueWithoutVideoButton = document.getElementById('continueWithoutVideoButton');
+        const audioDeviceSelect = document.getElementById('audioDeviceSelect');
+        const videoDeviceSelect = document.getElementById('videoDeviceSelect');
+        const feedbackCommentsInput = document.getElementById('feedbackCommentsInput');
+        const feedbackRatings = document.querySelectorAll('#feedbackRatingContainer i');
+        const feedbackRatingInput = document.getElementById('feedbackRatingInput');
+
+        LogRocket.identify('@(Model.UserId != null ? (Model.UserId.ToString() + "-" + Model.VisitPublicId) : ("Patient-" + Model.VisitPublicId))');
+        console.log('Suture VideoVisitSessionId = @Model.VideoVisitSessionId');
+        console.log('Suture VideoVisitId = @Model.VideoVisitId');
+
+        var _room = null;
+        var _roomSid = null;
+        var _userSid = null;
+        var _localVideoTrack = null;
+        var _localTrackPublications = {};
+        var _localAudioTrack = null;
+        var _currentVideoDeviceId = null;
+        var _streamsLoadTries = 0;
+        var _advancedClick = 0;
+        var _triedToAutoResolveCouldNotStartVideo = false;
+        var _bandwidth;
+
+        remoteMediaDiv.style.height = 'calc(' + window.innerHeight + 'px - 12vh)';
+        require.config({
+            waitSeconds: 15
+        });
+        require(['/js/twilio-video.min.js'], function (twilio) {
+
+            // Needed to force iOS to ask for permission
+            if (_streamsLoadTries <= 0) {
+                tryGetVideoAudioStreams();
+            }
+
+            function tryGetVideoAudioStreams() {
+                _streamsLoadTries++;
+                navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+                    .then(stream => {
+                        stream.getTracks().forEach(t => t.stop());
+                        getAverageBandwidth(function (kbps) {
+                            if (kbps < 2000) {
+                                poorInternetModal.style.display = 'block';
+                            } else {
+                                join();
+                            }
+                            sessionHeartbeat();
+                        });
+                    })
+                    .catch(error => {
+                        console.log('ERROR:' + error.name + '-' + error.message);
+                        if (error.name == 'NotAllowedError'  // add custom error that explains they need to allow the camera and mic
+                            || error.name == 'NotFoundError'
+                            || error.name == 'NotReadableError'
+                            || error.name == 'OverconstrainedError'
+                            || error.name == 'TypeError'
+                        ) {
+                            cameraFailedDiv.style.display = 'block';
+                        }
+                    });
+            }
+
+            function getAverageBandwidth(callback) {
+                var bandwidth = [];
+                function individualBandwidthCheckCallback(bandwidthResult) {
+                    if (bandwidthResult) {
+                        bandwidth.push(bandwidthResult);
+                    }
+                    if (bandwidth.length < 1) {
+                        MeasureConnectionSpeed(individualBandwidthCheckCallback);
+                    } else {
+                        var sum = 0;
+                        bandwidth.forEach(b => sum += parseInt(b));
+                        _bandwidth = sum / bandwidth.length;
+                        console.log("bandwidth=" + _bandwidth);
+                        callback(_bandwidth);
+                    }
+                }
+                MeasureConnectionSpeed(individualBandwidthCheckCallback);
+            }
+
+            function showNextCameraAsync(newVideoDeviceId) {
+                return new Promise((resolve, reject) => {
+                    navigator.mediaDevices.enumerateDevices()
+                        .then(devices => {
+                            audioDeviceSelect.innerHTML = '';
+                            videoDeviceSelect.innerHTML = '';
+                            devices.forEach(device => {
+                                var option = document.createElement('option');
+                                option.setAttribute('value', device.deviceId);
+                                option.setAttribute('name', device.deviceId);
+                                option.innerText = device.label;
+                                option.setAttribute
+                                if (device.kind == 'audioinput') {
+                                    audioDeviceSelect.appendChild(option);
+                                }
+                                if (device.kind == 'videoinput') {
+                                    videoDeviceSelect.appendChild(option);
+                                }
+                            });
+                            var videoInputDeviceIds = devices.filter(d => d.kind == 'videoinput').map(d => d.deviceId);
+                            if (videoInputDeviceIds.length == 0) {
+                                // TODO - show error "no video devices"
+                            }
+                            if (newVideoDeviceId == null) {
+                                if (_localVideoTrack == null) {
+                                    var frontFacingDevices = devices.filter(d => d.kind == 'videoinput' && d.label.toLowerCase().indexOf('front') >= 0);
+                                    if (frontFacingDevices.length > 0) {
+                                        newVideoDeviceId = frontFacingDevices[0].deviceId;
+                                    } else {
+                                        newVideoDeviceId = videoInputDeviceIds[0];
+                                    }
+                                } else {
+                                    var nextVideoInputDeviceIdIndex = (videoInputDeviceIds.indexOf(_currentVideoDeviceId) + 1) % videoInputDeviceIds.length;
+                                    newVideoDeviceId = videoInputDeviceIds[nextVideoInputDeviceIdIndex];
+                                }
+                            }
+                            // must include catch to handle errors inside promise
+                            startVideoAsync(newVideoDeviceId).catch(reject).then(resolve);
+                        })
+                        // handles errors inside then
+                        .catch(e => {
+                            console.log(e);
+                            reject();
+                        });
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+            }
+            function startVideoAsync(deviceId) {
+                return new Promise((resolve, reject) => {
+                    if (deviceId != null) {
+                        _currentVideoDeviceId = deviceId;
+                    }
+                    // can skip reject here because we are using wrapping reject
+                    var createVideoTrackPromise = () => new Promise(resolve => {
+                        console.log('Changing to video device: ' + _currentVideoDeviceId);
+                            twilio
+                                .createLocalVideoTrack({
+                                    logLevel: 'debug',
+                                    deviceId: { exact: _currentVideoDeviceId },
+                                    frameRate: 24,
+                                    //width: { min: 640, ideal: 1440 },
+                                    width: { min: 640, ideal: 1280 },
+                                    height: { min: 480, ideal: 720 }
+                                })
+                                .then(track => {
+                                    setupLocalTrack(track);
+                                    cameraFailedDiv.style.display = '';
+                                    console.log('Changed to video device: ' + _currentVideoDeviceId);
+                                    joinCallButton.style.display = 'block';
+                                    updateAVButton(track);
+                                    resolve();
+                                })
+                                .catch(e => {
+                                    console.log(e);
+                                    //cameraFailedDiv.style.display = 'block';
+                                    updateAVButUrlonsWhenVideoFailed();
+                                    if (e.message == 'Could not start video source' && _triedToAutoResolveCouldNotStartVideo == false) {
+                                        _triedToAutoResolveCouldNotStartVideo = true;
+                                        showNextCameraAsync().catch(reject).then(resolve);
+                                    } else {
+                                        reject();
+                                    }
+                                });
+                    }, e => {
+                            console.log(e);
+                            reject();
+                    });
+
+
+                    if (_localVideoTrack != null) {
+                        trackUnsubscribed(localMediaDiv, _localVideoTrack);
+                        _localVideoTrack.stop();
+                    }
+
+                    createVideoTrackPromise().then(resolve);
+                }, e => { console.log(e); });
+            }
+            function startAudioAsync(deviceId) {
+                return new Promise(resolve => {
+                    if (_localAudioTrack != null) {
+                        _localAudioTrack.stop();
+                        _localAudioTrack = null;
+                    }
+                    var options = {
+                        logLevel: 'debug'
+                    };
+                    if (deviceId != null) {
+                        options.deviceId = deviceId;
+                    }
+                    twilio.createLocalAudioTrack(options).then(track => {
+                        _localAudioTrack = track;
+                        _localAudioTrack.on('stopped', function () {
+                            if (_room != null) {
+                                startAudioAsync();
+                            }
+                        });
+                        setupLocalTrack(_localAudioTrack);
+                        resolve();
+
+                        var autoRefreshed = @(this.Context.Request.Query.Keys.Contains("autoRefresh") == false ? "false" : "true");
+                        if (autoRefreshed == false) {
+                            micLevel(new MediaStream([_localAudioTrack.mediaStreamTrack]), 10, function (level) {
+                               if (level <= 0) {
+                                    console.log('refeshing page because no audio level');
+                                    var seperator = '?';
+                                    if (window.location.href.indexOf('?') > -1) {
+                                        var seperator = '&';
+                                    }
+                                    window.location = window.location.href + seperator + 'autoRefresh=true';
+                                }
+                            });
+                        }
+                    }).catch(e => {
+                        console.log(e);
+                    });
+                }, e => {
+                    console.log(e);
+                });
+            }
+
+            function setupLocalTrack(track) {
+                if (track.kind == 'video') {
+                    _localVideoTrack = track
+                    trackSubscribed(localMediaDiv, track);
+                } else {
+                    _localAudioTrack = track;
+                }
+
+                document.querySelectorAll('option').forEach(option => {
+                    if (option.innerText == track.mediaStreamTrack.label) {
+                        option.selected = true;
+                    }
+                });
+
+                if (_room != null) {
+                    if (_localTrackPublications[track.kind] != null) {
+                        _localTrackPublications[track.kind].unpublish();
+                        _localTrackPublications[track.kind] = null;
+                    }
+                    _room.localParticipant.publishTrack(track).then(publishedTrack => {
+                        _localTrackPublications[track.kind] = publishedTrack;
+                        console.log("VideoSessionID '@(Model.VideoVisitSessionId)' added track: " + publishedTrack.kind);
+                    });;
+                }
+
+                track.on('enabled', updateAVButton);
+                track.on('disabled', updateAVButton);
+                updateAVButton(track);
+            }
+            function updateAVButtonsWhenVideoFailed() {
+                updateAVButton({ kind: 'video', isEnabled: false });
+            }
+            function updateAVButton(track) {
+                var buttonClass = 'menuButton';
+                var iconClass = 'fas fa-video'
+                var buttonText = 'Stop Video';
+                var button = myVideoButton;
+                if (track.kind == 'audio') {
+                    iconClass = 'fas fa-microphone';
+                    var buttonText = 'Mute';
+                    button = myAudioButton;
+                }
+                if (track.isEnabled == false) {
+                    iconClass += '-slash';
+                    buttonClass += ' toggled'
+                    var buttonText = 'Start Video';
+                    if (track.kind == 'audio') {
+                        var buttonText = 'Unmute';
+                    }
+                }
+                button.children[0].setAttribute('class', iconClass)
+                button.children[1].innerText = buttonText;
+                button.setAttribute('class', buttonClass)
+                console.log(track.kind + ' enabled = ' + track.isEnabled.toString());
+            }
+            myVideoToggleButton.onclick = () => showNextCameraAsync();
+
+
+
+            myAudioButton.onclick = function () {
+                if (_localAudioTrack != null) {
+                    _localAudioTrack.enable(!_localAudioTrack.isEnabled);
+                    updateTrackMuteIndicator(_localAudioTrack, localMediaDiv);
+                }
+            };
+            myVideoButton.onclick = function () {
+                if (_localVideoTrack != null) {
+                    _localVideoTrack.enable(!_localVideoTrack.isEnabled);
+                } else {
+                    showNextCameraAsync().catch(updateAVButtonsWhenVideoFailed);
+                }
+                _advancedClick++;
+                console.log('_advancedClick=' + _advancedClick);
+                if (_advancedClick > 8) {
+                    debugButton.style.display = "";
+                }
+            };
+            endCallButton.addEventListener('click', function () {
+                endCall();
+                remoteNameDiv.style.display = 'none';
+                menuDiv.style.display = 'none';
+                localMediaDiv.style.display = 'none';
+                delayAsync(90000).then(() => closeVideoChat());
+            });
+            debugButton.addEventListener('click', toggleDebugModal);
+            document.getElementById('closeDebugMenuButton').addEventListener('click', toggleDebugModal);
+            function toggleDebugModal() {
+                if (advancedModal.style.display == '') {
+                    advancedModal.style.display = 'block';
+                } else {
+                    advancedModal.style.display = '';
+                }
+            }
+            restartAudioButton.addEventListener('click', function () {
+                startAudioAsync();
+            });
+            stopHeartbeatButton.addEventListener('click', function () {
+                if (keepLoopingSessionHeartbeat) {
+                    keepLoopingSessionHeartbeat = false;
+                    alert('Session heartbeat stopped.');
+                } else {
+                    keepLoopingSessionHeartbeat = true;
+                    sessionHeartbeat();
+                    alert('Session heartbeat started.');
+                }
+            });
+            startBandwidthMonitorButton.addEventListener('click', function () {
+                if (keepLoopingSpeedDetection) {
+                    keepLoopingSpeedDetection = false;
+                } else {
+                    keepLoopingSpeedDetection = true;
+                    InitiateSpeedDetection();
+                }
+            });
+            nextCameraButton.addEventListener('click', function () {
+                showNextCameraAsync();
+            });
+            feedbackRatings.forEach(i => i.onclick = event => {
+                var icon = event.srcElement;
+                feedbackRatings.forEach(i => i.removeAttribute('data-selected'));
+                icon.setAttribute('data-selected', 'true');
+                feedbackRatingInput.value = icon.getAttribute('data-value');
+                sendFeedback();
+            });
+            sendFeedbackButton.addEventListener('click', function () {
+                if (sendFeedbackButton.disabled == false) {
+                    sendFeedbackButton.style.width = 'auto';
+                    feedbackCommentsInput.setAttribute('disabled', 'disabled');
+                    sendFeedbackButton.setAttribute('disabled', 'disabled');
+                    sendFeedback();
+                    feedbackCommentsInput.style.display = 'none';
+                }
+            });
+            feedbackCommentsInput.addEventListener('keydown', function () {
+                sendFeedbackButton.removeAttribute('disabled');
+            });
+            videoDeviceSelect.addEventListener('change', option => {
+                showNextCameraAsync(option.target.selectedOptions[0].value);
+            });
+
+            document.querySelectorAll('.refreshButton').forEach(button => {
+                button.addEventListener('click', function () {
+                    window.location.href = "@Url.RouteUrl("VisitRoom", new { publicId = Model.VisitPublicId, name = Model.Name })";
+                });
+            });
+            document.querySelectorAll('.closeModalButton').forEach(button => {
+                button.addEventListener('click', function () {
+                    button.parentElement.parentElement.style.display = '';
+                });
+            });
+            document.getElementById('continueWithSlowConnectionButton').addEventListener('click', element => {
+                poorInternetModal.style.display = '';
+                if (_bandwidth < 1000) {
+                    join(true);
+                } else {
+                    join();
+                }
+            });
+
+            continueWithoutVideoButton.addEventListener('click', function () {
+                cameraFailedDiv.style.display = '';
+                join();
+            });
+            window.onunload = function () {
+                endCall();
+            };
+
+            disableButtonOnClick('#'+sendFeedbackButton.getAttribute('id'), 'Thank you!');
+
+            function sendFeedback() {
+                var feedback = {
+                    videoVisitSessionId: @Model.VideoVisitSessionId,
+                    comments: feedbackCommentsInput.value,
+                    logRocketId: LogRocket._logger._recordingID,
+                    roomSid: _roomSid,
+                    userSid: _userSid,
+                    rating: feedbackRatingInput.value
+                };
+
+                postAjax('@Url.Action("Feedback")', feedback);
+            };
+            function join(muteVideo) {
+                welcomeDiv.style.display = '';
+                remoteNameDiv.innerText = 'Connecting...';
+                remoteNameDiv.style.display = 'block';
+                menuDiv.style.display = 'block';
+                localMediaDiv.style.display = 'block';
+                endCallButton.style.display = 'none';
+
+                var joinPromise = () => new Promise(resolve => {
+                    var tracks = [];
+                    if (_localAudioTrack != null) {
+                        tracks.push(_localAudioTrack);
+                    }
+                    if (_localVideoTrack != null) {
+                        tracks.push(_localVideoTrack);
+                    }
+                    twilio
+                        .connect('@Model.AccessToken', {
+                            tracks: tracks,
+                            logLevel: 'debug',
+                            video: true
+                        })
+                        .then(room => {
+                            _room = room;
+                            _roomSid = room.sid;
+                            _userSid = room.localParticipant.sid;
+                            _room.localParticipant.tracks.forEach(track => {
+                                _localTrackPublications[track.kind] = track;
+                            });
+                            console.log('Connected to Room "%s"', room.name);
+
+                            remoteNameDiv.innerHTML = 'Waiting for <span class="_lr-hide">@(Model.UserId != null ? Model.OtherParticipantName : "host")</span>...';
+                            room.participants.forEach(participantConnected);
+                            room.on('participantConnected', participantConnected);
+
+                            room.on('participantDisconnected', participantDisconnected);
+                            room.once('disconnected', error => {
+                                room.participants.forEach(participantDisconnected);
+                                endCall();
+                            });
+
+                            if (room.participants.size <  1) {
+                                waitingForParticipantDiv.style.display = 'block';
+                            }
+                            remoteNameDiv.style.display = 'block';
+                            endCallButton.style.display = 'block';
+
+                            resolve();
+                            sendHeartbeat();
+                        });
+                });
+
+                var output = Promise.resolve();
+
+                if (_localAudioTrack == null || _localAudioTrack.isStopped) {
+                    output = output.then(startAudioAsync);
+                }
+                if ((_localVideoTrack == null || _localVideoTrack.isStopped)) {
+                    output = output.then(() => showNextCameraAsync(_currentVideoDeviceId).then(() => {
+                        if (muteVideo) {
+                            _localVideoTrack.enable(false);
+                            disabledVideoModal.style.display = 'block';
+                        }
+                    }));
+                }
+
+                return output.then(joinPromise);
+            }
+            joinCallButton.onclick = function () {
+                if (_localVideoTrack) {
+                    _localVideoTrack.enable();
+                }
+                if (_localAudioTrack) {
+                    _localAudioTrack.enable();
+                    updateTrackMuteIndicator(_localAudioTrack, localMediaDiv);
+                }
+                join();
+            };
+            closeButton.onclick = closeVideoChat;
+
+            function closeVideoChat() {
+                var url = '@(Model.UserId == null ? "https://suturehealth.com/postvideo" : Url.Action("RoomClose", "Room", new {publicId = Model.VisitPublicId}))';
+                window.location.href = url;
+            };
+
+
+            function endCall() {
+                if (_room != null) {
+                    _room.localParticipant.tracks.forEach(publication => {
+                        publication.track.disable();
+                    });
+                    _room.disconnect();
+                    _room = null;
+                    stopLocalTrack(_localAudioTrack);
+                    stopLocalTrack(_localVideoTrack);
+
+                    console.log(`Disconnected!`);
+                    welcomeDiv.style.display = 'block';
+                    remoteNameDiv.innerHTML = "CALL ENDED";
+                }
+            }
+            function stopLocalTrack(track) {
+                if (track != null) {
+                    track.stop();
+                    //track = null;
+                }
+            }
+
+            function participantConnected(participant) {
+                console.log('Participant connected - @(Model.UserId == null ? "patient" : "physician")');
+
+                participant.on('trackSubscribed', track => {
+                    trackSubscribed(remoteMediaDiv, track);
+                });
+                participant.on('trackPublished', publication => {
+                    var isSubscribed = false;
+                    publication.on('subscribed', function (track) {
+                        console.log('Subscribed to ' + publication.kind + ' track');
+                        trackSubscribed(remoteMediaDiv, track);
+                        isSubscribed = true;
+                    });
+                    if (publication.track != null && publication.track.isSubscribed) {
+                        trackSubscribed(remoteMediaDiv, publication.track);
+                        isSubscribed = true;
+                    } else {
+                        // WORKAROUND - For Safari on iOS publishing new video feed after initial connection.
+                        // Twilio Video doesn't automatically subscribe to published feed like other browsers.
+                        delayAsync(3000).then(() => {
+                        if (isSubscribed == false) {
+                            new Promise(resolve => {
+                                endCall();
+                                resolve();
+                            }).then(join);
+                        }
+                        });
+                    }
+
+                });
+                participant.on('trackUnsubscribed', track => trackUnsubscribed(remoteMediaDiv, track));
+                participant.on('trackUnpublished', trackUnpublished);
+
+                participant.tracks.forEach(publication => {
+                    if (publication.isSubscribed) {
+                        trackSubscribed(remoteMediaDiv, publication.track);
+                    }
+                });
+                remoteNameDiv.innerHTML = '<img src="@Url.Content("~/images/newLoading.gif")" style="height: .8em;" /> Connecting you with <span class="_lr-hide">@(Model.OtherParticipantName)</span>';
+                delayAsync(3000).then(() => {
+                    remoteNameDiv.innerHTML = '<span class="_lr-hide">@(Model.OtherParticipantName)</span>';
+                });
+
+                waitingForParticipantDiv.style.display = '';
+            }
+
+            function participantDisconnected(participant) {
+                console.log('Participant disconnected - @(Model.UserId == null ? "patient" : "physician")');
+                remoteNameDiv.innerText = 'Participant disconnected...';
+            }
+
+            function trackSubscribed(div, track) {
+                track.attach('#' + div.getAttribute('id') + ' ' + track.kind);
+
+                track.on('disabled', track => updateTrackMuteIndicator(track, div));
+                track.on('enabled', track => updateTrackMuteIndicator(track, div));
+                track.on('switchedOff', track => updateTrackMuteIndicator(track, div));
+                track.on('switchedOn', track => updateTrackMuteIndicator(track, div));
+
+                updateTrackMuteIndicator(track, div);
+            }
+
+            function updateTrackMuteIndicator(track, div) {
+                var muteIndicator = div.getElementsByClassName('muteIndicator-' + track.kind)[0];
+                try {
+                    if (track.isEnabled) {
+                        muteIndicator.style.display = 'none';
+                    } else {
+                        muteIndicator.style.display = 'block';
+                    }
+                } catch (ex) { }
+            }
+
+            function trackUnsubscribed(div, track) {
+                div.querySelectorAll(track.kind).forEach(element => element.srcObject = null);
+                console.log('Track unsubscribed - ' + track.identity);
+                track.detach();
+            }
+            function trackUnpublished(publication) {
+                console.log('Track unpublished - ' + publication.trackName);
+            }
+
+        });
+
+
+        var keepLoopingSessionHeartbeat = true;
+        function sessionHeartbeat() {
+            if (keepLoopingSessionHeartbeat) {
+                sendHeartbeat();
+                delayAsync(60000).then(sessionHeartbeat);
+            }
+        }
+        function sendHeartbeat() {
+            var data = {
+                videoVisitSessionId: @Model.VideoVisitSessionId,
+                connected: _room != null && _room.state == 'connected',
+                bandwidth: _bandwidth
+            };
+            postAjax('@Url.Action("Heartbeat")', data);
+        }
+
+
+        function updateVideoSize() {
+            delayAsync(1000).then(() => {
+                    var remoteVideo = remoteMediaDiv.getElementsByTagName('video')[0];
+                    if (remoteVideo != null) {
+                        if (remoteVideo.videoHeight > remoteVideo.videoWidth) {
+                            remoteVideo.style.objectFit = 'contain';
+                        } else {
+                            remoteVideo.style.objectFit = '';
+                        }
+                    }
+                updateVideoSize();
+            });
+        }
+        updateVideoSize();
+
+
+        // bandwidth monitoring
+        const imageAddr = "@Url.Content("~/images/Login Image.png")";
+        const downloadSize = 565164; //bytes
+
+        function ShowProgressMessage(msg) {
+            if (console) {
+                if (typeof msg == "string") {
+                    console.log(msg);
+                } else {
+                    for (var i = 0; i < msg.length; i++) {
+                        console.log(msg[i]);
+                    }
+                }
+            }
+
+            var oProgress = document.getElementById("problems");
+            oProgress.style.display = '';
+            if (oProgress) {
+                var actualHTML = (typeof msg == "string") ? msg : msg.join("<br />");
+                oProgress.innerHTML = actualHTML;
+            }
+        }
+
+        var keepLoopingSpeedDetection = false;
+        function InitiateSpeedDetection() {
+            ShowProgressMessage('Calculating bandwidth...');
+            delayAsync(5000).then(() => {
+                window.setTimeout(MeasureConnectionSpeed, 10);
+                if (keepLoopingSpeedDetection) {
+                    InitiateSpeedDetection();
+                } else {
+                    ShowProgressMessage('');
+                }
+            });
+        };
+
+        function MeasureConnectionSpeed(resultCallback) {
+            var startTime, endTime;
+            var download = new Image();
+            download.onload = function () {
+                endTime = (new Date()).getTime();
+                showResults();
+            }
+
+            download.onerror = function (err, msg) {
+                ShowProgressMessage("Invalid image, or error downloading");
+            }
+
+            startTime = (new Date()).getTime();
+            var cacheBuster = "?nnn=" + startTime;
+            download.src = imageAddr + cacheBuster;
+
+            function showResults() {
+                var duration = (endTime - startTime) / 1000;
+                var bitsLoaded = downloadSize * 8;
+                var speedBps = (bitsLoaded / duration).toFixed(2);
+                var speedKbps = (speedBps / 1024).toFixed(0);
+                if (keepLoopingSpeedDetection) {
+                    ShowProgressMessage([
+                        '1,000kbps is ideal.',
+                        'Your connection speed is: ' + speedKbps + "kbps"
+                    ]);
+                }
+                if (resultCallback) {
+                    resultCallback(speedKbps);
+                }
+            }
+        }
+
+        // https://github.com/twilio/video-quickstart-js/blob/ac8006dbbdfc15675be7d027550d02b3b7961f41/quickstart/src/miclevel.js#L22
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioContext = AudioContext ? new AudioContext() : null;
+        function micLevel(stream, maxLevel, onLevel) {
+            audioContext.resume().then(() => {
+                const analyser = audioContext.createAnalyser();
+                analyser.fftSize = 1024;
+                analyser.smoothingTimeConstant = 0.5;
+
+                const source = audioContext.createMediaStreamSource(stream);
+                source.connect(analyser);
+                const samples = new Uint8Array(analyser.frequencyBinCount);
+
+                const track = stream.getTracks()[0];
+                let level = null;
+
+                var levels = [];
+                requestAnimationFrame(function checkLevel() {
+                    analyser.getByteFrequencyData(samples);
+                    const rms = rootMeanSquare(samples);
+                    const log2Rms = rms && Math.log2(rms);
+                    const newLevel = Math.ceil(maxLevel * log2Rms / 8);
+
+                    //if (level !== newLevel) {
+                        levels.push(newLevel);
+                        level = newLevel;
+                        //onLevel(level);
+                    //}
+
+                    //if (levels.length < 11) {
+                    //    requestAnimationFrame(track.readyState === 'ended'
+                    //        ? () => onLevel(0)
+                    //        : checkLevel);
+
+                    if (levels.length < 60 && rootMeanSquare(levels) <= 0) {
+                        requestAnimationFrame(checkLevel);
+                    } else {
+                        onLevel(rootMeanSquare(levels));
+                    }
+                });
+            });
+        }
+        function rootMeanSquare(samples) {
+            const sumSq = samples.reduce((sumSq, sample) => sumSq + sample * sample, 0);
+            return Math.sqrt(sumSq / samples.length);
+        }
+        document.querySelectorAll('.button, .log-it').forEach(button => {
+            button.addEventListener('click', function () {
+                console.log('Button clicked - ' + button.innerText);
+            });
+        });
+    </script>
+</body>
+</html>

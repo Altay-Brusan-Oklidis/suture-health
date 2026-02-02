@@ -1,0 +1,31 @@
+﻿@model SutureHealth.AspNetCore.Models.AlertViewModel
+@{
+    var uniqueId = string.IsNullOrWhiteSpace(Model.Id) ? Guid.NewGuid().ToString() : Model.Id;
+}
+<div id="@uniqueId" class="alert @($"alert-{Model.Style.ToString().ToLower()}") alert-dismissible fade show" role="alert" style="position: fixed; top: 0; width: 100%; z-index: 11002 !important; @(Model.Hidden ? "display: none;" : null)">
+    <div class="row">
+        <div class="col-md-10">
+            @Model.Text
+        </div>
+        <div class="col-md-2">
+            @if (Model.Link != null)
+            {
+                <a id="@(!string.IsNullOrWhiteSpace(Model.Link.Id) ? Model.Link.Id : $"alert-link-{uniqueId}")" href="@Model.Link.NavigationUrl">@Model.Link.Text</a>
+            }
+            @if (Model.CanClose)
+            {
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            }
+        </div>
+    </div>
+</div>
+@if (!Model.Hidden && Model.FadeSeconds.HasValue)
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                $("#@(uniqueId)").alert("close");
+            }, @(Model.FadeSeconds.Value) * 1000);
+        });
+    </script>
+}

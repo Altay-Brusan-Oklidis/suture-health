@@ -1,0 +1,130 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.Invitation.FaxInvitation
+
+@{
+    Layout = null;
+    ViewBag.Title = "SutureHealth";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Last-Modified" content="" />
+    <meta http-equiv="Content-Type" content="text/html; CHARSET=iso-8859-1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- Used to enable features on mobile devices -->
+    <link rel="shortcut icon" href="~/images/logo2_emblem.png" type="image/x-icon" /><!-- browser icon -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+    <style>
+        tr {
+            width: 100%;
+            height: auto;
+        }
+
+        td {
+            width: 33.3%;
+            height: auto;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    @if (!Model.IsDownloading)
+    {
+        <div id="downloadButton" align="center">
+            <a href="@Model.DownloadUrl">
+                <input type="button" value="Download This Document" style="background-color: #1e86e8; font-family: Montserrat, Verdana, Arial; color: #ffffff; font-size: large; border-radius: 2px; display: inline-block; padding: 6px 12px; margin-bottom: 0; font-weight: 400; line-height: 1.42857143; text-align: center; white-space: nowrap; vertical-align: middle; touch-action: manipulation; cursor: pointer; user-select: none; background-image: none; border: 1px solid transparent;" />
+            </a>
+        </div>
+    }
+    <div style="width: 650px; height: 841px; margin: auto; font-family: Montserrat, Open Sans,Verdana,Arial; margin-top: 60px">
+        <div align="center">
+            <h1>NOTICE</h1>
+        </div>
+        <div align="center">
+            <h2>We no longer accept faxed documents.</h2>
+        </div>
+        <div align="left">
+            <h3>FROM: @Model.FacilityName</h3>
+        </div>
+        @if (Model.HasPhysicians)
+        {
+            <div style="border-bottom: 1px solid black">
+                <table width="100%" style="border:none;">
+                    @for (int row = 0; row < 6; row++)
+                    {
+                        <tr>
+                            @for (int column = 0; column < 3; column++)
+                            {
+                                var member = Model.PhysicianFullNames.ElementAtOrDefault(row * 3 + column);
+
+                                if (member != null)
+                                {
+                                    <td style="font-size: small">@member</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>}
+        <div style="margin: 15px 0 15px 0">
+            @{
+                switch (Model.UsageRequirement)
+                {
+                    case SutureHealth.Providers.CommitmentLevel.Require:
+                        <text><p>Partnering with SutureHealth, we now <strong>exclusively</strong> sign all documents electronically through SutureSign.</p>
+                            <p><strong>As of @Model.TimeFrame</strong>, we no longer accept documents any other way.</p></text> break;
+                    case SutureHealth.Providers.CommitmentLevel.Recommended:
+                        <text><p>Partnering with SutureHealth, we <strong>highly prefer</strong> to sign all documents electronically through SutureSign and strongly urge you to sign up for an account.</p>
+                            <p><strong>As of @Model.TimeFrame</strong>, we expect to receive all documents in SutureSign.</p></text> break;
+                    case SutureHealth.Providers.CommitmentLevel.NotRequired:
+                        <text><p>Partnering with SutureHealth, we <strong>highly prefer</strong> to sign all documents electronically through SutureSign and strongly urge you to sign up for an account.</p>
+                            <p><strong>As of @Model.TimeFrame</strong>, we prefer to receive all documents in SutureSign.</p></text> break;
+                }
+            }
+        </div>
+        <div style="margin: 10px 0 10px 0">
+            <p>Please contact Suture Health directly to get started by typing the address below in your web browser.</p>
+        </div>
+        <div align="center" style="margin-bottom: 10px">
+            <p><strong>www.suturehealth.com/SignUpNow</strong></p>
+        </div>
+        <div>
+            <p>You can also reach them at (205) 417-2400 or at sales@suturehealth.com.</p>
+        </div>
+        <div>
+            <p>Thank you for complying with our new policy. We think this will benefit you as well.</p>
+        </div>
+        <div style="border-bottom: 1px solid black; padding-bottom: 15px">
+            <p>Sincerely,</p>
+            <p>@Model.SubmitterFullName</p>
+        </div>
+        <div align="left" style="padding-bottom: 15px">
+            <p>SutureSign is an electronic signature network that enables us to eSign all documents in one place rather than logging into multiple portals or chasing paper documents. Simply upload a PDF of the documents needing our signature, and you will get it back much faster.</p>
+        </div>
+        <div align="left">
+            <p><strong>SutureSign will benefit you by:</strong></p>
+        </div>
+        <div>
+            <ul>
+                <li>Decreasing our signature turnaround time</li>
+                <li>Automatically reminding us of pending documents</li>
+                <li>Decreasing your costs for getting documents signed</li>
+                <li>Allowing you to bill quicker and improve your cash flow</li>
+                <li>Giving you a better way to track signature status</li>
+            </ul>
+        </div>
+        <div style="padding-top: 10px" align="center">
+            <p>Plus, you can <strong>take advantage of SutureSign with all your physicians!</strong></p>
+        </div>
+    </div>
+</body>
+</html>

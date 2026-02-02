@@ -1,0 +1,20 @@
+﻿@page
+@model SutureHealth.AspNetCore.Areas.Identity.Pages.Account.ConfirmEmailModel
+@{
+    Model.RequireKendo = true;
+    Model.RequireValidation = true;
+}
+
+@if (Model.ConfirmationErrors.IsNullOrEmpty())
+{
+    @(await Html.PartialAsync("ConfirmEmailDialog", new ConfirmEmailViewModel {
+        SutureUser = @Model.CurrentUser,
+        TriggerSelector = "[data-trigger='ConfirmEmailDialog']"
+    }))
+}
+else
+{
+    <p>
+        We apologize but that confirmation token is not valid any longer.
+    </p>
+}

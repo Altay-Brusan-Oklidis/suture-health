@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SutureHealth.PatientAPI.AspNetCore</name>
+    </assembly>
+    <members>
+        <member name="T:SutureHealth.Patients.AspNetCore.ConfigureSwaggerOptions">
+            <summary>
+            Configures the Swagger generation options.
+            </summary>
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+        </member>
+        <member name="M:SutureHealth.Patients.AspNetCore.ConfigureSwaggerOptions.#ctor(Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SutureHealth.Patients.AspNetCore.ConfigureSwaggerOptions"/> class.
+            </summary>
+            <param name="provider">The <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
+        </member>
+        <member name="M:SutureHealth.Patients.AspNetCore.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Controllers.PatientsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Controllers.PatientsController.Configuration">
+            <summary>
+            Configuration.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Controllers.PatientsController.PatientServices">
+            <summary>
+            IPatientServices.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Controllers.PatientsController.Logger">
+            <summary>
+            Logger.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Controllers.PatientsController.Mapper">
+            <summary>
+            Mapper.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Controllers.PatientsController.Tracer">
+            <summary>
+            Tracer.
+            </summary>
+        </member>
+        <member name="M:SutureHealth.Patients.v0100.Controllers.PatientsController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,SutureHealth.Patients.Services.IPatientServicesProvider,AutoMapper.IMapper,SutureHealth.Diagnostics.ITracingService,Microsoft.Extensions.Logging.ILogger{SutureHealth.Patients.v0100.Controllers.PatientsController})">
+            <summary>
+            Initialized the variable of <see cref="T:SutureHealth.Patients.v0100.Controllers.PatientsController"/> class.
+            </summary>
+            <param name="configuration">configuration</param>
+            <param name="patientServices">patientServices</param>
+            <param name="mapper">mapper</param>
+            <param name="tracer">tracer</param>
+            <param name="logger">logger</param>
+        </member>
+        <member name="M:SutureHealth.Patients.v0100.Controllers.PatientsController.GetById(System.Int32)">
+            <summary>
+            Api for getting the patient by patient id.
+            </summary>
+            <param name="patientId">The patient id</param>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Patients.v0100.Controllers.PatientsController.Match(SutureHealth.Patients.v0100.Models.PatientMatchingRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SutureHealth.Patients.v0100.Controllers.PatientsController.Search(SutureHealth.Patients.v0100.Models.Patients.SearchRequest,SutureHealth.Application.Services.IIdentityService,SutureHealth.Requests.Services.IInboxServicesProvider)">
+            <summary>
+            Search for patients in scope of the current user
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Mappings.PatientMappingProfile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Models.Address">
+            <summary>
+            Class <see cref="T:SutureHealth.Patients.v0100.Models.Address"/> used for define the Address
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.Line1">
+            <summary>
+            Gets or Sets the value of Line1
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.Line2">
+            <summary>
+            Gets or Sets the value of Line2
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.City">
+            <summary>
+            Gets or Sets the value of City
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.County">
+            <summary>
+            Gets or Sets the value of County
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.StateOrProvince">
+            <summary>
+            Gets or Sets the value of StateOrProvince
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.PostalCode">
+            <summary>
+            Gets or Sets the value of PostalCode
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.CountryOrRegion">
+            <summary>
+            Gets or Sets the value of CountryOrRegion
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.Created">
+            <summary>
+            Gets or Sets the value of Created
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.Updated">
+            <summary>
+            Gets or Sets the value of Updated
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Address.Id">
+            <summary>
+            Gets or Sets the value of Id
+            </summary>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Models.ContactInfo">
+            <summary>
+            Class <see cref="T:SutureHealth.Patients.v0100.Models.ContactInfo"/> used for define the contact information
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.ContactInfo.Type">
+            <summary>
+            Define the type of contact like mobile, email, fax etc
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.ContactInfo.Value">
+            <summary>
+            Gets or Sets the value contact
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.ContactInfo.Created">
+            <summary>
+            Gets or Sets the value of Created
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.ContactInfo.Updated">
+            <summary>
+            Gets or Sets the value of Updated
+            </summary>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Models.Identifier">
+            <summary>
+            Class <see cref="T:SutureHealth.Patients.v0100.Models.Identifier"/> used for define the identifier
+            </summary>
+        </member>
+        <member name="M:SutureHealth.Patients.v0100.Models.Identifier.ToString">
+            <summary>
+            Get the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Identifier.Created">
+            <summary>
+            Gets or Sets the value of Created
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Identifier.Updated">
+            <summary>
+            Gets or Sets the value of Updated
+            </summary>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Models.Identifier`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Models.OrganizationPatient">
+            <summary>
+            Class <see cref="T:SutureHealth.Patients.v0100.Models.OrganizationPatient"/> used for define the property of patient organization
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.OrganizationPatient.OrganizationUnitId">
+            <summary>
+            Gets or Sets the property of OrganizationUnitId
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.OrganizationPatient.MasterOrganizationPatientId">
+            <summary>
+            Gets or Sets the property of MasterOrganizationPatientId
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.OrganizationPatient.IsPreferred">
+            <summary>
+            Gets or Sets the property of IsPreferred
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.OrganizationPatient.Created">
+            <summary>
+            Gets or Sets the value of Created.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.OrganizationPatient.Updated">
+            <summary>
+            Gets or Sets the value of Created.
+            </summary>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Models.Gender">
+            <summary>
+            Enum <see cref="T:SutureHealth.Patients.v0100.Models.Gender"/> List the member.
+            </summary>
+        </member>
+        <member name="F:SutureHealth.Patients.v0100.Models.Gender.Undefined">
+            <summary>
+            Undefined
+            </summary>
+        </member>
+        <member name="F:SutureHealth.Patients.v0100.Models.Gender.Male">
+            <summary>
+            Male
+            </summary>
+        </member>
+        <member name="F:SutureHealth.Patients.v0100.Models.Gender.Female">
+            <summary>
+            Female
+            </summary>
+        </member>
+        <member name="F:SutureHealth.Patients.v0100.Models.Gender.Ambiguous">
+            <summary>
+            Ambiguous
+            </summary>
+        </member>
+        <member name="F:SutureHealth.Patients.v0100.Models.Gender.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="T:SutureHealth.Patients.v0100.Models.Patient">
+            <summary>
+            Class <see cref="T:SutureHealth.Patients.v0100.Models.Patient"/> represent the model of patient class.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Id">
+            <summary>
+            Gets or Sets the value of Id.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.FirstName">
+            <summary>
+            Gets or Sets the value of FirstName.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.MiddleName">
+            <summary>
+            Gets or Sets the value of MiddleName.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.LastName">
+            <summary>
+            Gets or Sets the value of LastName.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Suffix">
+            <summary>
+            Gets or Sets the value of Suffix.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Birthdate">
+            <summary>
+            Gets or Sets the value of DateOfBirth.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Gender">
+            <summary>
+            Gets or Sets the value of Gender.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.RequestId">
+            <summary>
+            Gets or Sets the value of RequestId.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.SourceOrganizationUnitId">
+            <summary>
+            Gets or Sets the value of SourceOrganizationUnitId.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.MasterOrganizationPatientId">
+            <summary>
+            Gets or Sets the value of MasterOrganizationPatientId.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Addresses">
+            <summary>
+            Gets or Sets the object of Addresses.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Contacts">
+            <summary>
+            Gets or Sets the object of Contacts.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Identifiers">
+            <summary>
+            Gets or Sets the object of Identifiers.
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.Organizations">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SutureHealth.Patients.v0100.Models.Patient.IsActive">
+            <summary>
+            Gets or Sets whether the patient record is currently active.
+            </summary>
+        </member>
+    </members>
+</doc>

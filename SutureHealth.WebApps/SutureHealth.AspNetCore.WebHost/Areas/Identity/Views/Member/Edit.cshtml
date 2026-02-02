@@ -1,0 +1,397 @@
+@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.EditModel
+@{
+    ViewBag.Title = $"{(Model.IsCreating ? "Create" : "Edit")} User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.RequireKendo = true;
+    Model.RequireUI = true;
+    Model.RequireValidation = true;
+    var isUserLimitReached = Model.IsUserLimitReached ? "true" : "false";
+    var maxAllowedCoummunityUsers = Model.MaxAllowedCoummunityUsers;
+    var isUserAppAdmin = Model.CurrentUser.IsApplicationAdministrator();
+}
+
+
+<section>
+    <div class="container-fluid">
+        <div class="col-12">
+            <h1 class="mb-0">@(Model.IsCreating ? "Create New" : "Edit") User</h1>
+            <hr class="mt-0" />
+        </div>
+    </div>
+</section>
+<section class="my-3">
+    <div class="container">
+        <form method="post">
+            <div class="row justify-content-center">
+                <div class="col-12 text-danger">
+                    @Html.ValidationSummary(true)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <fieldset>
+                        <legend>Personal</legend>
+                        <div class="mb-3">
+                            <label asp-for="FirstName">First Name</label>
+                            <input asp-for="FirstName" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="LastName">Last Name</label>
+                            <input asp-for="LastName" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Suffix">Suffix</label>
+                            <select asp-for="Suffix" asp-items="SutureHealth.AspNetCore.Mvc.Rendering.Lists.Suffixes" class="form-select"></select>
+                            <span asp-validation-for="Suffix" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="ProfessionalSuffix">Professional Suffix</label>
+                            <input asp-for="ProfessionalSuffix" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                            <span asp-validation-for="ProfessionalSuffix" class="text-danger"></span>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Professional</legend>
+                        <div class="mb-3">
+                            <label asp-for="MemberTypeId">Occupation</label>
+                            <select asp-for="MemberTypeId" asp-items="Model.Occupations" class="form-select" disabled="@(Model.HasPendingDocuments ? "disabled" : null)"></select>
+                            <span asp-validation-for="MemberTypeId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Npi">NPI</label>
+                            <input asp-for="Npi" maxlength="10" class="form-control" type="text" data-change-name="true" />
+                            <span asp-validation-for="Npi" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 signing-name">
+                            <label asp-for="SigningName">Signing Name</label>
+                            <input asp-for="SigningName" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                            <span asp-validation-for="SigningName" class="text-danger"></span>
+                        </div>
+                    </fieldset>
+                    <fieldset class="user-settings">
+                        <legend>Settings</legend>
+                        <div class="mb-3">
+                            <input asp-for="CanSignDocuments" type="checkbox" class="form-check-input" disabled="@(Model.HasPendingDocuments ? "disabled" : null)" />
+                            <label asp-for="CanSignDocuments" class="form-check-label">Can Sign Documents</label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="admin-settings">
+                        <legend>Settings</legend>
+                        <div class="mb-3">
+                            <input asp-for="ShowPatientsInfo" type="checkbox" class="form-check-input" />
+                            <label asp-for="ShowPatientsInfo" class="form-check-label">Can view patients info</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6 col-12">
+                    <fieldset>
+                        <legend>Contact</legend>
+                        <div class="mb-3">
+                            <label asp-for="Email">Email</label>
+                            <div class="input-group">
+                                <input asp-for="Email" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                @if (Model.IsEmailConfirmed)
+                                {
+                                    <div class="input-group-text" id="basic-addon2">
+                                        <i class="text-info fal fa-2x fa-shield"></i>
+                                    </div>
+                                }
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="MobileNumber">Mobile Phone</label>
+                            <div class="input-group">
+                                <kendo-maskedtextbox name="MobileNumber" mask="(000) 000-0000" unmask-on-post="true" for="MobileNumber" class="form-control"></kendo-maskedtextbox>
+                                @if (Model.IsMobileNumberConfirmed)
+                                {
+                                    <div class="input-group-text" id="basic-addon2">
+                                        <i class="text-info fal fa-2x fa-shield"></i>
+                                    </div>
+                                }
+                            </div>
+                            <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col">
+                                <label asp-for="OfficePhone">Direct Office Phone</label>
+                                <kendo-maskedtextbox name="OfficePhone" mask="(000) 000-0000" unmask-on-post="true" for="OfficePhone" class="form-control"></kendo-maskedtextbox>
+                                <span asp-validation-for="OfficePhone" class="text-danger"></span>
+                            </div>
+                            <div class="col">
+                                <label asp-for="OfficePhoneExtension">Ext</label>
+                                <kendo-maskedtextbox name="OfficePhoneExtension" mask="00000" unmask-on-post="true" for="OfficePhoneExtension" class="form-control"></kendo-maskedtextbox>
+                                <span asp-validation-for="OfficePhoneExtension" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Access Management</legend>
+                        <div class="mb-3">
+                            <label asp-for="UserName">UserName</label>
+                            <input asp-for="UserName" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <fieldset>
+                        <legend>
+                            Office Access
+                        </legend>
+                        <div class="facility-help-text">You can only manage access to offices for which you are an administrator.</div>
+                        <div>
+                            <span asp-validation-for="Offices" class="text-danger"></span>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <div>
+                                            <input asp-for="IsAllEditableOfficesActive" type="checkbox" class="form-check-input" disabled="@Model.Offices.Any(o => o.HasPendingDocuments)" />
+                                            <label asp-for="IsAllEditableOfficesActive" class="form-check-label">Active</label>
+                                        </div>
+                                    </th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">
+                                        Pending Signatures
+                                        <span class="help-icon">
+                                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Pending Document Signatures"></i>
+                                        </span>
+                                    </th>
+                                    <th scope="col">
+                                        User Management
+                                        <span class="help-icon">
+                                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Administrators can create or update users."></i>
+                                        </span>
+                                    </th>
+                                    @if (Model.CanEditBillingAdministrator)
+                                    {
+                                        <th scope="col">
+                                            Billing Administrator
+                                            <span class="help-icon">
+                                                <i class="fas fa-question-circle" data-toggle="tooltip" title="Enables user access to billing data for all signers at an office."></i>
+                                            </span>
+                                        </th>
+                                    }
+                                    <th scope="col">
+                                        Default
+                                        <span class="help-icon">
+                                            <i class="fas fa-question-circle" data-toggle="tooltip" title="The default office is what the user will see upon logon."></i>
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (var i = 0; i < Model.Offices.Length; ++i)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input asp-for="@Model.Offices[i].OrganizationId" type="hidden" />
+                                            <input class="form-check-input organization-active-checkbox" asp-for="@Model.Offices[i].Active" type="checkbox" disabled="@(!Model.Offices[i].CanEdit || Model.Offices[i].HasPendingDocuments)" data-pending-documents="@(Model.Offices[i].CanEdit && Model.Offices[i].HasPendingDocuments)" />
+                                        </td>
+                                        <td>
+                                            @Model.Offices[i].Name
+                                        </td>
+                                        <td>
+                                            @if (Model.Offices[i].CanEdit && Model.Offices[i].HasPendingDocuments)
+                                            {
+                                                <span class="text-danger p-1"><i class="fas fa-exclamation-triangle"></i></span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <input asp-for="@Model.Offices[i].UserManagement" type="checkbox" class="form-check-input" disabled="@(!Model.Offices[i].CanEdit)" />
+                                        </td>
+                                        @if (Model.CanEditBillingAdministrator)
+                                        {
+                                            <td>
+                                                <input asp-for="@Model.Offices[i].BillingAdministrator" type="checkbox" class="form-check-input" disabled="@(!Model.Offices[i].CanEdit)" />
+                                            </td>
+                                        }
+                                        <td>
+                                            <input asp-for="DefaultOrganizationId" class="form-check-input" type="radio" value="@Model.Offices[i].OrganizationId" disabled="@(!Model.CanEditDefault || !Model.Offices[i].CanEdit)" />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="div-user-relation">
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="div-distance text-center">
+                        <button id="SubmitButton" type="submit" class="btn btn-primary">@(Model.IsCreating ? "Create" : "Update") User</button>
+                        <button id="CancelButton" class="btn btn-secondary" type="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <input asp-for="MemberId" type="hidden" value="@Model.MemberId.GetValueOrDefault()" />
+        </form>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function userLimitReachedAlert() {
+            var maxAllowedCoummunityUsers = @Html.Raw(maxAllowedCoummunityUsers);
+            var modalHtml = `<div class="modal fade" id="userLimitAlertModal" tabindex="-1" role="dialog" aria-labelledby="userLimitAlertModalModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                                <h5 class="modal-title" id="userLimitAlertModalLabel">User Limit Reached</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-center text-justify" id="pAlertMessage">
+                                                        Community organizations are allowed only `+ maxAllowedCoummunityUsers + ` users to send documents. If you need more users to be added, send an email with the reason for your request to success@suturehealth.com
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button  id="okButton" type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+            $('body').append(modalHtml);
+
+            $('#userLimitAlertModal').modal('show');
+            $('#userLimitAlertModal').on('hidden.bs.modal', function () {
+                $(this).remove();
+            });
+            $('#okButton').click(function () {
+                $('#userLimitAlertModal').modal('hide');
+            })
+            var isAppAdmin = @Html.Raw(isUserAppAdmin.ToString().ToLower());
+            if (isAppAdmin) {
+                $('p#pAlertMessage').text("The total number of sending users allowed for this community organization is " + maxAllowedCoummunityUsers + ".");
+            }
+        }
+
+        var isUserLimitReached = @Html.Raw(isUserLimitReached)
+                if (isUserLimitReached == true) {
+            userLimitReachedAlert();
+        }
+
+        var signingNameChanged = false,
+            userNameChanged = $("#@Html.IdFor(m => m.UserName)").val().trim().length > 0,
+            onOccupationSet = function (id, onSuccess) {
+                var signingNameVisible;
+
+                $(".user-settings").toggle(id == @((int)SutureHealth.Application.MemberType.NursePractitioner) || id == @((int)SutureHealth.Application.MemberType.PhysicianAssistant));
+                $(".admin-settings").toggle(id == @((int)SutureHealth.Application.MemberType.ApplicationAdmin));
+                signingNameVisible = id == @((int)SutureHealth.Application.MemberType.Physician) || ($("#@Html.IdFor(m => m.CanSignDocuments):visible").prop("checked") === true);
+                $(".signing-name").toggle(signingNameVisible);
+
+                if (!signingNameVisible) {
+                    signingNameChanged = false;
+                }
+
+                $("#@Html.IdFor(m => m.Npi)").valid();
+                $("#@Html.IdFor(m => m.ProfessionalSuffix)").valid();
+                showRelationships(onSuccess);
+            },
+            showRelationships = function (onSuccess) {
+                var organizationIds = [];
+
+                $(".organization-active-checkbox:checked").each(function () {
+                    var checkbox = $(this);
+                    if (!checkbox.is(":disabled") || checkbox.data("pendingDocuments") === 'True') {
+                        organizationIds.push($(this).siblings("input[type='hidden']").val());
+                    }
+                });
+
+                $("#SubmitButton").attr("disabled", "disabled");
+                $.post("@(Model.IsCreating ? Url.RouteUrl("MemberRelationshipsNew") : Url.RouteUrl("MemberRelationships", new { memberId = Model.MemberId.Value }))",
+                    {
+                        "MemberTypeId": $("#@Html.IdFor(m => m.MemberTypeId)").val(),
+                        "Organizations": organizationIds
+                    },
+                    function (data) {
+                        $(".div-user-relation").html(data);
+                        if (onSuccess) {
+                            onSuccess();
+                        }
+                        $("#SubmitButton").removeAttr("disabled");
+                    });
+            },
+            populateSigningNameIfUnchanged = function () {
+                var lastName = $("#@Html.IdFor(m => m.LastName)").val(),
+                    firstName = $("#@Html.IdFor(m => m.FirstName)").val(),
+                    suffix = $("#@Html.IdFor(m => m.Suffix)").val(),
+                    professionalSuffix = $("#@Html.IdFor(m => m.ProfessionalSuffix)").val();
+
+                if (signingNameChanged && $("#@Html.IdFor(m => m.SigningName)").is(":visible")) {
+                    return;
+                }
+
+                $("#@Html.IdFor(m => m.SigningName)").val((firstName + " " + lastName + (suffix.length == 0 ? "" : " " + suffix) + (professionalSuffix.trim().length == 0 ? "" : ", " + professionalSuffix)).trim());
+                $("#@Html.IdFor(m => m.SigningName)").valid();
+            };
+
+        $("#@Html.IdFor(m => m.LastName), #@Html.IdFor(m => m.FirstName), #@Html.IdFor(m => m.Suffix), #@Html.IdFor(m => m.ProfessionalSuffix)").change(populateSigningNameIfUnchanged);
+
+        $("#@Html.IdFor(m => m.Email)").change(function () {
+            if (!userNameChanged) {
+                $("#@Html.IdFor(m => m.UserName)").val($(this).val());
+            }
+        });
+
+        $("#CancelButton").click(function () {
+            window.location.href = "@Model.CancelUrl";
+        });
+
+        $(".organization-active-checkbox").change(function () {
+            var totalCheckboxes = $(".organization-active-checkbox:enabled").length;
+            var checkedBoxes = $(".organization-active-checkbox:enabled:checked").length;
+            $("#@Html.IdFor(m => m.IsAllEditableOfficesActive)").prop("checked", checkedBoxes == totalCheckboxes);
+            showRelationships();
+        });
+
+        $("#@Html.IdFor(m => m.IsAllEditableOfficesActive)").change(function (ev) {
+            $(".organization-active-checkbox:enabled").prop("checked", ev.target.checked);
+
+            showRelationships();
+        });
+
+        $("#@Html.IdFor(m => m.CanSignDocuments)").click(function () {
+            $(".signing-name").toggle($(this).prop("checked"));
+        });
+
+        $("#@Html.IdFor(m => m.MemberTypeId)").change(function () {
+            onOccupationSet($(this).val());
+        });
+
+        $("#@Html.IdFor(m => m.SigningName)").change(function () {
+            signingNameChanged = true;
+        });
+
+        $("#@Html.IdFor(m => m.UserName)").change(function () {
+            userNameChanged = true;
+        });
+
+        $(".ui-clear-button").click(function () {
+            var formGroup = $(this).parent();
+            formGroup.children('.form-control').valid();
+        });
+
+        onOccupationSet(@Model.MemberTypeId.GetValueOrDefault(), function () {
+    @if (Model.HasRelationships)
+    {
+        <text>
+                    $(".cbActiveRelation").prop("checked", false);
+                $("@Html.Raw(string.Join(", ", Model.Relationships.Where(r => r.Active).Select(r => $".cbActiveRelation[data-member-id='{r.MemberId}']")))").prop("checked", true);
+        </text>
+    }
+                                    });
+    });
+</script>

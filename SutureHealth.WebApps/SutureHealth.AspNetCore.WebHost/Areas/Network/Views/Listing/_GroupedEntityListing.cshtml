@@ -1,0 +1,17 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel.GroupedEntityListing
+@using SutureHealth.AspNetCore.Areas.Network.Models.Listing;
+@foreach (var group in Model.EntitiesByGroup)
+{
+    <div style="display: inline-block; width: 100%; color: #00b3b3; font-size: 18px; border-bottom: solid #00b3b3 3px; margin-bottom: 10px;">
+        <span style="margin-left: 35px;">
+            @group.Key (@group.Value.Count())
+        </span>
+    </div>
+    foreach (var entity in group.Value)
+    {
+        <div class="entity-list-item @(Html.GetInvitationStateCssClass(entity)) invite-loading invite-available" data-provider-id="@entity.ProviderId" data-user-id="@(entity.IsSutureCustomer ? entity.SutureCustomer.SignerUserId.GetValueOrDefault().ToString() : default(long).ToString())" data-suture-joined-network-date-ticks="@(entity.IsSutureCustomer ? entity.SutureCustomer.DateCreatedTicks.ToString() : default(long).ToString())" data-has-claims-with-user="@entity.HasClaimsWithUser" style="position: relative;">
+            @Html.Partial("_EntityListItem-Row", entity)
+            @Html.Partial("_EntityListItem-Grid", entity)
+        </div>
+    }
+}

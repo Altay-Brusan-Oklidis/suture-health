@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>SutureHealth.DataScraping</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.17.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SutureHealth.Common\SutureHealth.Common.csproj" />
+    <ProjectReference Include="..\SutureHealth.PatientAPI.Core\SutureHealth.PatientAPI.Core.csproj" />
+  </ItemGroup>
+
+</Project>

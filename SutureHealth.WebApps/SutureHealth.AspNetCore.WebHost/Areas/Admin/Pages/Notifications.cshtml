@@ -1,0 +1,157 @@
+﻿@page
+@model SutureHealth.AspNetCore.Areas.Admin.Pages.NotificationsModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@{
+    Model.RequireUI = true;
+    Model.RequiresLoading = true;
+    ViewBag.Title = "Notifications";
+}
+
+@Html.AntiForgeryToken()
+@section Styles {
+    <style type="text/css">
+        .k-grid tr:hover {
+            background-color: #ffffff !important;
+        }
+    </style>
+}
+    <section class="mt-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h2 style="font-weight: bold;">
+                        @ViewBag.Title
+                    </h2>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pb-3">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <kendo-grid name="NotificationsGrid" detail-template-id="NotificationDetail" on-detail-init="onDetailInit" resizable="true">
+                        <datasource type="DataSourceTagHelperType.Ajax" server-operation="true" server-filtering="true" server-sorting="true" page-size="20" on-request-end="onGridRequestEnd">
+                            <transport>
+                                <read url="@Url.Page("Notifications")" type="POST" data="forgeryToken" />
+                            </transport>
+                            <schema>
+                                <model id="NotificationId">
+                                    <fields>
+                                        <field name="NotificationId" type="number" />
+                                        <field name="OriginationDate" type="date" />
+                                        <field name="TerminationDate" type="date" />
+                                        <field name="Channel" type="string" />
+                                        <field name="DestinationUri" type="string" />
+                                        <field name="Subject" type="string" />
+                                        <field name="Complete" type="boolean" />
+                                        <field name="Success" type="boolean" />
+                                        <field name="NotificationDate" type="date" />
+                                        <field name="DetailUrl" type="string" />
+                                    </fields>
+                                </model>
+                            </schema>
+                            <sorts>
+                            <sort field="OriginationDate" direction="desc" />
+                            </sorts>
+                        </datasource>
+                        <columns>
+                            <column field="OriginationDate" title="Origination Date" template="#= kendo.toString(OriginationDate, 'g') #">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" />
+                                </filterable>
+                            </column>
+                            <column field="TerminationDate" title="Termination Date" template="#= kendo.toString(TerminationDate, 'd') #">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" />
+                                </filterable>
+                            </column>
+                            <column field="Channel" title="Channel" template="#= ChannelText #">
+                                <filterable>
+                                    <cell show-operators="false" template="channelFilter" />
+                                </filterable>
+                            </column>
+                            <column field="DestinationUri" title="Destination Uri">
+                                <filterable enabled="true">
+                                    <cell operator="contains" suggestion-operator="Contains" show-operators="false" />
+                                </filterable>
+                            </column>
+                            <column field="Subject" title="Subject">
+                                <filterable enabled="true">
+                                    <cell operator="contains" suggestion-operator="Contains" show-operators="false" />
+                                </filterable>
+                            </column>
+                            <column field="Complete" title="Complete" template="<i class='far # if (Complete) { #fa-check-square# } else { #fa-square# }#'></i>">
+                                <filterable>
+                                    <cell show-operators="false" template="boolFilter" />
+                                </filterable>
+                            </column>
+                            <column field="Success" title="Success" template="<i class='far # if (Success) { #fa-check-square# } else { #fa-square# }#'></i>">
+                                <filterable>
+                                    <cell show-operators="false" template="boolFilter" />
+                                </filterable>
+                            </column>
+                            <column field="NotificationDate" title="Notification Date" template="#= NotificationDate != null ? kendo.toString(NotificationDate, 'g') : '' #">
+                                <filterable enabled="true">
+                                    <cell show-operators="false" />
+                                </filterable>
+                            </column>
+                        </columns>
+                        <pageable enabled="true" page-size="20" page-sizes-enabled="true" page-sizes="new int[]{ 10, 20, 50 }" refresh="true" />
+                        <column-menu enabled="true" filterable="false" />
+                        <filterable mode="row" extra="false" />
+                        <sortable enabled="true" />
+                    </kendo-grid>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script id="NotificationDetail" type="text/html">
+        <div class="text-center">
+                <i class="far fa-spinner fa-spin fa-2x"></i>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+        window.onGridRequestEnd = function (e) {
+            window.LoadingPanel.visible(false);
+        };
+
+        window.onDetailInit = function (e) {
+            e.detailCell.load(e.data.DetailUrl);
+        };
+
+        window.forgeryToken = function () {
+            return kendo.antiForgeryTokens();
+        };
+
+        window.boolFilter = function (e) {
+            let field = e.element.parents("[data-field]").attr("data-field"),
+                dataSource = (function () {
+                    switch (field) {
+                        case "Complete":
+                            return [{ "Text": "Complete", "Value": true }, { "Text": "Incomplete", "Value": false }];
+                        case "Success":
+                            return [{ "Text": "Successful", "Value": true }, { "Text": "Unsuccessful", "Value": false }];
+                    }
+                })();
+
+            e.element.kendoDropDownList({
+                "dataSource": dataSource,
+                "dataValueField": "Value",
+                "dataTextField": "Text"
+            });
+        }
+
+        window.channelFilter = function (e) {
+            e.element.kendoDropDownList({
+                "dataSource": new kendo.data.DataSource({
+                    "data": @Html.Raw(Json.Serialize(Model.Channels))
+                }),
+                "dataValueField": "Key",
+                "dataTextField": "Value",
+                "valuePrimitive": true
+            });
+        }
+    </script>

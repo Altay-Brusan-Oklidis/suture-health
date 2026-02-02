@@ -1,0 +1,39 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Member.SettingsModel
+@{
+    Model.RequireKendo = true;
+}
+<section class="mt-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <h2 style="font-weight: bold;">
+                            @Model.UserName's Settings
+                        </h2>
+                    </div>
+
+                </div>
+                <hr class="mt-0" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <partial name="_SettingsGrid" model="Model.SettingsGrid" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <a href="@Url.RouteUrl("AdminMemberSearch")" class="btn btn-outline-primary">Go Back</a>
+            </div>
+        </div>
+    </div>
+</section>

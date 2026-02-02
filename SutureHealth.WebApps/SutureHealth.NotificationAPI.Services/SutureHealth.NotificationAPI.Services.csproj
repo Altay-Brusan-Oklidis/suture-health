@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>SutureHealth.NotificationAPI.Services</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Core\SutureHealth.NotificationAPI.Core.csproj" />
+        <ProjectReference Include="..\SutureHealth.NotificationAPI.Providers\SutureHealth.NotificationAPI.Providers.csproj" />
+        <ProjectReference Include="..\SutureHealth.Services.Common\SutureHealth.Services.Common.csproj" />
+    </ItemGroup>
+
+</Project>

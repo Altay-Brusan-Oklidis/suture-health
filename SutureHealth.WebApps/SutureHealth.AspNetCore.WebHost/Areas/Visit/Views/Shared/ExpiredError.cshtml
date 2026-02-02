@@ -1,0 +1,37 @@
+﻿@model ExpiredErrorModel
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Video Visit Error</title>
+    <link rel="icon" href="~/images/logo2_emblem.png">
+    <link rel="stylesheet" href="~/css/ChatVideo.min.css" />
+</head>
+<body>
+    <div id="patient-container">
+        <div style="margin-top: 50px; margin-bottom: 35px;">
+            <img src="~/images/logo2_600x221.png" />
+        </div>
+
+        <div style="text-align: center">
+            <h3 class="negative spaced">
+                If you have a medical emergency, call 911 immediately.
+            </h3>
+            @if (Model.IsAuthenticated)
+            {
+                <h2>Visit expired</h2>
+                <h3>You can create another visit <a asp-route="Visit">here.</a></h3>
+            }
+            else
+            {
+                <h2>@Model.HostName is not available at this time</h2>
+                <h3>Please call the office during business hours at <a href="tel:@Model.HostSupportPhoneNumber">@Model.HostSupportPhoneNumber</a>.</h3>
+            }
+        </div>
+    </div>
+</body>
+</html>

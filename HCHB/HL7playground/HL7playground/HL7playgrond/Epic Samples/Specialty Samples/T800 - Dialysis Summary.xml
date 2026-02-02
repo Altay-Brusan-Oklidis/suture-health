@@ -1,0 +1,1637 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <realmCode code="US" />
+  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+  <templateId root="1.2.840.114350.1.72.1.51693" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01" />
+  <templateId root="2.16.840.1.113883.3.117.1.8.1.1" />
+  <id assigningAuthorityName="EPC" extension="efbd9ba2-0748-11eb-b9fb-d2068206269d" root="1.2.840.114350.1.13.5325.1.7.1.1" />
+  <code code="29749-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Dialysis Summary" />
+  <title>Dialysis Summary</title>
+  <effectiveTime value="20201005152540-0500" />
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
+  <languageCode code="en-US" />
+  <recordTarget>
+    <patientRole>
+      <id extension="IDC261830F" root="1.2.840.114350.1.13.5325.1.7.3.688884.100" />
+      <addr use="HP">
+        <streetAddressLine>3151 Newbury Drive</streetAddressLine>
+        <county>DANE</county>
+        <city>FITCHBURG</city>
+        <state>WI</state>
+        <postalCode>53719</postalCode>
+        <country>USA</country>
+        <useablePeriod xsi:type="IVL_TS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <low value="20201005" />
+          <high nullFlavor="NA" />
+        </useablePeriod>
+      </addr>
+      <telecom use="HP" value="tel:+1-608-287-9878" />
+      <patient>
+        <name use="L">
+          <given>Ralphie</given>
+          <family>Vanburen</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGenderCode" displayName="Male" />
+        <birthTime value="19960904" />
+        <sdtc:deceasedInd value="false" xmlns:sdtc="urn:hl7-org:sdtc" />
+        <maritalStatusCode code="D" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" displayName="Divorced" />
+        <raceCode code="2028-9" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity" displayName="Asian" />
+        <ethnicGroupCode nullFlavor="UNK" />
+        <languageCommunication>
+          <languageCode nullFlavor="UNK" />
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+        <name>Monona Skilled Nursing Facility</name>
+        <telecom use="WP" value="tel:+1-608-486-2547" />
+        <addr use="WP">
+          <streetAddressLine nullFlavor="UNK" />
+          <city nullFlavor="UNK" />
+          <state>MA</state>
+          <postalCode>02134</postalCode>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20201005152540-0500" />
+    <assignedAuthor>
+      <id extension="9.5" root="1.2.840.114350.1.1" />
+      <addr nullFlavor="NA" />
+      <telecom nullFlavor="NA" />
+      <assignedAuthoringDevice>
+        <manufacturerModelName>Epic - Version 9.5</manufacturerModelName>
+        <softwareName>Epic - Version 9.5</softwareName>
+      </assignedAuthoringDevice>
+      <representedOrganization>
+        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+        <name>Monona Skilled Nursing Facility</name>
+        <telecom use="WP" value="tel:+1-608-486-2547" />
+        <addr use="WP">
+          <streetAddressLine nullFlavor="UNK" />
+          <city nullFlavor="UNK" />
+          <state>MA</state>
+          <postalCode>02134</postalCode>
+        </addr>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+        <name>Monona Skilled Nursing Facility</name>
+        <telecom use="WP" value="tel:+1-608-486-2547" />
+        <addr use="WP">
+          <streetAddressLine nullFlavor="UNK" />
+          <city nullFlavor="UNK" />
+          <state>MA</state>
+          <postalCode>02134</postalCode>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <legalAuthenticator>
+    <time value="20201005152540-0500" />
+    <signatureCode code="S" />
+    <assignedEntity>
+      <id nullFlavor="UNK" />
+      <code nullFlavor="UNK" />
+      <addr nullFlavor="UNK" />
+      <telecom nullFlavor="UNK" />
+      <assignedPerson>
+        <name nullFlavor="UNK" />
+      </assignedPerson>
+    </assignedEntity>
+  </legalAuthenticator>
+  <documentationOf typeCode="DOC">
+    <serviceEvent classCode="PCPR">
+      <effectiveTime>
+        <low value="19960904" />
+        <high value="20201005" />
+      </effectiveTime>
+      <performer typeCode="PRF">
+        <time>
+          <low value="20200929" />
+          <high nullFlavor="PINF" />
+        </time>
+        <assignedEntity>
+          <id nullFlavor="UNK" />
+          <code code="defProvRoleCode" codeSystem="defProvRoleCodeSystem" displayName="defProvRoleDisplayName">
+            <originalText>Dialysis</originalText>
+            <translation code="16" codeSystem="1.2.840.114350.1.72.1.7.7.10.688867.4160" codeSystemName="Epic.DXC.StandardProviderSpecialtyType" displayName="Dialysis" />
+          </code>
+          <addr use="WP">
+            <streetAddressLine>202 S 2nd St</streetAddressLine>
+            <city>Madison</city>
+            <state>WI</state>
+            <postalCode>53703</postalCode>
+          </addr>
+          <telecom use="WP" value="tel:+1-555-555-5555" />
+          <telecom value="fax:+1-555-555-5555" />
+          <assignedPerson>
+            <name use="L">
+              <given>Cori</given>
+              <family>Ryne</family>
+              <suffix qualifier="AC"> MD</suffix>
+            </name>
+          </assignedPerson>
+          <representedOrganization classCode="ORG">
+            <telecom nullFlavor="UNK" />
+            <addr nullFlavor="UNK" />
+          </representedOrganization>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.3.117.1.8.2.5" extension="2016-04-01" />
+          <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Plan of Treatment" />
+          <title>Dialysis Plan of Treatment</title>
+          <text>
+            <table>
+              <caption>Dialysis Prescription</caption>
+              <colgroup>
+                <col span="2" width="25%" />
+                <col width="50%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>As-Of Date</th>
+                  <th>Prescribed Dry Weight</th>
+                  <th>Primary Setting</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10/05/2020</td>
+                  <td>176 lb 5.9 oz</td>
+                  <td>Outpatient Dialysis Clinic</td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <caption>Instructions</caption>
+              <colgroup>
+                <col span="4" width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Modality</th>
+                  <th>Prescribed Duration (hours)</th>
+                  <th>Frequency</th>
+                  <th>Blood Flow Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Conventional Hemodialysis</td>
+                  <td>3:00</td>
+                  <td>MWF</td>
+                  <td>250 mL/min</td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <caption>Dialysis Access</caption>
+              <colgroup>
+                <col span="2" width="50%"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>fistula</td>
+                  <td>RIGHT FOREARM - ANTERIOR</td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <caption>Dialysate</caption>
+              <colgroup>
+                <col span="4" width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Sodium Level</th>
+                  <th>Potassium Level</th>
+                  <th>Calcium Level</th>
+                  <th>Bicarbonate Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>140 mEq/L</td>
+                  <td>2 mEq/L</td>
+                  <td>3 mEq/L</td>
+                  <td>35 mEq/L</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <footnote styleCode="xSectionSubTitle">from Last 30 Days</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.3.117.1.8.2.7" extension="2016-04-01" />
+          <code code="72055-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vascular Access Panel" />
+          <title>Dialysis Access Sites</title>
+          <text>
+            <table>
+              <colgroup>
+                <col span="5" width="20%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th>Location</th>
+                  <th>Placement Date</th>
+                  <th>Removal Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AVGraft</td>
+                  <td>Active</td>
+                  <td>Left Forearm - Anterior</td>
+                  <td>08/04/2020</td>
+                  <td />
+                </tr>
+                <tr>
+                  <td>Fistula</td>
+                  <td>Active</td>
+                  <td>Right Forearm - Anterior</td>
+                  <td>05/05/2020</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.3.117.1.8.2.2" extension="2016-04-01" />
+          <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures" />
+          <title>Historical Dialysis Procedures</title>
+          <text>
+            <table>
+              <colgroup>
+                <col span="10" width="10%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>BP Pre</th>
+                  <th>BP Post</th>
+                  <th>Weight Pre</th>
+                  <th>Weight Post</th>
+                  <th>Treatment Duration</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Achieved BFR</th>
+                  <th>Vascular Access</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10/05/2020</td>
+                  <td>130/85 sitting</td>
+                  <td>132/83 sitting</td>
+                  <td>178 lb 9.2 oz</td>
+                  <td>176 lb 5.9 oz</td>
+                  <td>3:00</td>
+                  <td>07:00 AM</td>
+                  <td>10:00 AM</td>
+                  <td>250</td>
+                  <td>AVF Only</td>
+                </tr>
+                <tr>
+                  <td>10/02/2020</td>
+                  <td>138/82 sitting</td>
+                  <td>136/80 sitting</td>
+                  <td>178 lb 9.2 oz</td>
+                  <td>178 lb 9.2 oz</td>
+                  <td>3:03</td>
+                  <td>10:22 AM</td>
+                  <td>01:25 PM</td>
+                  <td>275</td>
+                  <td>AVF Only</td>
+                </tr>
+                <tr>
+                  <td>09/30/2020</td>
+                  <td>136/82 sitting</td>
+                  <td>135/85 sitting</td>
+                  <td>178 lb 9.2 oz</td>
+                  <td>178 lb 9.2 oz</td>
+                  <td>2:46</td>
+                  <td>10:24 AM</td>
+                  <td>01:00 PM</td>
+                  <td>275</td>
+                  <td>AVF Only</td>
+                </tr>
+                <tr>
+                  <td>09/21/2020</td>
+                  <td>140/86 sitting</td>
+                  <td>137/83 sitting</td>
+                  <td>180 lb 12.4 oz</td>
+                  <td>178 lb 9.2 oz</td>
+                  <td>3:03</td>
+                  <td>10:17 AM</td>
+                  <td>01:20 PM</td>
+                  <td>275</td>
+                  <td>AVG Only</td>
+                </tr>
+              </tbody>
+            </table>
+            <footnote styleCode="xSectionSubTitle">from Last 30 Days</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section nullFlavor="NI">
+          <templateId root="2.16.840.1.113883.10.20.22.2.7" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.7" extension="2014-06-09" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.7.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.7.1" extension="2014-06-09" />
+          <id root="EFDFC4B6-0748-11EB-B9FB-D2068206269D" />
+          <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures Document" />
+          <title>Procedures</title>
+          <text>
+            <content ID="nof2">Not on file</content>
+            <footnote styleCode="xSectionSubTitle" ID="subTitle1">from Last 3 Months</footnote>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.6" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.6" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.6.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.6.1" extension="2015-08-01" />
+          <id root="EFE02AC8-0748-11EB-B9FB-D2068206269D" />
+          <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies and adverse reactions Document" />
+          <title>Allergies</title>
+          <text>
+            <table>
+              <colgroup>
+                <col span="2" width="25%" />
+                <col width="13%" />
+                <col width="12%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Active Allergy</th>
+                  <th>Reactions</th>
+                  <th>Severity</th>
+                  <th>Noted Date</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="allergy4">
+                  <td ID="allergy4allergen">Peanut Oil</td>
+                  <td>
+                    <content ID="allergy4reaction1">Anxiety</content>
+                  </td>
+                  <td ID="allergy4severity">Low</td>
+                  <td>10/05/2020</td>
+                  <td ID="allergy4comments" />
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.30" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.30" extension="2015-08-01" />
+              <id extension="1000064460-concern" root="1.2.840.114350.1.13.5325.1.7.2.768076" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20201005" />
+              </effectiveTime>
+              <entryRelationship inversionInd="false" typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN" negationInd="false">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.7" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.7" extension="2014-06-09" />
+                  <templateId root="2.16.840.1.113883.10.20.24.3.90" />
+                  <templateId root="2.16.840.1.113883.10.20.24.3.90" extension="2014-06-09" />
+                  <id extension="1000064460" root="1.2.840.114350.1.13.5325.1.7.2.768076" />
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                  <text>
+                    <reference value="#allergy4" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20201005" />
+                  </effectiveTime>
+                  <value code="420134006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Propensity to adverse reactions" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005" />
+                    <assignedAuthor>
+                      <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                      <id extension="5114" root="1.2.840.114350.1.13.5325.1.7.2.836982" />
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <code code="defProvRoleCode" codeSystem="defProvRoleCodeSystem" displayName="defProvRoleDisplayName">
+                        <originalText>Family Practice</originalText>
+                      </code>
+                      <addr use="WP">
+                        <streetAddressLine>1979 Milky Way</streetAddressLine>
+                        <streetAddressLine>Barn-3126 (Local)</streetAddressLine>
+                        <county>DANE</county>
+                        <city>Verona</city>
+                        <state>WI</state>
+                        <postalCode>53593</postalCode>
+                        <country>USA</country>
+                      </addr>
+                      <telecom use="WP" value="tel:+1-608-777-4189" />
+                      <assignedPerson>
+                        <name use="L">
+                          <given>Becky</given>
+                          <family>Graveen</family>
+                          <suffix qualifier="AC"> MD</suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                  <participant typeCode="CSM">
+                    <participantRole classCode="MANU">
+                      <playingEntity classCode="MMAT">
+                        <code code="18235" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm">
+                          <originalText>
+                            <reference value="#allergy4allergen" />
+                          </originalText>
+                          <translation code="891658" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                          <translation code="1540357" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                          <translation code="1792311" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                          <translation code="2EUM6926ZI" codeSystem="2.16.840.1.113883.4.9" codeSystemName="FDA Unique Ingredient Identifier (UNII)" />
+                          <translation code="3731C743KO" codeSystem="2.16.840.1.113883.4.9" codeSystemName="FDA Unique Ingredient Identifier (UNII)" />
+                          <translation code="5TL50QU0W4" codeSystem="2.16.840.1.113883.4.9" codeSystemName="FDA Unique Ingredient Identifier (UNII)" />
+                          <translation code="AR46G0MG0T" codeSystem="2.16.840.1.113883.4.9" codeSystemName="FDA Unique Ingredient Identifier (UNII)" />
+                          <translation code="FS8087FL3X" codeSystem="2.16.840.1.113883.4.9" codeSystemName="FDA Unique Ingredient Identifier (UNII)" />
+                          <translation code="QE1QX6B99R" codeSystem="2.16.840.1.113883.4.9" codeSystemName="FDA Unique Ingredient Identifier (UNII)" />
+                        </code>
+                        <name>PEANUT OIL</name>
+                      </playingEntity>
+                    </participantRole>
+                  </participant>
+                  <entryRelationship inversionInd="true" typeCode="MFST">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <templateId root="2.16.840.1.113883.10.20.22.4.9" />
+                      <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09" />
+                      <id extension="14" root="1.2.840.114350.1.13.5325.1.7.4.768076.3008" />
+                      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                      <text>
+                        <reference value="#allergy4reaction1" />
+                      </text>
+                      <statusCode code="completed" />
+                      <effectiveTime>
+                        <low value="20201005" />
+                      </effectiveTime>
+                      <value codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Anxiety" xsi:type="CD" nullFlavor="UNK" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <originalText>
+                          <reference value="#allergy4reaction1" />
+                        </originalText>
+                      </value>
+                      <entryRelationship inversionInd="true" typeCode="SUBJ">
+                        <observation classCode="OBS" moodCode="EVN">
+                          <templateId root="2.16.840.1.113883.10.20.22.4.8" />
+                          <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09" />
+                          <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode" displayName="Severity" />
+                          <text>
+                            <reference value="#allergy4severity" />
+                          </text>
+                          <statusCode code="completed" />
+                          <value code="255604002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Mild" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                        </observation>
+                      </entryRelationship>
+                    </observation>
+                  </entryRelationship>
+                  <entryRelationship inversionInd="true" typeCode="SUBJ">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <templateId root="2.16.840.1.113883.10.20.22.4.28" />
+                      <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" displayName="Status" />
+                      <statusCode code="completed" />
+                      <value code="55561003" codeSystem="2.16.840.1.113883.6.96" displayName="Active" xsi:type="CE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.1" extension="2014-06-09" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.1.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.1.1" extension="2014-06-09" />
+          <id root="EFF0D1B6-0748-11EB-B9FB-D2068206269D" />
+          <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Medication use Narrative" />
+          <title>Medications</title>
+          <text>
+            <list>
+              <item>
+                <content styleCode="xflagData">This comment should appear for medications. See CDA_SKIP_MED_COMMENT_MESSAGE </content>
+              </item>
+            </list>
+            <br />
+            <table>
+              <colgroup>
+                <col span="2" width="25%" />
+                <col width="13%" />
+                <col width="12%" />
+                <col span="2" width="8%" />
+                <col width="9%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Medication</th>
+                  <th>Sig</th>
+                  <th>Dispensed</th>
+                  <th>Refills</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="currx6" styleCode="xRowNormal">
+                  <td>
+                    <paragraph ID="med6">erythromycin (ERYTHROCIN STEARATE) 250 MG tablet</paragraph>
+                  </td>
+                  <td ID="sig6">Take 1 tablet by mouth 3 times daily.</td>
+                  <td>
+                    <paragraph>40 tablet</paragraph>
+                  </td>
+                  <td>0</td>
+                  <td>10/05/2020</td>
+                  <td />
+                  <td>Active</td>
+                </tr>
+                <tr ID="currx7" styleCode="xRowAlt">
+                  <td>
+                    <paragraph ID="med7">Cholecalciferol (VITAMIN D) 1000 units TABS</paragraph>
+                  </td>
+                  <td ID="sig7">Take  by mouth 2 TIMES DAILY for 30 days.</td>
+                  <td>
+                    <paragraph>60 tablet</paragraph>
+                  </td>
+                  <td>2</td>
+                  <td>10/05/2020</td>
+                  <td>11/04/2020</td>
+                  <td>Active</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09" />
+              <id extension="6000301510" root="1.2.840.114350.1.13.5325.1.7.2.798268" />
+              <text>
+                <reference value="#sig6" />
+              </text>
+              <statusCode code="active" />
+              <effectiveTime xsi:type="IVL_TS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <low value="20201005" />
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <period unit="d" value=".3333333333333333333" />
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="Oral">
+                <originalText>Oral</originalText>
+              </routeCode>
+              <doseQuantity unit="mg" value="250" />
+              <consumable typeCode="CSM">
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code code="686355" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm">
+                      <originalText>
+                        <reference value="#med6" />
+                      </originalText>
+                      <translation code="7827" codeSystem="2.16.840.1.113883.6.253" codeSystemName="Medispan Drug Descriptor ID" />
+                      <translation code="03100010100305" codeSystem="2.16.840.1.113883.6.68" codeSystemName="Medi-Span Generic Product Identifier" />
+                      <translation code="7827" codeSystem="2.16.840.1.113883.6.162" codeSystemName="Med-File (Medi-Span)" />
+                      <translation code="750839" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                      <translation code="24338-106-20" codeSystem="2.16.840.1.113883.6.69" codeSystemName="NDC" />
+                      <translation code="7801" codeSystem="2.16.840.1.113883.6.253" codeSystemName="Medispan Drug Descriptor ID" />
+                      <translation code="7801" codeSystem="2.16.840.1.113883.6.162" codeSystemName="Med-File (Medi-Span)" />
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                <time value="20201005143344-0500" />
+                <assignedAuthor>
+                  <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                </assignedAuthor>
+              </author>
+              <entryRelationship inversionInd="true" typeCode="SUBJ">
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09" />
+                  <code code="311401005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <text>
+                    <reference value="#sig6" />
+                  </text>
+                  <statusCode code="completed" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143344-0500" />
+                    <assignedAuthor>
+                      <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                    </assignedAuthor>
+                  </author>
+                </act>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <supply classCode="SPLY" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.17" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09" />
+                  <id extension="6000301510" root="1.2.840.114350.1.13.5325.1.7.2.798268" />
+                  <statusCode code="completed" />
+                  <repeatNumber value="1" />
+                  <quantity value="40" />
+                  <product>
+                    <manufacturedProduct classCode="MANU">
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                      <manufacturedMaterial>
+                        <code code="686355" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm">
+                          <originalText>
+                            <reference value="#med6" />
+                          </originalText>
+                          <translation code="7827" codeSystem="2.16.840.1.113883.6.253" codeSystemName="Medispan Drug Descriptor ID" />
+                          <translation code="03100010100305" codeSystem="2.16.840.1.113883.6.68" codeSystemName="Medi-Span Generic Product Identifier" />
+                          <translation code="7827" codeSystem="2.16.840.1.113883.6.162" codeSystemName="Med-File (Medi-Span)" />
+                          <translation code="750839" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                          <translation code="24338-106-20" codeSystem="2.16.840.1.113883.6.69" codeSystemName="NDC" />
+                          <translation code="7801" codeSystem="2.16.840.1.113883.6.253" codeSystemName="Medispan Drug Descriptor ID" />
+                          <translation code="7801" codeSystem="2.16.840.1.113883.6.162" codeSystemName="Med-File (Medi-Span)" />
+                        </code>
+                      </manufacturedMaterial>
+                    </manufacturedProduct>
+                  </product>
+                </supply>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.47" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+                  <statusCode code="completed" />
+                  <value code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Active" xsi:type="CE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="COMP">
+                <substanceAdministration classCode="SBADM" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.147" />
+                  <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medication Instructions" />
+                  <text>
+                    <reference value="#sig6" />
+                  </text>
+                  <consumable>
+                    <manufacturedProduct>
+                      <manufacturedLabeledDrug nullFlavor="NA" />
+                    </manufacturedProduct>
+                  </consumable>
+                </substanceAdministration>
+              </entryRelationship>
+              <entryRelationship inversionInd="true" typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <code code="200045" codeSystem="1.2.840.114350.1.13.5325.1.7.2.697081" />
+                  <value xsi:type="ST" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">3 TIMES DAILY</value>
+                </observation>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09" />
+              <id extension="6000301511" root="1.2.840.114350.1.13.5325.1.7.2.798268" />
+              <text>
+                <reference value="#sig7" />
+              </text>
+              <statusCode code="active" />
+              <effectiveTime xsi:type="IVL_TS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <low value="20201005" />
+                <high value="20201105055900+0000" />
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <period unit="d" value=".5" />
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="Oral">
+                <originalText>Oral</originalText>
+              </routeCode>
+              <doseQuantity nullFlavor="UNK" />
+              <consumable typeCode="CSM">
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code code="247775" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm">
+                      <originalText>
+                        <reference value="#med7" />
+                      </originalText>
+                      <translation code="0536-3334-01" codeSystem="2.16.840.1.113883.6.69" codeSystemName="NDC" />
+                      <translation code="36571" codeSystem="2.16.840.1.113883.6.253" codeSystemName="Medispan Drug Descriptor ID" />
+                      <translation code="77202032000330" codeSystem="2.16.840.1.113883.6.68" codeSystemName="Medi-Span Generic Product Identifier" />
+                      <translation code="36571" codeSystem="2.16.840.1.113883.6.162" codeSystemName="Med-File (Medi-Span)" />
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                <time value="20201005143345-0500" />
+                <assignedAuthor>
+                  <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                </assignedAuthor>
+              </author>
+              <entryRelationship inversionInd="true" typeCode="SUBJ">
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09" />
+                  <code code="311401005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <text>
+                    <reference value="#sig7" />
+                  </text>
+                  <statusCode code="completed" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143345-0500" />
+                    <assignedAuthor>
+                      <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                    </assignedAuthor>
+                  </author>
+                </act>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <supply classCode="SPLY" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.17" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09" />
+                  <id extension="6000301511" root="1.2.840.114350.1.13.5325.1.7.2.798268" />
+                  <statusCode code="completed" />
+                  <repeatNumber value="3" />
+                  <quantity value="60" />
+                  <product>
+                    <manufacturedProduct classCode="MANU">
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                      <manufacturedMaterial>
+                        <code code="247775" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm">
+                          <originalText>
+                            <reference value="#med7" />
+                          </originalText>
+                          <translation code="0536-3334-01" codeSystem="2.16.840.1.113883.6.69" codeSystemName="NDC" />
+                          <translation code="36571" codeSystem="2.16.840.1.113883.6.253" codeSystemName="Medispan Drug Descriptor ID" />
+                          <translation code="77202032000330" codeSystem="2.16.840.1.113883.6.68" codeSystemName="Medi-Span Generic Product Identifier" />
+                          <translation code="36571" codeSystem="2.16.840.1.113883.6.162" codeSystemName="Med-File (Medi-Span)" />
+                        </code>
+                      </manufacturedMaterial>
+                    </manufacturedProduct>
+                  </product>
+                </supply>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.47" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+                  <statusCode code="completed" />
+                  <value code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Active" xsi:type="CE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="COMP">
+                <substanceAdministration classCode="SBADM" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.147" />
+                  <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medication Instructions" />
+                  <text>
+                    <reference value="#sig7" />
+                  </text>
+                  <consumable>
+                    <manufacturedProduct>
+                      <manufacturedLabeledDrug nullFlavor="NA" />
+                    </manufacturedProduct>
+                  </consumable>
+                </substanceAdministration>
+              </entryRelationship>
+              <entryRelationship inversionInd="true" typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <code code="101115" codeSystem="1.2.840.114350.1.13.5325.1.7.2.697081" />
+                  <value xsi:type="ST" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2 TIMES DAILY</value>
+                </observation>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.5" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.5" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.5.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.5.1" extension="2015-08-01" />
+          <id root="EFFDAB02-0748-11EB-B9FB-D2068206269D" />
+          <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem list - Reported" />
+          <title>Active Problems</title>
+          <text>
+            <table>
+              <colgroup>
+                <col width="75%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Noted Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="problem9" styleCode="xRowNormal">
+                  <td ID="problem9name">Type 1 DM with end-stage renal disease</td>
+                  <td>10/05/2020</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01" />
+              <id extension="1000064277-concern" root="1.2.840.114350.1.13.5325.1.7.2.768076" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20201005" />
+              </effectiveTime>
+              <entryRelationship inversionInd="false" typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01" />
+                  <id extension="1000064277" root="1.2.840.114350.1.13.5325.1.7.2.768076" />
+                  <code code="64572001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                    <translation code="75323-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  </code>
+                  <text>
+                    <reference value="#problem9name" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20201005" />
+                  </effectiveTime>
+                  <value code="46635009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <originalText>
+                      <reference value="#problem9name" />
+                    </originalText>
+                    <translation code="E10.22" codeSystem="2.16.840.1.113883.6.90" codeSystemName="ICD10" displayName="Type 1 DM with end-stage renal disease" />
+                    <translation code="250.41" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD9" displayName="Type 1 DM with end-stage renal disease" />
+                    <translation code="745930" codeSystem="2.16.840.1.113883.3.247.1.1" codeSystemName="Intelligent Medical Objects ProblemIT" displayName="Type 1 DM with end-stage renal disease" />
+                  </value>
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005101239-0500" />
+                    <assignedAuthor>
+                      <id extension="531958045" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                      <id extension="115841" root="1.2.840.114350.1.13.5325.1.7.2.836982" />
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <code code="defProvRoleCode" codeSystem="defProvRoleCodeSystem" displayName="defProvRoleDisplayName">
+                        <originalText>Dialysis</originalText>
+                      </code>
+                      <addr use="WP">
+                        <streetAddressLine>202 S 2nd St</streetAddressLine>
+                        <city>Madison</city>
+                        <state>WI</state>
+                        <postalCode>53703</postalCode>
+                      </addr>
+                      <telecom use="WP" value="tel:+1-555-555-5555" />
+                      <telecom use="WP" value="fax:+1-555-555-5555" />
+                      <assignedPerson>
+                        <name use="L">
+                          <given>Cori</given>
+                          <family>Ryne</family>
+                          <suffix qualifier="AC"> MD</suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                  <entryRelationship typeCode="REFR">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+                      <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" displayName="Status" />
+                      <statusCode code="completed" />
+                      <effectiveTime>
+                        <low value="20201005" />
+                      </effectiveTime>
+                      <value code="55561003" codeSystem="2.16.840.1.113883.6.96" displayName="Active" xsi:type="CE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section nullFlavor="NI">
+          <templateId root="2.16.840.1.113883.10.20.22.2.2" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.2" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.2.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.2.1" extension="2015-08-01" />
+          <id root="F000C5A8-0748-11EB-B9FB-D2068206269D" />
+          <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Immunization Narrative" />
+          <title>Immunizations</title>
+          <text>
+            <content ID="nof11">Not on file</content>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.17" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.17" extension="2015-08-01" />
+          <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Social history Narrative" />
+          <title>Social History</title>
+          <text>
+            <table>
+              <colgroup>
+                <col span="2" width="25%" />
+                <col width="13%" />
+                <col width="12%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Tobacco Use</th>
+                  <th>Types</th>
+                  <th>Packs/Day</th>
+                  <th>Years Used</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Current Some Day Smoker</td>
+                  <td />
+                  <td>0.25</td>
+                  <td />
+                  <td>Started: 2015</td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <tbody>
+                <tr>
+                  <td styleCode="xnoIndent">
+                    <content styleCode="xcellHeader">Tobacco Cessation:</content> Ready to Quit: No<br /></td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <colgroup>
+                <col span="2" width="25%" />
+                <col width="50%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Alcohol Use</th>
+                  <th>Standard Drinks/Week</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td ID="alcoholStatus">Yes</td>
+                  <td>4.666666666666666667 (1 standard drink = 0.9 oz pure alcohol)</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <colgroup>
+                <col span="4" width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Substance Use</th>
+                  <th>Types</th>
+                  <th>Use/Week</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td ID="substanceStatus">Never</td>
+                  <td />
+                  <td />
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <colgroup>
+                <col width="25%" />
+                <col width="75%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Sex Assigned at Birth</th>
+                  <th>Date Recorded</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="BirthSex14">
+                  <td ID="BirthSex14Value">Not on file</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.78" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09" />
+              <id extension="Z195125^^72166-2" root="1.2.840.114350.1.13.5325.1.7.1.1040.1" />
+              <code code="72166-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Tobacco smoking status NHIS" />
+              <statusCode code="completed" />
+              <effectiveTime value="20201005" />
+              <value code="428041000124106" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Current some day smoker" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                <time value="20201005" />
+                <assignedAuthor>
+                  <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                </assignedAuthor>
+              </author>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.85" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09" />
+              <id extension="Z195125^^428041000124106" root="1.2.840.114350.1.13.5325.1.7.1.1040.2" />
+              <code code="11367-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of tobacco use" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="2015" />
+              </effectiveTime>
+              <value code="428041000124106" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Current some day smoker" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                <time value="20201005" />
+                <assignedAuthor>
+                  <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                </assignedAuthor>
+              </author>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.85" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09" />
+              <id extension="Z195125^^UNK_SMOKING" root="1.2.840.114350.1.13.5325.1.7.1.1040.2" />
+              <code code="11367-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of tobacco use" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="2015" />
+              </effectiveTime>
+              <value code="77176002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Smoker" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                <time value="20201005" />
+                <assignedAuthor>
+                  <id extension="468025405" root="1.2.840.114350.1.13.5325.1.7.1.1133" />
+                </assignedAuthor>
+              </author>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01" />
+              <id extension="Z195125^^8663-7" root="1.2.840.114350.1.13.5325.1.7.1.1040.3" />
+              <code code="8663-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Cigarettes smoked current (pack per day) - Reported" />
+              <statusCode code="completed" />
+              <effectiveTime value="20201005" />
+              <value xsi:type="REAL" value=".25" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01" />
+              <id extension="Z195125^55873.99^160573003" root="1.2.840.114350.1.13.5325.1.7.1.1040.12" />
+              <code code="160573003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Alcohol intake">
+                <translation code="11331-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Alcohol Use" />
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime value="20201005" />
+              <value code="219006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Current drinker of alcohol (finding)" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <originalText>
+                  <reference value="#alcoholStatus" />
+                </originalText>
+              </value>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01" />
+              <id extension="Z195125^55873.99^160573003" root="1.2.840.114350.1.13.5325.1.7.1.1040.13" />
+              <code code="160573003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Alcohol intake">
+                <translation code="74013-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Alcoholic drinks per day" />
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime value="20201005" />
+              <value xsi:type="PQ" value=".67" unit="/d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01" />
+              <id extension="Z195125^55873.99^363908000" root="1.2.840.114350.1.13.5325.1.7.1.1040.14" />
+              <code code="363908000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Details of drug misuse behavior">
+                <translation code="28355-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Substance use status" />
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime value="20201005" />
+              <value code="228368007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Has never misused drugs (situation)" xsi:type="CD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <originalText>
+                  <reference value="#substanceStatus" />
+                </originalText>
+              </value>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.200" extension="2016-06-01" />
+              <id extension="Z195125" root="1.2.840.114350.1.13.5325.1.7.1.1040.20" />
+              <code code="76689-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Sex Assigned At Birth" />
+              <text>
+                <reference value="#BirthSex14" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime value="19960904" />
+              <value codeSystem="2.16.840.1.113883.5.1" xsi:type="CD" nullFlavor="UNK" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <originalText>
+                  <reference value="#BirthSex14Value" />
+                </originalText>
+              </value>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.4" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.4" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.4.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.4.1" extension="2015-08-01" />
+          <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital signs" />
+          <title>Last Filed Vital Signs</title>
+          <text>
+            <table>
+              <colgroup>
+                <col span="4" width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Vital Sign</th>
+                  <th>Reading</th>
+                  <th>Time Taken</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr styleCode="xRowNormal">
+                  <td styleCode="xcellHeader">Blood Pressure</td>
+                  <td>
+                    <content ID="sysBP_5672835360">174</content>/<content ID="diaBP_5672835360">75</content></td>
+                  <td>10/05/2020  2:36 PM CDT</td>
+                  <td />
+                </tr>
+                <tr styleCode="xRowNormal xmergeUp">
+                  <td colspan="4">
+                    <content ID="bp_measurementMethod_5672835360" styleCode="xIndent">Method: Invasive</content>
+                  </td>
+                </tr>
+                <tr ID="pulse_5672835360" styleCode="xRowAlt">
+                  <td styleCode="xcellHeader">Pulse</td>
+                  <td>68</td>
+                  <td>10/05/2020  2:36 PM CDT</td>
+                  <td />
+                </tr>
+                <tr ID="temp_5672835360" styleCode="xRowNormal">
+                  <td styleCode="xcellHeader">Temperature</td>
+                  <td>37.2 °C (98.9 °F)</td>
+                  <td>10/05/2020  2:36 PM CDT</td>
+                  <td />
+                </tr>
+                <tr ID="resp_" styleCode="xRowAlt">
+                  <td styleCode="xcellHeader">Respiratory Rate</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td />
+                </tr>
+                <tr ID="SpO2_" styleCode="xRowNormal">
+                  <td styleCode="xcellHeader">Oxygen Saturation</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td />
+                </tr>
+                <tr ID="inhaled_" styleCode="xRowAlt">
+                  <td styleCode="xcellHeader">Inhaled Oxygen Concentration</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td />
+                </tr>
+                <tr ID="weight_5672835360" styleCode="xRowNormal">
+                  <td styleCode="xcellHeader">Weight</td>
+                  <td>73.5 kg (162 lb)</td>
+                  <td>10/05/2020  2:36 PM CDT</td>
+                  <td />
+                </tr>
+                <tr ID="height_5672835360" styleCode="xRowAlt">
+                  <td styleCode="xcellHeader">Height</td>
+                  <td>167.6 cm (5' 6")</td>
+                  <td>10/05/2020  2:36 PM CDT</td>
+                  <td />
+                </tr>
+                <tr ID="bmi_5672835360" styleCode="xRowNormal">
+                  <td styleCode="xcellHeader">Body Mass Index</td>
+                  <td>26.15</td>
+                  <td>10/05/2020  2:36 PM CDT</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.26" />
+              <templateId root="2.16.840.1.113883.10.20.22.4.26" extension="2015-08-01" />
+              <id extension="5672835360-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109" />
+              <code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Vital signs">
+                <translation code="74728-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital signs, weight, height, head circumference, oximetry, BMI, and BSA panel - HL7.CCDAr1.1" />
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime value="20201005193600+0000" />
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <id extension="5672835360-sysBP-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109.1" />
+                  <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                    <originalText>Systolic blood pressure</originalText>
+                  </code>
+                  <text>
+                    <reference value="#sysBP_5672835360" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20201005193600+0000" />
+                  <value xsi:type="PQ" value="174" unit="mm[Hg]" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <methodCode code="10179008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                    <originalText>Invasive</originalText>
+                  </methodCode>
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143652-0500" />
+                    <assignedAuthor>
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <id extension="5672835360-diaBP-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109.1" />
+                  <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                    <originalText>Diastolic blood pressure</originalText>
+                  </code>
+                  <text>
+                    <reference value="#diaBP_5672835360" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20201005193600+0000" />
+                  <value xsi:type="PQ" value="75" unit="mm[Hg]" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <methodCode code="10179008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                    <originalText>Invasive</originalText>
+                  </methodCode>
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143652-0500" />
+                    <assignedAuthor>
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <id extension="5672835360-pulse-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109.1" />
+                  <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                    <originalText>Heart rate</originalText>
+                  </code>
+                  <text>
+                    <reference value="#pulse_5672835360" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20201005193600+0000" />
+                  <value xsi:type="PQ" value="68" unit="/min" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143652-0500" />
+                    <assignedAuthor>
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <id extension="5672835360-tempC83-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109.1" />
+                  <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                    <originalText>Body temperature</originalText>
+                  </code>
+                  <text>
+                    <reference value="#temp_5672835360" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20201005193600+0000" />
+                  <value xsi:type="PQ" value="37.17" unit="Cel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143652-0500" />
+                    <assignedAuthor>
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <id extension="5672835360-heightC83-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109.1" />
+                  <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                    <originalText>Body height</originalText>
+                  </code>
+                  <text>
+                    <reference value="#height_5672835360" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20201005193600+0000" />
+                  <value xsi:type="PQ" value="167.6" unit="cm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143652-0500" />
+                    <assignedAuthor>
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <id extension="5672835360-weightC83-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109.1" />
+                  <code code="29463-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                    <originalText>Body weight</originalText>
+                  </code>
+                  <text>
+                    <reference value="#weight_5672835360" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20201005193600+0000" />
+                  <value xsi:type="PQ" value="73.483" unit="kg" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143652-0500" />
+                    <assignedAuthor>
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <id extension="5672835360-bmi-Z195125" root="1.2.840.114350.1.13.5325.1.7.1.2109.1" />
+                  <code code="39156-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                    <originalText>BMI</originalText>
+                  </code>
+                  <text>
+                    <reference value="#bmi_5672835360" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20201005193600+0000" />
+                  <value xsi:type="PQ" value="26.15" unit="kg/m2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+                  <author>
+                    <templateId root="2.16.840.1.113883.10.20.22.4.119" />
+                    <templateId root="2.16.840.1.113883.10.20.22.5.6" extension="2019-10-01" />
+                    <time value="20201005143652-0500" />
+                    <assignedAuthor>
+                      <id root="2.16.840.1.113883.4.6" nullFlavor="UNK" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <representedOrganization>
+                        <id extension="1" root="1.2.840.114350.1.13.5325.1.7.2.696570" />
+                        <id root="2.16.840.1.113883.4.2" nullFlavor="UNK" />
+                        <name>Monona Skilled Nursing Facility</name>
+                        <telecom use="WP" value="tel:+1-608-486-2547" />
+                        <addr use="WP">
+                          <streetAddressLine nullFlavor="UNK" />
+                          <city nullFlavor="UNK" />
+                          <state>MA</state>
+                          <postalCode>02134</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section nullFlavor="NI">
+          <templateId root="2.16.840.1.113883.10.20.22.2.14" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.14" extension="2014-06-09" />
+          <code code="47420-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional Status" />
+          <title>Functional Status</title>
+          <text>
+            <content ID="nof17">Not on file</content>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section nullFlavor="NI">
+          <templateId root="2.16.840.1.113883.10.20.22.2.3" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.3" extension="2015-08-01" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1" />
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01" />
+          <id root="F0120A34-0748-11EB-B9FB-D2068206269D" />
+          <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant diagnostic tests/laboratory data Narrative" />
+          <title>Results</title>
+          <text>
+            <content ID="nof19">Not on file</content>
+            <footnote styleCode="xSectionSubTitle" ID="subTitle18">from Last 3 Months</footnote>
+          </text>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

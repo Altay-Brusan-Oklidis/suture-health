@@ -1,0 +1,131 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel.FilterSelector
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+@using SutureHealth.AspNetCore.Areas.Network.Models.Listing;
+<div id="FilterSelector">
+    <div>
+        <div class="text-center" style="width: 85%; padding: 5px 0;">
+            <a data-action="ClearAll" href="javascript:void(0);">Clear All Filters</a>
+        </div>
+
+        @Html.Partial("_ProximityFilter")
+        @Html.Partial("_UnifiedFilterCategory", Model.AccountType)
+        @Html.Partial("_SectionedFilterCategory", Model.Provider)
+        @*@Html.Partial("_UnifiedFilterCategory", Model.Specialty)*@
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var container = $("#FilterSelector"),
+            allCheckboxes = $("input[type='checkbox']:not([data-action='SearchByState'])", container),
+            clearAllButton = $("[data-action='ClearAll']", container),
+            clearSectionButtons = $("[data-action='ClearSection']", container),
+            searchByState = $("[data-action='SearchByState']", container),
+            radiusSlider = $("input[type='range']", container),
+            onFiltersChanged = function () {
+                var selectedKeyValuePairs = [],
+                    proximityRadius;
+
+                allCheckboxes.filter(":checked").each(function () {
+                    selectedKeyValuePairs.push({
+                        "SectionKey": $(this).attr("name"),
+                        "FilterKey": $(this).attr("value")
+                    });
+                });
+
+                if (searchByState.is(":checked")) {
+                    proximityRadius = "@SearchRadius.EntireState";
+                }
+                else {
+                    var sliderValue = parseInt(radiusSlider.val());
+
+                    switch (sliderValue) {
+                        case 1:
+                            proximityRadius = "@SearchRadius.TwentyFive";
+                            break;
+                        case 2:
+                            proximityRadius = "@SearchRadius.Fifty";
+                            break;
+                        case 3:
+                            proximityRadius = "@SearchRadius.SeventyFive";
+                            break;
+                        case 4:
+                            proximityRadius = "@SearchRadius.OneHundred";
+                            break;
+                        case 5:
+                            proximityRadius = "@SearchRadius.Infinity";
+                            break;
+                    }
+                }
+
+                $(document).trigger("@IndexViewModel.FilterSelector.EVENT_FILTERS_CHANGED", [{
+                    "Filters": selectedKeyValuePairs,
+                    "Radius": proximityRadius
+                }]);
+            },
+            setProximityFilterState = function (isByState, enumValue) {
+                searchByState.prop("checked", isByState);
+
+                if (isByState) {
+                    radiusSlider.attr("disabled", "disabled");
+                }
+                else {
+                    radiusSlider.removeAttr("disabled");
+                }
+
+                switch (enumValue) {
+                    case "@SearchRadius.TwentyFive":
+                        radiusSlider.val(1);
+                        break;
+                    case "@SearchRadius.Fifty":
+                        radiusSlider.val(2);
+                        break;
+                    case "@SearchRadius.SeventyFive":
+                        radiusSlider.val(3);
+                        break;
+                    case "@SearchRadius.OneHundred":
+                        radiusSlider.val(4);
+                        break;
+                    case "@SearchRadius.Infinity":
+                        radiusSlider.val(5);
+                        break;
+                }
+
+                // TODO: Other visual UI work is necessary.
+            };
+
+        allCheckboxes.click(onFiltersChanged);
+        radiusSlider.change(onFiltersChanged);
+
+        clearAllButton.click(function () {
+            allCheckboxes.prop("checked", false);
+            onFiltersChanged();
+        });
+
+        clearSectionButtons.click(function () {
+            var keys = $(this).data("section-key").split(",");
+
+            keys.forEach(function (key) {
+                allCheckboxes.filter("[name='" + key + "']").prop("checked", false);
+            });
+
+            onFiltersChanged();
+        });
+
+        searchByState.click(function () {
+            setProximityFilterState(searchByState.is(":checked"));
+            onFiltersChanged();
+        });
+
+        $(document).on("@IndexViewModel.EVENT_QUERY_CHANGED", function (evt, model) {
+            allCheckboxes.prop("checked", false);
+
+            if (model.Filters) {
+                model.Filters.forEach(function (keyValue) {
+                    allCheckboxes.filter("[name='" + keyValue.SectionKey + "'][value='" + keyValue.FilterKey + "']").prop("checked", true);
+                });
+            }
+
+            setProximityFilterState(model.Radius == "@SearchRadius.EntireState" ? true : false, model.Radius);
+        });
+    });
+</script>

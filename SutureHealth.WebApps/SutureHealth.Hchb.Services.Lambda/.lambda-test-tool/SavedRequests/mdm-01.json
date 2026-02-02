@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "kinesis": {
+                "kinesisSchemaVersion": "1.0",
+                "partitionKey": "MDM",
+                "sequenceNumber": "49639757866298609778907822068166451968824747298356461570",
+                "data": "eyJwYXRpZW50Ijp7ImZpcnN0TmFtZSI6InRlc3QyIiwibWlkZGxlTmFtZSI6InRlc3QiLCJsYXN0TmFtZSI6InRlc3QxIiwic3VmZml4IjoiIiwiYmlydGhEYXRlIjoiMTk4MC0wMS0yNyIsImdlbmRlciI6Ik0iLCJhZGRyZXNzTGluZTEiOiJHYXN0b24gV2VzdGJyb29rIEF2ZSIsImFkZHJlc3NMaW5lMiI6IiIsImNpdHkiOiJEZW52ZXIiLCJzdGF0ZSI6Ik1hcnlsYW5kIiwicG9zdGFsQ29kZSI6IjYwNjExIiwiaWRlbnRpZmllcnMiOlt7InR5cGUiOiJzc24iLCJ2YWx1ZSI6IjQwMi05Mi0zODUwIn0seyJ0eXBlIjoic3NuNCIsInZhbHVlIjoiMzg1MCJ9XX0sInRyYW5zYWN0aW9uIjp7Im9yZGVyRGF0ZSI6IjIwMjMwNTA1MjAzNDI0Iiwib3JkZXJOdW1iZXIiOiIxMjM0NSIsImZpbGVuYW1lIjoiTURNL3BkZi8xNl9UU18xMjM0NS5wZGYiLCJlZmZlY3RpdmVEYXRlIjoiMjAyMzAzMTQyMDU0MTIiLCJvYnNlcnZhdGlvbklkIjoiUmVwb3J0Iiwib2JzZXJ2YXRpb25UZXh0IjoiUmVwb3J0IG9mIFBhdGllbnQiLCJ0ZW1wbGF0ZUlkIjoiNTQ4OTc5In0sInNpZ25lciI6eyJucGkiOiIxMjMxMjMxMzEzIiwiZmlyc3ROYW1lIjoiYW1pdCB0dCIsImxhc3ROYW1lIjoiYW1pdGsiLCJicmFuY2hDb2RlIjoiMTYifSwic2VuZGVyIjp7Im5waSI6Ijk3Nzk3OTcyMzIiLCJmaXJzdE5hbWUiOiJteWFjY291bnQiLCJsYXN0TmFtZSI6InRlc3QiLCJicmFuY2hDb2RlIjoiMTUifX0=",
+                "approximateArrivalTimestamp": 1683637572.572
+            },
+            "eventSource": "aws:kinesis",
+            "eventVersion": "1.0",
+            "eventID": "shardId-000000000000:49639757866298609778907822068166451968824747298356461570",
+            "eventName": "aws:kinesis:record",
+            "invokeIdentityArn": "arn:aws:iam::267058832120:role/service-role/test-lambda-kinesis-role-63b3jaig",
+            "awsRegion": "us-east-1",
+            "eventSourceARN": "arn:aws:kinesis:us-east-1:267058832120:stream/HL7DataStream-Test"
+        }
+    ]
+}

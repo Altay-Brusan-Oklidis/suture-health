@@ -1,0 +1,266 @@
+﻿@using SutureHealth.AspNetCore.Areas.Identity.Pages.Account
+@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.AccountModel
+
+@{
+    ViewBag.Title = "My Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.RequireKendo = true;
+    Model.RequireUI = true;
+    Model.RequireValidation = true;
+}
+
+<partial name="_Alert" for="SendConfirmationEmailReSentAlert" />
+<partial name="_Alert" for="SendMobileNumberConfirmationAlert" />
+@if (Model.HasConfirmEmailAlert)
+{
+    <partial name="_Alert" for="ConfirmEmailAlert" />
+}
+
+<section class="mt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h4>My Account</h4>
+                <hr />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="my-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 shadow p-3">
+                <form method="post">
+                    <div class="entity-management-container">
+                        <div class="entity-management-main-container">
+                            <div class="row">
+                                <div class="col-12 col-md-6 px-4">
+                                    <fieldset class="user-information">
+                                        <h5>Personal</h5>
+                                        <div class="row">
+                                            <div class="col-md-12 my-2">
+                                                <input-form-group asp-for="FirstName">
+                                                    <label class="text-secondary"><strong>First Name</strong></label>
+                                                    <input asp-for="FirstName" maxlength="50" class="form-control" type="text" data-change-name="true" />
+                                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 my-2">
+                                                <input-form-group asp-for="LastName">
+                                                    <label class="text-secondary"><strong>Last Name</strong></label>
+                                                    <input asp-for="LastName" maxlength="50" class="form-control" type="text" data-change-name="true" />
+                                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6 my-2">
+                                                <input-form-group asp-for="Suffix">
+                                                    <label class="text-secondary"><strong>Suffix</strong></label>
+                                                    <select asp-for="Suffix" asp-items="SutureHealth.AspNetCore.Mvc.Rendering.Lists.Suffixes" class="form-select" data-change-name="true">
+                                                    </select>
+                                                </input-form-group>
+                                            </div>
+                                            <div class="col-6 my-2">
+                                                <input-form-group asp-for="ProfessionalSuffix">
+                                                    <label class="text-secondary"><strong>Professional Suffix</strong></label>
+                                                    <input asp-for="ProfessionalSuffix" class="form-control name-change" type="text" />
+                                                    <span asp-validation-for="ProfessionalSuffix" class="text-danger"></span>
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+
+                                    <fieldset class="my-3 user-information">
+                                        <h5>Identifiers</h5>
+
+                                        <div class="row">
+                                            <div class="col-md-12 my-2">
+                                                <input-form-group asp-for="Npi">
+                                                    @if (Model.IsNpiRequired)
+                                                    {
+                                                        <label class="text-secondary"><strong>NPI</strong></label>
+                                                        <kendo-maskedtextbox name="Npi" mask="0000000000" for="Npi" clear-prompt-char="true" prompt-char=" " unmask-on-post="true" class="form-control" validationMessage="Please provide a valid NPI number." data-val="true" data-val-required="REQUIRED">
+                                                        </kendo-maskedtextbox>
+                                                    }
+                                                    else
+                                                    {
+                                                        <label class="text-secondary"><strong>NPI</strong></label>
+                                                        <kendo-maskedtextbox name="Npi" mask="0000000000" for="Npi" clear-prompt-char="true" prompt-char=" " unmask-on-post="true" class="form-control" validationMessage="Please provide a valid NPI number.">
+                                                        </kendo-maskedtextbox>
+                                                    }
+
+                                                    <span asp-validation-for="Npi" class="text-danger"></span>
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+
+                                        @if (Model.CanSetSigningName)
+                                        {
+                                            <div class="row signing-name">
+                                                <div class="col-md-12 my-2">
+                                                    <input-form-group asp-for="SigningName">
+                                                        <label class="text-secondary"><strong>Signing Name</strong></label>
+                                                        <input asp-for="SigningName" class="form-control" type="text" />
+                                                        <span asp-validation-for="SigningName" class="text-danger"></span>
+                                                    </input-form-group>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-12 col-md-6 px-4 mt-3 mt-md-0">
+                                    <fieldset class="user-contact-information">
+                                        <h5>Account</h5>
+                                        <div class="row">
+                                            <div class="col-md-12 my-2">
+                                                <input-form-group asp-for="UserName">
+                                                    @if (Model.IsExternalUser)
+                                                    {
+                                                        <label class="text-secondary"><strong>Username</strong></label>
+                                                        <input asp-for="UserName" class="form-control" type="text" maxlength=50 readonly />
+                                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <label class="text-secondary"><strong>Username</strong></label>
+                                                        <input asp-for="UserName" class="form-control" type="text" maxlength=50  />
+                                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                                    }
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset class="user-contact-information my-3">
+                                        <h5>Contact</h5>
+
+                                        <div class="row">
+                                            <div class="col-md-12 my-2">
+                                                <input-form-group asp-for="Email">
+                                                    <label class="text-secondary"><strong>Email</strong> </label>
+                                                    <div class="input-group">
+                                                        <input asp-for="Email" class="form-control" type="email" maxlength=50 />
+                                                    </div>
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 my-2">
+                                                <input-form-group asp-for="MobileNumber">
+                                                    <label class="text-secondary"><strong>Mobile Number</strong> </label>
+                                                    <div class="input-group">
+                                                        <kendo-maskedtextbox name="Phone" mask="(000) 000-0000" unmask-on-post="true" for="MobileNumber" class="form-control">
+                                                        </kendo-maskedtextbox>
+                                                    </div>
+                                                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 my-2">
+                                                <div class="row" style="margin-top:0;">
+                                                    <div class="office-phone col-md-8">
+                                                        <input-form-group asp-for="OfficePhone">
+                                                            <label class="text-secondary"><strong>Direct Office Phone</strong></label>
+                                                            <kendo-maskedtextbox name="OfficePhone" mask="(000) 000-0000" unmask-on-post="true" for="OfficePhone" class="form-control">
+                                                            </kendo-maskedtextbox>
+                                                            <span asp-validation-for="OfficePhone" class="text-danger"></span>
+                                                        </input-form-group>
+                                                    </div>
+                                                    <div class="office-phone-ext col-md-4">
+                                                        <input-form-group asp-for="OfficePhoneExtension">
+                                                            <label class="text-secondary"><strong>Ext.</strong></label>
+                                                            <kendo-maskedtextbox name="OfficePhoneExtension" mask="00000" unmask-on-post="true" for="OfficePhoneExtension" class="form-control">
+                                                            </kendo-maskedtextbox>
+                                                            <span asp-validation-for="OfficePhoneExtension" class="text-danger"></span>
+                                                        </input-form-group>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            @if (Model.HasCommunicationPreferences)
+                            {
+                                <partial name="_CommunicationPreferences" for="CommunicationPreferences" />
+                            }
+
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <hr />
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-6 col-md-3">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input asp-for="MemberId" type="hidden" />
+                    <input asp-for="ReturnUrl" type="hidden" />
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@if (Model.HasConfirmationWizard)
+{
+    <partial name="_AccountConfirmationWizard" model="Model.ConfirmationWizard" />
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var sendConfirmationEmail = function (evt, onSuccess) {
+            LoadingPanel.loader.show();
+            $.post("@(Model.SendConfirmationEmailActionUrl)", function () {
+                LoadingPanel.loader.hide();
+                $("#@(Model.SendConfirmationEmailReSentAlert.Id)").show();
+                setTimeout(function () {
+                    $("#@(Model.SendConfirmationEmailReSentAlert.Id)").fadeOut();
+                }, @Model.SendConfirmationEmailReSentAlert.FadeSeconds * 1000);
+
+                if (onSuccess) {
+                    onSuccess();
+                }
+            });
+        },
+            sendPhoneCode = function (evt, onSuccess) {
+                LoadingPanel.loader.show();
+                $.post("@Model.SendMobileNumberConfirmationActionUrl", function () {
+                    LoadingPanel.loader.hide();
+                    $("#@(Model.SendMobileNumberConfirmationAlert.Id)").show();
+                    setTimeout(function () {
+                        $("#@(Model.SendMobileNumberConfirmationAlert.Id)").fadeOut();
+                    }, @Model.SendMobileNumberConfirmationAlert.FadeSeconds * 1000);
+
+                    if (onSuccess) {
+                        onSuccess();
+                    }
+                });
+            };
+
+        $(document).on("@SutureHealth.AspNetCore.Areas.Identity.Models.Member.AccountConfirmationWizardModel.EVENT_SEND_EMAIL", sendConfirmationEmail);
+        $(document).on("@SutureHealth.AspNetCore.Areas.Identity.Models.Member.AccountConfirmationWizardModel.EVENT_SEND_CODE", sendPhoneCode);
+
+    @if (!string.IsNullOrWhiteSpace(Model.ConfirmEmailAlert?.Link?.Id))
+    {
+        <text>
+                $("#@(Model.ConfirmEmailAlert.Link.Id)").click(sendConfirmationEmail);
+        </text>
+    }
+            });
+</script>

@@ -1,0 +1,134 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel.SearchHeader
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+@using SutureHealth.AspNetCore.Areas.Network.Models.Listing;
+@using SutureHealth.AspNetCore.Areas.Network.Models.Network;  
+@using SutureHealth;
+
+<div class="search-header-wrapper">
+    <div class="search-header-container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="input-group">
+                    <div class="search-txt-wrapper has-feedback has-clear">
+                        <i class="fa fa-search search-icon" aria-hidden="true"></i>
+                        <input data-action="InputSearch" class="form-control search-box" type="text" placeholder="Search by name or NPI" aria-label="Search">
+                        <span class="form-control-clear form-control-feedback hidden"><i class="fal fa-times"></i></span>
+                    </div>
+                    <span class="input-group-btn" style="z-index:2;">
+                        <button data-action="Search" type="button" class="btn search-button">GO!</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <button data-action="InviteSelected" type="button" disabled class="btn sh-btn sh-btn-green network-invite-selected">Invite Selected (<span></span>)</button>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 2px;">
+            <div class="col-md-5 col-lg-7 text-left">
+                <div class="form-inline preset-headers">
+                    @foreach (var preset in Enum.GetValues(typeof(FilterPreset)).Cast<FilterPreset>().Select(p => new PresetSelection(p)))
+                    {
+                        <div data-key="@preset.Key" style="display: none;">
+                            <div class="networkPresets">
+                                <i class="@preset.IconClass"></i> @preset.Title
+                            </div>
+                            @if (preset.Preset == FilterPreset.InviteSenders)
+                            {
+                                <div>
+                                    We may pre-select companies based on Medicare claims data.
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="network-beta-tag">
+                    BETA
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-5 text-right">
+                <div class="form-inline">
+                    <label for="sortByList" class="sort-label">Sort By:</label>
+                    <select data-action="Sort" class="form-control sort-dropdown">
+                        @foreach (var sortOption in Enum.GetValues(typeof(SearchFilterSortMethod)).Cast<SearchFilterSortMethod>())
+                        {
+                            <option value="@sortOption">@sortOption.GetEnumDescription()</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-inline">
+                    <div data-action="ViewStyle" data-view-style-class="@IndexViewModel.EntityViewStyle.Row.GetEnumDescription()" class="grip-icon search-header-icons" title="Row Display"><i class="fas fa-grip-lines" aria-hidden="true"></i></div>
+                    <div data-action="ViewStyle" data-view-style-class="@IndexViewModel.EntityViewStyle.Grid.GetEnumDescription()" class="task-icon search-header-icons" title="Card Display"><i class="fa fa-th-large" aria-hidden="true"></i></div>
+                </div>
+                <div class="form-inline network-listing-download" title="Export">
+                    <i data-action="ListingDownload" class="fa fa-file-download" style="position: relative; top: 4px; color: #606060" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var searchButton = $("button[data-action='Search']"),
+            searchText = $("input[data-action='InputSearch']"),
+            sortOption = $("select[data-action='Sort']"),
+            inviteButton = $("button[data-action='InviteSelected']"),
+            downloadButton = $("i[data-action='ListingDownload']"),
+            viewButtons = $("div[data-action='ViewStyle']"),
+            onSearchChanged = function () {
+                $(document).trigger("@IndexViewModel.SearchHeader.EVENT_SEARCH_CHANGED", [{
+                    "Search": searchText.val(),
+                    "SortOrder": sortOption.val()
+                }]);
+            },
+            setHeader = function (presetKey) {
+                var allHeaders = $("div[data-key]", ".preset-headers");
+
+                allHeaders.hide();
+                allHeaders.filter("[data-key='" + presetKey + "']").show();
+            };
+
+        searchText.keydown(function (evt) {
+            if (evt.keyCode == 13) {
+                onSearchChanged(evt);
+            }
+        });
+
+        searchButton.click(onSearchChanged);
+        sortOption.change(onSearchChanged);
+
+        inviteButton.click(function () {
+            $(document).trigger("@IndexViewModel.SearchHeader.EVENT_INVITE");
+        });
+
+        downloadButton.click(function () {
+            $(document).trigger("@IndexViewModel.SearchHeader.EVENT_DOWNLOAD");
+        });
+
+        viewButtons.click(function () {
+            $(document).trigger("@IndexViewModel.EVENT_VIEW_STYLE_CHANGED", [$(this).data("view-style-class")]);
+        });
+
+        $(document).on("@IndexViewModel.EVENT_VIEW_STYLE_CHANGED", function (event, viewStyleClass) {
+            viewButtons.removeClass("selected");
+            viewButtons.filter("[data-view-style-class='" + viewStyleClass + "']").addClass("selected");
+        });
+
+        $(document).on("@IndexViewModel.EntityListing.EVENT_INVITATIONS_CHANGED", function (event, npiSelected) {
+            $("span", inviteButton).text(npiSelected.length);
+
+            if (npiSelected.length > 0) {
+                inviteButton.removeAttr("disabled");
+            }
+            else {
+                inviteButton.attr("disabled", "disabled");
+            }
+        });
+
+        $(document).on("@IndexViewModel.EVENT_QUERY_CHANGED", function (event, model) {
+            searchText.val(model.Search);
+            sortOption.val(model.SortOrder);
+            setHeader(model.Preset);
+        });
+    });
+</script>

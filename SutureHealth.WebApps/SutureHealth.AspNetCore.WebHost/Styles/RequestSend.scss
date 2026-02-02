@@ -1,0 +1,143 @@
+﻿
+a, .doc-last-modified {
+    text-decoration: none !important;
+    color: #1e6be8;
+}
+
+
+
+.place-block-bottom {
+    padding-top: 15px;
+    height: 34px;
+}
+
+.add-new-entity .add-new-icon {
+    font-size: 30px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+
+.add-new-entity .add-new-text {
+    font-size: 24px;
+    font-weight: 700;
+    padding-right: 40px;
+}
+
+.add-new-entity {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+
+
+a, .doc-last-modified {
+    text-decoration: none;
+    color: #1e6be8;
+}
+
+
+
+
+
+.sh-btn-blue:hover {
+    background-color: #48d3d9;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+
+
+.colored-row-yellow {
+    background: #fff8b8;
+}
+
+.colored-row-red {
+    background-color: #fcc4b7
+}
+
+
+
+#GridToolBar, #GridToolBarSecondRow {
+    display: block;
+    padding-right: 0 !important;
+}
+
+#GridToolBar .k-spacer:nth-child(even) {
+    width: 100%;
+}
+
+#GridToolBar label {
+    top: -9px;
+}
+
+
+
+.showHideRejectionReason {
+    overflow: hidden;
+    white-space: nowrap;
+    width: calc(100% - 50px);
+    float: left;
+}
+
+.rejectionReason a {
+    font-size: 80%;
+}
+
+
+
+label.form-check-label {
+    position: initial;
+    top: initial;
+    left: initial;
+    font-weight: normal;
+}
+
+.sendtitle {
+    color: #434343;
+    float: left;
+    font-family: 'Verdana';
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 0;
+    text-align: left;
+    width: 500px;
+}
+
+.sendtext {
+    border-top: 1px solid #CCCCCC;
+    clear: both;
+    font-family: Verdana,Geneva,sans-serif;
+    font-size: 12px;
+    margin-top: 15px;
+    padding: 10px 0;
+}
+
+
+
+#AddNewPatient {
+    cursor: pointer;
+    border: none;
+    font-size: 30px;
+}
+
+
+
+#UpdatePatientModal {
+    overflow: inherit;
+}
+
+
+
+#MedicareMbi {
+    text-transform: uppercase;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form-check>.form-check-label{
+        left: auto !important;
+        top: auto !important;
+        position: inherit;
+    }
+}

@@ -1,0 +1,74 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.Listing.EntityListItem
+@using SutureHealth;
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+@using SutureHealth.AspNetCore.Areas.Network.Models.Listing;
+<div class="provider-list-item-wrapper @IndexViewModel.EntityViewStyle.Grid.GetEnumDescription()">
+    <div class="agencyCard">
+        <div style="display:inline-block; width: 80%;margin-left:2%">
+            <div class="entity-icon-grid">
+                <i class="@(Model.ProviderType == SutureHealth.AspNetCore.Areas.Network.Models.Listing.ProviderType.Individual ? "fas fa-user-circle" : "fal fa-building" )"></i>
+            </div>
+            @if (Model.IsSutureCustomer)
+            {
+                <div class="inline-block" style="margin-left: -15%;">
+                    <div class="network-grid-create-date" data-toggle="tooltip" title="Joined @Model.SutureCustomer.DateCreated.ToString("M/d/yyyy")">
+                        <div class="text-center" style="margin-bottom: -5px;">
+                            <img src="~/images/Suturesign New Browser Logo.png" style="height: 18px;" />
+                        </div>
+                        <div class="text-center"><span style="font-size: 12px;">@Model.SutureCustomer.AccountType</span></div>
+                    </div>
+                </div>
+            }
+            <span class="agencyName">@Model.Name</span>
+        </div>
+        <div class="grid-icon-listing">
+            @if (Model.HasClaimsWithUser)
+            {
+                <i class="fa-2x far fa-file-medical-alt" title="@Model.ClaimsWithUser @(Model.ClaimsWithUser > 1 ? " Claims" : "Claim" ) with Me"></i>
+            }
+            @if (Model.IsSutureCustomer && Model.SutureCustomer.IsInNetwork)
+            {
+                <i class="far fa-2x fa-chart-network"></i>
+            }
+        </div>
+        <div style="margin-top:20px;">
+            <p class="agencyAddress">@Model.FullAddress</p>
+        </div>
+        <div class="agencyServiceTypes">
+            @foreach (var service in Model.ServiceTypes)
+            {
+                <label class="agencyType">@service</label>
+            }
+        </div>
+        <div style="display: inline-block; width: 100%;">
+            <p class="agencyDistance">
+                @Model.Distance mi
+            </p>
+        </div>
+
+        @if (Model.HasMultipleButtons)
+        {
+            <div class="entity-grid-dropdown text-center">
+                <div class="dropdown">
+                    <button type="button" class="btn sh-btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;"><span style="float: left;">I want to...</span><i class="fas fa-caret-down" style="float:right; font-size: x-large"></i></button>
+                    <ul class="dropdown-menu">
+                        @foreach (var button in Model.Buttons.OrderBy(btn => Array.IndexOf(EntityListItemActionButtonExtensions.GridButtonOrder, btn)))
+                        {
+                            <li>
+                                <div class="entity-grid-dropdown-button">
+                                    @await Html.PartialAsync(button)
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+        else if (Model.HasSingleButton)
+        {
+            <div class="entity-grid-standalone-button">
+                @await Html.PartialAsync(Model.Buttons.First())
+            </div>
+        }
+    </div>
+</div>

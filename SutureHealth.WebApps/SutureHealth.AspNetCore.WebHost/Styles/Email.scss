@@ -1,0 +1,30 @@
+﻿@import 'abstracts/_index.scss';
+@import 'base/_index.scss';
+@import 'components/_index.scss';
+@import 'layouts/_index.scss';
+
+table {
+    color: #333333;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: $base-font-size;
+
+    .container {
+        width: 100%;
+        color: #4A4A4A;
+        text-align: left;
+        margin: 16px 0;
+    }
+
+    .table-medium {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .marketing-block {
+        background-color: #767676;
+        color: #ffffff;
+        margin: 2rem;
+        text-align: center;
+    }
+}
+

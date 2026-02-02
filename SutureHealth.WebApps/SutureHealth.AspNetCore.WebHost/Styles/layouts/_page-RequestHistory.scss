@@ -1,0 +1,119 @@
+﻿#RequestGrid {
+    border: none;
+}
+.colored-row-yellow {
+    background: #fff8b8;
+    color: #333333;
+}
+
+.colored-row-red {
+    background-color: #fcc4b7;
+}
+
+.colored-row-red:hover, .colored-row-red.k-state-selected {
+    background-image: none !important;
+    color: #fff !important;
+    background: #ec7d7e !important;
+}
+
+.colored-row-yellow:hover,.colored-row-yellow.k-state-selected {
+    background-image: none !important;
+    color: #333 !important;
+    background: #ffdd60 !important;
+}
+
+
+#GridToolBar{
+    min-width: 100%;
+    margin: 16px 0 24px;
+}
+#GridToolBar div{
+    display: inline-grid;
+    margin: 0 12px;
+    height: 3rem;
+}
+#GridToolBar label {
+    font-weight: bold;
+    color: #6c757d;
+    top: -6px;
+}
+#GridToolBarSecondRow, #GridToolBarThirdRow{
+    min-width: 350px;
+}
+#GridToolBarThirdRow {
+    margin-left: auto;
+    padding-left: 10%;
+}
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    #GridToolBarSecondRow, #GridToolBarThirdRow {
+        min-width: 525px;
+    }
+
+    #GridToolBarThirdRow {
+        margin-left: auto;
+        padding-left: 15%;
+    }
+}
+
+#GridToolBar, #GridToolBarSecondRow, #GridToolBarThirdRow{
+    border: none;
+}
+#GridToolBar,
+#GridToolBarSecondRow {
+    display: block;
+    padding-right: 0 !important;
+}
+
+
+
+#GridToolBar .k-spacer:nth-child(even) {
+    width: 100%;
+}
+
+
+.showHideRejectionReason {
+    overflow: hidden;
+    white-space: nowrap;
+    width: calc(100% - 50px);
+    float: left;
+}
+
+.rejectionReason a {
+    font-size: 80%;
+}
+
+.btn-primary .k-button-text{
+    color: #fff !important;
+}
+
+.k-grid-ViewHistory{
+    height: 18px;
+}
+td[role="gridcell"] i{
+    height: 18px;
+    width: 18px;
+}
+
+th[data-field="LastModified"] span{display: none;}
+
+.k-grid-content {
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    overflow-x: auto;
+    /* overflow-y: scroll; */
+    zoom: 1;
+    min-height: 0;
+}
+div.k-grid-footer, div.k-grid-header {
+     padding-right: 0px !important; 
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    zoom: 1;
+}

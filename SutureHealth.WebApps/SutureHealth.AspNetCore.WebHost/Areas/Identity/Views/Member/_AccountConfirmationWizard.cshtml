@@ -1,0 +1,153 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.AccountConfirmationWizardModel
+@if (Model.HasAnyWizard)
+{
+    <script src="~/js/bootstrap-pincode-input.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap-pincode-input.css">
+    <script type="text/javascript">
+        (function () {
+            var continueOrClose = function () {
+                var wizard = $("#AccountConfirmationWizard").data("kendoWizard");
+
+                if (wizard.activeStep().options.index == (wizard.steps().length - 1)) {
+                    $("#AccountConfirmationWizardModal").data("kendoDialog").close();
+                }
+                else {
+                    wizard.next();
+
+                    if ($(".pincode-input-text.first", wizard.currentStep.element).length > 0) {
+                        $(".pincode-input-text.first").focus();
+                    }
+                }
+            },
+                previousOrClose = function () {
+                    var wizard = $("#AccountConfirmationWizard").data("kendoWizard");
+
+                    if (wizard.activeStep().options.index - 1 < 0) {
+                        $("#AccountConfirmationWizardModal").data("kendoDialog").close();
+                    }
+                    else {
+                        wizard.previous();
+                    }
+                };
+
+            window.AccountConfirmationWizardSendEmail = function () {
+                $(document).trigger("@SutureHealth.AspNetCore.Areas.Identity.Models.Member.AccountConfirmationWizardModel.EVENT_SEND_EMAIL", [continueOrClose]);
+            };
+
+            window.AccountConfirmationWizardCancel = function () {
+                $("#AccountConfirmationWizardModal").data("kendoDialog").close();
+            };
+
+            window.AccountConfirmationWizardSendCode = function () {
+                $(document).trigger("@SutureHealth.AspNetCore.Areas.Identity.Models.Member.AccountConfirmationWizardModel.EVENT_SEND_CODE");
+            };
+
+            window.AccountConfirmationWizardCancelCode = function () {
+                previousOrClose();
+            };
+        })();
+    </script>
+
+    <kendo-dialog name="AccountConfirmationWizardModal" width="512" title="">
+        <modal prevent-scroll="true" />
+        <content>
+            <kendo-wizard name="AccountConfirmationWizard" pager="false">
+                <stepper linear="true" class="modal-k-stepper" orientation="horizontal" />
+                <wizard-steps>
+                    @if (Model.HasEmailConfirmation)
+                    {
+                        <wizard-step icon="circle">
+                            <wizard-step-content style="
+                                display: flex;
+                                flex-direction: column;
+                                height: 320px;
+                                width: 512px;
+                                align-items: left;
+                                padding: 24px;
+                                background-color: yellow;
+                                justify-content: space-between;
+                            ">
+                                <div class="wizard-title-image">
+                                    <img src="~/images/email.png" />
+                                    <h5>Verify Email</h5>
+                                </div>
+                                <div>
+                                    For improved security, you must verify your email address. If the email below is correct, you can continue to the verification step.
+                                </div>
+                                <div class="mt-3">
+                                    <input-form-group>
+                                        <label class="text-secondary" for="AccountConfirmationWizardEmail"><strong>Email</strong></label>
+                                        <input class="form-control" style="width: 95%;" id="AccountConfirmationWizardEmail" name="AccountConfirmationWizardEmail" value="@Model.EmailConfirmation.Email" type="text" readonly />
+                                    </input-form-group>
+                                </div>
+                            </wizard-step-content>
+                            <wizard-step-buttons>
+                                <wizard-step-button name="CancelFromEmail" click="AccountConfirmationWizardCancel" text="Cancel" primary="false" />
+                                <wizard-step-button name="SendEmail" click="AccountConfirmationWizardSendEmail" text="Send Verification Email" primary="true" />
+                            </wizard-step-buttons>
+                        </wizard-step>
+                    }
+                    @if (Model.HasPhoneConfirmation)
+                    {
+                        <wizard-step icon="circle">
+                            <wizard-step-content>
+                                <div class="wizard-title-image">
+                                    <img src="~/images/phone.png" />
+                                    <h5>Verify Phone Number</h5>
+                                </div>
+                                <div>
+                                    We sent a six digit code to <strong>@Model.PhoneConfirmation.MobileNumber</strong>. If you did not receive it you can re-send the code to your device.
+                                </div>
+                                <div class="pt-3">
+                                    <input-form-group>
+                                        <label class="text-secondary" for="AccountConfirmationWizardPhoneCode"><strong>Six digit code</strong></label>
+                                        <input type="text" class="wizard-pin-input" name="AccountConfirmationWizardPhoneCode" id="AccountConfirmationWizardPhoneCode">
+                                        <span id="AccountConfirmationWizardPhoneCodeValidation" class="text-danger" style="display: none; padding-top: 16px;">The code you've entered is not valid.  Please try again or re-send a new code.</span>
+                                    </input-form-group>
+                                </div>
+                            </wizard-step-content>
+                            <wizard-step-buttons>
+                                <wizard-step-button name="CancelCode" click="AccountConfirmationWizardCancelCode" text="@(Model.HasEmailConfirmation ? "Go Back" : "Cancel")" primary="false" />
+                                <wizard-step-button name="SendCode" click="AccountConfirmationWizardSendCode" text="Re-send Code" primary="true" />
+                            </wizard-step-buttons>
+                        </wizard-step>
+                    }
+                </wizard-steps>
+            </kendo-wizard>
+        </content>
+    </kendo-dialog>
+    @if (Model.HasPhoneConfirmation)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#AccountConfirmationWizardPhoneCode").pincodeInput({
+                    "inputs": 6,
+                    "hidedigits": false,
+                    "complete": function (value, e, errorElement) {
+                        LoadingPanel.loader.show();
+                        $.post({
+                            "url": "@Model.VerifyMobileNumberCodeActionUrl",
+                            "data": { "code": value },
+                            "success": function () {
+                                window.location.href = "@Html.Raw(Model.PhoneConfirmation.MobileConfirmationReturnUrl)";
+                            },
+                            "error": function () {
+                                LoadingPanel.loader.hide();
+                                $("#AccountConfirmationWizardPhoneCodeValidation").show();
+                            }
+                        })
+                    }
+                });
+
+            @if (!Model.HasEmailConfirmation)
+            {
+                <text>
+                        $(document).ready(function () {
+                            $(".pincode-input-text.first").focus();
+                        });
+                </text>
+            }
+            });
+        </script>
+    }
+}

@@ -1,0 +1,34 @@
+﻿@model IBaseViewModel
+
+<li class="nav-item">
+    <a asp-area="Request" asp-controller="Sign" asp-action="Index" match-area="true" match-controller="true" match-action="true" if-matches-request="nav-active" id="inboxPage" class="nav-link">INBOX <span id="requestCount" class="badge rounded-pill bg-danger" style="display: none;"></span></a>
+</li>
+<li class="nav-item">
+    <a asp-area="Request" asp-page="/History" if-matches-request="nav-active" match-page="true" class="nav-link">ARCHIVE</a>
+</li>
+<script type="text/javascript">
+    $(document).ready(function () {
+        HeaderFunctions.InboxBadge({
+            "Url": "@Url.RouteUrl("SignerInboxCount")"
+        });
+    });
+</script>
+<li class="nav-item">
+    <feature name="network-page">
+        <a asp-area="network" asp-controller="network" asp-action="index" if-matches-request="nav-active" match-area="true" id="networkPage" class="nav-link">
+            <span>Network</span>
+            <span id="badgeCount" class="badge badge-pill badge-danger" style="display:none"></span>
+        </a>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                HeaderFunctions.NetworkBadge();
+            });
+        </script>
+    </feature>
+</li>
+<li class="nav-item">
+    <a asp-area="visit" asp-controller="visit" asp-action="index" id="videoChatLink" class='nav-link' if-matches-request="nav-active" match-area="true">Video</a>
+</li>
+<li class="nav-item">
+    <a asp-area="revenue" asp-controller="revenue" asp-action="index" if-matches-request="nav-active" match-area="true" match-controller="true" match-action="true" id="revenueChatLink" class="nav-link">Revenue</a>
+</li>

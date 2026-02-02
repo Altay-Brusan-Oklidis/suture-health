@@ -1,0 +1,27 @@
+﻿@model LoginModel.ExternalResult
+@inject Microsoft.Extensions.Options.IOptions<DataProtectionTokenProviderOptions> TokenOptions
+<div class="alert alert-@(Model.Type == LoginModel.ExternalResult.ExternalResultType.Success ? "success" : "danger") alert-dismissible" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    @if (Model is LoginModel.ExpiredTokenExternalResult)
+    {
+        <div class="text-center">
+            <div>Sorry, that link has expired</div>
+            <div>
+                <a data-bs-dismiss="alert" data-role="form"
+               data-always="window.NotificationPanel.info(data.Message);"
+               data-form-action="@Url.Page("Login", "ForgotPasswordHandler")"
+               data-form-method="Post"
+               data-input-selector="[name$='AuthenticationToken']"
+               data-validation-form-field-name="@ViewData[LoginModel.VIEWDATA_ANTIFORGERY_FIELD_NAME]"
+               data-validation-message="#loginResultMessage" href="javascript:void(0);">EMAIL ME A NEW LINK</a>
+            </div>
+            <p class="pt-2 mb-0">Link will expire after @(TokenOptions.Value.TokenLifespan.TotalHours) hours</p>
+        </div>
+    }
+    else
+    {
+        <text>
+            @Model.Message
+        </text>
+    }
+</div>

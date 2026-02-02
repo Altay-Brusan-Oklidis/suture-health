@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>SutureHealth.Hchb.Services</RootNamespace>
+		<VersionPrefix>$(VERSION_PREFIX)</VersionPrefix>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SutureHealth.Hchb.Core\SutureHealth.Hchb.Core.csproj" />
+		<ProjectReference Include="..\SutureHealth.Linq.Matching\SutureHealth.Linq.Matching.csproj" />
+		<ProjectReference Include="..\SutureHealth.PatientAPI.Services\SutureHealth.PatientAPI.Services.csproj" />
+		<ProjectReference Include="..\SutureHealth.RequestAPI.Services\SutureHealth.RequestAPI.Services.csproj" />
+	</ItemGroup>
+
+</Project>

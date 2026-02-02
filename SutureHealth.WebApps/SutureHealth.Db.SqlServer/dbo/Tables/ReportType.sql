@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ReportType]
+(
+	[ReportTypeId] SMALLINT NOT NULL IDENTITY(1, 1) CONSTRAINT PK_ReportType PRIMARY KEY CLUSTERED,
+	[Name] NVARCHAR(64) NOT NULL, 
+    [Description] NCHAR(1024) NULL
+)

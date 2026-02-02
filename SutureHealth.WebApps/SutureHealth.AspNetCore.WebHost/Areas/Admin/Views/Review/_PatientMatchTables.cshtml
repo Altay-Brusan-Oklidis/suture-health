@@ -1,0 +1,386 @@
+@model SutureHealth.AspNetCore.Areas.Admin.Models.Review.PatientMatchModel.PatientInfo
+
+
+<div id="patientMatchScore@(Model.MatchIndex)" class="text-center my-2">
+    <div style="text-align: center; margin: 0 auto;">
+        <div>
+            <span class="pmatch-circle"
+            @if (Model.MatchScore >= 100)
+            {
+                <text>style="color: #0C882A;"</text>
+            }
+            else if (Model.MatchScore >= 57 && Model.MatchScore <= 99)
+            {
+                <text>style="color: #C82613;"</text>
+            }
+            else if (Model.MatchScore >= 1 && Model.MatchScore < 57)
+            {
+                <text>style="color: #DE6A19;"</text>
+            }
+            else
+            {
+                <text>style="color: #0C64C0;"</text>
+            }
+          onclick="SelectPatientOption(@(Model.MatchIndex))">@Model.MatchScorePercentage</span>
+        </div>
+        <div>
+            <span style="color:#999999">
+                @if (Model.MatchScore > 100)
+                {
+                    @:Match                    
+                }
+                else if (Model.MatchScore >= 57 && Model.MatchScore <= 100)
+                {
+                    @:High
+                }
+                else if (Model.MatchScore >= 0 && Model.MatchScore < 57)
+                {
+                    @:Low
+                }
+                else
+                {
+                    @:Non-match
+                }
+                (raw score: @Model.MatchScore)
+            </span>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th colspan="2">Potential Match @(Model.MatchIndex + 1)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr @(Model.IsFirstNameMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>@Model.FirstName</span>
+            </td>
+        </tr>
+        <tr @(Model.IsMiddleNameMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.MiddleName.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.MiddleName
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsLastNameMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>@Model.LastName</span>
+            </td>
+        </tr>
+        <tr @(Model.IsSuffixMatch ? "class=toBeHighlighted" : "class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.Suffix.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.Suffix
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsDOBMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>@Model.DOB</span>
+            </td>
+        </tr>
+        <tr @(Model.IsLine1Match ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.Address.Line1.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.Address.Line1
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsLine2Match ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.Address.Line2.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.Address.Line2
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsCityMatch ? "class=toBeHighlighted" : "class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.Address.City.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.Address.City
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsStateMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.Address.StateOrProvince.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.Address.StateOrProvince
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsPostalCodeMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.Address.PostalCode.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.Address.PostalCode
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsGenderMatch ? "class=toBeHighlighted" : "class=notMatching")>
+            <td>
+                <span>
+                    @Model.Gender
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsHomePhoneMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span style="vertical-align: middle;">
+                    @if (@Model.HomePhone == null || @Model.HomePhone.Value?.IsNullOrWhiteSpace() == true)
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.HomePhone.Value
+                        ;
+                        <span>
+                            <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.HomePhone.IsPrimary" /><a> )</a>
+                        </span>
+                    }
+
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsWorkPhoneMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span style="vertical-align: middle;">
+                    @if (@Model.WorkPhone == null || @Model.WorkPhone.Value?.IsNullOrWhiteSpace() == true)
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.WorkPhone.Value
+                        ;
+                        <span>
+                            <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.WorkPhone.IsPrimary" /><a> )</a>
+                        </span>
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsMobileMatch ? "class=toBeHighlighted" : "class=notMatching")>
+            <td>
+                <span style="vertical-align: middle;">
+                    @if (@Model.Mobile == null || @Model.Mobile.Value?.IsNullOrWhiteSpace() == true)
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.Mobile.Value
+                        ;
+                        <span>
+                            <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.Mobile.IsPrimary" /><a> )</a>
+                        </span>
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsOtherPhoneMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span style="vertical-align: middle;">
+                    @if (@Model.OtherPhone == null || @Model.OtherPhone.Value?.IsNullOrWhiteSpace() == true)
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.OtherPhone.Value
+                        ;
+                        <span>
+                            <a>( primary </a><input style="vertical-align: middle; margin-left: 5px;" type="checkbox" disabled checked="@Model.OtherPhone.IsPrimary" /><a> )</a>
+                        </span>
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsOrganizatioNameMatch ? "class=toBeHighlighted" : @"class=notMatching")>
+            <td>
+                <span>
+                    @if (@Model.Facilities.IsNullOrEmpty())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        <kendo-dropdownlist name="PatientFacilities_+@(Model.MatchIndex + 1)" style="width:250px" auto-width="false" bind-to="@Model.Facilities" min-length="2" enforce-min-length="true" datavaluefield="Value" datatextfield="Text" />
+                        //@Model.OrganizatioName
+                        //;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsSSNMatch ? "class=toBeHighlighted" : @"class=notMatchingIdentifier")>
+            <td>
+                <span>
+                    @if (@Model.SSN.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.SSN
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsMedicareMBIMatch ? "class=toBeHighlighted" : @"class=notMatchingIdentifier")>
+            <td>
+                <span>
+                    @if (@Model.MedicareMBI.IsNullOrWhiteSpace())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        @Model.MedicareMBI
+                        ;
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsMedicaidNumberMatch && Model.IsMedicaidStateMatch ? "class=toBeHighlighted" : @"class=notMatchingIdentifier")>
+            <td>
+                <span>
+                    @if (@Model.MedicaidNumber.IsNullOrEmpty())
+                    {
+                        <a>&nbsp;</a>
+                    }
+                    else
+                    {
+                        if (!@Model.MedicaidState.IsNullOrEmpty())
+                        {
+                            @Model.MedicaidNumber @Html.Raw(" ("+@Model.MedicaidState+")")
+                            ;
+                        }
+                        else
+                        {
+                            @Model.MedicaidNumber
+                            ;
+                        }
+                    }
+                </span>
+            </td>
+        </tr>
+        <tr @(Model.IsPrivateInsuranceMatch && Model.IsSelfPaidMatch ? "class=toBeHighlighted" : "class=notMatching")>
+            <td>
+                @if (@Model.IsSelfPaid)
+                {
+                    <input type="checkbox" name="patientSelfPayChk" checked disabled>
+                    <span>Self Pay</span> <br>
+                }
+                else
+                {
+                    <input type="checkbox" name="patientSelfPayChk" disabled>
+                    <span>Self Pay</span> <br>
+                }
+                @if (@Model.IsPrivateInsuranceAvailable)
+                {
+                    <input type="checkbox" name="patientPrivateInsuranceChk" checked disabled>
+                    <span>Private Insurance</span> <br>
+                }
+                else
+                {
+                    <input type="checkbox" name="patientPrivateInsuranceChk" disabled>
+                    <span>Private Insurance</span> <br>
+                }
+            </td>
+        </tr>
+        <tr class=toBeHighlighted>
+            <td>
+                <span>@Model.PatientId</span>
+            </td>
+        </tr>
+        <tr class=toBeHighlighted>
+            <td>
+                <span>@Model.CreatedAt</span>
+            </td>
+        </tr>
+        <tr class=toBeHighlighted>
+            <td>
+                <span>@Model.UpdatedAt</span>
+            </td>
+        </tr>
+      @*  <tr>
+            <td>
+            
+                @if (Model.DocumentNames == null || Model.DocumentNames.Count() == 0)
+                {
+                    <div class="form-group">
+                        @Html.DropDownList("selectedFileName", Enumerable.Empty<SelectListItem>(), "Select a document", new { @class = "form-control",disabled = "disabled"})
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        @Html.DropDownList("selectedFileName", Model.DocumentNames.Select(file => new SelectListItem { Text = file, Value = file }) , "Select a document", new { @class = "form-control", matchindex= Model.MatchIndex ,onchange="UpdateDocumentSelection(this)" })
+                    </div>    
+                    <div>
+                        <a id=@("downloadLinkForItem_"+Model.MatchIndex.ToString()) href="#" class="btn btn-primary" style="display: none;" onclick="DownloadDocument(this))">Download</a>
+                    </div>
+                }
+
+            </td>
+        </tr>*@
+    </tbody>
+</table>

@@ -1,0 +1,88 @@
+﻿// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/@progress/kendo-theme-default/scss/core/mixins";
+@import "../node_modules/@progress/kendo-theme-default/scss/core/functions";
+
+$progressbar-fill-bg: $danger !default;
+$progressbar-fill-text: contrast-wcag( $progressbar-fill-bg ) !default;
+$progressbar-fill-border: try-shade( $progressbar-fill-bg ) !default;
+$progressbar-fill-gradient: null !default;
+
+/*div.input-form-group {
+    width: 100%;
+
+    & > .form-group {
+        & > label {
+            background: #FFFFFF;
+            color: #333;
+            font-size: 12px;
+            font-weight: 600;
+            left: 20px;
+            padding: 0 5px;
+            position: absolute;
+            top: -9px;
+            z-index: 1001;
+        }
+
+        & > input.form-control[type="text"], 
+            input.k-textbox {
+            width: 100%;
+            height: 2.5em;
+            padding: 6px 12px;
+            background-color: #FFFFFF !important;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            padding: .5em 24px 2px 12px;
+        }
+
+        & > i.ui-clear-button {
+            cursor: pointer;
+            position: absolute;
+            top: .15em;
+            right: .75em;
+            -webkit-transition: opacity .15s ease-in-out;
+            -o-transition: opacity ease-in-out .15s;
+            transition: opacity .15s ease-in-out;
+        }
+    }
+} */
+
+.k-resize-ne,
+.k-resize-se,
+.k-resize-e {
+    right: 0;
+}
+
+.sh-progress.k-progressbar .k-state-selected {
+    @include fill( $progressbar-fill-text, $progressbar-fill-bg, $progressbar-fill-border, $progressbar-fill-gradient );
+}
+
+div.input-form-group > .form-group > i.ui-clear-button {
+    top: .40em !important;
+    color:gray;
+    font-size:1.5em;
+    z-index: 1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.ui-clear-button{
+    margin-right:5px;
+}

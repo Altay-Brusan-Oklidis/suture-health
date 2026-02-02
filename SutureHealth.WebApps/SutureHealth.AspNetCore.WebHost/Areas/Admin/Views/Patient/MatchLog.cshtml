@@ -1,0 +1,221 @@
+﻿@using Newtonsoft.Json
+@model SutureHealth.AspNetCore.Areas.Admin.Models.Patient.MatchLogModel
+@{
+    string json = string.Empty;
+    if (Model.Matches != null)
+    {
+        json = System.Text.Json.JsonSerializer.Serialize(Model.Matches, new System.Text.Json.JsonSerializerOptions
+                {
+                    ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles,
+                    WriteIndented = true
+                });
+    }
+}
+<style>
+    .nav:hover {
+        border-top: none;
+    }
+</style>
+<div class="p-5">
+    <ul id="actionTabs" role="tablist" class="nav nav-pills nav-fill" style="display: flex !important;">
+        <li class="nav-item">
+            <a class="nav-link active" id="submitted-tab" data-toggle="tab" href="#submitted" role="tab" aria-controls="submitted" aria-selected="true">Patient Details</a>
+        </li>
+        @if (!Model.MatchPatientLog.Outcomes.IsNullOrEmpty())
+        {
+            <li class="nav-item">
+                <a class="nav-link @((!Model.MatchPatientLog.Outcomes.IsNullOrEmpty()) ? "" : "disabled")" data-toggle="tab" href="#outcomes" role="tab" aria-controls="outcomes" aria-selected="false">Outcomes</a>
+            </li>
+        }
+        <li class="nav-item">
+            <a class="nav-link" id="matching-tab" data-toggle="tab" href="#matching" role="tab" aria-controls="matching" aria-selected="false">Patient Matching Output</a>
+        </li>
+    </ul>
+    <div class="tab-content p-3">
+        <div class="tab-pane fade show active" id="submitted" role="tabpanel" aria-labelledby="submitted-tab">
+            <form id="patientMatchLog" asp-action="PostPatchMatch" asp-area="Admin" asp-controller="Patient" method="post">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <td><label>First Name</label></td>
+                            <td><input asp-for="MatchPatientLog.FirstName" type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Middle Name</label></td>
+                            <td><input asp-for="MatchPatientLog.MiddleName" type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Last Name</label></td>
+                            <td><input asp-for="MatchPatientLog.LastName" type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td>DOB</td>
+                            <td>@(Html.Kendo().DatePickerFor(dtp => dtp.MatchPatientLog.Birthdate).Format("d"))</td>
+                        </tr>
+                        <tr>
+                            <td>Street Address</td>
+                            <td>
+                                <div>@Model.MatchPatientLog.Address1</div>
+                                <div>@Model.MatchPatientLog.Address2</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td>@Model.MatchPatientLog.City</td>
+                        </tr>
+                        <tr>
+                            <td>State</td>
+                            <td>@Model.MatchPatientLog.State</td>
+                        </tr>
+                        <tr>
+                            <td>Postal Code</td>
+                            <td><input asp-for="MatchPatientLog.Zip" type="text" value="@Model.MatchPatientLog.Zip.ToFormattedZip()" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                <kendo-radiogroup for="MatchPatientLog.Gender" class="form-check-input"
+                                                  value="@Model.MatchPatientLog.Gender"
+                                                  label-position="RadioGroupLabelPosition.Before"
+                                                  layout="RadioGroupLayout.Horizontal">
+                                    <kendo-radiogroup-items>
+                                        <kendo-radiogroup-item label="Male" value="@SutureHealth.Gender.Male" class="form-check-label"></kendo-radiogroup-item>
+                                        <kendo-radiogroup-item label="Female" value="@SutureHealth.Gender.Female" class="form-check-label"></kendo-radiogroup-item>
+                                        <kendo-radiogroup-item label="Unknown" value="@SutureHealth.Gender.Unknown" class="form-check-label"></kendo-radiogroup-item>
+                                        <kendo-radiogroup-item label="Ambiguous" value="@SutureHealth.Gender.Ambiguous" class="form-check-label"></kendo-radiogroup-item>
+                                    </kendo-radiogroup-items>
+                                </kendo-radiogroup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>SSN</td>
+                            <td>
+                                <kendo-maskedtextbox for="SocialSecurityNumber" id="SocialSecurityNumber"
+                                                     mask="@Model.SocialSecurityNumberMask" class="form-control" style="width: 100%" />
+                                <kendo-radiogroup for="SocialSecurityNumberType" class="form-check"
+                                                  label-position="RadioGroupLabelPosition.After"
+                                                  layout="RadioGroupLayout.Horizontal">
+                                    <kendo-radiogroup-items>
+                                        <kendo-radiogroup-item label="Full (preferred)" value="@SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel.SocialSecurityNumberStyle.Full"></kendo-radiogroup-item>
+                                        <kendo-radiogroup-item label="Last 4 digits" value="@SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel.SocialSecurityNumberStyle.Last4"></kendo-radiogroup-item>
+                                        <kendo-radiogroup-item label="Unavailable" value="@SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel.SocialSecurityNumberStyle.Unavailable"></kendo-radiogroup-item>
+                                    </kendo-radiogroup-items>
+                                </kendo-radiogroup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Medicare MBI</td>
+                            <td><kendo-maskedtextbox mask="AAAA-AAA-AAAA" for="MatchPatientLog.MedicareNumber" value="@Model.MatchPatientLog.MedicaidNumber" class="form-control" type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td>Medicaid Number</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-6"><input asp-for="MatchPatientLog.MedicaidNumber" type="text" class="form-control" value="@Model.MatchPatientLog.MedicaidNumber" /></div>
+                                    <div class="col-3"><select asp-for="MatchPatientLog.MedicaidState" asp-items="SutureHealth.AspNetCore.Mvc.Rendering.Lists.States" class="form-control" value="@Model.MatchPatientLog.MedicaidState"></select></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>External Patient Id</td>
+                            <td><input asp-for="MatchPatientLog.FacilityMRN" type="text" value="@Model.MatchPatientLog.FacilityMRN" class="form-control" /></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="p-5" colspan="2">
+                                <div class="row">
+                                    <div class="col-6"><button type="reset" class="btn btn-primary btn-lg btn-block">Reset</button></div>
+                                    <div class="col-6"><button type="submit" class="btn btn-primary btn-lg btn-block">Match</button></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
+        </div>
+        @if (!Model.MatchPatientLog.Outcomes.IsNullOrEmpty())
+        {
+            <div class="tab-pane fade" id="outcomes" role="tabpanel" aria-labelledby="outcomes-tab">
+                <table class="table table-sm table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th colspan="3"><h4>MatchPatientLogID:  @Model.MatchPatientLog.MatchPatientLogID</h4></th>
+                        </tr>
+                        <tr>
+                            <th>Matched On</th>
+                            <th></th>
+                            <th class="text-center">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var outcome in Model.MatchPatientLog.Outcomes.OrderByDescending(o => o.MatchScore))
+                        {
+                            <tr>
+                                <td>@outcome.CreateDate.ToString("g")</td>
+                                <td class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-12">@outcome.Patient.ToString()</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4"><label>Birthdate:</label> @outcome.Patient.Birthdate.ToString("d")</div>
+                                        <div class="col-md-4"><label>Gender:</label> @outcome.Patient.Gender</div>
+                                        <div class="col-md-4"><label>Postal Code:</label> @outcome.Patient.Addresses.FirstOrDefault()?.PostalCode</div>
+                                    </div>
+                                </td>
+                                <td class="text-center">@outcome.MatchScore</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        <div class="tab-pane fade" id="matching" role="tabpanel" aria-labelledby="matching-tab">
+            @if (Model.Matches != null)
+            {
+                @await Html.PartialAsync("_PatientMatchResults", Model.Matches);
+            }
+        </div>
+    </div>
+</div>
+<style>
+    [data-toggle="collapse"] .fa:before {
+        content: "\f139";
+    }
+
+    [data-toggle="collapse"].collapsed .fa:before {
+        content: "\f13a";
+    }
+</style>
+<script>
+    $(() => {
+        $("form#patientMatchLog").submit((event) => {
+            let form = $(event.target);
+            let data = form.serialize();
+            let actionUrl = form.prop("action");
+            let submitButton = $("button[type=submit]", form);
+            
+            
+            submitButton.attr('disabled', true);
+
+            $.ajax({
+                type: 'POST',
+                url: actionUrl,
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: data,
+                success: function (result) {
+                    $("#matching").html(result);
+                    $('#actionTabs a[href="#matching"]').tab('show');
+                    window.scrollTo(0,0);
+                },
+                error: function () {
+                    console.log('Failed');
+                }
+            }).always(function() {
+                submitButton.removeAttr('disabled');
+            });
+
+            event.preventDefault();
+        });
+    });
+</script>

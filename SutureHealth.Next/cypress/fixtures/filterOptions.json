@@ -1,0 +1,573 @@
+{
+  "templateTypes": [
+    {
+      "templateTypeId": 1059,
+      "category": "Dental",
+      "categoryName": "Dental",
+      "name": "Dental Certification - No Medical Contraindication",
+      "shortName": "Dental Cert",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1033,
+      "category": "General",
+      "categoryName": "General",
+      "name": "Discharge Summary - Hospital",
+      "shortName": "DC Summary - Hospital",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1025,
+      "category": "General",
+      "categoryName": "General",
+      "name": "General Communication",
+      "shortName": "Communication",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1010,
+      "category": "General",
+      "categoryName": "General",
+      "name": "Medical Order",
+      "shortName": "Medical Order",
+      "documentCount": 9
+    },
+    {
+      "templateTypeId": 1027,
+      "category": "General",
+      "categoryName": "General",
+      "name": "Medication Summary",
+      "shortName": "Med Summary",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1024,
+      "category": "General",
+      "categoryName": "General",
+      "name": "Wound Photo",
+      "shortName": "Wound Photo",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1028,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Discharge Summary - Home Health",
+      "shortName": "DC Summary - HH",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1037,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Estimated Length of Services Addendum",
+      "shortName": "Est Length of Services",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1054,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Add Discipline",
+      "shortName": "Add Discipline",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1015,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Assessment",
+      "shortName": "HH Assessment",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1049,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Care Plan Update",
+      "shortName": "Care Plan Update",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1001,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Certification",
+      "shortName": "Certification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1055,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Discharge Order",
+      "shortName": "Discharge Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1014,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Eligibility Summary",
+      "shortName": "HH Eligibility Summary",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1042,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Episode Summary",
+      "shortName": "Episode Summary",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Face-to-Face",
+      "shortName": "Face-to-Face",
+      "documentCount": 3
+    },
+    {
+      "templateTypeId": 2,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Face-to-Face (non-primary)",
+      "shortName": "Face-to-Face non-primary",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1016,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Face-to-Face Note",
+      "shortName": "HH Face-to-Face Note",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1002,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Interim Order",
+      "shortName": "Interim Order",
+      "documentCount": 4
+    },
+    {
+      "templateTypeId": 1003,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Recertification",
+      "shortName": "Recertification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1060,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Recertification Request",
+      "shortName": "HH Recert Request",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1056,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Resumption of Care",
+      "shortName": "Resumption of Care",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1057,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Home Health Significant Change in Condition",
+      "shortName": "Significant Change in Condition",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1038,
+      "category": "HomeHealth",
+      "categoryName": "Home Health",
+      "name": "Statement of Medical Need",
+      "shortName": "Medical Need",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1039,
+      "category": "HomeHealth, Telemonitoring",
+      "categoryName": "Telemonitoring",
+      "name": "Telemonitoring Authorization",
+      "shortName": "Telemonitoring Auth",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1040,
+      "category": "HomeHealth, Telemonitoring",
+      "categoryName": "Telemonitoring",
+      "name": "Telemonitoring Plan of Care",
+      "shortName": "Telemonitoring POC",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1041,
+      "category": "HomeHealth, Telemonitoring",
+      "categoryName": "Telemonitoring",
+      "name": "Telemonitoring Vital Sign History",
+      "shortName": "Telemonitoring Vitals",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1051,
+      "category": "HomeInfusion",
+      "categoryName": "Home Infusion",
+      "name": "Home Infusion Certification",
+      "shortName": "Infusion Certification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1053,
+      "category": "HomeInfusion",
+      "categoryName": "Home Infusion",
+      "name": "Home Infusion Interim Order",
+      "shortName": "Infusion Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1052,
+      "category": "HomeInfusion",
+      "categoryName": "Home Infusion",
+      "name": "Home Infusion Recertification",
+      "shortName": "Infusion Recertification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1017,
+      "category": "Hospice",
+      "categoryName": "Hospice",
+      "name": "Certificate of Terminal Illness",
+      "shortName": "Cert Terminal Illness",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1029,
+      "category": "Hospice",
+      "categoryName": "Hospice",
+      "name": "Discharge Summary - Hospice",
+      "shortName": "DC Summary - Hospice",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1004,
+      "category": "Hospice",
+      "categoryName": "Hospice",
+      "name": "Hospice Certification",
+      "shortName": "Certification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1005,
+      "category": "Hospice",
+      "categoryName": "Hospice",
+      "name": "Hospice Interim Order",
+      "shortName": "Interim Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1006,
+      "category": "Hospice",
+      "categoryName": "Hospice",
+      "name": "Hospice Recertification",
+      "shortName": "Recertification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1045,
+      "category": "MedicalSocialWork, HomeHealth, Hospice",
+      "categoryName": "Medical Social Work",
+      "name": "Discharge Summary - Medical Social Work",
+      "shortName": "DC Summary - MSW",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1043,
+      "category": "MedicalSocialWork, HomeHealth, Hospice",
+      "categoryName": "Medical Social Work",
+      "name": "Medical Social Work Evaluation",
+      "shortName": "MSW Evaluation",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1044,
+      "category": "MedicalSocialWork, HomeHealth, Hospice",
+      "categoryName": "Medical Social Work",
+      "name": "Medical Social Work Follow Up",
+      "shortName": "MSW Follow Up",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1008,
+      "category": "MedicalSupply",
+      "categoryName": "Medical Supply",
+      "name": "Certificate of Medical Necessity",
+      "shortName": "Cert Med Necessity",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1009,
+      "category": "MedicalSupply",
+      "categoryName": "Medical Supply",
+      "name": "Medical Supply Order",
+      "shortName": "Med Supply Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1050,
+      "category": "MedicalSupply",
+      "categoryName": "Medical Supply",
+      "name": "Oxygen - Certificate of Medical Necessity",
+      "shortName": "Oxygen CMN",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1007,
+      "category": "Nutrition",
+      "categoryName": "Medical Nutrition Therapy",
+      "name": "Nutrition Order",
+      "shortName": "Nutrition Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1031,
+      "category": "OccupationalTherapy, HomeHealth, Rehab",
+      "categoryName": "Occupational Therapy",
+      "name": "Discharge Summary - Occupational Therapy",
+      "shortName": "DC Summary - OT",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1018,
+      "category": "OccupationalTherapy, HomeHealth, Rehab",
+      "categoryName": "Occupational Therapy",
+      "name": "Occupational Therapy Certification",
+      "shortName": "OT Certification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1034,
+      "category": "OccupationalTherapy, HomeHealth, Rehab",
+      "categoryName": "Occupational Therapy",
+      "name": "Occupational Therapy Evaluation",
+      "shortName": "OT Evaluation",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1020,
+      "category": "OccupationalTherapy, HomeHealth, Rehab",
+      "categoryName": "Occupational Therapy",
+      "name": "Occupational Therapy Order",
+      "shortName": "OT Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1019,
+      "category": "OccupationalTherapy, HomeHealth, Rehab",
+      "categoryName": "Occupational Therapy",
+      "name": "Occupational Therapy Recertification",
+      "shortName": "OT Recertification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1026,
+      "category": "Pharmacy",
+      "categoryName": "Pharmacy",
+      "name": "Pharmacy Order",
+      "shortName": "Pharmacy Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1030,
+      "category": "PhysicalTherapy, HomeHealth, Rehab",
+      "categoryName": "Physical Therapy",
+      "name": "Discharge Summary - Physical Therapy",
+      "shortName": "DC Summary - PT",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1011,
+      "category": "PhysicalTherapy, HomeHealth, Rehab",
+      "categoryName": "Physical Therapy",
+      "name": "Physical Therapy Certification",
+      "shortName": "PT Certification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1036,
+      "category": "PhysicalTherapy, HomeHealth, Rehab",
+      "categoryName": "Physical Therapy",
+      "name": "Physical Therapy Evaluation",
+      "shortName": "PT Evaluation",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1013,
+      "category": "PhysicalTherapy, HomeHealth, Rehab",
+      "categoryName": "Physical Therapy",
+      "name": "Physical Therapy Order",
+      "shortName": "PT Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1012,
+      "category": "PhysicalTherapy, HomeHealth, Rehab",
+      "categoryName": "Physical Therapy",
+      "name": "Physical Therapy Recertification",
+      "shortName": "PT Recertification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1048,
+      "category": "SHContract",
+      "categoryName": "Suture Health Contracts",
+      "name": "Suture Health ACH Form",
+      "shortName": "ACH Form",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1046,
+      "category": "SHContract",
+      "categoryName": "Suture Health Contracts",
+      "name": "Suture Health Master Services Agreement",
+      "shortName": "Master Services Agreement",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1047,
+      "category": "SHContract",
+      "categoryName": "Suture Health Contracts",
+      "name": "Suture Health Services Order Form",
+      "shortName": "Service Order Form",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1032,
+      "category": "SpeechTherapy, HomeHealth, Rehab",
+      "categoryName": "Speech Therapy",
+      "name": "Discharge Summary - Speech Therapy",
+      "shortName": "DC Summary - ST",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1021,
+      "category": "SpeechTherapy, HomeHealth, Rehab",
+      "categoryName": "Speech Therapy",
+      "name": "Speech Therapy Certification",
+      "shortName": "Speech Certification",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1035,
+      "category": "SpeechTherapy, HomeHealth, Rehab",
+      "categoryName": "Speech Therapy",
+      "name": "Speech Therapy Evaluation",
+      "shortName": "ST Evaluation",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1023,
+      "category": "SpeechTherapy, HomeHealth, Rehab",
+      "categoryName": "Speech Therapy",
+      "name": "Speech Therapy Order",
+      "shortName": "Speech Order",
+      "documentCount": 0
+    },
+    {
+      "templateTypeId": 1022,
+      "category": "SpeechTherapy, HomeHealth, Rehab",
+      "categoryName": "Speech Therapy",
+      "name": "Speech Therapy Recertification",
+      "shortName": "Speech Recertification",
+      "documentCount": 0
+    }
+  ],
+  "signers": [
+    {
+      "memberId": 3005142,
+      "memberTypeId": 2000,
+      "signingName": "Robert Anderson, MD",
+      "userName": "freeSIGNERtest",
+      "firstName": "Robert",
+      "lastName": "Anderson",
+      "middleName": "",
+      "maidenName": null,
+      "suffix": "",
+      "professionalSuffix": "MD",
+      "documentCount": 8
+    },
+    {
+      "memberId": 3005173,
+      "memberTypeId": 2000,
+      "signingName": "Andy Robertson, DO",
+      "userName": "freeDOtest",
+      "firstName": "Andy",
+      "lastName": "Robertson",
+      "middleName": "",
+      "maidenName": null,
+      "suffix": "",
+      "professionalSuffix": "DO",
+      "documentCount": 5
+    },
+    {
+      "memberId": 3005175,
+      "memberTypeId": 2001,
+      "signingName": "Jilm Galveston, NP",
+      "userName": "freeNPSIGNtest",
+      "firstName": "Jilm",
+      "lastName": "Galveston",
+      "middleName": "",
+      "maidenName": null,
+      "suffix": "",
+      "professionalSuffix": "NP",
+      "documentCount": 5
+    },
+    {
+      "memberId": 3005352,
+      "memberTypeId": 2000,
+      "signingName": "SecondaryMD SecondSigner, MD",
+      "userName": "SecondarySignerCI",
+      "firstName": "SecondaryMD",
+      "lastName": "SecondSigner",
+      "middleName": null,
+      "maidenName": null,
+      "suffix": "",
+      "professionalSuffix": "MD",
+      "documentCount": 1
+    }
+  ],
+  "collaborators": [
+    {
+      "memberId": 3005175,
+      "memberTypeId": 2001,
+      "signingName": "Jilm Galveston, NP",
+      "userName": "freeNPSIGNtest",
+      "firstName": "Jilm",
+      "lastName": "Galveston",
+      "middleName": "",
+      "maidenName": null,
+      "suffix": "",
+      "professionalSuffix": "NP",
+      "documentCount": 5
+    }
+  ],
+  "senderOrganizations": [
+    {
+      "organizationId": 12041,
+      "organizationName": "SutureTest Home Health",
+      "documentCount": 16
+    }
+  ],
+  "documentIds": [
+    100209582, 100209779, 100209957, 100209960, 100210041, 100210056, 100210059,
+    100210148, 100210405, 100210408, 100210579, 100210673, 100211874, 100213351,
+    100213354, 100215302
+  ]
+}

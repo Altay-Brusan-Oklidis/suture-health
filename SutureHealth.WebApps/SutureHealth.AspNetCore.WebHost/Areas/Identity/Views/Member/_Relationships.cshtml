@@ -1,0 +1,65 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Models.Member.RelationshipsModel
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/UserRelationshipGrid.min.css" asp-append-version="true" />
+}
+@if (Model.HasRelationships)
+{
+    <div class="row grid-user-relationship div-distance">
+        <div class="col-md-12 col-sm-12">
+            <div class="user-information">
+                <legend>
+                    User Relationships
+                    <span class="help-icon">
+                        <i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="By selecting one or more individuals, it allows the individuals selected (depending on their role) to help with the workflow in the signature request process. An Assistant or Collaborator must have at least one Physician (Signer) selected."></i>
+                    </span>
+                </legend>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div>
+                                    Active
+                                </div>
+                                <div>
+                                    <input asp-for="IsAllEditableRelationshipsActive" type="checkbox" />
+                                </div>
+                            </th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Occupation</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < Model.Relationships.Length; ++i)
+                        {
+                            <tr>
+                                <td scope="row">
+                                    <input asp-for="Relationships[i].MemberId" type="hidden" />
+                                    <input class="cbActiveRelation" data-member-id="@Model.Relationships[i].MemberId" asp-for="Relationships[i].Active" type="checkbox">
+                                </td>
+                                <td>@Model.Relationships[i].Name</td>
+                                <td>@Model.Relationships[i].Occupation</td>
+                                <td>@Model.Relationships[i].Role</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#@Html.IdFor(m => m.IsAllEditableRelationshipsActive)").change(function (ev) {
+                $(".cbActiveRelation").prop("checked", ev.target.checked);
+            });
+
+            $(".cbActiveRelation").change(function () {
+                var totalCheckboxes = $(".cbActiveRelation").length;
+                var checkedBoxes = $(".cbActiveRelation:checked").length;
+
+                $("#@Html.IdFor(m => m.IsAllEditableRelationshipsActive)").prop("checked", checkedBoxes == totalCheckboxes);
+            });
+        });
+    </script>
+}

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>SutureHealth.Notification.Services.SqlServer</RootNamespace>
+    <VersionPrefix>$(VERSION_PREFIX)</VersionPrefix>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SutureHealth.Common\SutureHealth.Common.csproj" />
+    <ProjectReference Include="..\SutureHealth.NotificationAPI.Services\SutureHealth.NotificationAPI.Services.csproj" />
+  </ItemGroup>
+
+</Project>

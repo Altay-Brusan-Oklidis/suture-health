@@ -1,0 +1,62 @@
+﻿@model SutureHealth.AspNetCore.Areas.Admin.Models.Member.ToggleActiveModel
+<script type="text/javascript">
+    (function () {
+        LoadingPanel.loader.hide();
+
+        window.ToggleActiveDialogConfirm = function () {
+            LoadingPanel.loader.show();
+            $.post("@Model.ToggleActiveActionUrl", function () {
+                $("#ToggleActiveDialog").data("kendoDialog").close();
+                LoadingPanel.loader.hide();
+                $(document).trigger("@SutureHealth.AspNetCore.Areas.Admin.Models.Member.ToggleActiveModel.EVENT_ACTIVATION_CHANGED");
+            });
+
+            return false;
+        };
+
+        window.ToggleActiveDialogClose = function () {
+            $("#ToggleActiveDialog").data("kendoDialog").destroy();
+        };
+    })();
+</script>
+<kendo-dialog name="ToggleActiveDialog" title="@(Model.IsCurrentlyActive ? "Deactivate" : "Activate") User" modal="true" on-close="ToggleActiveDialogClose">
+    <content>
+        @if (Model.CanPerformAction)
+        {
+            <div>
+                Are you sure you want to @(Model.IsCurrentlyActive ? "deactivate" : "activate") @(Model.UserName)?
+            </div>
+        }
+        else
+        {
+            <div>
+                The user @Model.UserName cannot currently be @(Model.IsCurrentlyActive ? "deactivated" : "activated") for the following reasons:
+                <ul>
+                    @if (Model.HasPendingRequests)
+                    {
+                        <li>This user has pending requests.</li>
+                    }
+                    @if (Model.IsSoleAdministrator)
+                    {
+                        <li>This user is the sole administrator of one or more organizations.</li>
+                    }
+                    @if (!Model.HasOrganizationRelationship)
+                    {
+                        <li>This user has no previously associated organizations.  Create an active association between the user and an organization using the Edit screen.</li>
+                    }
+                </ul>
+            </div>
+        }
+    </content>
+    <actions>
+        @if (Model.CanPerformAction)
+        {
+            <action action="ToggleActiveDialogConfirm" text="Yes" />
+            <action text="No" primary="true" />
+        }
+        else
+        {
+            <action text="Ok" primary="true" />
+        }
+    </actions>
+</kendo-dialog>

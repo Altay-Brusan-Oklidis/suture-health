@@ -1,0 +1,262 @@
+﻿@model SutureHealth.AspNetCore.Areas.Network.Models.IndexViewModel
+@using SutureHealth;
+@using SutureHealth.AspNetCore.Areas.Network.Models;
+@using SutureHealth.AspNetCore.Areas.Network.Models.Network;
+@{
+    Model.RequiresLoading = true;
+    Model.RequireUI = true;
+}
+
+<link rel="stylesheet" href="~/css/Network.min.css" />
+<style>
+    @@media screen and (min-width: @(IndexViewModel.VIEW_STYLE_TRANSITION_THRESHOLD_PIXELS)px) {
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            padding-right: 10px;
+            z-index: 3;
+            background-color: #f9f9f9;
+            height: 55px;
+        }
+
+        body > div.container {
+            margin-top: 90px;
+            margin-bottom: -75px;
+        }
+
+        .network-col-sidebar {
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+            float: left;
+            width: 350px;
+        }
+
+        .network-col-content {
+            position: relative;
+            min-height: 1px;
+            /* padding-left: 71px; */
+            /* padding-left: 20%; */
+            /* padding-right: 15px; */
+            /* float: right; */
+            /* width: calc(100% - 350px); */
+            /* max-width: 100%; */
+            max-height: 100%;
+        }
+
+        .network-listing-wrapper {
+            padding-bottom: 100px;
+            padding-top: 90px;
+            position: relative;
+        }
+
+        .network-filters-column-wrapper {
+            position: fixed;
+            height: calc(100vh - 170px);
+            overflow-y: scroll;
+            width: inherit;
+        }
+
+        .network-filters-column-container {
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: 5%;
+        }
+
+        footer.footer {
+            position: fixed;
+            bottom: 0;
+            z-index: 100;
+        }
+    }
+
+    @@media only screen and (max-width: @(IndexViewModel.VIEW_STYLE_TRANSITION_THRESHOLD_PIXELS - 1)px) {
+        .search-header-icons {
+            display: none !important;
+        }
+
+        .network-contact-us {
+            display: none !important;
+        }
+    }
+</style>
+
+<div class="network-wrapper">
+    <div class="network-container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="network-col-sidebar">
+                    <div class="network-filters-column-wrapper">
+                        <div class="network-filters-column-container">
+                            <div>
+                                <partial name="_ModeSelector" model="@Model.Mode" />
+                            </div>
+                            <hr style="color: gray; margin: 0 25% 0 10%" />
+                            <div>
+                                <partial name="_FilterSelector" model="@Model.Filter" />
+                            </div>
+                            <div class="text-center network-contact-us">
+                                <div style="margin-top: 20px;">
+                                    Can't find what you are looking for?
+                                </div>
+                                <div>
+                                    <a href="mailto:support@suturehealth.com">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto flex-grow" style="max-width:80%;margin-left:-5%;">
+                <div class="network-col-content">
+                    <partial name="_SearchHeader" model="@Model.Header" />
+                    <partial name="_EntityListing" model="@Model.Listing" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="AjaxContainer">
+</div>
+
+<partial name="_WarningModal" />
+<partial name="_MessageModal" />
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () 
+    {
+       var showInvitationModal = function (numberToBeInvited, onSubmit) {
+                $(document).off("@InvitationModal.EVENT_SUBMIT");
+                $(document).on("@InvitationModal.EVENT_SUBMIT", onSubmit);
+                $("#AjaxContainer").load("@Url.RouteUrl("NetworkInvitationModal")?numberToBeInvited=" + numberToBeInvited);
+            },
+            downloadListingFile = function (state) {
+                $.ajax({
+                    "type": "POST",
+                    "url": "@Url.RouteUrl("NetworkListingDownloadForm")",
+                    "contentType": "application/json",
+                    "data": JSON.stringify(state),
+                    "success": function (data) {
+                        $("#AjaxContainer").html(data);
+                    }
+                });
+            },
+            presets = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Initialization.Presets, new Newtonsoft.Json.Converters.StringEnumConverter())),
+            queryState = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Initialization.QueryState, new Newtonsoft.Json.Converters.StringEnumConverter())),
+            processQuery = function (state, controlsOnly) {
+                $(document).trigger("@IndexViewModel.EVENT_QUERY_CHANGED", [state, controlsOnly]);
+                history.replaceState(queryState, "");
+            },
+            providerIdToInvite = [],
+            autoViewStyle = function () {
+                $(document).trigger("@IndexViewModel.EVENT_VIEW_STYLE_CHANGED", [$(window).width() < @IndexViewModel.VIEW_STYLE_TRANSITION_THRESHOLD_PIXELS ? "@IndexViewModel.EntityViewStyle.Grid.GetEnumDescription()" : "@IndexViewModel.EntityViewStyle.Row.GetEnumDescription()"]);
+            };
+
+        $(document).on("@IndexViewModel.ModeSelector.EVENT_PRESET_CHANGED @IndexViewModel.FilterSelector.EVENT_FILTERS_CHANGED @IndexViewModel.SearchHeader.EVENT_SEARCH_CHANGED", function (event, model) 
+        {
+            var onChangeQueryState = function () {
+                @* If the preset is changed, set queryState to the preset instead of merging with existing queryState *@                    
+                if (model.Preset && presets[model.Preset]) 
+                {    
+                    queryState = $.extend(true, {}, presets[model.Preset]);
+                    history.pushState(queryState, "", "@Url.RouteUrl("Network")/" + model.Preset);
+                }
+                else 
+                {
+                    $.extend(queryState, model);
+                }
+
+                processQuery(queryState);
+            };
+
+            if (model.Preset == "Invitations") 
+            {
+                $(".network-listing-download").hide();
+            }
+            else 
+            {
+                $(".network-listing-download").show();
+            }
+
+            if (providerIdToInvite.length > 0) 
+            {
+                processQuery(queryState, true);
+                $(document).trigger("@IndexViewModel.EVENT_DISPLAY_WARNING", [onChangeQueryState]);
+            }
+            else {
+                onChangeQueryState();
+            }
+        });
+
+        $(document).on("@IndexViewModel.SearchHeader.EVENT_DOWNLOAD", function () {
+            queryState.ProvidersOnPage = $(".entity-list-item").length;
+            downloadListingFile(queryState);
+        });
+
+        $(document).on("@IndexViewModel.EntityListing.EVENT_INVITATIONS_CHANGED", function (event, providerIdSelected) {
+            providerIdToInvite = providerIdSelected;
+        });
+
+        $(document).on("@IndexViewModel.SearchHeader.EVENT_INVITE", function () {
+            showInvitationModal(providerIdToInvite.length, function (event, model) {
+                $(document).trigger("@IndexViewModel.EVENT_MASK_CHANGED", [true]);
+
+                $.extend(model, {
+                    "SelectedProviders": providerIdToInvite
+                });
+
+                $.ajax({
+                    "type": "POST",
+                    "url": "@Url.Action("InviteSpecificProviders", "Invitation")",
+                    "contentType": "application/json",
+                    "data": JSON.stringify(model),
+                    "success": function () {
+                        $(document).trigger("@IndexViewModel.EVENT_MASK_CHANGED", [false]);
+                        $(document).trigger("@IndexViewModel.EVENT_INVITE_COMPLETED");
+
+                        location.reload(true);
+                    },
+                    "error": function () {
+                        $(document).trigger("@IndexViewModel.EVENT_MASK_CHANGED", [false]);
+                    }
+                });
+            });
+        });
+
+        $(document).on("@IndexViewModel.EVENT_MASK_CHANGED", function (event, isVisible) {
+            window.LoadingPanel.visible(isVisible);
+        });
+
+        $(window).resize(autoViewStyle);
+
+        window.onpopstate = function (event) {
+            processQuery(event.state);
+        };
+
+        @if (Model.Initialization.ViewStyle.HasValue)
+        {
+        <text>$(document).trigger("@IndexViewModel.EVENT_VIEW_STYLE_CHANGED", ["@Model.Initialization.ViewStyle.GetEnumDescription()"]);</text>
+        }
+        else
+        {
+        <text>autoViewStyle();</text>
+        }
+
+        processQuery(queryState);
+    });
+</script>

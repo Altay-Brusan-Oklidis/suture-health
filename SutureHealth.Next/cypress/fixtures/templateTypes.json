@@ -1,0 +1,344 @@
+[
+  {
+    "templateTypeId": 1033,
+    "category": "General",
+    "name": "Discharge Summary - Hospital",
+    "shortName": "DC Summary - Hospital"
+  },
+  {
+    "templateTypeId": 1025,
+    "category": "General",
+    "name": "General Communication",
+    "shortName": "Communication"
+  },
+  {
+    "templateTypeId": 1010,
+    "category": "General",
+    "name": "Medical Order",
+    "shortName": "Medical Order"
+  },
+  {
+    "templateTypeId": 1027,
+    "category": "General",
+    "name": "Medication Summary",
+    "shortName": "Med Summary"
+  },
+  {
+    "templateTypeId": 1024,
+    "category": "General",
+    "name": "Wound Photo",
+    "shortName": "Wound Photo"
+  },
+  {
+    "templateTypeId": 1028,
+    "category": "Home Health",
+    "name": "Discharge Summary - Home Health",
+    "shortName": "DC Summary - HH"
+  },
+  {
+    "templateTypeId": 1037,
+    "category": "Home Health",
+    "name": "Estimated Length of Services Addendum",
+    "shortName": "Est Length of Services"
+  },
+  {
+    "templateTypeId": 1054,
+    "category": "Home Health",
+    "name": "Home Health Add Discipline",
+    "shortName": "Add Discipline"
+  },
+  {
+    "templateTypeId": 1015,
+    "category": "Home Health",
+    "name": "Home Health Assessment",
+    "shortName": "HH Assessment"
+  },
+  {
+    "templateTypeId": 1049,
+    "category": "Home Health",
+    "name": "Home Health Care Plan Update",
+    "shortName": "Care Plan Update"
+  },
+  {
+    "templateTypeId": 1001,
+    "category": "Home Health",
+    "name": "Home Health Certification",
+    "shortName": "Certification"
+  },
+  {
+    "templateTypeId": 1055,
+    "category": "Home Health",
+    "name": "Home Health Discharge Order",
+    "shortName": "Discharge Order"
+  },
+  {
+    "templateTypeId": 1014,
+    "category": "Home Health",
+    "name": "Home Health Eligibility Summary",
+    "shortName": "HH Eligibility Summary"
+  },
+  {
+    "templateTypeId": 1042,
+    "category": "Home Health",
+    "name": "Home Health Episode Summary",
+    "shortName": "Episode Summary"
+  },
+  {
+    "templateTypeId": 1016,
+    "category": "Home Health",
+    "name": "Home Health Face-to-Face Note",
+    "shortName": "HH Face-to-Face Note"
+  },
+  {
+    "templateTypeId": 1002,
+    "category": "Home Health",
+    "name": "Home Health Interim Order",
+    "shortName": "Interim Order"
+  },
+  {
+    "templateTypeId": 1003,
+    "category": "Home Health",
+    "name": "Home Health Recertification",
+    "shortName": "Recertification"
+  },
+  {
+    "templateTypeId": 1056,
+    "category": "Home Health",
+    "name": "Home Health Resumption of Care",
+    "shortName": "Resumption of Care"
+  },
+  {
+    "templateTypeId": 1057,
+    "category": "Home Health",
+    "name": "Home Health Significant Change in Condition",
+    "shortName": "Significant Change in Condition"
+  },
+  {
+    "templateTypeId": 1038,
+    "category": "Home Health",
+    "name": "Statement of Medical Need",
+    "shortName": "Medical Need"
+  },
+  {
+    "templateTypeId": 1051,
+    "category": "Home Infusion",
+    "name": "Home Infusion Certification",
+    "shortName": "Infusion Certification"
+  },
+  {
+    "templateTypeId": 1053,
+    "category": "Home Infusion",
+    "name": "Home Infusion Interim Order",
+    "shortName": "Infusion Order"
+  },
+  {
+    "templateTypeId": 1052,
+    "category": "Home Infusion",
+    "name": "Home Infusion Recertification",
+    "shortName": "Infusion Recertification"
+  },
+  {
+    "templateTypeId": 1017,
+    "category": "Hospice",
+    "name": "Certificate of Terminal Illness",
+    "shortName": "Cert Terminal Illness"
+  },
+  {
+    "templateTypeId": 1029,
+    "category": "Hospice",
+    "name": "Discharge Summary - Hospice",
+    "shortName": "DC Summary - Hospice"
+  },
+  {
+    "templateTypeId": 1004,
+    "category": "Hospice",
+    "name": "Hospice Certification",
+    "shortName": "Certification"
+  },
+  {
+    "templateTypeId": 1005,
+    "category": "Hospice",
+    "name": "Hospice Interim Order",
+    "shortName": "Interim Order"
+  },
+  {
+    "templateTypeId": 1006,
+    "category": "Hospice",
+    "name": "Hospice Recertification",
+    "shortName": "Recertification"
+  },
+  {
+    "templateTypeId": 1007,
+    "category": "Medical Nutrition Therapy",
+    "name": "Nutrition Order",
+    "shortName": "Nutrition Order"
+  },
+  {
+    "templateTypeId": 1045,
+    "category": "Medical Social Work",
+    "name": "Discharge Summary - Medical Social Work",
+    "shortName": "DC Summary - MSW"
+  },
+  {
+    "templateTypeId": 1043,
+    "category": "Medical Social Work",
+    "name": "Medical Social Work Evaluation",
+    "shortName": "MSW Evaluation"
+  },
+  {
+    "templateTypeId": 1044,
+    "category": "Medical Social Work",
+    "name": "Medical Social Work Follow Up",
+    "shortName": "MSW Follow Up"
+  },
+  {
+    "templateTypeId": 1008,
+    "category": "Medical Supply",
+    "name": "Certificate of Medical Necessity",
+    "shortName": "Cert Med Necessity"
+  },
+  {
+    "templateTypeId": 1009,
+    "category": "Medical Supply",
+    "name": "Medical Supply Order",
+    "shortName": "Med Supply Order"
+  },
+  {
+    "templateTypeId": 1050,
+    "category": "Medical Supply",
+    "name": "Oxygen - Certificate of Medical Necessity",
+    "shortName": "Oxygen CMN"
+  },
+  {
+    "templateTypeId": 1031,
+    "category": "Occupational Therapy",
+    "name": "Discharge Summary - Occupational Therapy",
+    "shortName": "DC Summary - OT"
+  },
+  {
+    "templateTypeId": 1018,
+    "category": "Occupational Therapy",
+    "name": "Occupational Therapy Certification",
+    "shortName": "OT Certification"
+  },
+  {
+    "templateTypeId": 1034,
+    "category": "Occupational Therapy",
+    "name": "Occupational Therapy Evaluation",
+    "shortName": "OT Evaluation"
+  },
+  {
+    "templateTypeId": 1020,
+    "category": "Occupational Therapy",
+    "name": "Occupational Therapy Order",
+    "shortName": "OT Order"
+  },
+  {
+    "templateTypeId": 1019,
+    "category": "Occupational Therapy",
+    "name": "Occupational Therapy Recertification",
+    "shortName": "OT Recertification"
+  },
+  {
+    "templateTypeId": 1026,
+    "category": "Pharmacy",
+    "name": "Pharmacy Order",
+    "shortName": "Pharmacy Order"
+  },
+  {
+    "templateTypeId": 1030,
+    "category": "Physical Therapy",
+    "name": "Discharge Summary - Physical Therapy",
+    "shortName": "DC Summary - PT"
+  },
+  {
+    "templateTypeId": 1011,
+    "category": "Physical Therapy",
+    "name": "Physical Therapy Certification",
+    "shortName": "PT Certification"
+  },
+  {
+    "templateTypeId": 1036,
+    "category": "Physical Therapy",
+    "name": "Physical Therapy Evaluation",
+    "shortName": "PT Evaluation"
+  },
+  {
+    "templateTypeId": 1013,
+    "category": "Physical Therapy",
+    "name": "Physical Therapy Order",
+    "shortName": "PT Order"
+  },
+  {
+    "templateTypeId": 1012,
+    "category": "Physical Therapy",
+    "name": "Physical Therapy Recertification",
+    "shortName": "PT Recertification"
+  },
+  {
+    "templateTypeId": 1032,
+    "category": "Speech Therapy",
+    "name": "Discharge Summary - Speech Therapy",
+    "shortName": "DC Summary - ST"
+  },
+  {
+    "templateTypeId": 1021,
+    "category": "Speech Therapy",
+    "name": "Speech Therapy Certification",
+    "shortName": "Speech Certification"
+  },
+  {
+    "templateTypeId": 1035,
+    "category": "Speech Therapy",
+    "name": "Speech Therapy Evaluation",
+    "shortName": "ST Evaluation"
+  },
+  {
+    "templateTypeId": 1023,
+    "category": "Speech Therapy",
+    "name": "Speech Therapy Order",
+    "shortName": "Speech Order"
+  },
+  {
+    "templateTypeId": 1022,
+    "category": "Speech Therapy",
+    "name": "Speech Therapy Recertification",
+    "shortName": "Speech Recertification"
+  },
+  {
+    "templateTypeId": 1048,
+    "category": "Suture Health Contracts",
+    "name": "Suture Health ACH Form",
+    "shortName": "ACH Form"
+  },
+  {
+    "templateTypeId": 1046,
+    "category": "Suture Health Contracts",
+    "name": "Suture Health Master Services Agreement",
+    "shortName": "Master Services Agreement"
+  },
+  {
+    "templateTypeId": 1047,
+    "category": "Suture Health Contracts",
+    "name": "Suture Health Services Order Form",
+    "shortName": "Service Order Form"
+  },
+  {
+    "templateTypeId": 1039,
+    "category": "Telemonitoring",
+    "name": "Telemonitoring Authorization",
+    "shortName": "Telemonitoring Auth"
+  },
+  {
+    "templateTypeId": 1040,
+    "category": "Telemonitoring",
+    "name": "Telemonitoring Plan of Care",
+    "shortName": "Telemonitoring POC"
+  },
+  {
+    "templateTypeId": 1041,
+    "category": "Telemonitoring",
+    "name": "Telemonitoring Vital Sign History",
+    "shortName": "Telemonitoring Vitals"
+  }
+]

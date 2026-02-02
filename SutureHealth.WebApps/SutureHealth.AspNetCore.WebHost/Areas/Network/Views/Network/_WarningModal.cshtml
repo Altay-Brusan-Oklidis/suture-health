@@ -1,0 +1,35 @@
+﻿@using SutureHealth.AspNetCore.Areas.Network.Models;
+
+<div class="modal" id="WarningModal" tabindex="-1" role="dialog" aria-labelledby="WarningModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-large" id="WarningModalLabel">Are you sure?</h5>
+            </div>
+            <div class="modal-body">
+                <p>Changing filters will remove custom selections.</p>
+            </div>
+            <div class="modal-footer">
+                <button data-action="WarningContinue" type="button" class="btn sh-btn-green" data-dismiss="modal">Continue</button>
+                <button type="button" class="btn sh-btn-default modalCancel" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var container = $("#WarningModal"),
+            continueButton = $("[data-action='WarningContinue']", container);
+
+        $(document).on("@IndexViewModel.EVENT_DISPLAY_WARNING", function (event, onContinue) {
+            continueButton.off("click");
+            continueButton.click(onContinue);
+
+            container.modal("show");
+        });
+
+        container.modal({
+            "show": false
+        });
+    });
+</script>

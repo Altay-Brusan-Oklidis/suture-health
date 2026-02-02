@@ -1,0 +1,372 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <realmCode code="US" />
+  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+  <templateId root="1.2.840.114350.1.72.1.51693" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01" />
+  <templateId root="1.2.840.114350.1.72.1.68796783.300" />
+  <id assigningAuthorityName="EPC" extension="00000000-00d1-ee05-3956-c37871551322" root="1.2.840.114350.1.13.5826.1.7.1.1" />
+  <code code="X-TXPLTSUM" codeSystem="1.2.840.114350.1.72.1.10" codeSystemName="Epic Defined Template" displayName="Transplant Episode Summary" />
+  <title>Transplant Episode Summary</title>
+  <effectiveTime value="20201005152928-0500" />
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
+  <languageCode code="en-US" />
+  <recordTarget>
+    <patientRole>
+      <id extension="GTM1338727" root="1.2.840.114350.1.13.5826.1.7.3.688884.100" />
+      <addr use="HP">
+        <streetAddressLine>6200 Madison Parkway</streetAddressLine>
+        <streetAddressLine>Apt #2103</streetAddressLine>
+        <county>CLARK</county>
+        <city>LAS VEGAS</city>
+        <state>NV</state>
+        <postalCode>89119</postalCode>
+        <country>USA</country>
+      </addr>
+      <telecom use="HP" value="tel:+1-702-726-8774" />
+      <telecom value="mailto:gladys2353@gmail.com" />
+      <patient>
+        <name use="L">
+          <given>Gladys</given>
+          <family>Foster</family>
+        </name>
+        <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGenderCode" displayName="Female" />
+        <birthTime value="19651002" />
+        <sdtc:deceasedInd value="false" xmlns:sdtc="urn:hl7-org:sdtc" />
+        <maritalStatusCode code="D" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" displayName="Divorced" />
+        <raceCode code="2028-9" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity" displayName="Asian" />
+        <ethnicGroupCode nullFlavor="UNK" />
+        <languageCommunication>
+          <languageCode code="English" />
+          <preferenceInd value="true" />
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id extension="3" root="1.2.840.114350.1.13.3.1.7.2.688879"/>
+        <name>River Hills Health System</name>
+        <telecom use="WP" value="tel:+1-608-555-3326"/>
+        <addr use="WP">
+          <streetAddressLine>8110 Gatehouse Road</streetAddressLine>
+          <county>Sauk</county>
+          <city>Baraboo</city>
+          <state>WI</state>
+          <postalCode>53913</postalCode>
+          <country>USA</country>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20201005152928-0500" />
+    <assignedAuthor>
+      <id extension="9.5" root="1.2.840.114350.1.1" />
+      <addr nullFlavor="NA" />
+      <telecom nullFlavor="NA" />
+      <assignedAuthoringDevice>
+        <manufacturerModelName>Epic - Version 9.5</manufacturerModelName>
+        <softwareName>Epic - Version 9.5</softwareName>
+      </assignedAuthoringDevice>
+      <representedOrganization>
+        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+        <name>Current Final Primary</name>
+        <telecom use="WP" value="tel:+1-608-888-8828" />
+        <addr use="WP">
+          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+          <streetAddressLine>Suite 70</streetAddressLine>
+          <county>DANE</county>
+          <city>MADISON</city>
+          <state>WI</state>
+          <postalCode>53713</postalCode>
+          <country>USA</country>
+        </addr>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="2500" root="1.2.840.114350.1.13.5826.1.7.2.688879" />
+        <name>Current Final Primary</name>
+        <telecom use="WP" value="tel:+1-608-888-8828" />
+        <addr use="WP">
+          <streetAddressLine>5113 Vilas Blvd.</streetAddressLine>
+          <streetAddressLine>Suite 70</streetAddressLine>
+          <county>DANE</county>
+          <city>MADISON</city>
+          <state>WI</state>
+          <postalCode>53713</postalCode>
+          <country>USA</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <documentationOf typeCode="DOC">
+    <serviceEvent classCode="PCPR">
+      <effectiveTime>
+        <low value="19651002" />
+        <high value="20201005" />
+      </effectiveTime>
+      <performer typeCode="PRF">
+        <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+          <originalText>Primary Care Provider</originalText>
+        </functionCode>
+        <time>
+          <low nullFlavor="NI" />
+          <high nullFlavor="PINF" />
+        </time>
+        <assignedEntity nullFlavor="NI">
+          <id nullFlavor="UNK" />
+          <addr nullFlavor="UNK" />
+          <telecom nullFlavor="NA" />
+          <assignedPerson nullFlavor="NA">
+            <name nullFlavor="UNK" />
+          </assignedPerson>
+          <representedOrganization classCode="ORG">
+            <telecom nullFlavor="UNK" />
+            <addr nullFlavor="UNK" />
+          </representedOrganization>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <templateId root="1.2.840.114350.1.72.2.6300" />
+          <code code="X-TXPHSB" codeSystem="1.2.840.114350.1.72.2" displayName="Transplant Episode" />
+          <title>Transplant Episode</title>
+          <text>
+            <paragraph styleCode="Bold">Kidney Candidate</paragraph>
+            <paragraph>University of Wisconsin Hospital and Clinics (Madison, WI) - WIUW</paragraph>
+            <paragraph>Referred on 09/24/2020</paragraph>
+            <paragraph>Marked as Active on 09/24/2020</paragraph>
+            <br />
+            <paragraph>
+              <caption>Kidney Coordinator</caption>
+              <content>Marty Seeger</content>
+            </paragraph>
+            <paragraph>Phone: 608-444-5566</paragraph>
+            <paragraph>Fax: N/A</paragraph>
+            <paragraph>Email: N/A</paragraph>
+            <br />
+            <br />
+            <table>
+              <caption>Scores</caption>
+              <colgroup>
+                <col width="16%" />
+                <col width="20%" span="2" />
+                <col width="44%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Value</th>
+                  <th>Updated</th>
+                  <th>Exceptions/Reasons</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CPRA</td>
+                  <td>2</td>
+                  <td>10/01/2020</td>
+                  <td />
+                </tr>
+                <tr>
+                  <td>EPTS (Calc)</td>
+                  <td>19</td>
+                  <td>10/05/2020</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <table>
+              <caption>Native Organ Diagnosis</caption>
+              <colgroup>
+                <col width="16%" />
+                <col width="20%" />
+                <col width="64%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Organ</th>
+                  <th>Primary</th>
+                  <th>Contributory</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Kidney</td>
+                  <td>Alport's Syndrome</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <table>
+              <caption>Care Team</caption>
+              <colgroup>
+                <col width="16%" />
+                <col width="20%" span="3" />
+                <col width="24%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Phone</th>
+                  <th>Fax</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td styleCode="Bold">Marty Seeger</td>
+                  <td styleCode="Bold">Kidney Coordinator</td>
+                  <td>608-444-5566</td>
+                  <td>N/A</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>Alice Ecker</td>
+                  <td>
+                    <paragraph>Registered Nurse</paragraph>
+                  </td>
+                  <td>608-271-8598</td>
+                  <td>608-271-8599</td>
+                  <td>aecker@uwhospital.edu</td>
+                </tr>
+                <tr>
+                  <td>Jayna Krueger</td>
+                  <td>
+                    <paragraph>Pre-Transplant Coordinator</paragraph>
+                  </td>
+                  <td>608-974-8548</td>
+                  <td>608-974-8585</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>Karl Mussman</td>
+                  <td>
+                    <paragraph>Surgeon</paragraph>
+                  </td>
+                  <td>608-277-9898</td>
+                  <td>608-277-9999</td>
+                  <td>kmussman@uwhospital.edu</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <table>
+              <caption>Events</caption>
+              <colgroup>
+                <col width="16%" />
+                <col width="22%" />
+                <col width="16%" />
+                <col width="46%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Pre-Transplant</th>
+                  <th />
+                  <th />
+                  <th />
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Referred:</td>
+                  <td>09/24/2020</td>
+                  <td />
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <br />
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="1.2.840.114350.1.72.2.6301" />
+          <code code="X-DIALHX" codeSystem="1.2.840.114350.1.72.2" displayName="Dialysis History" />
+          <title>Dialysis History</title>
+          <text>
+            <table>
+              <caption>Dialysis History</caption>
+              <colgroup>
+                <col width="16%" span="2" />
+                <col width="20%" />
+                <col width="28%" />
+                <col width="20%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>Type</th>
+                  <th>Comments</th>
+                  <th>Center</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09/02/2020</td>
+                  <td>09/18/2020</td>
+                  <td>Hemo</td>
+                  <td />
+                  <td>DIALYSIS EAST</td>
+                </tr>
+                <tr>
+                  <td styleCode="Bold">08/02/2020</td>
+                  <td />
+                  <td>Continuous Ambulatory Peritoneal Dialysis</td>
+                  <td />
+                  <td>DIALYSIS NORTH</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <table>
+              <caption>Dialysis Center Information</caption>
+              <colgroup>
+                <col width="20%" span="3" />
+                <col width="40%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Center</th>
+                  <th>Phone</th>
+                  <th>Fax</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DIALYSIS EAST</td>
+                  <td />
+                  <td />
+                  <td>
+                    <paragraph>No address on file</paragraph>
+                  </td>
+                </tr>
+                <tr>
+                  <td>DIALYSIS NORTH</td>
+                  <td>608-555-5555</td>
+                  <td>608-555-4444</td>
+                  <td>
+                    <paragraph>1979 Milky Way</paragraph>
+                    <paragraph>Madison WI 53593</paragraph>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+          </text>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

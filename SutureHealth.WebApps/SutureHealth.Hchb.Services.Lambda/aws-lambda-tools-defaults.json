@@ -1,0 +1,27 @@
+
+{
+    "Information" : [
+        "This file provides default values for the deployment wizard inside Visual Studio and the AWS Lambda commands added to the .NET Core CLI.",
+        "To learn more about the Lambda commands with the .NET Core CLI execute the following command at the command line in the project root directory.",
+        "dotnet lambda help",
+        "All the command line options for the Lambda command can be specified in this file."
+    ],
+    "profile"     : "default",
+    "region"      : "us-east-1",
+    "configuration" : "Release",
+    "function-runtime" : "dotnet6",
+    "function-memory-size" : 1024,
+    "function-timeout"     : 300,
+    "function-handler"     : "SutureHealth.Hchb.Services.Lambda::SutureHealth.Hchb.Services.Lambda.Function::FunctionHandler",
+    "framework"            : "net6.0",
+    "function-name"        : "HCHBLambdaTest-test",
+    "function-description" : "",
+    "package-type"         : "Zip",
+    "function-role"        : "arn:aws:iam::267058832120:role/HchbLambdaExecutionRole",
+    "function-architecture" : "x86_64",
+    "function-subnets"      : "subnet-a2bf3cfa,subnet-313d851b",
+    "function-security-groups" : "sg-c3621cbb",
+    "tracing-mode"             : "PassThrough",
+    "environment-variables"    : "\"ASPNETCORE_ENVIRONMENT\"=\"ci\";\"SqlDatabase__Password\"=\"GtEAW2Wc9Ritlo8IBMoQ\";\"SqlDatabase__Schema\"=\"HCHB_CommonSpirit\";\"SqlDatabase__UserID\"=\"admin\";\"SqlDatabase__DataSource\"=\"sh-test-db.ckw4hrbe1bta.us-east-1.rds.amazonaws.com\";\"SqlDatabase__InitialCatalog__SutureSign\"=\"SutureSignSecure\"",
+    "image-tag"                : ""
+}

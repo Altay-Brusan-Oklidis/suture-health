@@ -1,0 +1,250 @@
+﻿@model SutureHealth.AspNetCore.Areas.Identity.Models.Organization.ProfileModel
+@using SutureHealth.AspNetCore.Mvc.Extensions;
+@{
+    ViewBag.Title = "Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.RequireKendo = true;
+    /*Model.RequireUI = true;*/
+    Model.RequireValidation = true;
+}
+
+@if (Model.HasSaveAlert)
+{
+    <partial name="_Alert" model="Model.SaveAlert" />
+}
+<section class="mt-3">
+    <div class="container-fluid">
+        @if (Model.CurrentUser.IsApplicationAdministrator())
+        {
+            @if (Model.IsEditing)
+            {
+                <div class="row">
+                    <div class="col-md-2">
+                        <h4>@ViewBag.Title</h4>
+                    </div>
+                    <div class="col-md-10">
+                        <a id="ToggleActiveStatus" data-active="@Model.IsActive.ToString().ToLower()" class="btn btn-outline-primary">@($"{(Model.IsActive ? "Deactivate" : "Activate")} Organization")</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <h4>@ViewBag.Title</h4>
+                </div>
+                <div class="col-md-6 org-select">
+                    @await Component.InvokeAsync("OrganizationSelector", new { routeName = "OrganizationProfile", contentOnly=!Model.RequireClientHeader })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <hr class="mt-0">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-11">
+                    <div class="page-navigator">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a asp-route="OrganizationProfile" asp-route-organizationid="@Model.OrganizationId.Value" asp-route-contentonly="@(!Model.RequireClientHeader)" class="nav-link active">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-route="OrganizationUsers" asp-route-organizationid="@Model.OrganizationId.Value" asp-route-contentonly="@(!Model.RequireClientHeader)" class="nav-link">Users</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<section class="my-3">
+    <div class="container-fluid">
+        <div class="row my-3 my-md-0 justify-content-center">
+            <div class="col-11">
+                <div class="px-3 py-4 shadow">
+
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-12 col-md-6 px-4">
+                                <h5>Names</h5>
+                                <hr />
+                                <input-form-group asp-for="ExternalName">
+                                    <label class="text-secondary"><strong>External Name</strong></label>
+                                    <input asp-for="ExternalName" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                    <span asp-validation-for="ExternalName" class="text-danger"></span>
+                                </input-form-group>
+                                <input-form-group asp-for="InternalName">
+                                    <label class="mt-3 text-secondary"><strong>Internal Name</strong></label>
+                                    <input asp-for="InternalName" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                    <span asp-validation-for="InternalName" class="text-danger"></span>
+                                </input-form-group>
+                                <h5 class="mt-5">Identifiers</h5>
+                                <hr />
+                                <input-form-group asp-for="MedicareCertificationNumber">
+                                    <label class="text-secondary"><strong>Medicare Certification Number (CCN)</strong> <a class="small" target="_blank" href="https://www.cms.gov/Regulations-and-Guidance/Guidance/Manuals/downloads/som107c02.pdf">What is the CCN?</a></label>
+                                    <input asp-for="MedicareCertificationNumber" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                    <span asp-validation-for="MedicareCertificationNumber" class="text-danger"></span>
+                                </input-form-group>
+                                <div>
+                                </div>
+                                <input-form-group asp-for="Npi">
+                                    <label class="mt-3 text-secondary"><strong>NPI</strong></label>
+                                    <input asp-for="Npi" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                    <span asp-validation-for="Npi" class="text-danger"></span>
+                                </input-form-group>
+                                @if (Model.CurrentUser.IsApplicationAdministrator())
+                                {
+                                    <div class="col-md-12 div-distance">
+                                        <input-form-group asp-for="ParentOrganizationId">
+                                            <label>Company</label>
+                                            <kendo-combobox for="ParentOrganizationId" auto-bind="false" filter="FilterType.Contains" min-length="2" enforce-min-length="true" datavaluefield="OrganizationId" datatextfield="Name">
+                                                <datasource type="DataSourceTagHelperType.Ajax" server-operation="true" server-filtering="true">
+                                                    <transport>
+                                                        <read url="@Url.RouteUrl("OrganizationParentOrganizationDataSource")" type="POST" />
+                                                    </transport>
+                                                </datasource>
+                                            </kendo-combobox>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-md-12 div-distance">
+                                        <input-form-group asp-for="OrganizationTypeId">
+                                            <label>Organization Type</label>
+                                            <select asp-for="OrganizationTypeId" asp-items="Model.OrganizationTypes" class="form-control"></select>
+                                        </input-form-group>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-12 col-md-6 px-4 mt-3 mt-md-0">
+                                <h5>Address</h5>
+                                <hr />
+                                <input-form-group asp-for="Address1">
+                                    <label class="text-secondary"><strong>Address 1</strong></label>
+                                    <input asp-for="Address1" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                    <span asp-validation-for="Address1" class="text-danger"></span>
+                                </input-form-group>
+                                <input-form-group asp-for="Address2">
+                                    <label class="text-secondary mt-3"><strong>Address 2</strong></label>
+                                    <input asp-for="Address2" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                    <span asp-validation-for="Address2" class="text-danger"></span>
+                                </input-form-group>
+                                <div class="row mt-3">
+                                    <div class="col-4">
+                                        <input-form-group asp-for="City">
+                                            <label class="text-secondary"><strong>City</strong></label>
+                                            <input asp-for="City" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                            <span asp-validation-for="City" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-4">
+                                        <input-form-group asp-for="State">
+                                            <label class="text-secondary"><strong>State</strong></label>
+                                            <select asp-for="State" asp-items="SutureHealth.AspNetCore.Mvc.Rendering.Lists.States" class="state-dropdown form-select"></select>
+                                            <span asp-validation-for="State" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-4">
+                                        <input-form-group asp-for="ZipCode">
+                                            <label class="text-secondary"><strong>Zip Code</strong></label>
+                                            <input asp-for="ZipCode" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                            <span asp-validation-for="ZipCode" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                </div>
+                                <h5 class="mt-5">Contact</h5>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input-form-group asp-for="Phone">
+                                            <label class="text-secondary"><strong>Phone</strong></label>
+                                            <kendo-maskedtextbox name="Phone" mask="(000) 000-0000" unmask-on-post="true" for="Phone" class="form-control">
+                                            </kendo-maskedtextbox>
+                                            <span asp-validation-for="Phone" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-6">
+                                        <input-form-group asp-for="Fax">
+                                            <label class="text-secondary"><strong>Fax</strong></label>
+                                            <kendo-maskedtextbox name="Fax" mask="(000) 000-0000" unmask-on-post="true" for="Fax" class="form-control">
+                                            </kendo-maskedtextbox>
+                                            <span asp-validation-for="Fax" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <hr />
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-6 col-md-3">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <input asp-for="OrganizationId" type="hidden" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('input[data-val=true]').on('blur', function() {
+            $(this).valid();
+        });
+
+    @if (Model.CurrentUser.IsApplicationAdministrator())
+    {
+        <text>
+                $("#ToggleActiveStatus").click(function() {
+                    let element = $(this),
+                        currentStatus = element.attr("data-active") === 'true',
+                        toggleStatus = function() {
+                            LoadingPanel.loader.show();
+                            $.post({
+                                "url": "@Url.RouteUrl("AdminOrganizationToggleActivationStatus", new { organizationId = Model.OrganizationId.GetValueOrDefault() })",
+                                "success": function(response) {
+                                    LoadingPanel.loader.hide();
+                                    if (response.Success) {
+                                        element.attr("data-active", (!currentStatus).toString())
+                                            .text((currentStatus ? "Activate" : "Deactivate") + " Organization");
+                                    }
+                                    else {
+                                        kendo.alert("The active status could not be changed.  Ensure no organization signers have in-flight requests and try again.");
+                                    }
+                                }
+                            });
+                        };
+
+                    if (currentStatus) {
+                        kendo.confirm("Are you sure you want to deactivate this organization?  This will also affect all users associated with this organization.")
+                            .then(function() {
+                                toggleStatus();
+                            });
+                    }
+                    else {
+                        toggleStatus();
+                    }
+                });
+        </text>
+
+        if (Model.SelectedParentOrganization != null)
+        {
+            <text>
+                    $("#@(Html.IdFor(m => m.ParentOrganizationId))").data("kendoComboBox").dataSource.data([@(Json.Serialize(Model.SelectedParentOrganization))]);
+            </text>
+        }
+    }
+    });
+</script>

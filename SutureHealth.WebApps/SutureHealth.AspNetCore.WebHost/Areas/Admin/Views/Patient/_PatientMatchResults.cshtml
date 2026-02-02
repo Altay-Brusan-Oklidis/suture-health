@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SutureHealth.Linq.MatchingResult<SutureHealth.Patients.Patient>>
+<table class="table">
+    <tbody>
+        @foreach (var match in Model.OrderByDescending(o => o.Score).ThenBy(o => o.Match.LastName))
+        {
+            <tr>
+                <td colspan="2" class="p-3">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <div class="btn btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class="row" style="font-size: 18pt;">
+                                        <div class="col-md-6 font-weight-bold">@match.Match.ToString()</div>
+                                        <div class="col-md-5 font-weight-bold text-right"><span>Score:</span> <b>@match.Score</b></div>
+                                        <div class="col-md-1 text-right"><i class="fa fa-2x"></i></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col"><span class="font-weight-light">Birthdate:</span> <b>@match.Match.Birthdate.ToString("d")</b></div>
+                                        <div class="col"><span class="font-weight-light">Gender:</span> @match.Match.Gender.ToString()</div>
+                                        <div class="col"><span class="font-weight-light">PostalCode:</span> @match.Match.Addresses?.FirstOrDefault()?.PostalCode</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Rule</th>
+                                                <th>Positive</th>
+                                                <th>Negative</th>
+                                                <th class="text-right"><b>Score</b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var rule in match.Rules)
+                                            {
+                                                <tr>
+                                                    <td>@rule.Rule.Description</td>
+                                                    <td class="text-center">@rule.Rule.PositiveScore</td>
+                                                    <td class="text-center">@rule.Rule.NegativeScore</td>
+                                                    <td class="text-right"><b>@rule.Score</b></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td class="text-right" colspan="3"><b>Total:</b></td>
+                                                <td class="text-right"><b>@match.Score</b></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

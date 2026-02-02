@@ -1,0 +1,640 @@
+﻿@model SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel
+@using SutureHealth;
+@using SutureHealth.AspNetCore.Areas.Patient.Models;
+@using Microsoft.AspNetCore.Mvc.Infrastructure
+
+@{
+    Model.RequireUI = true;
+    Model.RequireValidation = true;
+}
+
+@section Styles
+    {
+    <!-- <link rel="stylesheet" href="~/css/Patient.min.css" asp-append-version="true" /> -->
+}
+
+@section Scripts {
+    <script src="~/js/Patient.js" asp-append-version="true"></script>
+}
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h4 class="mb-0 text-start">@(Model.PatientId == null ? "Create Patient" : "Edit Patient")<span class="small text-secondary"> for @Model.OrganizationName</span></h4>
+
+
+            </div>
+            <div class="col-12 col-md-6 align-self-center">
+                <p class="text-end pt-2">
+                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom" id="whyNeedInfoLink">
+                        Why does SutureSign need this information? <i class="fas fa-info-circle inbox-view-info-icon" aria-hidden="true">
+                            <!-- <span class="inbox-view-info">
+                                 If you have multiple offices, you can change the office on the <a href="~/Request/Send">Send Page</a>
+                             </span> -->
+                        </i>
+                    </a>
+                </p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr class="mt-0" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="my-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-11">
+                <div class="shadow p-3">
+                    <form id="PatientForm" method="post">
+                        <input asp-for="PatientId" type="hidden" />@* Used by MRN remote validator *@
+                        <input asp-for="OrganizationId" type="hidden" />@* Used by MRN remote validator *@
+                        <div class="row">
+                            <div class="col-12 col-lg-4 pb-5 px-4 pb-lg-0">
+                                <h5>Personal Information</h5>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-12 my-2">
+                                        <input-form-group asp-for="FirstName">
+                                            <label class="text-secondary" asp-for="FirstName"><strong>First Name</strong></label>
+
+                                            <input type="text" class="form-control" asp-for="FirstName" aria-describedby="firstNameHelp">
+                                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-12 my-2">
+                                        <input-form-group asp-for="MiddleName">
+                                            <label class="text-secondary" asp-for="MiddleName"><strong>Middle Name</strong></label>
+
+                                            <input type="text" class="form-control" asp-for="MiddleName" aria-describedby="middleNameHelp">
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-12 my-2">
+                                        <input-form-group asp-for="LastName">
+                                            <label class="text-secondary" asp-for="LastName"><strong>Last Name</strong></label>
+
+                                            <input class="form-control" asp-for="LastName" aria-describedby="firstNameHelp">
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                </div>
+
+                                <div class="row my-2">
+                                    <div class="col-12 col-md-4">
+                                        <input-form-group asp-for="Suffix">
+                                            <label class="text-secondary" asp-for="Suffix"><strong>Suffix</strong></label>
+                                            <select class="form-control" asp-for="Suffix" asp-items="SutureHealth.AspNetCore.Mvc.Rendering.Lists.Suffixes" aria-describedby="suffixHelp">
+                                            </select>
+                                            <span asp-validation-for="Suffix" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <input-form-group asp-for="DateOfBirth">
+                                            <label class="text-secondary" asp-for="DateOfBirth"><strong>DOB</strong> <span class="d-none d-md-inline" style="font-size: 9px;">(mm/dd/yyyy)</span></label>
+                                            <kendo-maskedtextbox name="DateOfBirth" value="@Model.DateOfBirth?.ToString("MMddyyyy")" mask="00/00/0000" on-change="DateOfBirthChanged">
+                                            </kendo-maskedtextbox>
+                                            <script type="text/javascript">
+                                                $(document).ready(function () {
+                                                    let inputField = $("#@(Html.IdFor(m => m.DateOfBirth))");
+
+                                                    let datePicker = inputField.kendoDatePicker({
+                                                        "format": "MM/dd/yyyy",
+                                                        "start": "decade",
+                                                        "max": new Date(@DateTime.Now.Date.Year, @DateTime.Now.Date.Month, @DateTime.Now.Date.Day),
+                                                        "open": function () {
+                                                            this.dateView.calendar.value(new Date(1954, 1, 1));
+                                                        },
+                                                        "change": window.DateOfBirthChanged
+                                                    });
+
+                                                    inputField.closest(".k-datepicker")
+                                                        .add(inputField)
+                                                        .removeClass("k-textbox");
+
+                                                    datePicker.data("kendoDatePicker").trigger("change");
+                                                });
+                                            </script>
+                                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                                            <small id="dateOfBirthHelp" class="form-text text-muted">Age <span id="DateOfBirthAge">0</span> Yrs</small>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <label class="text-secondary" asp-for="Gender"><strong>Gender</strong></label>
+                                        <input-form-group asp-for="Gender">
+
+                                            <kendo-radiogroup for="Gender" class="form-check-input"
+                                                              label-position="RadioGroupLabelPosition.Before"
+                                                              layout="RadioGroupLayout.Horizontal">
+                                                <kendo-radiogroup-items>
+                                                    <kendo-radiogroup-item label="Male" value="@SutureHealth.Gender.Male" class="form-check-label"></kendo-radiogroup-item>
+                                                    <kendo-radiogroup-item label="Female" value="@SutureHealth.Gender.Female" class="form-check-label"></kendo-radiogroup-item>
+                                                </kendo-radiogroup-items>
+                                            </kendo-radiogroup>
+                                            <input asp-for="GenderValue" type="hidden" />
+                                            <span asp-validation-for="GenderValue" class="text-danger genderErrorMessage"></span>
+                                        </input-form-group>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input-form-group asp-for="PatientRecordNumber">
+                                                    <label asp-for="PatientRecordNumber">Patient Record Number</label>
+
+                                                    <input asp-for="PatientRecordNumber" style="width: 100%" class="form-control" />
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 40px;">
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <small id="patientRecordNumberUnavailable" class="form-text text-muted" style="margin-top: -0.5rem;">
+                                                        <input type="checkbox" asp-for="HasUnavailablePatientRecordNumber" class="form-check-input" />
+                                                        <label asp-for="HasUnavailablePatientRecordNumber" style="vertical-align: sub;">Unavailable</label>
+                                                    </small>
+                                                    <span asp-validation-for="PatientRecordNumber" class="text-danger" style="margin-top:-20px;"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input-form-group asp-for="SocialSecurityNumber">
+                                                    <label asp-for="SocialSecurityNumber">Social Security Number</label>
+
+                                                    <kendo-maskedtextbox for="SocialSecurityNumber" id="SocialSecurityNumber" mask="@Model.SocialSecurityNumberMask" class="form-control" style="width: 100%" />
+                                                </input-form-group>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small id="socialSecurityNumberType" class="form-text text-muted">
+                                                    <kendo-radiogroup for="SocialSecurityNumberType" class="form-check"
+                                                                      label-position="RadioGroupLabelPosition.After"
+                                                                      layout="RadioGroupLayout.Horizontal">
+                                                        <kendo-radiogroup-items>
+                                                            <kendo-radiogroup-item label="Full (preferred)" value="@SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel.SocialSecurityNumberStyle.Full"></kendo-radiogroup-item>
+                                                            <kendo-radiogroup-item label="Last 4 digits" value="@SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel.SocialSecurityNumberStyle.Last4"></kendo-radiogroup-item>
+                                                            <kendo-radiogroup-item label="Unavailable" value="@SutureHealth.AspNetCore.Areas.Patient.Models.PatientModel.SocialSecurityNumberStyle.Unavailable"></kendo-radiogroup-item>
+                                                        </kendo-radiogroup-items>
+                                                    </kendo-radiogroup>
+                                                </small>
+                                                <span asp-validation-for="SocialSecurityNumber" class="text-danger" style="margin-top:-20px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-4 pb-5 px-4 pb-lg-0">
+                                <h5>Address</h5>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-12 my-2">
+                                        <input-form-group asp-for="Address1">
+                                            <label class="text-secondary"><strong>Address 1</strong></label>
+                                            <input asp-for="Address1" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                            <span asp-validation-for="Address1" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-12 my-2">
+                                        <input-form-group asp-for="Address2">
+                                            <label class="text-secondary"><strong>Address 2</strong></label>
+                                            <input asp-for="Address2" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                            <span asp-validation-for="Address2" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4 div-distance">
+                                        <input-form-group asp-for="City">
+                                            <label class="text-secondary"><strong>City</strong></label>
+                                            <input asp-for="City" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                            <span asp-validation-for="City" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-12 col-md-4 div-distance">
+                                        <input-form-group asp-for="State">
+                                            <label class="text-secondary"><strong>State</strong></label>
+                                            <select asp-for="State" asp-items="SutureHealth.AspNetCore.Mvc.Rendering.Lists.States" class="form-control"></select>
+                                            <span asp-validation-for="State" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                    <div class="col-12 col-md-4 div-distance">
+                                        <input-form-group asp-for="ZipCode">
+                                            <label class="text-secondary"><strong>Zip Code</strong></label>
+                                            <input asp-for="ZipCode" maxlength=50 class="form-control" type="text" data-change-name="true" />
+                                            <span asp-validation-for="ZipCode" class="text-danger"></span>
+                                        </input-form-group>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 my-2">
+                                        <label class="text-secondary"><strong>Home Phone Number</strong></label>
+                                        <kendo-maskedtextbox for="HomePhone" type="text" id="HomePhoneNumber" data-phone-type="Home" maxlength=50 class="form-control" type="text" data-change-name="true" mask="@Model.PhoneNumberMask" style="width: 100%" />
+                                        <span asp-validation-for="HomePhone" class="text-danger"></span>
+                                        @*<input-form-group asp-for="HomePhone">
+                                        </input-form-group>*@
+                                    </div>
+                                    <div class="col-6 my-2">
+                                        <label class="text-secondary"><strong>Work Phone Number</strong></label>
+                                        <kendo-maskedtextbox for="WorkPhone" id="WorkPhoneNumber" data-phone-type="Work" maxlength=50 class="form-control" type="text" data-change-name="true" mask="@Model.PhoneNumberMask" style="width: 100%" />
+                                        <span asp-validation-for="WorkPhone" class="text-danger"></span>
+@*                                        <input-form-group asp-for="WorkPhone">
+                                        </input-form-group>*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 my-2">
+                                        <label class="text-secondary"><strong>Mobile Phone Number</strong></label>
+                                        <kendo-maskedtextbox for="MobilePhone" id="MobilePhoneNumber" data-phone-type="Mobile" maxlength=50 class="form-control" type="text" data-change-name="true" mask="@Model.PhoneNumberMask" style="width: 100%" />
+                                        <span asp-validation-for="MobilePhone" class="text-danger"></span>
+                                        @*<input-form-group asp-for="MobilePhone">
+                                        </input-form-group>*@
+                                    </div>
+                                    <div class="col-6 my-2">
+                                        <label class="text-secondary"><strong>Other Phone Number</strong></label>
+                                        <kendo-maskedtextbox for="OtherPhone" id="OtherPhoneNumber" data-phone-type="Other" maxlength=50 class="form-control" type="text" data-change-name="true" mask="@Model.PhoneNumberMask" style="width: 100%" />
+                                        <span asp-validation-for="OtherPhone" class="text-danger"></span>
+                                        @*<input-form-group asp-for="OtherPhone">
+                                        </input-form-group>*@
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6 my-2">
+                                        <label class="text-secondary"><strong>Select Primary</strong></label>
+                                        <select asp-for="PrimaryPhone" class="form-select" ></select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-12 col-lg-4 px-4" id="payerMixColumn">
+                                <h5>Payer Mix (Select all that apply)</h5>
+                                <hr />
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check" asp-for="HasMedicareAdvantage">
+                                            <input asp-for="HasMedicareAdvantage" class="form-check-input" type="checkbox" id="medicareAdvantage" />
+                                            <label class="form-check-label">Medicare Advantage</label>
+                                            <small id="medicareMBIRequiredNote" class="form-text text-muted">
+                                                <label style="color: #1e6be8;">Medicare MBI is required.</label>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check" asp-for="HasMedicare">
+                                            <input asp-for="HasMedicare" class="form-check-input" type="checkbox" id="medicare" />
+                                            <label class="form-check-label">Medicare</label>
+                                            <div class="row hiddenInput" style="display: none;">
+                                                <div class="col-md-12">
+                                                    <input-form-group asp-for="MedicareMBI">
+                                                        <label class="text-secondary mt-2"><strong>Medicare Beneficiary Identifier (MBI)</strong></label>
+                                                        <kendo-maskedtextbox mask="AAAA-AAA-AAAA" for="MedicareMBI" class="form-control" type="text" />
+
+
+                                                        <span asp-validation-for="MedicareMBI" class="text-danger py-3"></span>
+                                                    </input-form-group>
+                                                </div>
+                                                <small class="medicareMBIExample py-3">
+                                                    <span class="mbi-example"> Example: 1EG4-TE5-MK73</span>
+                                                    <span>
+                                                        <a href="https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNMattersArticles/downloads/SE18006.pdf" target="_blank">
+                                                            Learn More (MBI Format)
+                                                        </a>
+                                                    </span>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check" asp-for="HasMedicaid">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input asp-for="HasMedicaid" class="form-check-input" type="checkbox" id="medicaid" />
+                                                    <label class="form-check-label">Medicaid</label>
+                                                </div>
+                                            </div>
+                                            <div class="row hiddenInput" style="display: none;">
+                                                <div class="col-md-12">
+                                                    <input-form-group asp-for="MedicareMBI">
+                                                        <label class="text-secondary mt-2"><strong>State</strong></label>
+                                                        <select asp-for="MedicaidState" asp-items="SutureHealth.AspNetCore.Mvc.Rendering.Lists.States" class="form-control"></select>
+
+                                                        <span asp-validation-for="MedicaidState" class="text-danger"></span>
+                                                    </input-form-group>
+                                                </div>
+                                            </div>
+
+                                            <div class="row hiddenInput" style="display: none;">
+                                                <div class="col-md">
+                                                    <input-form-group asp-for="MedicaidNumber">
+                                                        <label class="text-secondary mt-2"><strong>Medicaid Number</strong></label>
+                                                        <input asp-for="MedicaidNumber" class="form-control" type="text" maxlength="20" />
+
+
+                                                        <span asp-validation-for="MedicaidNumber" class="text-danger"></span>
+                                                    </input-form-group>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div asp-for="HasPrivateInsurance" class="form-check">
+                                            <input asp-for="HasPrivateInsurance" class="form-check-input" type="checkbox" id="privateInsurance" />
+                                            <label class="form-check-label">Private Insurance</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div asp-for="HasSelfPay" class="form-check">
+                                            <input asp-for="HasSelfPay" class="form-check-input" type="checkbox" id="selfPay" />
+                                            <label class="form-check-label">Self Pay</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div asp-for="HasUnavailablePayerMix" class="form-check">
+                                            <input asp-for="HasUnavailablePayerMix" class="form-check-input" type="checkbox" id="unAvailable" />
+                                            <label class="form-check-label">Unavailable</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p style="visibility:hidden; height:0px;">
+                                    <input type="text" asp-for="PayerMixRequired" id="payerMixRequired" />
+                                </p>
+                                <span asp-validation-for="PayerMixRequired" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <hr />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-6 col-md-3">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit" title="Add Patient">@(Model.PatientId.HasValue ? "Save" : "Add") Patient</button>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-secondary" title="Cancel" onclick="location.href='@Url.Action("CancelCreate", "Patient")'">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: none;">
+                            <kendo-dialog name="SocialSecurityNumberDialog" title="DUPLICATE PATIENT WARNING!" button-layout="normal" modal="true" visible="false">
+                                <content>
+                                    If possible, please submit some form of the Social Security Number to help us identify and prevent duplicate patients.
+                                </content>
+                                <actions>
+                                    <action text="OK" primary="true"></action>
+                                </actions>
+                            </kendo-dialog>
+
+                            <kendo-dialog name="OnePatientOneRecordDialog" title="SutureSign: One Patient, One Record" width="700" button-layout="normal" modal="true" visible="false">
+                                <content>
+                                    <div>
+                                        <p>
+                                            <span>To provide the greatest value to you and the entire healthcare continuum, SutureSign creates unique patient records. This enables SutureSign to:</span>
+                                        </p><ul>
+                                            <li>Track and search documents by patient</li>
+                                            <li>Aggregate documents into a single patient record</li>
+                                            <li>Provide all necessary patient information for billing reports without requiring re-entry</li>
+                                        </ul>
+                                        <p></p>
+                                    </div>
+
+                                    <div>
+                                        <p>
+                                            <span>
+                                                To make this possible, SutureSign needs to prevent the creation of duplicate patient records from
+                                                users across many organizations. To do that, we need enough data to recognize when a duplicate is entered. We have found that not every organization can provide the same patient data elements (i.e. social security number),
+                                                thus we have had to expand the breadth of our data collection.
+                                            </span>
+
+                                        </p>
+                                        <p>
+                                            <span>SutureSign uses an intelligent matching algorithm that determines if a patient exists in the system using the following required elements:</span>
+                                        </p><ul>
+                                            <li>First and Last Name</li>
+                                            <li>Date of Birth</li>
+                                            <li>Gender</li>
+                                            <li>Zip Code</li>
+                                        </ul>
+                                        <p></p>
+                                    </div>
+
+                                    <div>
+                                        <p>
+                                            <span>The following additional data elements are preferred or required when relevant:</span>
+                                        </p><ul>
+                                            <li>Social Security Number (preferred when available)</li>
+                                            <li>Medicare Number (required when relevant)</li>
+                                            <li>Medicaid Number (required when relevant)</li>
+                                        </ul>
+                                        <p></p>
+                                    </div>
+
+                                    <div>
+                                        <p>
+                                            <span>Integrate with SutureSign to make this is a seamless process for you and your organization. Manual data entry is required without an integration.</span>
+                                        </p>
+                                    </div>
+                                </content>
+                                <actions>
+                                    <action text="OK" primary="true"></action>
+                                </actions>
+                            </kendo-dialog>
+
+                            @if (Model.ShowSimilarPatientDialog)
+                            {
+                                <input type="hidden" name="@Html.NameFor(m => m.ForceAddSimilarPatient)" value="false" />
+                                <kendo-dialog name="SimilarPatientDialog" title="Confirmation" button-layout="normal" modal="true" visible="true">
+                                    <content>
+                                        <div>
+                                            A SIMILAR PATIENT ALREADY EXISTS!
+                                        </div>
+                                        <div>
+                                            The information you submitted is similar to another patient in the system, except for the following:
+                                            <ul>
+                                                @foreach (var similarity in Model.SimilarPatientDialog.Similarities)
+                                                {
+                                                    <li>@($"{similarity.GetEnumDescription()}")</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            @if (Model.SimilarPatientDialog.AllowAdd)
+                                            {
+                                                <text>You may add this patient, but first confirm you have entered the correct information.</text>
+                                            }
+                                            else
+                                            {
+                                                <text>Please confirm you have entered the correct information and call support at (205) 417-2400 to add this patient.</text>
+                                            }
+                                        </div>
+                                    </content>
+                                    <actions>
+                                        @if (Model.SimilarPatientDialog.AllowAdd)
+                                        {
+                                            <action action="ForceAddSimilarPatient" text="Add This Patient"></action>
+                                        }
+                                        <action text="Cancel" primary="true"></action>
+                                    </actions>
+                                </kendo-dialog>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+
+
+            // Get references to the phone input elements and Primary Phone select element
+            //var phoneInputElements = document.querySelectorAll(".phone-input");
+            // Create an empty array to store elements
+            var phoneInputElements = [];
+
+            // Add elements to the array
+            phoneInputElements.push(document.getElementById("HomePhoneNumber"));
+            phoneInputElements.push(document.getElementById("WorkPhoneNumber"));
+            phoneInputElements.push(document.getElementById("MobilePhoneNumber"));
+            phoneInputElements.push(document.getElementById("OtherPhoneNumber"));
+            var primaryPhoneSelect = document.getElementById("PrimaryPhone");
+
+            // Initially disable the Primary Phone select element
+            //primaryPhoneSelect.disabled = true;
+
+            // Create an object to store flags for each phone type
+            var phoneTypeFlags = {
+                Home: false,
+                Work: false,
+                Mobile: false,
+                Other: false
+            };
+
+            // Regular expression to validate the phone format (modify as needed)
+            var phonePattern = /^\(\d{3}\) \d{3}-\d{4}$/;
+
+            // Function to enable the Primary Phone select element
+            //function enablePrimaryPhone() {
+            //    primaryPhoneSelect.disabled = false;
+            //}
+
+            // Function to add a phone option if it's valid
+            function addPhoneOption(phoneType) {
+                var phoneInput = document.getElementById(phoneType + "PhoneNumber");
+
+                // Check if the phone input has a valid format
+                if (phonePattern.test(phoneInput.value)) {
+                    // Check if an option with the same value already exists
+                    var optionExists = Array.from(primaryPhoneSelect.options).some(function (option) {
+                        return option.value === phoneType + "Phone";
+                    });
+
+                    // If the option doesn't exist, create and append a new one
+                    if (!optionExists) {
+                        var option = document.createElement("option");
+                        option.text = phoneType + " Phone";
+                        option.value = phoneType + "Phone";
+                        primaryPhoneSelect.appendChild(option);
+                    }
+
+                    // Enable the Primary Phone select element
+                    //enablePrimaryPhone();
+
+                    // Set the flag for the specific phone type to indicate that it has been added
+                    phoneTypeFlags[phoneType] = true;
+                } else {
+                    // If the input is empty or not valid, remove the option
+                    for (var i = 0; i < primaryPhoneSelect.options.length; i++) {
+                        if (primaryPhoneSelect.options[i].value === phoneType + "Phone") {
+                            primaryPhoneSelect.remove(i);
+                            break;
+                        }
+                    }
+                    // Reset the flag for the specific phone type
+                    phoneTypeFlags[phoneType] = false;
+
+                    // Check if there are any valid phones left before disabling the select
+                    var validPhonesExist = Object.values(phoneTypeFlags).some(function (flag) {
+                        return flag;
+                    });
+
+                    //if (!validPhonesExist) {
+                    //    primaryPhoneSelect.disabled = true;
+                    //}
+
+                }
+            }
+
+            // Add event listeners for all phone input elements
+            phoneInputElements.forEach(function (phoneInput) {
+                phoneInput.addEventListener("blur", function () {
+                    addPhoneOption(phoneInput.getAttribute("data-phone-type"));
+                });
+            });
+
+
+            //after refresh or submit data reload primary function
+            phoneInputElements.forEach(function (phoneInput) {
+                if (phoneInput.value != "") {
+                    addPhoneOption(phoneInput.getAttribute("data-phone-type"));
+                }
+            });
+
+            // Event listener for PrimaryPhone select element
+            primaryPhoneSelect.addEventListener("change", function () {
+                // Get the selected option's value
+                var selectedOptionValue = primaryPhoneSelect.value;
+
+                // Save the selected option to local storage
+                localStorage.setItem("lastSelectedOption", selectedOptionValue);
+            });
+
+            // Check if the last selected option is stored in local storage
+            var lastSelectedOption = localStorage.getItem("lastSelectedOption");
+
+            // Set the last selected option in the select element if it exists
+            if (lastSelectedOption) {
+                primaryPhoneSelect.value = lastSelectedOption;
+            }
+
+
+
+        });
+    </script>
+
+
+</section>
+
+

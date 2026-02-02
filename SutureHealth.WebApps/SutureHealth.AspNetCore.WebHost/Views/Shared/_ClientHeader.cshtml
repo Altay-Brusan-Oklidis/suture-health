@@ -1,0 +1,228 @@
+﻿@model IBaseViewModel
+
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http.Extensions;
+@using Microsoft.Extensions.Hosting
+@using Microsoft.Extensions.Options
+@using SutureHealth.AspNetCore.Mvc.Extensions
+@using SutureHealth.Application.Services
+
+@inject IHostEnvironment HostEnvironment
+@inject IOptions<SessionMonitorOptions> SessionMonitor
+
+<script src="~/js/HeaderFunctions.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.logged-user-details').click(function (e) {
+            e.stopPropagation();
+            $('.user-details-container').toggleClass('open');
+        })
+
+        $(document).click(function () {
+            $('.user-details-container').removeClass('open');
+        });
+
+        $("#ChangePasswordButton").click(function () {
+            $("#GlobalModalContainer").load("@Url.RouteUrl("MemberChangePasswordModal")");
+        });
+    });
+</script>
+<div id="GlobalModalContainer"></div>
+<header>
+    @if (!HostEnvironment.IsEnvironment("prod"))
+    {
+        <section class="bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-danger text-center small mb-0">(NOT A PRODUCTION SERVER)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    @if (Model?.CurrentUser != null)
+    {
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom bg-light">
+            <a class="navbar-brand" href="@Url.DefaultLandingPage(Model.CurrentUser)">
+                <img src="~/images/logo2.png" alt="Suture Health" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    @if (Model.CurrentUser.IsUserSender())
+                    {
+                        <partial name="_SenderViewPartial" />
+                    }
+                    else if (Model.CurrentUser.IsUserSigningMember())
+                    {
+                        <partial name="_SignerViewPartial" />
+                    }
+                    else if (Model.CurrentUser.IsApplicationAdministrator())
+                    {
+                        <partial name="_AdminViewPartial" />
+                    }
+                </ul>
+                <div class="user-container">
+                    <ul class="navbar-nav mr-auto">
+                        @if (Model.CurrentUser.MemberTypeId != 2003 && Model.CurrentUser.MemberTypeId != 2016)
+                        {
+                            <feature name="network-page">
+                                <li class="align-self-center">
+                                    <a asp-route="NetworkPreset" asp-route-preset="InviteSenders" class="btn btn-outline-primary">
+                                        <i class="far fa-envelope envelope-icon" aria-hidden="true"></i>
+                                        Invite Senders
+                                    </a>
+                                </li>
+                            </feature>
+                        }
+
+                        @*Uncomment once value is populated.*@
+                        @*<a href="@Model.CurrentUser.TrainingLink" target="_new">@Model.CurrentUser.TrainingLinkText</a>*@
+                        
+
+                         @if (Model.CurrentUser.IsUserSender())
+                    {
+                        <li class="nav-item">
+                                <a href="https://www.suturesign.com/sutureu/sender" target="_new" class="nav-link">SutureU: Sender Resources</a>
+                            </li>
+                    }
+                    else if (Model.CurrentUser.IsUserSigningMember())
+                    {
+                         <li class="nav-item">
+                                <a href="https://www.suturesign.com/sutureu/signer" target="_new" class="nav-link">SutureU: Signer Resources</a>
+                            </li>
+                    }
+                    else if (Model.CurrentUser.IsApplicationAdministrator())
+                    {
+                        <li>
+
+                        </li>
+                    }
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link  dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="circle">@Model.CurrentUser.UserInitials.ToUpper()</span> </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+                                <li class="user-info">
+                                    <p><strong>@(Model.CurrentUser.FirstName + " " + Model.CurrentUser.LastName + (!string.IsNullOrWhiteSpace(Model.CurrentUser.ProfessionalSuffix) ? ", " + Model.CurrentUser.ProfessionalSuffix : ""))</strong><br />@Model.CurrentUser.Email</p>
+                                    @if (Model.CurrentUser.MemberTypeId != 2016)
+                                    {
+                                        <p class="small mb-0">Account Type: @(Model.CurrentUser.IsPayingClient ? "Enterprise" : "Community")</p>
+                                    }
+                                    @if (Model.CurrentUser.IsPayingClient == false && Model.CurrentUser.MemberTypeId != 2016)
+                                    {
+                                        <a class="text-white small" href="mailto:sales@suturehealth.com" style="text-decoration:underline !important;">Upgrade to Enterpise Now</a>
+                                    }
+                                </li>
+                                @if (Model.CurrentUser.MemberTypeId != 2016)
+                                {
+                                    <li>
+                                        <a asp-route="MemberAccount" asp-route-memberid="@Model.CurrentUser.Id" class="dropdown-item">
+                                            <i class="far fa-user"></i>
+                                            My Account
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (!Model.CurrentUser.IsApplicationAdministrator() && Model.CurrentUser.CanEditOrganizationProfile)
+                                {
+                                    <li>
+                                        <a asp-route="Organization" class="dropdown-item">
+                                            <i class="far fa-building"></i>
+                                            <span>Company</span>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (!Model.CurrentUser.IsApplicationAdministrator())
+                                {
+                                    <li>
+                                        <a asp-route="OrganizationUsersIndex" class="dropdown-item">
+                                            <i class="far fa-users"></i>
+                                            <span>My Team</span>
+                                        </a>
+                                    </li>
+                                }
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <button id="ChangePasswordButton" type="button" class="btn btn-link">
+                                        <i class="fas fa-key"></i>
+                                        <span>Change Password</span>
+                                    </button>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    @*<a class="release-notes-link" href="~/SutureSignMvc/Features">Release Notes</a>*@
+                                    <form class="form-inline px-3" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                        <button type="submit" class="btn btn-secondary">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+</header>
+<kendo-window name="session-window"
+              draggable="false" resizable="false" title="Are you still there?"
+              visible="false" modal="true" deferred="true" style="display: none;">
+    <content>
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <h4>Your Session is Expiring Soon</h4>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                Please make sure you've saved any of your work. It will
+                be lost when you are logged out.
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 text-center p-5">
+                <kendo-progressbar name="session-progress" class="sh-progress" type="ProgressBarType.Value" animation-duration="850" value="100" max="100" min="0" deferred="true">
+                    <label class="text-center"></label>
+                </kendo-progressbar>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 text-center p-2">
+                <button class="btn btn-primary">Logout</button>
+            </div>
+        </div>
+    </content>
+</kendo-window>
+@if (SessionMonitor.Value.Enable)
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var sessionMonitor = new SH.UI.SessionMonitor("#session-window",
+        @* "@(SessionMonitor.Value.LoginUrl)?returnUrl=@(string.IsNullOrWhiteSpace(Context.Request.Query["returnUrl"]) ? Context.Request.Path : Context.Request.Query["returnUrl"])", *@
+                "@SessionMonitor.Value.LoginUrl",
+                "@SessionMonitor.Value.PingUrl",
+        @SessionMonitor.Value.IdleTimeout.TotalMilliseconds,
+        @SessionMonitor.Value.WarningTimeout.TotalMilliseconds,
+        @SessionMonitor.Value.CushionTimeout.TotalMilliseconds,
+        @Json.Serialize(SessionMonitor.Value.EnableUI));
+        });
+    </script>
+}
+
+
+
+<script>
+
+    if (Object.hasOwnProperty.call(window, "ActiveXObject") && !window.ActiveXObject) {
+    // is IE11
+    $( "a#navbarScrollingDropdown" ).click(function() {
+  $( "ul.dropdown-menu" ).toggleClass( "show" );
+});
+}
+
+</script>
